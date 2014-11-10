@@ -1,0 +1,40 @@
+@import 'colors'
+@import 'mixins'
+
+#content-wrapper
+	width: 100%
+	max-width: 70em
+	margin: 0 auto
+	padding: 1em 0 3em 0
+	
+#content
+	width: 100%
+	.sorting
+		width: 100%
+		padding: 1em
+		font-weight: 700
+		.result-counter
+			float:left
+		.sorter
+			float: right
+	.item
+		background: $white
+		cursor:pointer
+		font-size: .8em
+		boxshadow(0px 1px 2px 0px rgba(50,50,50,0.18))
+		.screenshot
+			width: 100%
+			overflow:hidden
+			height: 10em
+			img
+				width:105%
+				transition: width .3s
+		.sub
+			padding: .3em
+			height: 5em
+			border-top: 1px solid $lightgrey
+		.title
+			font-weight:700
+		&:hover img
+			width: 100%
+	

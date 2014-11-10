@@ -1,0 +1,23 @@
+{
+  "name": "starterkit-webapp",
+  "version": "0.0.1",
+  "authors": [
+    "@moklick <mo@webkid.io>"
+  ],
+  "description": "Lightweight starting point for a web app.",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ractive": "~0.6.1",
+    "jquery": "~2.1.1",
+    "select2": "~3.5.2"
+  }
+}

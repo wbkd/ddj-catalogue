@@ -1,0 +1,58 @@
+@import url(http://fonts.googleapis.com/css?family=Source\+Sans\+Pro:400,700);
+@import 'colors'
+@import 'mixins'
+@import 'normalize'
+@import 'helper'
+@import 'grid'
+@import '../bower_components/select2/select2.css'
+@import '../bower_components/elegant-icons/css/style.css'
+
+
+/* global styling */
+html
+  font-family: 'Source Sans Pro', sans-serif
+
+html
+button
+input
+select
+textarea 
+  color: $black
+
+a
+a:visited
+  color: $linkColor
+  text-decoration: none
+
+a:hover
+  color: lighten($linkColor,10%)
+  
+body
+  background: $darkgrey
+  color: $black
+  font-size: 1em
+  line-height: 1.4
+  
+#app
+  width: 100%
+  background: $paper
+  position: relative
+  
+*
+  boxsizing(border-box)
+
+/* media queries */
+/*@media only screen and (min-width: 40em)
+  @media only screen and (min-width: 80em)*/
+  
+/* header styles */
+@import 'header'
+
+/* navigation */
+@import 'navigation'
+
+/* content styles */
+@import 'content'
+
+/* footer styles */
+@import 'footer'
