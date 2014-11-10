@@ -1,3 +1,1 @@
-=======
-ddj-catalogue
-=============
+# ddj-catalogue
