@@ -23,10 +23,14 @@ content.render = function(data) {
 
 	console.log(data);
 
-	var Sidebar = new Ractive({
+	var Content = new Ractive({
 		el: '#content',
 		template: '#content-template',
 		data: ractiveData
+	});
+
+	Content.on('flip', function(el) {
+		$(el.node).find('.container').toggleClass('flipped');
 	});
 }
 

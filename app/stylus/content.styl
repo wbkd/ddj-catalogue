@@ -18,23 +18,49 @@
 		.sorter
 			float: right
 	.item
-		background: $white
 		cursor:pointer
-		font-size: .8em
-		boxshadow(0px 1px 2px 0px rgba(50,50,50,0.18))
+		height: 250px
+		.container
+			perspective: 1000
+			transition: transform .5s ease-in-out
+			transform-style: preserve-3d
+			position: relative;
+			font-size: .8em
+			boxshadow(0px 1px 2px 0px rgba(50,50,50,0.18))
+			width: 100%
+			height: 100%
+			boxsizing(border-box)
+		.container.flipped
+			transform: rotateY(180deg)
 		.screenshot
 			width: 100%
 			overflow:hidden
-			height: 10em
-			img
-				width:105%
-				transition: width .3s
+			height: 11em
+			background-size: cover
 		.sub
 			padding: .3em
 			height: 5em
 			border-top: 1px solid $lightgrey
 		.title
 			font-weight:700
-		&:hover img
+		&:hover .container
+			boxshadow(0px 2px 4px 0px rgba(50,50,50,0.30))
+		.item-front, .item-back
+			backface-visibility: hidden
+			position: absolute
+			top: 0
 			width: 100%
+			height: 100%
+			left: 0
+		.item-front
+			z-index: 2
+			transform: rotateY(0deg)
+			background: $white
+		.item-back
+			transform: rotateY(180deg)
+			background: $red
+			color: $white
+			padding: 1em
+			boxshadow(0px 2px 14px 0px rgba(50,50,50,.9))
+			
 	

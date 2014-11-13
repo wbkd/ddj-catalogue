@@ -26,7 +26,7 @@
 
     <script id="navigation-template" type="text/ractive">
 <button class="toggle-filter" on-click="navToggle">Filter einblenden <i class="arrow_carrot-down"></i></button>
-<div class="filter-list row hidden">
+<div class="filter-list row">
     <div class="column">
         <div class="filter-toggle">
             Verlag
@@ -87,13 +87,19 @@
         <div class="items row">
             {{#items:i}}
             <div class="column">
-                <div class="item">
-                    <div class="screenshot">
-                        <img src="{{imageurl}}" alt="">
+                <div on-click="flip" class="item">
+                    <div class="container">
+                    <div class="item-front">
+                    <div class="screenshot" style="background-image:url({{imageurl}})">
                     </div>
                     <div class="sub">
                         <div class="title">{{title}}</div>
                         <div class="shortdesc">{{publisher}}</div>
+                    </div>
+                    </div>
+                    <div class="item-back">
+                        <div class="title">{{title}}</div>
+                    </div>
                     </div>
                 </div>
             </div>

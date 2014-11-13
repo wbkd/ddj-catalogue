@@ -24,7 +24,9 @@ navigation.render = function(data) {
 
 	Navigation.on('navToggle', function(el) {
 		//display or hide filters
-		$(el.node).next('.filter-list').toggleClass('hidden');
+		$(el.node).next('.filter-list').toggleClass('active');
+
+		console.log($())
 		//set button active or inactive
 		$(el.node).toggleClass('active');
 	});
