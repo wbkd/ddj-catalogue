@@ -7,10 +7,10 @@ var utils = require('./utils');
 var $ = require('../bower_components/jquery/dist/jquery');
 var ractive = require('../bower_components/ractive/ractive');
 
-  // module name (exports)
-  content = {};
+// module name (exports)
+content = {};
 
-  //private fields
+//private fields
 
 
 /* public functions */

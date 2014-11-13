@@ -22,7 +22,7 @@
 		height: 250px
 		.container
 			perspective: 1000
-			transition: transform .5s ease-in-out
+			transition: transform .3s ease-in-out
 			transform-style: preserve-3d
 			position: relative;
 			font-size: .8em
@@ -32,19 +32,23 @@
 			boxsizing(border-box)
 		.container.flipped
 			transform: rotateY(180deg)
-		.screenshot
-			width: 100%
-			overflow:hidden
-			height: 11em
-			background-size: cover
 		.sub
 			padding: .3em
-			height: 5em
+			height: 6em
+			position: absolute
+			bottom: 0
+			left: 0
+			width: 100%
+			color: $white
+			background: rgba(30,30,30,.95)
 			border-top: 1px solid $lightgrey
+			transition: height .2s
 		.title
 			font-weight:700
 		&:hover .container
-			boxshadow(0px 2px 4px 0px rgba(50,50,50,0.30))
+			boxshadow(0px 2px 4px 0px rgba(80,80,80,0.30))
+			.sub
+				height: 6.5em
 		.item-front, .item-back
 			backface-visibility: hidden
 			position: absolute
@@ -52,10 +56,12 @@
 			width: 100%
 			height: 100%
 			left: 0
+			overflow:hidden
 		.item-front
 			z-index: 2
 			transform: rotateY(0deg)
 			background: $white
+			background-size: cover
 		.item-back
 			transform: rotateY(180deg)
 			background: $red

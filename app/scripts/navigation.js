@@ -52,11 +52,11 @@ function formatData(data) {
 		d.byline.forEach(function(author) {
 			if(authors.indexOf(author) < 0) authors.push(author);
 		});
-		d.category.split(',').forEach(function(category) {
+		d.category.forEach(function(category) {
 			if(categories.indexOf(category) < 0) categories.push(category); 
 		});
 		if(publisher.indexOf(d.publisher) < 0) publisher.push(d.publisher); 
-		d.visualform.split(',').forEach(function(visualform) {
+		d.visualform.forEach(function(visualform) {
 			if(type.indexOf(visualform) < 0) type.push(visualform); 
 		});
 	});
