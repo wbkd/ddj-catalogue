@@ -12,6 +12,7 @@ $.getJSON('js/data/data.json').done(function(data) {
 	renderView(data);
 });
 
+//render all parts of the application
 function renderView(data) {
 	navigation.render(data);
 	content.render(data);

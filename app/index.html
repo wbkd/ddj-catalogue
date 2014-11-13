@@ -25,11 +25,11 @@
     </div>
 
     <script id="navigation-template" type="text/ractive">
-<div class="toggle-filter">Filter einblenden <i class="arrow_carrot-down"></div>
+<button class="toggle-filter" on-click="navToggle">Filter einblenden <i class="arrow_carrot-down"></i></button>
 <div class="filter-list row hidden">
     <div class="column">
         <div class="filter-toggle">
-            Verlag <i class="arrow_carrot-down"></i>
+            Verlag
 </div>
 <select class="select2 publisher" multiple>
     <option disabled class="filter-desc">Verlag</option>
@@ -41,7 +41,7 @@
 
 <div class="column">
     <div class="filter-toggle">
-        Visualisierung <i class="arrow_carrot-down"></i>
+        Visualisierung
     </div>
     <select class="column select2 type" multiple>
         <option disabled class="filter-desc">Visual Form</option>
@@ -54,7 +54,7 @@
 
 <div class="column">
     <div class="filter-toggle">
-        Autoren <i class="arrow_carrot-down"></i>
+        Autoren
     </div>
     <select class="column select2 author" multiple>
         <option disabled class="filter-desc">Autor</option>
@@ -66,7 +66,7 @@
 
 <div class="column">
     <div class="filter-toggle">
-        Kategorien <i class="arrow_carrot-down"></i>
+        Kategorien
     </div>
     <select class="column select2 category" multiple>
         <option disabled class="filter-desc">Kategorie</option>

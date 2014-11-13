@@ -1,6 +1,6 @@
 /**
- * the navigation module
- */
+* the navigation module
+*/
 
 // dependencies
 var utils = require('./utils');
@@ -9,14 +9,10 @@ var ractive = require('../bower_components/ractive/ractive');
 require('imports?jQuery=../jquery/dist/jquery!../bower_components/select2/select2');
 
 
-  // module name (exports)
-  navigation = {};
-
-  //private fields
-
+// module name (exports)
+navigation = {};
 
 /* public functions */
-
 navigation.render = function(data) {
 	data = formatData(data);
 	console.log(data);
@@ -24,6 +20,13 @@ navigation.render = function(data) {
 		el: '#navigation',
 		template: '#navigation-template',
 		data: data
+	});
+
+	Navigation.on('navToggle', function(el) {
+		//display or hide filters
+		$(el.node).next('.filter-list').toggleClass('hidden');
+		//set button active or inactive
+		$(el.node).toggleClass('active');
 	});
 
 	$('.select2').select2();
