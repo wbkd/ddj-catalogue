@@ -18,6 +18,7 @@
   "dependencies": {
     "ractive": "~0.6.1",
     "jquery": "~2.1.1",
-    "select2": "~3.5.2"
+    "select2": "~3.5.2",
+    "elegant-icons": "*"
   }
 }

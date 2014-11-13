@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A description.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>German Data Journalism Projects</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -14,97 +13,95 @@
 <body>
     <div id="app">
         <section id="header">
-        	<div class="title">DDJ-Projekte</div>
+            <div class="title">DDJ-Projekte</div>
         </section>
         <div id="content-wrapper" class="clearfix">
             <section id="navigation" class="row"></section>
             <section id="content"></section>
         </div>
         <section id="footer">
-        	Footer
+            Footer
         </section>
     </div>
 
-<script id="navigation-template" type="text/ractive">
+    <script id="navigation-template" type="text/ractive">
 <div class="toggle-filter">Filter einblenden <i class="arrow_carrot-down"></div>
 <div class="filter-list row hidden">
     <div class="column">
         <div class="filter-toggle">
             Verlag <i class="arrow_carrot-down"></i>
-        </div>
-        <select class="select2 publisher" multiple>
-            <option disabled class="filter-desc">Verlag</option>
-            {{#publisher}}
-            <option class="filter">{{.}}</option>
-            {{/publisher}}
-        </select>
-    </div>
+</div>
+<select class="select2 publisher" multiple>
+    <option disabled class="filter-desc">Verlag</option>
+    {{#publisher}}
+    <option class="filter">{{.}}</option>
+    {{/publisher}}
+</select>
+</div>
 
-    <div class="column">
-        <div class="filter-toggle">
-            Visualisierung <i class="arrow_carrot-down"></i>
-        </div>
-        <select class="column select2 type" multiple>
-            <option disabled class="filter-desc">Visual Form</option>
-            {{#type}}
-            <option class="filter">{{.}}</option>
-            {{/type}}
-        </select>
+<div class="column">
+    <div class="filter-toggle">
+        Visualisierung <i class="arrow_carrot-down"></i>
     </div>
-
-
-    <div class="column">
-        <div class="filter-toggle">
-            Autoren <i class="arrow_carrot-down"></i>
-        </div>
-        <select class="column select2 author" multiple>
-            <option disabled class="filter-desc">Autor</option>
-            {{#authors}}
-            <option class="filter">{{.}}</option>
-            {{/authors}}
-        </select>
-    </div>
-
-    <div class="column">
-        <div class="filter-toggle">
-            Kategorien <i class="arrow_carrot-down"></i>
-        </div>
-        <select class="column select2 category" multiple>
-            <option disabled class="filter-desc">Kategorie</option>
-            {{#category}}
-            <option class="filter">{{.}}</option>
-            {{/category}}
-        </select>
-    </div>
+    <select class="column select2 type" multiple>
+        <option disabled class="filter-desc">Visual Form</option>
+        {{#type}}
+        <option class="filter">{{.}}</option>
+        {{/type}}
+    </select>
 </div>
 
 
-</script>
-
-<script id="content-template" type="text/ractive">
-<div class="row sorting">
-    <div class="result-counter">{{count}} Ergebnisse gefunden</div>
-    <div class="sorter">sortieren <i class="arrow_triangle-down"></i></div>
+<div class="column">
+    <div class="filter-toggle">
+        Autoren <i class="arrow_carrot-down"></i>
+    </div>
+    <select class="column select2 author" multiple>
+        <option disabled class="filter-desc">Autor</option>
+        {{#authors}}
+        <option class="filter">{{.}}</option>
+        {{/authors}}
+    </select>
 </div>
-<div class="items row">
-    {{#items:i}}
-    <div class="column">
-        <div class="item">
-            <div class="screenshot">
-                <img src="{{imageurl}}" alt="">
-            </div>
-            <div class="sub">
-                <div class="title">{{title}}</div>
-                <div class="shortdesc">{{publisher}}</div>
+
+<div class="column">
+    <div class="filter-toggle">
+        Kategorien <i class="arrow_carrot-down"></i>
+    </div>
+    <select class="column select2 category" multiple>
+        <option disabled class="filter-desc">Kategorie</option>
+        {{#category}}
+        <option class="filter">{{.}}</option>
+        {{/category}}
+    </select>
+</div>
+</div>
+    </script>
+
+    <script id="content-template" type="text/ractive">
+        <div class="row sorting">
+            <div class="result-counter">{{count}} Ergebnisse gefunden</div>
+            <div class="sorter">sortieren <i class="arrow_triangle-down"></i>
             </div>
         </div>
-    </div>
-    {{/items}}
-</div>
+        <div class="items row">
+            {{#items:i}}
+            <div class="column">
+                <div class="item">
+                    <div class="screenshot">
+                        <img src="{{imageurl}}" alt="">
+                    </div>
+                    <div class="sub">
+                        <div class="title">{{title}}</div>
+                        <div class="shortdesc">{{publisher}}</div>
+                    </div>
+                </div>
+            </div>
+            {{/items}}
+        </div>
+    </script>
 
-</script>
-
-<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
