@@ -8,7 +8,13 @@ module.exports.development = {
     debug : true,
     devtool : 'eval',
     entry: entry,
-    output: output 
+    output: output,
+    resolve: {
+        alias: {
+            underscore: '../underscore/underscore.js',
+            jquery: '../jquery/dist/jquery.js'
+        }
+    }
 };
 
 module.exports.production = {

@@ -19,6 +19,7 @@
     "ractive": "~0.6.1",
     "jquery": "~2.1.1",
     "select2": "~3.5.2",
-    "elegant-icons": "*"
+    "elegant-icons": "*",
+    "backbone": "~1.1.2"
   }
 }
