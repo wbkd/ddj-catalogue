@@ -1,19 +1,19 @@
-# ddj-catalogue
+# DDJ Catalogue Frontend
 
 
 ### Installation
 
+```shell
+$ npm install
 ```
-npm install
-```
-```
-bower install
+```shell
+$ bower install
 ```
 
 ### Start
 
-```
-npm start
+```shell
+$ npm start
 ```
 
 visit `http://localhost:9999`
