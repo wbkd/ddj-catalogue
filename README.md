@@ -1,7 +1,7 @@
 # ddj-catalogue
 
 
-### installation
+### Installation
 
 ```
 npm install
@@ -9,9 +9,11 @@ npm install
 ```
 bower install
 ```
+
+### Start
+
 ```
-gulp
+npm start
 ```
 
 visit `http://localhost:9999`
-
