@@ -1,5 +1,5 @@
 var React = require('react');
-
+var config = require('../config');
 var PreviewStore = require('../stores/previewStore.js');
 var previewActions = require('../actions/previewActions');
 

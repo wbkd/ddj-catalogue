@@ -1,7 +1,7 @@
 {
-  "name": "starterkit-webapp",
+  "name": "ddj-catalogue",
   "version": "0.0.1",
-  "description": "Lightweight starting point for a web app.",
+  "description": "ddj-catalogue frontend",
   "main": "index.html",
   "scripts": {
     "start": "gulp"
