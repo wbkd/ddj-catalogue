@@ -1,3 +1,9 @@
+/*
+
+	We don't use this class at the moment.
+	
+*/
+
 var React = require('react');
 
 var Header = require('./header.jsx');
