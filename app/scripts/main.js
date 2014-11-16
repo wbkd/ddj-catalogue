@@ -1,24 +1,33 @@
-var underscore = require('../bower_components/underscore/underscore');
-var jquery = require('../bower_components/jquery/dist/jquery');
-var utils = require('./utils');
-var ractive = require('../bower_components/ractive/ractive');
-var backbone = require('../bower_components/backbone/backbone');
-var navigation = require('./navigation');
-var content = require('./content');
-var dataLoader = require('./dataloader');
+var React = require('react');
+var director = require('director');
 
+require('./components/header.jsx');
+require('./components/footer.jsx');
+require('./components/filterMenu.jsx');
 
-//add helper classes to html element
-utils.addHelperClasses();
+var PreviewList = require('./components/previewList.jsx');
+var PreviewDetail = require('./components/previewDetail.jsx');
+var About = require('./components/about.jsx');
 
-//load initial data
-dataLoader.init(renderView);
+var contentNode = document.getElementById('content');
 
-//render all parts of the application
-function renderView(data) {
-	console.log(data);
-	navigation.render(data);
-	content.render(data);
+var routes = {
+  '/projekte': function(){
+  	React.render(<PreviewList />, contentNode);
+  },
+  '/projekt/:id': function(previewId){
+  	React.render(<PreviewDetail id={previewId}/>, contentNode);
+  },
+  '/informationen': function(){
+  	React.render(<About />, contentNode);
+  }
+};
+
+var routerConfig = {
+	notfound : function(){
+		// TODO : load 404
+		React.render(<PreviewList />, contentNode);
+	}
 }
 
-
+var router = new director.Router(routes).configure(routerConfig).init('/projekte');

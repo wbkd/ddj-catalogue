@@ -13,5 +13,5 @@ bower install
 gulp
 ```
 
---> localhost:1337
+visit `http://localhost:9999`
 

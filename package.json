@@ -23,6 +23,11 @@
     "gulp-webpack": "^0.4.1"
   },
   "dependencies": {
-    "imports-loader": "~0.6.3"
+    "director": "^1.2.3",
+    "imports-loader": "~0.6.3",
+    "jsx-loader": "^0.12.1",
+    "react": "^0.12.0",
+    "reflux": "^0.1.15",
+    "reqwest": "^1.1.5"
   }
 }

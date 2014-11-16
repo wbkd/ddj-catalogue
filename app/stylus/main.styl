@@ -1,16 +1,26 @@
-@import url(http://fonts.googleapis.com/css?family=Source\+Sans\+Pro:400,700);
-@import 'colors'
-@import 'mixins'
+@import url('http://fonts.googleapis.com/css?family=Source\+Sans\+Pro:400,700');
 @import 'normalize'
+@import 'mixins'
 @import 'helper'
+
+@import 'colors'
+@import 'buttons'
 @import 'grid'
-@import '../bower_components/select2/select2.css'
+@import 'preview'
+@import 'filter-menu'
 @import '../bower_components/elegant-icons/css/style.css'
 
+@import 'header'
+@import 'footer'
 
 /* global styling */
+
+*
+  boxsizing(border-box)
+
 html
   font-family: 'Source Sans Pro', sans-serif
+  overflow-y: scroll
 
 html
 button
@@ -19,40 +29,33 @@ select
 textarea 
   color: $black
 
-a
-a:visited
-  color: $linkColor
-  text-decoration: none
-
+a,
+a:visited,
 a:hover
-  color: lighten($linkColor,10%)
+  text-decoration: none
   
 body
-  background: $darkgrey
+  background: $paper
   color: $black
   font-size: 1em
   line-height: 1.4
   
 #app
   width: 100%
-  background: $paper
   position: relative
-  
-*
-  boxsizing(border-box)
+  max-width:80em
+  margin:0 auto
+
+.subpage
+  padding:1em
+  .subpage-content
+    background:white
+    box-shadow:0 1px 1px rgba(0,0,0,.1)
+    padding:1em
+    
+
 
 /* media queries */
 /*@media only screen and (min-width: 40em)
   @media only screen and (min-width: 80em)*/
   
-/* header styles */
-@import 'header'
-
-/* navigation */
-@import 'navigation'
-
-/* content styles */
-@import 'content'
-
-/* footer styles */
-@import 'footer'

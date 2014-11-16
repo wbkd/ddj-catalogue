@@ -6,7 +6,7 @@ var environment = $.util.env.type || 'development';
 var isProduction = environment === 'production';
 var webpackConfig = require('./webpack.config.js')[environment];
 
-var port = $.util.env.port || 1337;
+var port = $.util.env.port || 9999;
 var app = 'app/';
 var dist = 'dist/';
 
@@ -83,6 +83,7 @@ gulp.task('watch', function() {
   gulp.watch(app + 'stylus/*.styl', ['styles']);
   gulp.watch(app + 'index.html', ['html']);
   gulp.watch(app + 'scripts/**/*.js', ['scripts']);
+  gulp.watch(app + 'scripts/**/*.jsx', ['scripts']);
 });
 
 // remove bundels

@@ -9,15 +9,20 @@ module.exports.development = {
     devtool : 'eval',
     entry: entry,
     output: output,
-    resolve: {
-        alias: {
-            underscore: '../underscore/underscore.js',
-            jquery: '../jquery/dist/jquery.js'
-        }
+    module : {
+        loaders : [
+            { test: /\.jsx?$/, loader: 'jsx-loader?harmony' }
+        ]
     }
 };
 
 module.exports.production = {
+    debug: false,
     entry: entry,
-    output: output 
+    output: output,
+    module : {
+        loaders : [
+            { test: /\.jsx?$/, loader: 'jsx-loader?harmony' }
+        ]
+    }
 };
