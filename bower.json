@@ -2,7 +2,8 @@
   "name": "starterkit-webapp",
   "version": "0.0.1",
   "authors": [
-    "@moklick <mo@webkid.io>"
+    "@moklick <mo@webkid.io",
+    "@chrtze <chris@webkid.io"
   ],
   "description": "Lightweight starting point for a web app.",
   "main": "index.html",
