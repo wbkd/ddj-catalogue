@@ -5,6 +5,16 @@ var Preview = React.createClass({
 
   displayName: 'Preview',
 
+  propTypes : function(){
+    data : React.PropTypes.object
+  },
+
+  getDefaultProps: function(){
+    return {
+      data : {}
+    };
+  },
+
   render: function() {
 
     var preview = this.props.data, 
