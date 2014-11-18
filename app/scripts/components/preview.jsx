@@ -26,12 +26,12 @@ var Preview = React.createClass({
 
     var cx = React.addons.classSet;
     var classes = cx({
-      'column': true,
       'preview' : true,
       'is-expanded': this.props.isExpanded 
     });
 
     return (
+      <div className="column">
       	<div className={classes} onClick={this.props.onClick}>
       		<div className='preview-image' style={imageStyle}></div>
           <div className='preview-content'>
@@ -39,6 +39,7 @@ var Preview = React.createClass({
         		<div className='preview-publisher'>{ preview.publisher }</div>
           </div>
       	</div>
+      </div>
     );
   }
 });
