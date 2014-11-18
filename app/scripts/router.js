@@ -19,7 +19,9 @@ class Router {
   }
 
   route(_){
- 
+  
+    if (!arguments.length) return this._routes;
+
     for(var key in _){
       var element = _[key];  
       this._routes[key] = function(){
@@ -31,6 +33,8 @@ class Router {
   }
 
   config(_){
+
+    if (!arguments.length) return this._config;
 
     for(var key in _){
       var element = _[key]; 
