@@ -1,32 +1,22 @@
 var React = require('react');
 var director = require('director');
 
-require('./components/header.jsx');
-require('./components/footer.jsx');
-require('./components/filterMenu.jsx');
-
-var PreviewList = require('./components/previewList.jsx');
 var PreviewDetail = require('./components/previewDetail.jsx');
-var About = require('./components/about.jsx');
-
-var contentNode = document.getElementById('content');
+var Home = require('./pages/home.jsx');
 
 var routes = {
   '/projekte': function(){
-  	React.render(<PreviewList />, contentNode);
+    React.render(<Home />, document.body);
   },
   '/projekt/:id': function(previewId){
-  	React.render(<PreviewDetail id={previewId}/>, contentNode);
-  },
-  '/informationen': function(){
-  	React.render(<About />, contentNode);
+  	React.render(<PreviewDetail id={previewId}/>, document.body);
   }
 };
 
 var routerConfig = {
 	notfound : function(){
 		// TODO : load 404
-		React.render(<PreviewList />, contentNode);
+		React.render(<Home />, document.body);
 	}
 }
 

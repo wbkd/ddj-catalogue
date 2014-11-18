@@ -6,17 +6,20 @@ var Header = React.createClass({
 
   render: function() {
     return (
-    	<div className="clearfix header-content">
-    		<div className="header-title">
-    			DDJ-Katalog
-    		</div>
-    		<nav className="clearfix">
-    			<a className="btn" href="#/projekte">Projekte</a>
-	      		<a className="btn" href="#/informationen">Info</a>
-    		</nav>
-    	</div>
+    	<header>
+            <div className="clearfix header-content centered">
+        		<div className="header-title">
+        			DDJ-Katalog
+        		</div>
+        		<nav className="clearfix">
+        			<a className="btn" href="#/projekte">Projekte</a>
+    	      		<a className="btn" href="#/informationen">Info</a>
+        		</nav>
+            </div>
+    	</header>
     );
   }
 });
 
-React.render(<Header />, document.getElementById('header'));
+
+module.exports = Header;

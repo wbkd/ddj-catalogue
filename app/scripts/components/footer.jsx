@@ -6,11 +6,11 @@ displayName: 'Footer',
 
   render: function() {
     return (
-    	<div>
+    	<footer className="centered">
     		footer info
-    	</div>
+    	</footer>
     );
   }
 });
 
-React.render(<Footer />, document.getElementById('footer'));
+module.exports = Footer;
