@@ -3,13 +3,10 @@ var Preview = require('./preview.jsx');
 
 var PreviewList = React.createClass({
 
-      propTypes : function(){
-        previews : React.PropTypes.array
-      },
-
-      getDefaultProps: function(){
+      getInitialState: function(a){
         return {
-          previews : []
+          previews : [],
+          isExpadendId : false
         };
       },
 
@@ -17,10 +14,22 @@ var PreviewList = React.createClass({
         filterActions.toggleMenu();
       },
 
+      handlePreviewClick: function(previewId,index){
+        console.log(arguments);
+
+        
+        /*this.setState({
+          isExpadendId : previewId
+        });*/
+      },
+
       render: function() {
-        var previews = this.props.previews.map(function(preview) {
-          return (<Preview data={preview} key={preview._id} />);
-        });
+
+        var previews = this.props.previews.map(function(preview,i) {
+          var isExpanded = this.state.isExpadendId ? this.state.isExpadendId === preview._id : false;
+          return (<Preview onClick={this.handlePreviewClick} data={preview} isExpanded={isExpanded} key={preview._id} />);
+       
+        }.bind(this));
 
         return (
           <div className="preview-list row centered">

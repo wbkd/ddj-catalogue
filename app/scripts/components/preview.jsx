@@ -5,13 +5,15 @@ var Preview = React.createClass({
 
   displayName: 'Preview',
 
-  propTypes : function(){
-    data : React.PropTypes.object
+  propTypes : {
+    data : React.PropTypes.object,
+    isExpanded : React.PropTypes.bool
   },
 
   getDefaultProps: function(){
     return {
-      data : {}
+      data : {},
+      isExpanded : false
     };
   },
 
@@ -22,16 +24,21 @@ var Preview = React.createClass({
       previewImage = preview.serverImageurl ? config.imageUrl + preview.serverImageurl : config.defaultImage,
       imageStyle = {  backgroundImage: 'url(' + previewImage +  ')' };
 
+    var cx = React.addons.classSet;
+    var classes = cx({
+      'column': true,
+      'preview' : true,
+      'is-expanded': this.props.isExpanded 
+    });
+
     return (
-      <a className='column' href={detailLink}>
-      	<div className='preview'>
+      	<div className={classes} onClick={this.props.onClick}>
       		<div className='preview-image' style={imageStyle}></div>
           <div className='preview-content'>
         		<div className='preview-title'>{ preview.title }</div>
         		<div className='preview-publisher'>{ preview.publisher }</div>
           </div>
       	</div>
-      </a>
     );
   }
 });
