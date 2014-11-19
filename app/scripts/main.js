@@ -1,10 +1,7 @@
-var React = require('react');
+var director = require('director')
+var routerConfig = require('./router-config.js');
 
-var Home = require('./pages/home.jsx');
-var ErrorPage = require('./pages/404.jsx');
-var Router = require('./router.js');
-
-new Router()
-  .route({ '/projekte' : <Home /> })
-  .config({ 'notfound' : <ErrorPage /> })
+new director
+  .Router(routerConfig.routes)
+  .configure(routerConfig.config)
   .init('/projekte');
