@@ -4,6 +4,11 @@
 
 ***********/
 
+.preview-wrapper
+	-moz-transition:transform .2s
+	-webkit-transition:transform .2s
+	transition:transform .2s
+
 .preview-list-header
 	padding:1em
 	margin-top: 3em
@@ -23,10 +28,13 @@
 
 	.preview-image
 		background-position:center center
+		background-size: cover
 		height:150px
 		
 	.preview-content
 		padding:.85em
+		.preview-title
+			font-weight: bold
 		
 
 

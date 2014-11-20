@@ -8,38 +8,26 @@ var Filters = React.createClass({
     {
       name: 'Verlag',
       filters: [
-        'SPON',
-        'SZ',
-        'ZEIT',
-        'WELT',
-        'NZZ'
+        'Spiegel Online',
+        'Süddeutsche Zeitung',
+        'Welt Online',
+        'Zeit Online',
+        'Berliner Morgenpost'
       ]
     },
     {
-      name: 'Verlag',
+      name: 'Visual Form',
       filters: [
-        'SPON',
-        'SZ',
-        'ZEIT',
-        'WELT',
-        'NZZ'
-      ]
-    },
-    {
-      name: 'Verlag',
-      filters: [
-        'SPON',
-        'SZ',
-        'ZEIT',
-        'WELT',
-        'NZZ'
+        'Chart',
+        'Diagramm',
+        'Karte',
+        'Sonstige'
       ]
     }
   ],
 
   getFilters: function() {
-    
-    var x = <div>
+    return <div>
             {
               this.fakeData.map(function(d) {
                 var items = [];
@@ -49,13 +37,11 @@ var Filters = React.createClass({
 
                 return <div>
                   <div className="filter-header">{d.name}</div>
-                  <ul>{items}</ul>
+                  <ul className="tag-list">{items}</ul>
                   </div>
               })
             }
             </div>
-
-    return x
   },
 
   render: function() {

@@ -1,8 +1,9 @@
-/*  TODO: use transform instead of left  */
+@import 'colors'
 
+/*  TODO: use transform instead of left  */
 .filter-menu
 	position:fixed
-	left:-500px
+	left:-250px
 	top:0
 	background:white
 	height:100%
@@ -11,13 +12,28 @@
 	-moz-transition:left .2s
 	-webkit-transition:left .2s
 	transition:left .2s
+	padding-top: 3em
+	width: 250px
 	&.active
 		left:0
 		z-index:3
 	.closeMenu
 		position: absolute
 		right: 0
-		top: 0
+		top: 1.2em
 		font-size: 2em
+		cursor: pointer
 	.filter-list
 		margin-top: 1em
+		.tag-list
+			list-style: none
+			padding: 0
+			margin: .7em 0 2em 0
+			li
+				cursor: pointer
+				padding: .2em .5em
+				&:hover
+					background: $lightgrey
+		.filter-header
+			font-weight: bold
+			border-bottom: 1px solid $lightgrey

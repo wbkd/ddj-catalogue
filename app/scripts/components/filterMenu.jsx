@@ -2,6 +2,7 @@ var React = require('react/addons');
 var FilterStore = require('../stores/filterStore');
 var FilterActions = require('../actions/filterActions');
 var Filters = require('./filters.jsx');
+var PreviewList = require('./filterablePreviewList.jsx');
 var cx = React.addons.classSet;
 
 var FilterMenu = React.createClass({
@@ -23,9 +24,7 @@ var FilterMenu = React.createClass({
   },
 
   render: function() {
-
-    var self = this;
-
+    
     var classes = cx({
       'filter-menu': true,
       'active': this.state.isActive
