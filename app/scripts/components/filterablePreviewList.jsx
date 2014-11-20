@@ -50,7 +50,6 @@ var FilterablePreviewList = React.createClass({
     }
     else {
       var menuOffset = this.getMenuOffset();
-      console.log(menuOffset);
       this.setState({shiftPx: menuOffset});
     }
   },

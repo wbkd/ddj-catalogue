@@ -1,4 +1,5 @@
 var React = require('react/addons');
+var Filter = require('./filter.jsx');
 
 var Filters = React.createClass({
 
@@ -26,13 +27,19 @@ var Filters = React.createClass({
     }
   ],
 
+  onFilterSelect: function(filter) {
+    console.log(filter.target);
+  },
+
   getFilters: function() {
+    var self = this;
     return <div>
             {
               this.fakeData.map(function(d) {
                 var items = [];
                 d.filters.map(function(filter) {
-                  items.push(<li>{filter}</li>);
+                  items.push(<Filter text={filter} category={d.name} />);
+                  //items.push(<li onClick={self.onFilterSelect}>{filter}</li>);
                 });
 
                 return <div>

@@ -1,3 +1,6 @@
+@import 'colors'
+@import 'mixins'
+
 /**********
 	
 	preview list
@@ -12,8 +15,29 @@
 .preview-list-header
 	padding:1em
 	margin-top: 3em
-	.btn-sort
+	.sorter
 		float: right
+		position: relative
+		.sorting-drop-down
+			position: fixed
+			-moz-transition:height .2s
+			-webkit-transition:height .2s
+			transition:height .2s
+			height: 0
+			list-style: none
+			margin: 0
+			padding: 0
+			position: absolute
+			width: 100%
+			li 
+				width: 100%
+				background: $white
+				padding: .5em .2em
+				cursor: pointer
+				border: 1px solid $black
+				userselect(none)
+				&:hover
+					background: $lightgrey
 	.btn-filter
 		float: left
 

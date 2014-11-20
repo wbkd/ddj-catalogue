@@ -5,13 +5,12 @@ var FilterStore = Reflux.createStore({
 
 	init : function(){
 		this.state = {
-			isActive : false
+			isActive : window.innerWidth > 1280 + 500
 		};
 		this.listenTo(filterActions.toggleMenu,this.toggleMenu);
 	},
 
 	toggleMenu : function(){
-		console.log(this.state.isActive);
 		this.state.isActive = !this.state.isActive;
 		this.trigger(this.state);
 	}

@@ -66,6 +66,10 @@ var PreviewStore = Reflux.createStore({
 		this.state.detail = data[0];
 
 		this.trigger(this.state);
+	},
+
+	sortBy: function(type) {
+		console.log(type);
 	}
 
 });

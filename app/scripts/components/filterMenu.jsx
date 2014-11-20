@@ -10,8 +10,10 @@ var FilterMenu = React.createClass({
 	displayName: 'FilterMenu',
 
   getInitialState: function() {
+    var isActive = window.innerWidth > 1280 + 500;
     return {
-      isActive: false
+      isActive: isActive,
+      isLargeScreen: isActive
     }
   },
 
@@ -24,7 +26,7 @@ var FilterMenu = React.createClass({
   },
 
   render: function() {
-    
+
     var classes = cx({
       'filter-menu': true,
       'active': this.state.isActive
@@ -34,9 +36,11 @@ var FilterMenu = React.createClass({
       FilterActions.toggleMenu();
     }
 
+    var closeBtn = this.state.isLargeScreen ? '' : <i onClick={closeMenu} className="icon_close"></i>;
+    
     return (
     	<div className={classes}>
-    		<div className="closeMenu"><i onClick={closeMenu} className="icon_close"></i></div>
+    		<div className="closeMenu">{closeBtn}</div>
         <Filters />
     	</div>
     );
