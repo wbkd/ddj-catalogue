@@ -1,5 +1,6 @@
 var React = require('react');
 var FilterMenu = require('./filterMenu.jsx');
+var FilterStore = require('../stores/filterStore');
 var PreviewList = require('./previewList.jsx');
 var PreviewStore = require('../stores/previewStore.js');
 var previewActions = require('../actions/previewActions');
@@ -13,7 +14,6 @@ var FilterablePreviewList = React.createClass({
   },
 
   onStatusChange: function(state) {
-
     this.setState(state);
   },
 
@@ -27,7 +27,6 @@ var FilterablePreviewList = React.createClass({
   },
 
   render: function() {
-    
     return (
       <div> 
         <FilterMenu />

@@ -11,7 +11,13 @@
 	-moz-transition:left .2s
 	-webkit-transition:left .2s
 	transition:left .2s
-
-.filter-menu-active
-	left:0
-	z-index:3
+	&.active
+		left:0
+		z-index:3
+	.closeMenu
+		position: absolute
+		right: 0
+		top: 0
+		font-size: 2em
+	.filter-list
+		margin-top: 1em

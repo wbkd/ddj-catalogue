@@ -1,5 +1,6 @@
 var React = require('react');
 var Preview = require('./preview.jsx');
+var filterActions = require('../actions/filterActions');
 
 var PreviewList = React.createClass({
 
@@ -10,9 +11,7 @@ var PreviewList = React.createClass({
         };
       },
 
-      toggleFilterMenu : function(){
-        filterActions.toggleMenu();
-      },
+      toggleFilterMenu : filterActions.toggleMenu,
 
       handlePreviewClick: function(previewId,index){
         console.log(arguments);
@@ -33,15 +32,14 @@ var PreviewList = React.createClass({
 
         return (
           <div className="preview-list row centered">
-            <div className="preview-list-header row">
-              <div className="btn btn-dark" onClick={this.toggleFilterMenu}>Anwendungen filtern</div>
+            <div className="row preview-list-header">
+              <div className="btn-dark btn-sort btn">sortieren <i className="arrow_triangle-down"></i></div>
+              <div onClick={filterActions.toggleMenu} className="btn-dark btn-filter btn"><i className="icon_menu"></i> Liste filtern</div>
             </div>
-
             <div className="preview-list-content row">
               {previews}
             </div>
           </div>
-
         );
       }
 });

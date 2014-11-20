@@ -3,8 +3,15 @@ var config = require('./config');
 
 var PreviewApi = {
 
+	currentOffset : 0,
+
 	load : function(){
-		return reqwest({ url : config.apiUrl, type : 'json', crossOrigin: true });
+		return reqwest({ 
+			url : config.apiUrl, 
+			type : 'json', 
+			method: 'get', 
+			crossOrigin: true
+		});
 	},
 
 	loadById : function(id){

@@ -6,12 +6,12 @@ var previewActions = Reflux.createActions([
   'load',
   'success',
   'error',
-
   'loadById',
   'successLoadById'
 ]);
 
 previewActions.load.preEmit = function(){
+	console.log('load');
 	PreviewApi
 		.load()
 		.then(previewActions.success,previewActions.error);
