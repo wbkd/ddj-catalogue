@@ -32,11 +32,21 @@
 				user-select: none
 				-webkit-user-select: none
 				-moz-user-select: none
-				&:hover
+				&.active
 					background: $lightgrey
-				i.icon_check
+				i
+					display: none
 					float: right
 					margin-top: .2em
+				&:hover
+					background: $lightgrey
+				&.active i.icon_check
+					display: block
+				&.active:hover i.icon_close
+					display: block
+				&.active:hover i.icon_check
+					display: none
+					
 					
 		.filter-header
 			font-weight: bold

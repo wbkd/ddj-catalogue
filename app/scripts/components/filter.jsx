@@ -1,6 +1,7 @@
 var React = require('react/addons');
 var PreviewActions = require('../actions/previewActions.js');
 var FilterActions = require('../actions/filterActions.js');
+var cx = React.addons.classSet;
 
 var Filter = React.createClass({
 
@@ -17,9 +18,12 @@ var Filter = React.createClass({
 
   render: function() {
     var props = this.props;
-    var checkMark = props.checked ? <i className="icon_check"></i> : '';
+    var classes = cx({
+      'filter': true,
+      'active': props.checked
+    });
     return (
-    	<li className="filter" onClick={this.filterSelect}>{props.text} {checkMark}</li>
+    	<li className={classes} onClick={this.filterSelect}>{props.text} <i className="icon_check"></i><i className="icon_close"></i></li>
     );
   }
 });
