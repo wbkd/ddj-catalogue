@@ -14,30 +14,25 @@
 
 .preview-list-header
 	padding:1em
+	
 	.sorter
 		float: right
 		position: relative
-		.sorting-drop-down
-			position: fixed
-			-moz-transition:height .2s
-			-webkit-transition:height .2s
-			transition:height .2s
-			height: 0
-			list-style: none
-			margin: 0
-			padding: 0
-			position: absolute
-			width: 100%
-			z-index:3
+		color:#777
+
+		ul
+			display:inline-block
+			list-style:none
+			
 			li 
-				width: 100%
-				background: $white
-				padding: .5em .2em
 				cursor: pointer
-				border: 1px solid $black
+				display:inline-block
+				margin-left:.15em
+				padding:.25em .5em
 				userselect(none)
 				&:hover
 					background: $lightgrey
+					
 	.btn-filter
 		float: left
 
@@ -59,7 +54,7 @@
 			font-size: .8em
 		.preview-publisher
 			font-size: .8em
-			color: $lightgrey
+			color: #777
 	
 	&.is-expanded
 		box-shadow: 0 2px 2px rgba(0,0,0,.4)

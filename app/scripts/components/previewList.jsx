@@ -39,8 +39,9 @@ var PreviewList = React.createClass({
         return (
           <div className="preview-list row centered">
             <div className="clearfix preview-list-header">
-              <Sorter />
+             
               <div onClick={this.toggleFilterMenu} className="btn btn-filter btn"><i className="icon_menu"></i> Liste filtern</div>
+               <Sorter />
             </div>
             <div className="preview-list-content row">
               {previews}

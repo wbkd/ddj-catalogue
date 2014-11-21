@@ -31,18 +31,24 @@ var PreviewApi = {
 		return reqwest({ url : config.apiUrl + '/' + id, type : 'json', crossOrigin: true });
 	},
 
+	sortBy : function(sortType){
+
+		var sortObj = {};
+		sortObj[sortType] = -1; 
+
+		return reqwest({ 
+			url : config.apiUrl,
+			data : {
+				sortby : sortObj
+			},
+			type : 'json', 
+			method: 'post',
+			crossOrigin: true 
+		});
+	},
+
 	loadFilters: function(){
-
 		return reqwest({ url: 'http://localhost:1337/ui-data', dataType: 'json', crossOrigin: true  });
-
-	/*$.ajax({
-			url: 'http://localhost:1337/ui-data',
-			dataType: 'json'
-		}).done(function(data) {
-			var data = self.convertData(data);
-			self.state.uiData = data;
-			self.trigger(self.state);
-		});*/
 	}
 
 }

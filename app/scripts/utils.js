@@ -51,6 +51,20 @@ function isEmptyObject(obj) {
     return true;
 }
 
+function formatDate(dateString){
+
+  var date = new Date(dateString),
+    year = date.getFullYear(),
+    month = addLeadingZero(date.getMonth() + 1),
+    day = addLeadingZero(date.getDate());
+
+  return day + '.' + month + '.' + year;
+}
+
+function addLeadingZero(number){
+  return parseInt(number) < 10 ? '0' + number : number;
+}
+
 function isNumeric(number) {
   if(isUndefined(number)){
     return false;
@@ -114,6 +128,7 @@ module.exports = {
   numberFormat: numberFormat,
   addHelperClasses: addHelperClasses,
   log : log,
-  isEmptyObject: isEmptyObject
+  isEmptyObject: isEmptyObject,
+  formatDate: formatDate
 
 };

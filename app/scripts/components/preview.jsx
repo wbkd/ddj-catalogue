@@ -1,5 +1,6 @@
 var React = require('react');
 var config = require('../config');
+var utils = require('../utils');
 var PreviewActions = require('../actions/previewActions')
 
 var Preview = React.createClass({
@@ -25,7 +26,8 @@ var Preview = React.createClass({
     var preview = this.props.data, 
       detailLink = '#/projekt/' + preview._id,
       previewImage = preview.serverImageurl ? config.imageUrl + preview.serverImageurl : config.defaultImage,
-      imageStyle = {  backgroundImage: 'url(' + previewImage +  ')' };
+      imageStyle = {  backgroundImage: 'url(' + previewImage +  ')' },
+      date = utils.formatDate(preview.date);
 
     var cx = React.addons.classSet;
     var classes = cx({
@@ -39,7 +41,7 @@ var Preview = React.createClass({
       		<div className='preview-image' style={imageStyle}></div>
           <div className='preview-content'>
         		<div className='preview-title'>{ preview.title }</div>
-        		<div className='preview-publisher'>{ preview.publisher }</div>
+        		<div className='preview-publisher'>{ preview.publisher }, {date}</div>
           </div>
       	</div>
       </div>

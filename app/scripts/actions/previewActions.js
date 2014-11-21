@@ -6,9 +6,14 @@ var previewActions = Reflux.createActions([
   'load',
   'success',
   'error',
+
   'loadById',
   'successLoadById',
   'filter',
+
+  'sortBy',
+  'sortBySuccess',
+  'sortByError',
 
   'toggleExpandedPreview',
   'shrinkPreviews'
@@ -30,6 +35,12 @@ previewActions.filter.preEmit = function(params) {
 	PreviewApi
 		.filter(params)
 		.then(previewActions.success,previewActions.error);
+};
+
+previewActions.sortBy.preEmit = function(sortType){
+  PreviewApi
+    .sortBy(sortType)
+    .then(previewActions.sortBySuccess,previewActions.sortByError);
 };
 
 module.exports = previewActions;

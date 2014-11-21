@@ -9,6 +9,7 @@ var FilterStore = Reflux.createStore({
 	init : function(){
 		this.filterMenuActive = false;
 		this.selectedFilters = {};
+		this.sortType = {};
 		this.uiData = [];
 
 		this.listenTo(filterActions.toggleFilterMenu,this.toggleFilterMenu);
