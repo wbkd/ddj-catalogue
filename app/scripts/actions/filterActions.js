@@ -1,5 +1,6 @@
 var Reflux = require('reflux');
 var PreviewApi = require('../previewApi');
+var PreviewActions = require('./previewActions');
 
 var filterActions = Reflux.createActions([
   'filterSelect',
@@ -17,5 +18,9 @@ filterActions.loadFilters.preEmit = function(){
     .loadFilters()
     .then(filterActions.loadFiltersSuccess,filterActions.loadFiltersError);
 };
+
+filterActions.toggleFilterMenu.preEmit = function(){
+  PreviewActions.shrinkPreviews();
+}
 
 module.exports = filterActions;

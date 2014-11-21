@@ -1,10 +1,16 @@
 var React = require('react');
+
+// components
 var InfoBox = require('./infobox.jsx');
 var PreviewList = require('./previewList.jsx');
+var FilterMenu = require('./filterMenu.jsx');
+
+// stores
 var MenuStore = require('../stores/menuStore.js');
 var FilterStore = require('../stores/filterStore.js');
+
+// third party
 var Cookies = require('../../bower_components/cookies-js/dist/cookies.min');
-var FilterMenu = require('./filterMenu.jsx');
 
 var Content = React.createClass({
 

@@ -10,6 +10,10 @@ var PreviewStore = Reflux.createStore({
 		this.detail = {};
 		this.loading = false;
 		this.error = null;
+		this.expandedId = null;
+
+		this.listenTo(previewActions.toggleExpandedPreview,this.toggleExpandedPreview);
+		this.listenTo(previewActions.shrinkPreviews,this.shrinkPreviews);
 
 		this.listenTo(previewActions.load,this.onLoadPreviews);
 		this.listenTo(previewActions.success,this.onLoadPreviewsSuccess);
@@ -17,6 +21,18 @@ var PreviewStore = Reflux.createStore({
 
 		this.listenTo(previewActions.loadById,this.onLoadPreviewById);
 		this.listenTo(previewActions.successLoadById,this.onLoadPreviewByIdSuccess);
+	},
+
+
+	toggleExpandedPreview : function(previewId){
+		this.expandedId = previewId;
+		this.trigger({
+			expandedId : this.expandedId 
+		});
+	},
+
+	shrinkPreviews: function(){
+		this.toggleExpandedPreview(null);
 	},
 
 	/*******************

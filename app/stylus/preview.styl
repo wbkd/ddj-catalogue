@@ -28,6 +28,7 @@
 			padding: 0
 			position: absolute
 			width: 100%
+			z-index:3
 			li 
 				width: 100%
 				background: $white
@@ -59,10 +60,14 @@
 		.preview-publisher
 			font-size: .8em
 			color: $lightgrey
-			
+	
+	&.is-expanded
+		box-shadow: 0 2px 2px rgba(0,0,0,.4)
+
 	&:hover .preview-image
 		outline: 1px solid #cdcdcd
 		
+
 
 
 /**********

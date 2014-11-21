@@ -1,7 +1,12 @@
 var React = require('react/addons');
-var FilterActions = require('../actions/filterActions');
-var Filters = require('./filters.jsx');
 var cx = React.addons.classSet;
+// components
+var FilterGroup = require('./filterGroup.jsx');
+// actions
+var FilterActions = require('../actions/filterActions');
+// stores
+var FilterStore = require('../stores/filterStore.js');
+
 
 var FilterMenu = React.createClass({
 
@@ -15,11 +20,36 @@ var FilterMenu = React.createClass({
     };
   },
 
+  getInitialState: function() {
+    return {
+      selectedFilters: {},
+      uiData: []
+    }
+  },
+
+  onStatusChange: function(state) {
+    this.setState(state);
+  },
+
+  componentDidMount: function() {
+    this.unsubscribe = FilterStore.listen(this.onStatusChange);
+    FilterActions.loadFilters();
+  },
+
+  componentWillUnmount: function() {
+    this.unsubscribe();
+  },
+
   closeMenu : function() {
       FilterActions.toggleFilterMenu();
   },
 
   render: function() {
+
+    var filters = this.state.uiData.map(function(d,i) {
+      var selected = this.state.selectedFilters[d.dbId];
+      return <FilterGroup key={'fg_' + i} data={d} selected={selected} />
+    }.bind(this));
 
     var classes = cx({
       'filter-menu': true,
@@ -29,7 +59,9 @@ var FilterMenu = React.createClass({
     return (
     	<div className={classes}>
     		<div className="btn-close"><i onClick={this.closeMenu} className="icon_close"></i></div>
-        <Filters />
+        <div className="filter-list">
+          {filters}
+        </div>
     	</div>
     );
   }

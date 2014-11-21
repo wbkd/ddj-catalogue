@@ -8,7 +8,10 @@ var previewActions = Reflux.createActions([
   'error',
   'loadById',
   'successLoadById',
-  'filter'
+  'filter',
+
+  'toggleExpandedPreview',
+  'shrinkPreviews'
 ]);
 
 previewActions.load.preEmit = function(){

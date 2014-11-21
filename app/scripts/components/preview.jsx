@@ -1,5 +1,6 @@
 var React = require('react');
 var config = require('../config');
+var PreviewActions = require('../actions/previewActions')
 
 var Preview = React.createClass({
 
@@ -13,6 +14,10 @@ var Preview = React.createClass({
       data : {},
       isExpanded : false
     };
+  },
+
+  togglePreview: function(){
+    PreviewActions.toggleExpandedPreview(this.props.data._id);
   },
 
   render: function() {
@@ -30,7 +35,7 @@ var Preview = React.createClass({
 
     return (
       <div className="column">
-      	<div className={classes} onClick={this.props.onClick}>
+      	<div className={classes} onClick={this.togglePreview}>
       		<div className='preview-image' style={imageStyle}></div>
           <div className='preview-content'>
         		<div className='preview-title'>{ preview.title }</div>

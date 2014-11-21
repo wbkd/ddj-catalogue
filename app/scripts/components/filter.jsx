@@ -1,5 +1,4 @@
 var React = require('react/addons');
-var PreviewActions = require('../actions/previewActions.js');
 var FilterActions = require('../actions/filterActions.js');
 var cx = React.addons.classSet;
 
@@ -20,6 +19,7 @@ var Filter = React.createClass({
       'filter': true,
       'active': props.checked
     });
+    
     return (
     	<li className={classes} onClick={this.filterSelect}>{props.text} <i className="icon_check"></i><i className="icon_close"></i></li>
     );
