@@ -24,10 +24,9 @@ previewActions.loadById.preEmit = function(id){
 };
 
 previewActions.filter.preEmit = function(params) {
-	console.log(params);
 	PreviewApi
 		.filter(params)
 		.then(previewActions.success,previewActions.error);
-}
+};
 
 module.exports = previewActions;

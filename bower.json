@@ -18,6 +18,6 @@
   ],
   "dependencies": {
     "elegant-icons": "*",
-    "cookies-js": "~1.1.0"
+    "cookies-js": "~1.1.0"  
   }
 }

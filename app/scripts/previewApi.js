@@ -29,6 +29,20 @@ var PreviewApi = {
 
 	loadById : function(id){
 		return reqwest({ url : config.apiUrl + '/' + id, type : 'json', crossOrigin: true });
+	},
+
+	loadFilters: function(){
+
+		return reqwest({ url: 'http://localhost:1337/ui-data', dataType: 'json', crossOrigin: true  });
+
+	/*$.ajax({
+			url: 'http://localhost:1337/ui-data',
+			dataType: 'json'
+		}).done(function(data) {
+			var data = self.convertData(data);
+			self.state.uiData = data;
+			self.trigger(self.state);
+		});*/
 	}
 
 }

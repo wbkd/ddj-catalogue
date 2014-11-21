@@ -20,29 +20,23 @@ var Filters = React.createClass({
 
   componentDidMount: function() {
     this.unsubscribe = FilterStore.listen(this.onStatusChange);
-    FilterActions.getFilters();
+    FilterActions.loadFilters();
   },
 
   componentWillUnmount: function() {
     this.unsubscribe();
   },
 
-  getFilters: function() {
-    var self = this;
-    return <div>
-            {
-              this.state.uiData.map(function(d) {
-                var selected = self.state.selectedFilters[d.dbId];
-                return <FilterGroup data={d} selected={selected} />
-              })
-            }
-            </div>
-  },
-
   render: function() {
+
+    var filters = this.state.uiData.map(function(d,i) {
+      var selected = this.state.selectedFilters[d.dbId];
+      return <FilterGroup key={'fg_' + i} data={d} selected={selected} />
+    }.bind(this));
+
     return (
     	<div className="filter-list">
-        {this.getFilters()}
+        {filters}
       </div>
     );
   }
