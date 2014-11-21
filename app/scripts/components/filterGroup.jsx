@@ -13,9 +13,9 @@ var FilterGroup = React.createClass({
       <div className="filter-header">{data.name}</div>
       <ul className="tag-list">
         {
-          data.filters.map(function(filter) {
+          data.filters.map(function(filter,i) {
             var checked = self.props.selected === filter;
-            return <Filter text={filter} category={data.dbId} checked={checked}/>
+            return <Filter key={filter + i} text={filter} category={data.dbId} checked={checked}/>
           })
         }
       </ul>

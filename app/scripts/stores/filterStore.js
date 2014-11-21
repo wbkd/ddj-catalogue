@@ -1,4 +1,5 @@
 var Reflux = require('reflux');
+var utils = require('../utils');
 var filterActions = require('../actions/filterActions');
 var $ = require('../../bower_components/jquery/dist/jquery');
 var previewActions = require('../actions/previewActions');
@@ -6,30 +7,38 @@ var previewActions = require('../actions/previewActions');
 var FilterStore = Reflux.createStore({
 
 	init : function(){
-		this.state = {
-			selectedFilters : {},
-			uiData: []
-		};
+		this.selectedFilters = {};
+		this.uiData = [];
+
 		this.listenTo(filterActions.filterSelect,this.filterSelect);
 		this.listenTo(filterActions.filterUnselect,this.filterUnselect);
-		this.listenTo(filterActions.getFilters,this.getFilters);
+
+		this.listenTo(filterActions.loadFilters,this.loadFilters);
+		this.listenTo(filterActions.loadFiltersSuccess,this.loadFiltersSuccess);
+		this.listenTo(filterActions.loadFiltersError,this.loadFiltersError);
 	},
 
 	filterSelect: function(filter) {
-		this.state.selectedFilters[filter.category] = filter.text;
-		this.trigger(this.state);
-		this.updateFilter(this.state.selectedFilters);
+		this.selectedFilters[filter.category] = filter.text;
+		this.updateFilter(this.selectedFilters);
+
+		this.trigger({
+			selectedFilters : this.selectedFilters
+		});
+		
 	},
 
 	filterUnselect: function(filter) {
-		delete this.state.selectedFilters[filter.category];
-		this.trigger(this.state);
-		this.updateFilter(this.state.selectedFilters);
+		delete this.selectedFilters[filter.category];
+		this.updateFilter(this.selectedFilters);
+
+		this.trigger({
+			selectedFilters : this.selectedFilters
+		});
 	},
 
 	updateFilter: function(filter) {
-		console.log(filter);
-		var isEmpty = $.isEmptyObject(filter);
+		var isEmpty = utils.isEmptyObject(filter);
 		if(isEmpty) {
 			previewActions.load();
 		}
@@ -60,19 +69,22 @@ var FilterStore = Reflux.createStore({
 		return res;
 	},
 
-	getFilters: function(filter) {
-		var self = this;
-		$.ajax({
-			url: 'http://localhost:1337/ui-data',
-			dataType: 'json'
-		}).done(function(data) {
-			var data = self.convertData(data);
-			self.state.uiData = data;
-			self.trigger(self.state);
-		});
+	loadFilters: function(){
+			//this.trigger({});
+	},
+
+	loadFiltersSuccess : function(data){
+			var data = this.convertData(data);
+
+			this.uiData = data;
+			this.trigger({
+				uiData : this.uiData
+			});
+	},
+
+	loadFiltersError : function(error){
+			this.trigger({});
 	}
-
-
 
 });
 
