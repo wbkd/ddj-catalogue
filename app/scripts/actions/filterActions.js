@@ -10,7 +10,8 @@ var filterActions = Reflux.createActions([
   'loadFiltersSuccess',
   'loadFiltersError',
 
-  'toggleFilterMenu'
+  'toggleFilterMenu',
+  'hideFilterMenu'
 ]);
 
 filterActions.loadFilters.preEmit = function(){

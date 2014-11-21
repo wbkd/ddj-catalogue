@@ -12,6 +12,7 @@ var FilterStore = Reflux.createStore({
 		this.uiData = [];
 
 		this.listenTo(filterActions.toggleFilterMenu,this.toggleFilterMenu);
+		this.listenTo(filterActions.hideFilterMenu,this.hideFilterMenu);
 
 		this.listenTo(filterActions.filterSelect,this.filterSelect);
 		this.listenTo(filterActions.filterUnselect,this.filterUnselect);
@@ -27,6 +28,13 @@ var FilterStore = Reflux.createStore({
 			filterMenuActive : this.filterMenuActive
 		});
 	},	
+
+	hideFilterMenu: function(){
+		this.filterMenuActive = false;
+		this.trigger({
+			filterMenuActive : this.filterMenuActive
+		});
+	},
 
 	filterSelect: function(filter) {
 		this.selectedFilters[filter.category] = filter.text;
