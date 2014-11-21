@@ -1,7 +1,9 @@
 var Reflux = require('reflux');
 
 var menuActions = Reflux.createActions([
-  'toggleMenu'
+  'toggleMenu',
+  'toggleInfo',
+  'hideInfo'
 ]);
 
 module.exports = menuActions;
