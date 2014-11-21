@@ -58,9 +58,11 @@ var FilterMenu = React.createClass({
     
     return (
     	<div className={classes}>
-    		<div className="btn-close"><i onClick={this.closeMenu} className="icon_close"></i></div>
-        <div className="filter-list">
-          {filters}
+        <div className="force-scrollbar">
+      		<div className="btn-close"><i onClick={this.closeMenu} className="icon_close"></i></div>
+          <div className="filter-list">
+            {filters}
+          </div>
         </div>
     	</div>
     );

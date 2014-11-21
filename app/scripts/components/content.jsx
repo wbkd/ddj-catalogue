@@ -33,7 +33,8 @@ var Content = React.createClass({
   },
 
   getMenuOffset: function() {
-    var menu = 250,
+    // TODO: dont use hardcoded value here
+    var menu = 295,
         container = 1280,
         win = window.innerWidth,
         result = 0;

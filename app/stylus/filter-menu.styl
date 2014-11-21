@@ -1,22 +1,28 @@
 @import 'colors'
 
 /*  TODO: use transform instead of left  */
+.force-scrollbar
+	overflow-y: scroll
+	padding: 0 1em 1em 1em
+	height:100%
+	
 .filter-menu
 	position:fixed
-	left:-15em
+	left:-17.5em
 	top:0
-	background:white
 	height:100%
-	padding:1em
+	background:white
 	box-shadow :2px 0 2px rgba(0,0,0,0.4)
 	-moz-transition:left .2s
 	-webkit-transition:left .2s
 	transition:left .2s
 	padding-top: 3em
-	width: 15em
-	overflow-x: scroll
+	width: 17.5em
+	
 	.btn-close
 		top: 1.2em
+		right:.5em
+		background:rgba(255,255,255,.5)
 	&.active
 		left:0
 		z-index:3
@@ -34,12 +40,18 @@
 				-moz-user-select: none
 				&.active
 					background: $lightgrey
+					box-shadow: 0 2px 3px rgba(0,0,0,.25)
+					z-index:999
+				&:hover.active
+					background: $lightgrey
+					box-shadow: 0 2px 3px rgba(0,0,0,.25)
 				i
 					display: none
 					float: right
 					margin-top: .2em
 				&:hover
 					background: $lightgrey
+					box-shadow: 0 2px 2px rgba(0,0,0,.15)
 				&.active i.icon_check
 					display: block
 				&.active:hover i.icon_close
