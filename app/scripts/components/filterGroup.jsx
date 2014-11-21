@@ -3,8 +3,6 @@ var Filter = require('./filter.jsx');
 
 var FilterGroup = React.createClass({
 
-	displayName: 'FilterGroup',
-
   render: function() {
     var self = this;
     var data = this.props.data;

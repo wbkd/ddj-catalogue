@@ -5,8 +5,6 @@ var FilterActions = require('../actions/filterActions.js');
 
 var Filters = React.createClass({
 
-	displayName: 'Filters',
-
   getInitialState: function() {
     return {
       selectedFilters: {},

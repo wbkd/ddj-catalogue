@@ -29,7 +29,7 @@ var Sorter = React.createClass({
               <li className="sort-item">Beliebt</li>
               <li className="sort-item">Neuste</li>
             </ul>
-          </div>)
+          </div>);
       }
 });
 

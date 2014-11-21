@@ -5,8 +5,6 @@ var cx = React.addons.classSet;
 
 var Filter = React.createClass({
 
-	displayName: 'Filter',
-
   filterSelect: function() {
     if(this.props.checked) {
       FilterActions.filterUnselect(this.props);

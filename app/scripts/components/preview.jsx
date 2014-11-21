@@ -3,8 +3,6 @@ var config = require('../config');
 
 var Preview = React.createClass({
 
-  displayName: 'Preview',
-
   propTypes : {
     data : React.PropTypes.object,
     isExpanded : React.PropTypes.bool

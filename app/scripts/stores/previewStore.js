@@ -6,12 +6,10 @@ var PreviewStore = Reflux.createStore({
 
 	init : function(){
 
-		this.state = {
-			previews : [],
-			detail : {},
-			loading : false,
-			error : null
-		};
+		this.previews = [];
+		this.detail = {};
+		this.loading = false;
+		this.error = null;
 
 		this.listenTo(previewActions.load,this.onLoadPreviews);
 		this.listenTo(previewActions.success,this.onLoadPreviewsSuccess);
@@ -28,24 +26,33 @@ var PreviewStore = Reflux.createStore({
 	********************/
 
 	onLoadPreviews : function(){
-		this.state.loading = true;
-		this.trigger(this.state);
+		this.loading = true;
+		this.trigger({
+			loading : this.loading
+		});
 	},
 
 	onLoadPreviewsSuccess : function(data){
 
-		this.state.loading = false;
-		this.state.error = null;
-		this.state.previews = data;
+		this.loading = false;
+		this.error = null;
+		this.previews = data;
 
-		this.trigger(this.state);
+		this.trigger({
+			loading : this.loading,
+			error : this.error,
+			previews : this.previews
+		});
 	},
 
 	onLoadPreviewsError: function(data){
-		this.state.loading = false;
-		this.state.error = data.error;
+		this.loading = false;
+		this.error = data.error;
 
-		this.trigger(this.state);
+		this.trigger({
+			loading : this.loading,
+			error : this.error
+		});
 	},
 
 	/*******************
@@ -55,17 +62,23 @@ var PreviewStore = Reflux.createStore({
 	********************/
 
 	onLoadPreviewById : function(){
-		this.state.loading = true;
-		this.trigger(this.state);
+		this.loading = true;
+		this.trigger({
+			loading : this.loading
+		});
 	},
 
 	onLoadPreviewByIdSuccess : function(data){
 
-		this.state.loading = false;
-		this.state.error = null;
-		this.state.detail = data[0];
+		this.loading = false;
+		this.error = null;
+		this.detail = data[0];
 
-		this.trigger(this.state);
+		this.trigger({
+			loading : this.loading,
+			error : this.error,
+			detail : this.detail
+		});
 	},
 
 	sortBy: function(type) {

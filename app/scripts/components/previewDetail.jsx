@@ -5,7 +5,7 @@ var previewActions = require('../actions/previewActions');
 
 var PreviewDetail = React.createClass({
 
-	  getInitialState: function() {
+	    getInitialState: function() {
         return {
           detail: {}
         }

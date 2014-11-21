@@ -1,12 +1,9 @@
 var React = require('react');
-var InfoBox = require('./info.jsx');
-var FilterablePreviewList = require('./filterablePreviewList.jsx');
+var InfoBox = require('./infobox.jsx');
+var PreviewList = require('./previewList.jsx');
 var MenuStore = require('../stores/menuStore.js');
 
-
 var Content = React.createClass({
-
-  displayName: 'Content',
 
   getInitialState: function() {
   	return {
@@ -35,7 +32,9 @@ var Content = React.createClass({
   },
 
   shiftContent: function(params) {
-    var menuOpen = params.isActive;
+
+    var menuOpen = params.menuActive;
+
     if(!menuOpen) {
       this.setState({shiftPx: 0});
     }
@@ -54,7 +53,7 @@ var Content = React.createClass({
     return (
       <div style={divStyle} className="content-wrapper">
 			 <InfoBox />
-			 <FilterablePreviewList />
+			 <PreviewList />
 		  </div>
     	);
   	}

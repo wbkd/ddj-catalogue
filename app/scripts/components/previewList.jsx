@@ -1,6 +1,8 @@
 var React = require('react');
 var Preview = require('./preview.jsx');
 var MenuActions = require('../actions/menuActions');
+var previewActions = require('../actions/previewActions');
+var PreviewStore = require('../stores/previewStore');
 var Sorter = require('./sorter.jsx');
 
 var PreviewList = React.createClass({
@@ -23,9 +25,18 @@ var PreviewList = React.createClass({
         });*/
       },
 
+      onStatusChange: function(state){
+        this.setState(state);
+      },
+
+      componentDidMount: function() {
+        this.unsubscribe = PreviewStore.listen(this.onStatusChange);
+        previewActions.load();
+      },
+
       render: function() {
 
-        var previews = this.props.previews.map(function(preview,i) {
+        var previews = this.state.previews.map(function(preview,i) {
           var isExpanded = this.state.isExpadendId ? this.state.isExpadendId === preview._id : false;
           return (<Preview onClick={this.handlePreviewClick} data={preview} isExpanded={isExpanded} key={preview._id} />);
        
