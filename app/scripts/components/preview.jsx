@@ -42,6 +42,7 @@ var Preview = React.createClass({
           <div className='preview-content'>
         		<div className='preview-title'>{ preview.title }</div>
         		<div className='preview-publisher'>{ preview.publisher }, {date}</div>
+            <a href={preview.url} target="_blank" className='btn preview-link'>Zur Anwendung</a>
           </div>
       	</div>
       </div>

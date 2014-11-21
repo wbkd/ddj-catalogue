@@ -40,6 +40,17 @@
 	height:270px
 	background: $white
 	cursor:pointer
+	position: relative
+	
+	.btn
+		font-size:12px
+		position:absolute
+		background: transparent
+		bottom:.8em
+		right:.8em
+		opacity:.25
+		transition: opacity .2s
+		box-shadow:none
 
 	.preview-image
 		background-position:center center
@@ -56,11 +67,15 @@
 			font-size: .8em
 			color: #777
 	
-	&.is-expanded
+	&.is-expanded,
+	&.is-expanded:hover
 		box-shadow: 0 2px 2px rgba(0,0,0,.4)
 
-	&:hover .preview-image
-		outline: 1px solid #cdcdcd
+	&:hover 
+		box-shadow: 0 1px 2px rgba(0,0,0,.2)
+		
+.preview:hover .btn
+		opacity:1
 		
 
 
