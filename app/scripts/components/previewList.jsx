@@ -1,6 +1,6 @@
 var React = require('react');
 var Preview = require('./preview.jsx');
-var MenuActions = require('../actions/menuActions');
+var FilterActions = require('../actions/filterActions');
 var previewActions = require('../actions/previewActions');
 var PreviewStore = require('../stores/previewStore');
 var Sorter = require('./sorter.jsx');
@@ -13,8 +13,6 @@ var PreviewList = React.createClass({
           isExpadendId : false
         };
       },
-
-      toggleFilterMenu : MenuActions.toggleMenu,
 
       handlePreviewClick: function(previewId,index){
         console.log(arguments);
@@ -46,7 +44,7 @@ var PreviewList = React.createClass({
           <div className="preview-list row centered">
             <div className="clearfix preview-list-header">
               <Sorter />
-              <div onClick={MenuActions.toggleMenu} className="btn-dark btn-filter btn"><i className="icon_menu"></i> Liste filtern</div>
+              <div onClick={FilterActions.toggleFilterMenu} className="btn-dark btn-filter btn"><i className="icon_menu"></i> Liste filtern</div>
             </div>
             <div className="preview-list-content row">
               {previews}

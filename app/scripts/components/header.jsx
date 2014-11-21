@@ -6,6 +6,7 @@ var MenuActions = require('../actions/menuActions');
 var Header = React.createClass({
 
     toggleInfo: function() {
+
         MenuActions.toggleInfo();
     },
 

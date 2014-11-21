@@ -8,6 +8,8 @@ var filterActions = Reflux.createActions([
   'loadFilters',
   'loadFiltersSuccess',
   'loadFiltersError',
+
+  'toggleFilterMenu'
 ]);
 
 filterActions.loadFilters.preEmit = function(){

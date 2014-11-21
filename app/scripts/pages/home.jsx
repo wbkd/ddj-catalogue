@@ -9,7 +9,6 @@ var Home = React.createClass({
 		return (
 			<div>
 				<Header />
-				<FilterMenu />
 				<Content />
 				<Footer />
 			</div>

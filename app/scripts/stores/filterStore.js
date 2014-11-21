@@ -7,8 +7,11 @@ var previewActions = require('../actions/previewActions');
 var FilterStore = Reflux.createStore({
 
 	init : function(){
+		this.filterMenuActive = false;
 		this.selectedFilters = {};
 		this.uiData = [];
+
+		this.listenTo(filterActions.toggleFilterMenu,this.toggleFilterMenu);
 
 		this.listenTo(filterActions.filterSelect,this.filterSelect);
 		this.listenTo(filterActions.filterUnselect,this.filterUnselect);
@@ -17,6 +20,13 @@ var FilterStore = Reflux.createStore({
 		this.listenTo(filterActions.loadFiltersSuccess,this.loadFiltersSuccess);
 		this.listenTo(filterActions.loadFiltersError,this.loadFiltersError);
 	},
+
+	toggleFilterMenu: function(){
+		this.filterMenuActive = !this.filterMenuActive;
+		this.trigger({
+			filterMenuActive : this.filterMenuActive
+		});
+	},	
 
 	filterSelect: function(filter) {
 		this.selectedFilters[filter.category] = filter.text;

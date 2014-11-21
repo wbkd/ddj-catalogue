@@ -1,34 +1,29 @@
 var React = require('react/addons');
-var MenuStore = require('../stores/menuStore');
-var MenuActions = require('../actions/menuActions');
+var FilterActions = require('../actions/filterActions');
 var Filters = require('./filters.jsx');
 var cx = React.addons.classSet;
 
 var FilterMenu = React.createClass({
 
-  getInitialState: function() {
+  propTypes : {
+    filterMenuActive : React.PropTypes.bool
+  },
+
+  getDefaultProps: function(){
     return {
-      menuActive: false
-    }
-  },
-
-  onStatusChange: function(state) {
-      this.setState(state);
-  },
-
-  componentDidMount: function() {
-      this.unsubscribe = MenuStore.listen(this.onStatusChange);
+      filterMenuActive : false
+    };
   },
 
   closeMenu : function() {
-      MenuActions.toggleMenu();
+      FilterActions.toggleFilterMenu();
   },
 
   render: function() {
 
     var classes = cx({
       'filter-menu': true,
-      'active': this.state.menuActive
+      'active': this.props.filterMenuActive
     });
     
     return (
