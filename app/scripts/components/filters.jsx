@@ -1,51 +1,39 @@
-var React = require('react/addons');
-var Filter = require('./filter.jsx');
+var React = require('react');
+var FilterGroup = require('./filterGroup.jsx');
+var FilterStore = require('../stores/filterStore.js');
+var FilterActions = require('../actions/filterActions.js');
 
 var Filters = React.createClass({
 
 	displayName: 'Filters',
 
-  fakeData: [
-    {
-      name: 'Verlag',
-      filters: [
-        'Spiegel Online',
-        'Süddeutsche Zeitung',
-        'Welt Online',
-        'Zeit Online',
-        'Berliner Morgenpost'
-      ]
-    },
-    {
-      name: 'Visual Form',
-      filters: [
-        'Chart',
-        'Diagramm',
-        'Karte',
-        'Sonstige'
-      ]
+  getInitialState: function() {
+    return {
+      selectedFilters: {},
+      uiData: []
     }
-  ],
+  },
 
-  onFilterSelect: function(filter) {
-    console.log(filter.target);
+  onStatusChange: function(state) {
+    this.setState(state);
+  },
+
+  componentDidMount: function() {
+    this.unsubscribe = FilterStore.listen(this.onStatusChange);
+    FilterActions.getFilters();
+  },
+
+  componentWillUnmount: function() {
+    this.unsubscribe();
   },
 
   getFilters: function() {
     var self = this;
     return <div>
             {
-              this.fakeData.map(function(d) {
-                var items = [];
-                d.filters.map(function(filter) {
-                  items.push(<Filter text={filter} category={d.name} />);
-                  //items.push(<li onClick={self.onFilterSelect}>{filter}</li>);
-                });
-
-                return <div>
-                  <div className="filter-header">{d.name}</div>
-                  <ul className="tag-list">{items}</ul>
-                  </div>
+              this.state.uiData.map(function(d) {
+                var selected = self.state.selectedFilters[d.dbId];
+                return <FilterGroup data={d} selected={selected} />
               })
             }
             </div>

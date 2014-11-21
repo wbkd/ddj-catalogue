@@ -1,6 +1,6 @@
 var React = require('react/addons');
-var FilterStore = require('../stores/filterStore');
-var FilterActions = require('../actions/filterActions');
+var MenuStore = require('../stores/menuStore');
+var MenuActions = require('../actions/menuActions');
 var Filters = require('./filters.jsx');
 var PreviewList = require('./filterablePreviewList.jsx');
 var cx = React.addons.classSet;
@@ -10,10 +10,8 @@ var FilterMenu = React.createClass({
 	displayName: 'FilterMenu',
 
   getInitialState: function() {
-    var isActive = window.innerWidth > 1280 + 500;
     return {
-      isActive: isActive,
-      isLargeScreen: isActive
+      isActive: false
     }
   },
 
@@ -22,7 +20,7 @@ var FilterMenu = React.createClass({
   },
 
   componentDidMount: function() {
-      this.unsubscribe = FilterStore.listen(this.onStatusChange);
+      this.unsubscribe = MenuStore.listen(this.onStatusChange);
   },
 
   render: function() {
@@ -33,14 +31,12 @@ var FilterMenu = React.createClass({
     });
 
     var closeMenu = function() {
-      FilterActions.toggleMenu();
+      MenuActions.toggleMenu();
     }
-
-    var closeBtn = this.state.isLargeScreen ? '' : <i onClick={closeMenu} className="icon_close"></i>;
     
     return (
     	<div className={classes}>
-    		<div className="closeMenu">{closeBtn}</div>
+    		<div className="btn-close"><i onClick={closeMenu} className="icon_close"></i></div>
         <Filters />
     	</div>
     );

@@ -3,7 +3,7 @@
 /*  TODO: use transform instead of left  */
 .filter-menu
 	position:fixed
-	left:-250px
+	left:-15em
 	top:0
 	background:white
 	height:100%
@@ -13,16 +13,13 @@
 	-webkit-transition:left .2s
 	transition:left .2s
 	padding-top: 3em
-	width: 250px
+	width: 15em
+	overflow-x: scroll
+	.btn-close
+		top: 1.2em
 	&.active
 		left:0
 		z-index:3
-	.closeMenu
-		position: absolute
-		right: 0
-		top: 1.2em
-		font-size: 2em
-		cursor: pointer
 	.filter-list
 		margin-top: 1em
 		.tag-list
@@ -32,10 +29,14 @@
 			li.filter
 				cursor: pointer
 				padding: .2em .5em
+				user-select: none
+				-webkit-user-select: none
+				-moz-user-select: none
 				&:hover
 					background: $lightgrey
 				i.icon_check
 					float: right
+					margin-top: .2em
 					
 		.filter-header
 			font-weight: bold

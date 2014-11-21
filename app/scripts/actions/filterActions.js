@@ -1,7 +1,9 @@
 var Reflux = require('reflux');
 
 var filterActions = Reflux.createActions([
-  'toggleMenu'
+  'filterSelect',
+  'filterUnselect',
+  'getFilters'
 ]);
 
 module.exports = filterActions;

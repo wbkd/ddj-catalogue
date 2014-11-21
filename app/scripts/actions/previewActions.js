@@ -7,11 +7,11 @@ var previewActions = Reflux.createActions([
   'success',
   'error',
   'loadById',
-  'successLoadById'
+  'successLoadById',
+  'filter'
 ]);
 
 previewActions.load.preEmit = function(){
-	console.log('load');
 	PreviewApi
 		.load()
 		.then(previewActions.success,previewActions.error);
@@ -22,5 +22,12 @@ previewActions.loadById.preEmit = function(id){
 		.loadById(id)
 		.then(previewActions.successLoadById,previewActions.errorDetail);
 };
+
+previewActions.filter.preEmit = function(params) {
+	console.log(params);
+	PreviewApi
+		.filter(params)
+		.then(previewActions.success,previewActions.error);
+}
 
 module.exports = previewActions;
