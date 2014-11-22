@@ -41,6 +41,7 @@ var PreviewStore = Reflux.createStore({
 	},
 
 	sortBy: function(sortType,isSortOrderDesc){
+
 		this.trigger({
 			sortType : sortType,
 			isSortOrderDesc : isSortOrderDesc

@@ -1,20 +1,20 @@
-var React = require('react');
+var React = require('react/addons');
+var cx = React.addons.classSet;
 
 var SortItem = React.createClass({
 
   render: function() {
 
     var sortArrowClass = this.props.isSortOrderDesc ? 'arrow_triangle-down' : 'arrow_triangle-up',
-      arrowStyle = {display : 'inline-block'};
+      itemClasses = cx({
+        'sort-item' : true,
+        'active' : this.props.type === this.props.sortType
+      });
 
-    if(this.props.type !== this.props.sortType){
-      arrowStyle = { display: 'none' };
-    }
-    
     return (
-      <li data-type= {this.props.type} className="sort-item" onClick={this.props.onClick}>
+      <li data-type= {this.props.type} className={itemClasses} onClick={this.props.onClick}>
                 {this.props.title} 
-        <span className="sorter-arrows" style={arrowStyle}>
+        <span className="sorter-arrows">
           <i className={sortArrowClass}></i>
         </span>
       </li>
