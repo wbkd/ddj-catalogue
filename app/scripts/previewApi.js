@@ -31,10 +31,12 @@ var PreviewApi = {
 		return reqwest({ url : config.apiUrl + '/' + id, type : 'json', crossOrigin: true });
 	},
 
-	sortBy : function(sortType){
+	sortBy : function(sortType,isSortOrderDesc){
 
-		var sortObj = {};
-		sortObj[sortType] = -1; 
+		var SortOrder = isSortOrderDesc ? -1 : 1,
+			sortObj = {};
+			
+		sortObj[sortType] = SortOrder; 
 
 		return reqwest({ 
 			url : config.apiUrl,

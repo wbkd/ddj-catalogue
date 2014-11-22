@@ -16,7 +16,7 @@ var PreviewStore = Reflux.createStore({
 		this.listenTo(previewActions.shrinkPreviews,this.shrinkPreviews);
 
 		// sortby events
-		this.listenTo(previewActions.sortBy,this.onLoadPreviews);
+		this.listenTo(previewActions.sortBy,this.sortBy);
 		this.listenTo(previewActions.sortBySuccess,this.onLoadPreviewsSuccess);
 		this.listenTo(previewActions.sortByError,this.onLoadPreviewsError);
 
@@ -38,6 +38,13 @@ var PreviewStore = Reflux.createStore({
 
 	shrinkPreviews: function(){
 		this.toggleExpandedPreview(null);
+	},
+
+	sortBy: function(sortType,isSortOrderDesc){
+		this.trigger({
+			sortType : sortType,
+			isSortOrderDesc : isSortOrderDesc
+		})
 	},
 
 	/*******************

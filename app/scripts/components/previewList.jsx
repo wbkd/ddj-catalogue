@@ -10,7 +10,9 @@ var PreviewList = React.createClass({
       getInitialState: function(a){
         return {
           previews : [],
-          expandedId : null
+          expandedId : null,
+          sortType : 'date',
+          isSortOrderDesc : true // should be desc or asc
         };
       },
 
@@ -43,7 +45,7 @@ var PreviewList = React.createClass({
             <div className="clearfix preview-list-header">
              
               <div onClick={this.toggleFilterMenu} className="btn btn-filter btn"><i className="icon_menu"></i> Liste filtern</div>
-               <Sorter />
+               <Sorter isSortOrderDesc={this.state.isSortOrderDesc} sortType={this.state.sortType} />
             </div>
             <div className="preview-list-content row">
               {previews}

@@ -37,9 +37,9 @@ previewActions.filter.preEmit = function(params) {
 		.then(previewActions.success,previewActions.error);
 };
 
-previewActions.sortBy.preEmit = function(sortType){
+previewActions.sortBy.preEmit = function(sortType, isSortOrderDesc){
   PreviewApi
-    .sortBy(sortType)
+    .sortBy(sortType,isSortOrderDesc)
     .then(previewActions.sortBySuccess,previewActions.sortByError);
 };
 

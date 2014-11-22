@@ -65,20 +65,18 @@ var Content = React.createClass({
       var offset = (win - container) / 2;
       result = offset > menu ? 0 : menu - offset;
     }
+
     return result;
   },
 
   shiftContent: function() {
 
-    var menuOpen = this.state.filterMenuActive;
-
-    if(!menuOpen) {
+    if(!this.state.filterMenuActive) {
       this.setState({shiftPx: 0});
+      return false;
     }
-    else {
-      var menuOffset = this.getMenuOffset();
-      this.setState({shiftPx: menuOffset});
-    }
+
+    this.setState({shiftPx: this.getMenuOffset()});
   },
 
   render: function() {
