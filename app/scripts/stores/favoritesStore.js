@@ -9,7 +9,6 @@ var FavoritesStore = Reflux.createStore({
 
   init : function(){
     this.favorites = store.get('favorites');
-    this.favoritesListActive = false;
 
     if(utils.isUndefined(this.favorites)){
       store.set('favorites', []);
@@ -18,20 +17,8 @@ var FavoritesStore = Reflux.createStore({
 
     this.listenTo(favoritesActions.loadFavorites,this.loadFavorites);
     this.listenTo(favoritesActions.starPreview,this.toggleStar);
-
-    this.listenTo(menuActions.hideFavoritesList,this.hideFavoritesList);
-    this.listenTo(menuActions.toggleFavoritesList,this.toggleFavoritesList);
   },
 
-  toggleFavoritesList: function(){
-    this.favoritesListActive = !this.favoritesListActive;
-    this.trigger({ favoritesListActive : this.favoritesListActive });
-  },
-
-  hideFavoritesList : function(){
-    this.favoritesListActive = false;
-    this.trigger({ favoritesListActive : this.favoritesListActive });
-  },
 
   toggleStar: function(preview){
 

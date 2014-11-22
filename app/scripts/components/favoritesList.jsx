@@ -38,10 +38,13 @@ var FavoritesList = React.createClass({
 
       return (
             <div className="info favorites-list">
-                <ul className="centered">
+                <div className="centered">
                   <div className="btn-close"><i onClick={this.hideInfo} className="icon_close"></i></div>
-                  {favorites}
-                </ul>
+                  <h1>Favoriten Liste</h1>
+                  <ul>
+                    {favorites}
+                  </ul>
+                </div>
             </div>
       );
 

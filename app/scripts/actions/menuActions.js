@@ -9,12 +9,10 @@ var menuActions = Reflux.createActions([
 ]);
 
 menuActions.toggleInfo.preEmit = function(){
-  menuActions.hideFavoritesList();
   FilterActions.hideFilterMenu();
 }
 
 menuActions.toggleFavoritesList.preEmit = function(){
-  menuActions.hideInfo();
   FilterActions.hideFilterMenu();
 }
 
