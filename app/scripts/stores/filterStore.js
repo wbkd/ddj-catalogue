@@ -1,7 +1,6 @@
 var Reflux = require('reflux');
 var utils = require('../utils');
 var filterActions = require('../actions/filterActions');
-var $ = require('../../bower_components/jquery/dist/jquery');
 var previewActions = require('../actions/previewActions');
 
 var FilterStore = Reflux.createStore({

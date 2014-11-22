@@ -4,10 +4,15 @@ var React = require('react');
 var InfoBox = require('./infobox.jsx');
 var PreviewList = require('./previewList.jsx');
 var FilterMenu = require('./filterMenu.jsx');
+var FavoritesList = require('./favoritesList.jsx');
 
 // stores
 var MenuStore = require('../stores/menuStore.js');
 var FilterStore = require('../stores/filterStore.js');
+var FavoritesStore = require('../stores/favoritesStore.js');
+
+// actions
+var FavoritesActions = require('../actions/favoritesActions.js');
 
 // third party
 var Cookies = require('../../bower_components/cookies-js/dist/cookies.min');
@@ -18,13 +23,18 @@ var Content = React.createClass({
   	return {
   		shiftPx: 0,
       filterMenuActive : false,
-      infoActive: typeof Cookies.get('ddj-infobox') === 'undefined'
+      infoActive: typeof Cookies.get('ddj-infobox') === 'undefined',
+      favorites : [],
+      favoritesListActive : false
   	}
   },
 
   componentDidMount: function() {
   	MenuStore.listen(this.onStatusChange);
     FilterStore.listen(this.onStatusChange);
+    FavoritesStore.listen(this.onStatusChange);
+
+    FavoritesActions.loadFavorites();
   },
 
   onStatusChange: function(state){
@@ -65,14 +75,17 @@ var Content = React.createClass({
   render: function() {
   	var divStyle = {
       transform: 'translateX(' + this.state.shiftPx + 'px)'
-    }
+    },favoriteIds = this.state.favorites.map(function(el){
+      return el.id;
+    });
 
     return (
       <div>
         <FilterMenu filterMenuActive={this.state.filterMenuActive}/>
         <div style={divStyle} className="content-wrapper">
   			   <InfoBox infoActive={this.state.infoActive} />
-  			   <PreviewList />
+           <FavoritesList favorites={this.state.favorites} favoritesListActive={this.state.favoritesListActive} />
+  			   <PreviewList favoriteIds={favoriteIds}/>
   		  </div>
       </div>
     	);

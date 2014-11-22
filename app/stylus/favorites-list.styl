@@ -1,0 +1,43 @@
+@import 'colors'
+
+.favorites-list
+  
+  ul
+    list-style:none
+  
+  .favorite-item
+    border-bottom:1px solid #eee
+    position: relative
+  
+    .btn-close
+      position:absolute
+      right:0
+      bottom:0
+      padding:.5em 1em
+      color:white
+      background:#e74c3c
+      font-size:14px
+      height:auto
+      top: auto
+      z-index:9
+      
+      &:hover
+        box-shadow:0 1px 2px rgba(0,0,0,.2)
+
+    a
+      padding:1em 0
+      color : $black
+      display:block
+    
+      &:hover
+        background:#f7f7f7
+
+    
+  .favorite-item-img
+      width:50px
+      height:30px
+      margin-right:1em
+      display:inline-block
+      background-position: center center;
+      background-size: cover;
+      border:1px solid #eee

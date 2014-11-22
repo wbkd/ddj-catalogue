@@ -4,6 +4,8 @@ var cx = React.addons.classSet;
 var config = require('../config');
 var utils = require('../utils');
 var PreviewActions = require('../actions/previewActions')
+var FavoritesActions = require('../actions/favoritesActions')
+
 
 var Preview = React.createClass({
 
@@ -23,6 +25,10 @@ var Preview = React.createClass({
     PreviewActions.toggleExpandedPreview(this.props.data._id);
   },
 
+  starPreview: function(){
+    FavoritesActions.starPreview(this.props.data);
+  },
+
   render: function() {
 
     var preview = this.props.data, 
@@ -31,11 +37,11 @@ var Preview = React.createClass({
       imageStyle = {  backgroundImage: 'url(' + previewImage +  ')' },
       date = utils.formatDate(preview.date);
 
-    
     var classes = cx({
       'preview' : true,
       'clearfix' : true,
-      'is-expanded': this.props.isExpanded 
+      'is-expanded': this.props.isExpanded,
+      'is-stared':this.props.isStared
     });
 
     return (
