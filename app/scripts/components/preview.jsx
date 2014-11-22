@@ -1,4 +1,6 @@
 var React = require('react');
+var cx = React.addons.classSet;
+
 var config = require('../config');
 var utils = require('../utils');
 var PreviewActions = require('../actions/previewActions')
@@ -29,22 +31,29 @@ var Preview = React.createClass({
       imageStyle = {  backgroundImage: 'url(' + previewImage +  ')' },
       date = utils.formatDate(preview.date);
 
-    var cx = React.addons.classSet;
+    
     var classes = cx({
       'preview' : true,
+      'clearfix' : true,
       'is-expanded': this.props.isExpanded 
     });
 
     return (
       <div className="column">
-      	<div className={classes} onClick={this.togglePreview}>
-      		<div className='preview-image' style={imageStyle}></div>
-          <div className='preview-content'>
-        		<div className='preview-title'>{ preview.title }</div>
-        		<div className='preview-publisher'>{ preview.publisher }, {date}</div>
-            <a href={preview.url} target="_blank" className='btn preview-link'>Zur Anwendung</a>
-          </div>
-      	</div>
+        	<div className={classes}>
+        		<a className='preview-image'style={imageStyle} href={preview.url} target="_blank"></a>
+            
+            <div className="btn-group">
+              <div onClick={this.starPreview} className="btn btn-star"><i className="icon_star"></i></div>
+              <div onClick={this.togglePreview} className="btn btn-toggle"><i className="arrow_carrot-2down"></i></div>
+            </div>
+
+            <div className='preview-content'>
+          		<div className='preview-title'>{ preview.title }</div>
+          		<div className='preview-publisher'>{ preview.publisher }, {date}</div>
+              <div className='preview-description'>{ preview.description }</div>
+            </div>
+        	</div>
       </div>
     );
   }

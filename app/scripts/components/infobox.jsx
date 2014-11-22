@@ -1,6 +1,8 @@
 var React = require('react');
+
 var MenuActions = require('../actions/menuActions.js');
 var MenuStore = require('../stores/menuStore');
+
 
 var Info = React.createClass({
 
@@ -25,11 +27,13 @@ var Info = React.createClass({
       }
 
       return (
-        <div className="row centered info">
-        	<div className="btn-close"><i onClick={this.hideInfo} className="icon_close"></i></div>
-        	<h1>Über dieses Projekt</h1>
-        	<p>Lorem Ipsum Lorem Ipsum</p>
-        </div>
+            <div className="info">
+              <div className="centered">
+              	<div className="btn-close"><i onClick={this.hideInfo} className="icon_close"></i></div>
+              	<h1>Über dieses Projekt</h1>
+              	<p>Lorem Ipsum Lorem Ipsum</p>
+              </div>
+            </div>
       );
 
     }
