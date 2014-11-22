@@ -1,9 +1,11 @@
 var React = require('react');
 var PreviewActions = require('../actions/previewActions');
+var cx = React.addons.classSet;
 
 var SortItem = require('./sortItem.jsx')
 
 var Sorter = React.createClass({
+
 
       sortBy: function(sortType) {
         // if user clicks on a selected sorter => change sortOder otherwise change only sortType 
@@ -11,7 +13,7 @@ var Sorter = React.createClass({
         PreviewActions.sortBy(sortType, isNewSortOrderDesc);
       },
 
-      render: function() {
+      render: function() {        
         return (
           <div className="sorter">
             <span> Sortieren: </span>
