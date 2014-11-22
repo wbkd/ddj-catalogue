@@ -22,10 +22,10 @@ var Header = React.createClass({
         	  <a href="/">{config.appName}</a>
           </div>
           <nav className="clearfix">
-            <i onClick={this.toggleInfo} className="icon_info_alt"></i>
-            <i onClick={this.toggleFavoriteList} className="icon_star"></i>
-            <a href="http://www.twitter.com/ddj-katalog"><i className="social_twitter"></i></a>
-            <a href="#/rss"><i className="social_rss"></i></a>
+            <i onClick={this.toggleInfo} className="icon_info_alt nav-item"></i>
+            <i onClick={this.toggleFavoriteList} className="icon_star nav-item"></i>
+            <a href="http://www.twitter.com/ddj-katalog" className="nav-item"><i className="social_twitter"></i></a>
+            <a href="#/rss" className="nav-item"><i className="social_rss"></i></a>
           </nav>
         </div>
     	</header>
