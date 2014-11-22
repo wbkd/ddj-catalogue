@@ -4,13 +4,15 @@ var FilterActions = require('../actions/filterActions');
 var PreviewActions = require('../actions/previewActions');
 var PreviewStore = require('../stores/previewStore');
 var Sorter = require('./sorter.jsx');
+var config = require('../config');
 
 var PreviewList = React.createClass({
 
       getInitialState: function(a){
         return {
           previews : [],
-          expandedId : null
+          expandedId : null,
+          sorting: config.initialSorting
         };
       },
 
@@ -21,6 +23,7 @@ var PreviewList = React.createClass({
 
       componentDidMount: function() {
         this.unsubscribe = PreviewStore.listen(this.onStatusChange);
+        //load initial previews
         PreviewActions.load();
       },
 
@@ -29,6 +32,16 @@ var PreviewList = React.createClass({
       },
 
       render: function() {
+        var sorts = [
+          {
+            name: 'Herausgeber',
+            sortBy: 'publisher'
+          },
+          {
+            name: 'Datum',
+            sortBy: 'date'
+          }
+        ]
 
         var previews = this.state.previews.map(function(preview,i) {
           var isExpanded = this.state.expandedId ? this.state.expandedId === preview._id : false,
@@ -43,7 +56,7 @@ var PreviewList = React.createClass({
             <div className="clearfix preview-list-header">
              
               <div onClick={this.toggleFilterMenu} className="btn btn-filter btn"><i className="icon_menu"></i> Liste filtern</div>
-               <Sorter />
+              <Sorter active={this.state.sorting} sorts={sorts}/>
             </div>
             <div className="preview-list-content row">
               {previews}

@@ -1,6 +1,7 @@
 var Reflux = require('reflux');
-
 var previewActions = require('../actions/previewActions');
+var utils = require('../utils');
+var config = require('../config');
 
 var PreviewStore = Reflux.createStore({
 
@@ -11,6 +12,7 @@ var PreviewStore = Reflux.createStore({
 		this.loading = false;
 		this.error = null;
 		this.expandedId = null;
+		this.sorting = config.initialSorting;
 
 		this.listenTo(previewActions.toggleExpandedPreview,this.toggleExpandedPreview);
 		this.listenTo(previewActions.shrinkPreviews,this.shrinkPreviews);
@@ -46,10 +48,12 @@ var PreviewStore = Reflux.createStore({
 
 	********************/
 
-	onLoadPreviews : function(){
+	onLoadPreviews : function(sorting){
 		this.loading = true;
+		this.sorting = sorting;
 		this.trigger({
-			loading : this.loading
+			loading : this.loading,
+			sorting: this.sorting
 		});
 	},
 
