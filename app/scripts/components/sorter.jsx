@@ -10,6 +10,7 @@ var Sorter = React.createClass({
       sortBy: function(sortType) {
         // if user clicks on a selected sorter => change sortOder otherwise change only sortType 
         var isNewSortOrderDesc = this.props.sortType === sortType ? !this.props.isSortOrderDesc : this.props.isSortOrderDesc;
+
         PreviewActions.sortBy(sortType, isNewSortOrderDesc);
       },
 

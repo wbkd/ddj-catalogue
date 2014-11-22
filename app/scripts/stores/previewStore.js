@@ -12,7 +12,6 @@ var PreviewStore = Reflux.createStore({
 		this.loading = false;
 		this.error = null;
 		this.expandedId = null;
-		this.sorting = config.initialSorting;
 
 		this.listenTo(previewActions.toggleExpandedPreview,this.toggleExpandedPreview);
 		this.listenTo(previewActions.shrinkPreviews,this.shrinkPreviews);
@@ -43,7 +42,6 @@ var PreviewStore = Reflux.createStore({
 	},
 
 	sortBy: function(sortType,isSortOrderDesc){
-
 		this.trigger({
 			sortType : sortType,
 			isSortOrderDesc : isSortOrderDesc
@@ -58,10 +56,8 @@ var PreviewStore = Reflux.createStore({
 
 	onLoadPreviews : function(sorting){
 		this.loading = true;
-		this.sorting = sorting;
 		this.trigger({
-			loading : this.loading,
-			sorting: this.sorting
+			loading : this.loading
 		});
 	},
 

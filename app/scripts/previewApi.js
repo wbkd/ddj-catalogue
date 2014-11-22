@@ -35,7 +35,7 @@ var PreviewApi = {
 
 		var SortOrder = isSortOrderDesc ? -1 : 1,
 			sortObj = {};
-			
+
 		sortObj[sortType] = SortOrder; 
 
 		return reqwest({ 
