@@ -16,7 +16,7 @@ var FavoritesStore = require('../stores/favoritesStore.js');
 var FavoritesActions = require('../actions/favoritesActions.js');
 
 // third party
-var Cookies = require('../../bower_components/cookies-js/dist/cookies.min');
+var store = require('store');
 
 var Content = React.createClass({
 
@@ -24,7 +24,7 @@ var Content = React.createClass({
   	return {
   		shiftPx: 0,
       filterMenuActive : false,
-      infoActive: typeof Cookies.get('ddj-infobox') === 'undefined',
+      infoActive: typeof store.get('ddj-infobox') === 'undefined',
       favorites : [],
       favoritesUrl : '',
       favoritesListActive : false,

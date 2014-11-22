@@ -1,6 +1,6 @@
 var Reflux = require('reflux');
 var MenuActions = require('../actions/menuActions');
-var Cookies = require('../../bower_components/cookies-js/dist/cookies.min');
+var store = require('store');
 
 var MenuStore = Reflux.createStore({
 
@@ -30,7 +30,7 @@ var MenuStore = Reflux.createStore({
 
 	hideInfo: function() {
 		this.infoActive = false;
-		Cookies.set('ddj-infobox', 1);
+		store.set('ddj-infobox', 1);
 		this.trigger({infoActive: false});
 	},
 
