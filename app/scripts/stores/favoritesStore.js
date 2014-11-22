@@ -96,6 +96,8 @@ var FavoritesStore = Reflux.createStore({
       id : preview._id,
       title : preview.title,
       url : preview.url,
+      publisher: preview.publisher,
+      date: utils.formatDate(preview.date),
       src : preview.imageurl || 'http://placehold.it/100x100'
     }
   }
