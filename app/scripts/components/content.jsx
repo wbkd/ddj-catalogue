@@ -1,4 +1,5 @@
 var React = require('react');
+var utils = require('../utils');
 
 // components
 var InfoBox = require('./infobox.jsx');
@@ -26,7 +27,8 @@ var Content = React.createClass({
       infoActive: typeof Cookies.get('ddj-infobox') === 'undefined',
       favorites : [],
       favoritesUrl : '',
-      favoritesListActive : false
+      favoritesListActive : false,
+      sharedFavorites : []
   	}
   },
 
@@ -36,6 +38,12 @@ var Content = React.createClass({
     FavoritesStore.listen(this.onStatusChange);
 
     FavoritesActions.loadFavorites();
+
+    if(!utils.isUndefined(this.props.sharedFavoriteIds)){
+      var favoriteIdArray = this.props.sharedFavoriteIds.split('-');
+      FavoritesActions.loadSharedFavorites(favoriteIdArray);
+    }
+    
   },
 
   onStatusChange: function(state){
@@ -78,15 +86,21 @@ var Content = React.createClass({
       transform: 'translateX(' + this.state.shiftPx + 'px)'
     },favoriteIds = this.state.favorites.map(function(el){
       return el.id;
-    });
+    }),
+    isSharedFavoriteList = this.state.sharedFavorites.length > 0,
+    sharedFavoriteList = isSharedFavoriteList ? <FavoritesList isShared={true} favorites={this.state.sharedFavorites} favoritesListActive={true} /> : '';
+    favorites = isSharedFavoriteList ? this.state.sharedFavorites : this.state.favorites
 
     return (
       <div>
         <FilterMenu filterMenuActive={this.state.filterMenuActive}/>
         <div style={divStyle} className="content-wrapper">
   			   <InfoBox infoActive={this.state.infoActive} />
-           <FavoritesList favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} favoritesListActive={this.state.favoritesListActive} />
-  			   <PreviewList favoriteIds={favoriteIds}/>
+           
+           <FavoritesList isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} favoritesListActive={this.state.favoritesListActive} />
+  			   {sharedFavoriteList}
+
+           <PreviewList favoriteIds={favoriteIds}/>
   		  </div>
       </div>
     	);

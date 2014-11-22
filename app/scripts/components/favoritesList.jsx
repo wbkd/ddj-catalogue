@@ -1,4 +1,5 @@
-var React = require('react');
+var React = require('react/addons');
+var cx = React.addons.classSet;
 var Favorite = require('./favorite.jsx');
 var MenuActions = require('../actions/menuActions');
 
@@ -8,7 +9,8 @@ var FavoritesList = React.createClass({
       favoritesListActive : React.PropTypes.bool,
       favorites : React.PropTypes.array,
       favoritesUrl : React.PropTypes.string,
-      noFavoritesAddedMessage :  React.PropTypes.string
+      isSharedFavoriteList : React.PropTypes.bool,
+      noFavoritesAddedMessage :  React.PropTypes.string,
     },
 
     getDefaultProps: function(){
@@ -16,12 +18,17 @@ var FavoritesList = React.createClass({
         favoritesListActive : false,
         favorites : [],
         favoritesUrl : '',
+        isSharedFavoriteList : false,
         noFavoritesAddedMessage : 'Es Wurden bisher keine Favoriten hinzugefügt.'
       };
     },
 
-    hideInfo: function() {
-      MenuActions.toggleFavoritesList();
+    hideList: function() {
+      MenuActions.hideFavoritesList();
+    },
+
+    hideSharedList: function(){
+      MenuActions.hideSharedList();
     },
 
     render: function() {
@@ -31,21 +38,27 @@ var FavoritesList = React.createClass({
       }
 
       var favorites = this.props.favorites.map(function(favorite){
-        return (<Favorite data={favorite} key={'fav_' + favorite.id} />);
-      }),
+        return (<Favorite data={favorite} key={this.props.isShared + favorite.id} />);
+      }.bind(this)),
         hasFavorites = favorites.length !== 0;
 
+      var styles = cx({
+        'favorites-list' : true,
+        'info' : true,
+        'is-shared-list' : this.props.isShared
+      });
+
       return (
-            <div className="info favorites-list">
+            <div className={styles}>
                 <div className="centered">
-                  <div className="btn-close"><i onClick={this.hideInfo} className="icon_close"></i></div>
-                  <h1>Favoriten Liste</h1>
+                  <div className="btn-close"><i onClick={this.props.isShared ? this.hideSharedList : this.hideList} className="icon_close"></i></div>
+                  <h1>{this.props.isShared ? 'Geteilte Favoriten ' : 'Meine Favoriten'}</h1>
                   <ul>
                     {hasFavorites ? favorites : this.props.noFavoritesAddedMessage }
                   </ul>
-                  <div className="favorites-url" hidden={!hasFavorites}>
+                  <div className="favorites-url" hidden={!hasFavorites || this.props.isShared}>
                     <label>Favoritenliste teilen</label>
-                    <input value={this.props.favoritesUrl}/>
+                    <input value={this.props.favoritesUrl} readOnly/>
                   </div>
                 </div>
             </div>

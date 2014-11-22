@@ -13,12 +13,15 @@ var MenuStore = Reflux.createStore({
 
 		this.listenTo(MenuActions.hideFavoritesList,this.hideFavoritesList);
     this.listenTo(MenuActions.toggleFavoritesList,this.toggleFavoritesList);
-	},
 
+    this.listenTo(MenuActions.hideSharedList,this.hideSharedList);
+	},
 
 	toggleInfo: function() {
 		this.infoActive = !this.infoActive;
 		this.favoritesListActive = false;
+    this.hideSharedList();
+
 		this.trigger({
 			infoActive: this.infoActive,
 			favoritesListActive : this.favoritesListActive
@@ -34,6 +37,8 @@ var MenuStore = Reflux.createStore({
   toggleFavoritesList: function(){
     this.favoritesListActive = !this.favoritesListActive;
     this.infoActive = false;
+    this.hideSharedList();
+
     this.trigger({ 
     	favoritesListActive : this.favoritesListActive,
     	infoActive: this.infoActive
@@ -43,6 +48,15 @@ var MenuStore = Reflux.createStore({
   hideFavoritesList : function(){
     this.favoritesListActive = false;
     this.trigger({ favoritesListActive : this.favoritesListActive });
+  },
+
+  hideSharedList: function(){
+
+    // TODO: don't do this!
+    location.hash = '#/projekte';
+    this.trigger({ 
+     sharedFavorites : []
+    });
   }
 
 });

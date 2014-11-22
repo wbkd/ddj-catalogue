@@ -17,6 +17,10 @@ var FavoritesStore = Reflux.createStore({
 
     this.listenTo(favoritesActions.loadFavorites,this.loadFavorites);
     this.listenTo(favoritesActions.starPreview,this.toggleStar);
+
+    this.listenTo(favoritesActions.loadSharedFavorites,this.loadSharedFavorites);
+    this.listenTo(favoritesActions.loadSharedFavoritesSuccess,this.loadSharedFavoritesSuccess);
+    this.listenTo(favoritesActions.loadSharedFavoritesError,this.loadSharedFavoritesError);
   },
 
 
@@ -34,7 +38,7 @@ var FavoritesStore = Reflux.createStore({
 
     // is not in the list -> push preview
     if(favoritesPreviewIndex === -1){
-      this.favorites.push(this.getPreviewData(preview));
+      this.favorites.push(this.getFavoritesData(preview));
     }else{
     // is already in the list -> remove preview
       this.favorites.splice(favoritesPreviewIndex, 1);
@@ -55,12 +59,39 @@ var FavoritesStore = Reflux.createStore({
     });
   },
 
-  createFavoritesUrl : function(){
-    console.log(this.favorites);
-    return 'http://katalog.datenjournalismus.net/#/favoriten/a-hashed-favorites-list'
+  loadSharedFavorites: function(){
+
+  },
+  loadSharedFavoritesSuccess: function(previews){
+
+    var sharedFavorites = previews.map(function(el){
+      return this.getFavoritesData(el);
+    }.bind(this));
+
+    this.trigger({ 
+     sharedFavorites : sharedFavorites
+    });
+  },
+  loadSharedFavoritesError: function(){
+
   },
 
-  getPreviewData: function(preview){
+
+  /*****************
+
+  helper functions
+
+  ******************/
+
+  createFavoritesUrl : function(){
+    var favoritesUrl = this.favorites.map(function(el,i){
+      return el.id;
+    }).join('-');
+
+    return location.origin + '/#/favoriten/' + favoritesUrl;
+  },
+
+  getFavoritesData: function(preview){
     return {
       id : preview._id,
       title : preview.title,

@@ -9,7 +9,7 @@ var Home = React.createClass({
 		return (
 			<div>
 				<Header />
-				<Content />
+				<Content sharedFavoriteIds={this.props.sharedFavoriteIds}/>
 				<Footer />
 			</div>
 		);

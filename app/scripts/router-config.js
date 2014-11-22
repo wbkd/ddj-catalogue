@@ -5,6 +5,9 @@ var ErrorPage = require('./pages/404.jsx');
 module.exports.routes = {
   '/projekte' : function(){
     React.render(<Home />, document.body);
+  },
+  '/favoriten/:ids' : function(ids){
+    React.render(<Home sharedFavoriteIds={ids} />, document.body);
   }
 }
 

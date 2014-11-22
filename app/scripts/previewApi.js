@@ -47,6 +47,18 @@ var PreviewApi = {
 		});
 	},
 
+	loadPreviewsById: function(previewIds){
+		return reqwest({ 
+			url : config.apiUrl + '/getbyids',
+			data : {
+				ids : previewIds
+			},
+			type : 'json', 
+			method: 'post',
+			crossOrigin: true 
+		});
+	},
+
 	loadFilters: function(){
 		return reqwest({ url: 'http://localhost:1337/ui-data', dataType: 'json', crossOrigin: true  });
 	}
