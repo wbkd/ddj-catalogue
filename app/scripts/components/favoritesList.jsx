@@ -7,6 +7,7 @@ var FavoritesList = React.createClass({
     propTypes : {
       favoritesListActive : React.PropTypes.bool,
       favorites : React.PropTypes.array,
+      favoritesUrl : React.PropTypes.string,
       noFavoritesAddedMessage :  React.PropTypes.string
     },
 
@@ -14,6 +15,7 @@ var FavoritesList = React.createClass({
       return {
         favoritesListActive : false,
         favorites : [],
+        favoritesUrl : '',
         noFavoritesAddedMessage : 'Es Wurden bisher keine Favoriten hinzugefügt.'
       };
     },
@@ -30,11 +32,8 @@ var FavoritesList = React.createClass({
 
       var favorites = this.props.favorites.map(function(favorite){
         return (<Favorite data={favorite} key={'fav_' + favorite.id} />);
-      });
-
-      if(favorites.length === 0){
-        favorites = this.props.noFavoritesAddedMessage;
-      }
+      }),
+        hasFavorites = favorites.length !== 0;
 
       return (
             <div className="info favorites-list">
@@ -42,8 +41,12 @@ var FavoritesList = React.createClass({
                   <div className="btn-close"><i onClick={this.hideInfo} className="icon_close"></i></div>
                   <h1>Favoriten Liste</h1>
                   <ul>
-                    {favorites}
+                    {hasFavorites ? favorites : this.props.noFavoritesAddedMessage }
                   </ul>
+                  <div className="favorites-url" hidden={!hasFavorites}>
+                    <label>Favoritenliste teilen</label>
+                    <input value={this.props.favoritesUrl}/>
+                  </div>
                 </div>
             </div>
       );

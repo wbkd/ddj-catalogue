@@ -11,8 +11,8 @@ var FavoritesStore = Reflux.createStore({
     this.favorites = store.get('favorites');
 
     if(utils.isUndefined(this.favorites)){
-      store.set('favorites', []);
       this.favorites = [];
+      store.set('favorites', this.favorites);
     }
 
     this.listenTo(favoritesActions.loadFavorites,this.loadFavorites);
@@ -42,11 +42,22 @@ var FavoritesStore = Reflux.createStore({
 
     store.set('favorites', this.favorites);
 
-    this.trigger({ favorites : this.favorites });
+    this.trigger({ 
+      favorites : this.favorites,
+      favoritesUrl : this.createFavoritesUrl()
+    });
   },
 
   loadFavorites: function(){
-    this.trigger({ favorites : this.favorites });
+    this.trigger({ 
+      favorites : this.favorites,
+      favoritesUrl : this.createFavoritesUrl()
+    });
+  },
+
+  createFavoritesUrl : function(){
+    console.log(this.favorites);
+    return 'http://katalog.datenjournalismus.net/#/favoriten/a-hashed-favorites-list'
   },
 
   getPreviewData: function(preview){

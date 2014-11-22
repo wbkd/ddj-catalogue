@@ -25,6 +25,7 @@ var Content = React.createClass({
       filterMenuActive : false,
       infoActive: typeof Cookies.get('ddj-infobox') === 'undefined',
       favorites : [],
+      favoritesUrl : '',
       favoritesListActive : false
   	}
   },
@@ -84,7 +85,7 @@ var Content = React.createClass({
         <FilterMenu filterMenuActive={this.state.filterMenuActive}/>
         <div style={divStyle} className="content-wrapper">
   			   <InfoBox infoActive={this.state.infoActive} />
-           <FavoritesList favorites={this.state.favorites} favoritesListActive={this.state.favoritesListActive} />
+           <FavoritesList favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} favoritesListActive={this.state.favoritesListActive} />
   			   <PreviewList favoriteIds={favoriteIds}/>
   		  </div>
       </div>
