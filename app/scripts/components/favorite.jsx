@@ -18,7 +18,7 @@ var Favorite = React.createClass({
           <div className="favorite-item-img" style={style}></div>
           <div className="favorite-content">
             <div className="favorite-title">{favoriteData.title}</div>
-            <div className="favorite-subtitle">{favoriteData.date}, {favoriteData.publisher}</div>
+            <div className="favorite-subtitle">{favoriteData.publisher}, {favoriteData.date}</div>
           </div>
           
         </a>

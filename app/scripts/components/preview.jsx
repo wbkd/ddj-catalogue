@@ -57,7 +57,10 @@ var Preview = React.createClass({
             <div className='preview-content'>
           		<div className='preview-title'>{ preview.title }</div>
           		<div className='preview-publisher'>{ preview.publisher }, {date}</div>
-              <div className='preview-description'>{ preview.description }</div>
+              <div className='preview-expanded'>
+                <div className='preview-description'>{ preview.description }</div>
+                <div className='preview-byline'>Von { preview.byline.toString() }</div>
+              </div>
             </div>
         	</div>
       </div>

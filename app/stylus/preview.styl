@@ -87,22 +87,26 @@
 		font-size: .8em
 		
 		.preview-publisher
-			color: #777
-			
-		.preview-description
+			color:$grey
+		
+		.preview-byline
+			color: $grey
+			margin-top:1em
+			text-align:right
+
+		.preview-expanded
 			display:none
-			margin:2em 0
+			margin:1em 0
+		
 			
 	
 	&.is-expanded
 		height:auto
 		position:absolute
-		z-index:3
+		z-index:3			
 		
-		.preview-content
-			background:rgba(255,255,255,.9)
-		
-	&.is-expanded .preview-description
+	&.is-expanded .preview-expanded
+		background:rgba(255,255,255,.9)
 		display:block
 		
 	&.is-stared
