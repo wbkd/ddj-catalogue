@@ -74,11 +74,16 @@
 		height: 180px
 		display:block
 		cursor:pointer
+		border:1px solid $lightgrey
+		transition: box-shadow .1s;
+		box-shadow: 0 3px 2px rgba(0,0,0,0)
+		
+		&:hover
+			box-shadow: 0 3px 2px rgba(0,0,0,.2)
 		
 	.preview-content
 		width:100%
 		padding: .6em 45px .6em .5em
-		background: rgba(255,255,255,.8)
 		font-size: .8em
 		
 		.preview-publisher
@@ -93,6 +98,9 @@
 		height:auto
 		position:absolute
 		z-index:3
+		
+		.preview-content
+			background:rgba(255,255,255,.9)
 		
 	&.is-expanded .preview-description
 		display:block
