@@ -6,6 +6,8 @@ var InfoBox = require('./infobox.jsx');
 var PreviewList = require('./previewList.jsx');
 var FilterMenu = require('./filterMenu.jsx');
 var FavoritesList = require('./favoritesList.jsx');
+var SubmitArea = require('./submitArea.jsx');
+
 
 // stores
 var MenuStore = require('../stores/menuStore.js');
@@ -25,6 +27,8 @@ var Content = React.createClass({
   		shiftPx: 0,
       filterMenuActive : false,
       infoActive: typeof store.get('ddj-infobox') === 'undefined',
+      submitAreaActive : false,
+
       favorites : [],
       favoritesUrl : '',
       favoritesListActive : false,
@@ -93,12 +97,14 @@ var Content = React.createClass({
       <div>
         <FilterMenu filterMenuActive={this.state.filterMenuActive}/>
         <div style={divStyle} className="content-wrapper">
-  			   <InfoBox infoActive={this.state.infoActive} />
-           
-           <FavoritesList isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} favoritesListActive={this.state.favoritesListActive} />
-  			   {sharedFavoriteList}
+  			  <InfoBox infoActive={this.state.infoActive} />
+            
+          <SubmitArea submitAreaActive={this.state.submitAreaActive}/>
 
-           <PreviewList favoriteIds={favoriteIds}/>
+          <FavoritesList isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} favoritesListActive={this.state.favoritesListActive} />
+  			  {sharedFavoriteList}
+
+          <PreviewList favoriteIds={favoriteIds}/>
   		  </div>
       </div>
     	);

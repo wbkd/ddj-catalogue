@@ -15,11 +15,7 @@ var Info = React.createClass({
         infoActive : false
       };
     },
-
-		hideInfo: function() {
-			MenuActions.hideInfo();
-		},
-
+    
     render: function() {
 
       if(!this.props.infoActive){
@@ -29,7 +25,7 @@ var Info = React.createClass({
       return (
             <div className="info">
               <div className="centered">
-              	<div className="btn-close"><i onClick={this.hideInfo} className="icon_close"></i></div>
+              	<div className="btn-close"><i onClick={MenuActions.hideInfo} className="icon_close"></i></div>
               	<h1>Über dieses Projekt</h1>
               	<p>Lorem Ipsum Lorem Ipsum</p>
               </div>

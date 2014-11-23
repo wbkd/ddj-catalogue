@@ -7,24 +7,44 @@ var MenuStore = Reflux.createStore({
 	init : function(){
 		this.infoActive = false;
 		this.favoritesListActive = false;
+    this.submitAreaActive = false;
 
+    // info area
 		this.listenTo(MenuActions.toggleInfo, this.toggleInfo);
 		this.listenTo(MenuActions.hideInfo, this.hideInfo);
 
+    // favorite area
 		this.listenTo(MenuActions.hideFavoritesList,this.hideFavoritesList);
     this.listenTo(MenuActions.toggleFavoritesList,this.toggleFavoritesList);
 
+    // shared favorite area
     this.listenTo(MenuActions.hideSharedList,this.hideSharedList);
+
+    // submit area
+    this.listenTo(MenuActions.toggleSubmitArea, this.toggleSubmitArea);
 	},
+
+  toggleSubmitArea: function(){
+    this.submitAreaActive = !this.submitAreaActive;
+    this.infoActive = false;
+    this.favoritesListActive = false;
+    this.trigger({
+      submitAreaActive: this.submitAreaActive,
+      infoActive : this.favoritesListActive,
+      favoritesListActive : this.favoritesListActive
+    });
+  },
 
 	toggleInfo: function() {
 		this.infoActive = !this.infoActive;
 		this.favoritesListActive = false;
+    this.submitAreaActive = false;
     this.hideSharedList();
 
 		this.trigger({
 			infoActive: this.infoActive,
-			favoritesListActive : this.favoritesListActive
+			favoritesListActive : this.favoritesListActive,
+      submitAreaActive : this.submitAreaActive
 		});
 	},
 
@@ -37,11 +57,13 @@ var MenuStore = Reflux.createStore({
   toggleFavoritesList: function(){
     this.favoritesListActive = !this.favoritesListActive;
     this.infoActive = false;
+    this.submitAreaActive = false;
     this.hideSharedList();
 
     this.trigger({ 
     	favoritesListActive : this.favoritesListActive,
-    	infoActive: this.infoActive
+    	infoActive: this.infoActive,
+      submitAreaActive : this.submitAreaActive
    	});
   },
 
