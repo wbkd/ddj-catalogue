@@ -13,6 +13,8 @@ var SubmitArea = require('./submitArea.jsx');
 var MenuStore = require('../stores/menuStore.js');
 var FilterStore = require('../stores/filterStore.js');
 var FavoritesStore = require('../stores/favoritesStore.js');
+var SubmitStore = require('../stores/submitStore.js');
+
 
 // actions
 var FavoritesActions = require('../actions/favoritesActions.js');
@@ -28,6 +30,8 @@ var Content = React.createClass({
       filterMenuActive : false,
       infoActive: typeof store.get('ddj-infobox') === 'undefined',
       submitAreaActive : false,
+      submitAreaError : '',
+      submitAreaSuccess : false,
 
       favorites : [],
       favoritesUrl : '',
@@ -40,6 +44,7 @@ var Content = React.createClass({
   	MenuStore.listen(this.onStatusChange);
     FilterStore.listen(this.onStatusChange);
     FavoritesStore.listen(this.onStatusChange);
+    SubmitStore.listen(this.onStatusChange);
 
     FavoritesActions.loadFavorites();
 
@@ -99,7 +104,7 @@ var Content = React.createClass({
         <div style={divStyle} className="content-wrapper">
   			  <InfoBox infoActive={this.state.infoActive} />
             
-          <SubmitArea submitAreaActive={this.state.submitAreaActive}/>
+          <SubmitArea errorMessage={this.state.submitAreaError} isSuccess={this.state.submitAreaSuccess} submitAreaActive={this.state.submitAreaActive}/>
 
           <FavoritesList isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} favoritesListActive={this.state.favoritesListActive} />
   			  {sharedFavoriteList}

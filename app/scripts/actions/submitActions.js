@@ -4,7 +4,9 @@ var SubmitApi = require('../submitApi');
 var submitActions = Reflux.createActions([
   'submitProject',
   'submitProjectSuccess',
-  'submitProjectError'
+  'submitProjectError',
+
+  'resetSubmitArea'
 ]);
 
 submitActions.submitProject.preEmit = function(projectUrl){

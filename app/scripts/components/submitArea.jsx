@@ -5,10 +5,33 @@ var MenuActions = require('../actions/menuActions');
 
 var SubmitArea = React.createClass({
 
+  propTypes : {
+    submitAreaActive: React.PropTypes.bool,
+    errorMessage: React.PropTypes.string
+  },
+
+  getDefaultProps: function(){
+    return {
+      submitAreaActive: false,
+      errorMessage: '',
+      isSuccess : false
+    };
+  },
+    
   submitForm: function(evt){
     evt.preventDefault();
     var projectUrl = this.refs.inputProjectUrl.getDOMNode().value;
+
+    if(!projectUrl){
+      return SubmitActions.submitProjectError('Bitte geben Sie eine gültige URL an.');
+    }
+
     SubmitActions.submitProject(projectUrl);
+  },
+  
+  hideSubmitArea: function(){
+    MenuActions.toggleSubmitArea();
+    SubmitActions.resetSubmitArea();
   },
 
   render: function() {
@@ -17,14 +40,19 @@ var SubmitArea = React.createClass({
         return false;
       }
 
+      var ErrorMessage = this.props.errorMessage ? <div className="form-message error">{this.props.errorMessage}</div> : '';
+      var SuccessMessage = this.props.isSuccess ? <div className="form-message success">Das Projekt wurde eingereicht.</div> : '';
+
       return (
             <div className="info">
               <div className="centered">
-                <div className="btn-close"><i onClick={MenuActions.toggleSubmitArea} className="icon_close"></i></div>
+                <div className="btn-close"><i onClick={this.hideSubmitArea} className="icon_close"></i></div>
                 <h1>Projekt einreichen</h1>
                 
                 <form onSubmit={this.submitForm}>
                   <label>Projekt URL:</label>
+                  {ErrorMessage}
+                  {SuccessMessage}
                   <input ref="inputProjectUrl" type="text" placeholder="http://projekt-url.de"/>
                   <button type="submit" className="btn btn-light">Abschicken</button>
                 </form>
