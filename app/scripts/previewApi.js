@@ -3,12 +3,8 @@ var config = require('./config');
 
 var PreviewApi = {
 
-	currentOffset : 0,
-
 	//initial load
 	load : function(lazyIndex){
-
-		console.log(lazyIndex)
 
 		return reqwest({ 
 			url : config.apiUrl, 
