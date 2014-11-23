@@ -19,9 +19,9 @@ var previewActions = Reflux.createActions([
   'shrinkPreviews'
 ]);
 
-previewActions.load.preEmit = function(){
+previewActions.load.preEmit = function(lazyIndex){
 	PreviewApi
-		.load()
+		.load(lazyIndex)
 		.then(previewActions.success,previewActions.error);
 };
 

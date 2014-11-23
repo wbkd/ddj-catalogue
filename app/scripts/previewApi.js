@@ -7,6 +7,9 @@ var PreviewApi = {
 
 	//initial load
 	load : function(lazyIndex){
+
+		console.log(lazyIndex)
+
 		return reqwest({ 
 			url : config.apiUrl, 
 			data: {

@@ -1,5 +1,6 @@
 var React = require('react');
 var config = require('../config');
+var utils = require('../utils');
 
 // components
 var Preview = require('./preview.jsx');
@@ -27,6 +28,14 @@ var PreviewList = React.createClass({
 
   onStatusChange: function(newState){
     newState.expandedId = this.state.expandedId === newState.expandedId ? null : newState.expandedId;
+    
+    var newPreviews = this.state.previews;
+
+    if(!utils.isUndefined(newState.previews)){
+      newPreviews = newPreviews.concat(newState.previews);
+      newState.previews = newPreviews;
+    }
+
     this.setState(newState);
   },
 
@@ -66,8 +75,8 @@ var PreviewList = React.createClass({
       // user reaches end of screen
       if(scrollTop + windowHeight >= documentHeight){
         
-        //TODO: lazy load previews 
-        console.log('load more previews')
+        PreviewActions.load(++this.lazyIndex);
+        console.log('load more previews');
       }
     }
      
