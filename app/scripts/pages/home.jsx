@@ -5,6 +5,7 @@ var FilterMenu = require('../components/filterMenu.jsx');
 var Content = require('../components/content.jsx');
 
 var Home = React.createClass({
+
 	render: function() {
 		return (
 			<div>

@@ -1,5 +1,7 @@
 var Reflux = require('reflux');
+var config = require('../config');
 var utils = require('../utils');
+
 var favoritesActions = require('../actions/favoritesActions');
 var menuActions = require('../actions/menuActions');
 
@@ -22,7 +24,6 @@ var FavoritesStore = Reflux.createStore({
     this.listenTo(favoritesActions.loadSharedFavoritesSuccess,this.loadSharedFavoritesSuccess);
     this.listenTo(favoritesActions.loadSharedFavoritesError,this.loadSharedFavoritesError);
   },
-
 
   toggleStar: function(preview){
 
@@ -98,7 +99,7 @@ var FavoritesStore = Reflux.createStore({
       url : preview.url,
       publisher: preview.publisher,
       date: utils.formatDate(preview.date),
-      src : preview.imageurl || 'http://placehold.it/100x100'
+      src : preview.imageurl || config.defaultImage
     }
   }
 

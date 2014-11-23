@@ -41,10 +41,10 @@ var Content = React.createClass({
   },
 
   componentDidMount: function() {
-  	MenuStore.listen(this.onStatusChange);
-    FilterStore.listen(this.onStatusChange);
-    FavoritesStore.listen(this.onStatusChange);
-    SubmitStore.listen(this.onStatusChange);
+  	this.unsubscribeMenuStore = MenuStore.listen(this.onStatusChange);
+    this.unsubscribeFilterStore = FilterStore.listen(this.onStatusChange);
+    this.unsubscribeMFavoritesStore = FavoritesStore.listen(this.onStatusChange);
+    this.unsubscribeSubmitStore = SubmitStore.listen(this.onStatusChange);
 
     FavoritesActions.loadFavorites();
 
@@ -53,6 +53,13 @@ var Content = React.createClass({
       FavoritesActions.loadSharedFavorites(favoriteIdArray);
     }
     
+  },
+
+  componentWillUnmount: function(){
+    this.unsubscribeMenuStore();
+    this.unsubscribeFilterStore();
+    this.unsubscribeMFavoritesStore();
+    this.unsubscribeSubmitStore();
   },
 
   onStatusChange: function(state){

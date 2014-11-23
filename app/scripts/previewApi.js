@@ -6,11 +6,16 @@ var PreviewApi = {
 	currentOffset : 0,
 
 	//initial load
-	load : function(){
+	load : function(lazyIndex){
 		return reqwest({ 
 			url : config.apiUrl, 
+			data: {
+				filters: {},
+				items : config.itemCount,
+				offset : lazyIndex
+			},
 			type : 'json', 
-			method: 'get',
+			method: 'post',
 			crossOrigin: true
 		});
 	},
@@ -21,7 +26,7 @@ var PreviewApi = {
 			type : 'json', 
 			method: 'post',
 			data: {
-				filters: params
+				filters: params,
 			},
 			crossOrigin: true
 		});		
