@@ -85,6 +85,11 @@ var PreviewList = React.createClass({
   },
 
   loadPreviews: function(){
+    // don't try to load more previews if everything is loaded
+    var previewCount =  this.state.previews.length
+    if(previewCount !== 0 && previewCount === this.state.count){
+      return false;
+    }
     PreviewActions.load({sortType : this.state.sortType, isSortOrderDesc: this.state.isSortOrderDesc, lazyIndex : this.lazyIndex, filters : this.state.selectedFilters});
   },
 
