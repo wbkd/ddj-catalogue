@@ -10,6 +10,19 @@ var port = $.util.env.port || 9999;
 var app = 'app/';
 var dist = 'dist/';
 
+// https://github.com/ai/autoprefixer
+var autoprefixerBrowsers = [                 
+  'ie >= 9',
+  'ie_mob >= 10',
+  'ff >= 30',
+  'chrome >= 34',
+  'safari >= 6',
+  'opera >= 23',
+  'ios >= 6',
+  'android >= 4.4',
+  'bb >= 10'
+];
+
 gulp.task('scripts', function() {
   return gulp.src(webpackConfig.entry)
     .pipe($.webpack(webpackConfig))
@@ -37,9 +50,11 @@ gulp.task('styles',function(cb) {
       // include 'normal' css into main.css
       'include css' : true
     }))
-    .pipe($.size({ title : 'css' }))
+    .pipe($.autoprefixer({browsers: autoprefixerBrowsers})) 
     .pipe(gulp.dest(dist + 'css/'))
+    .pipe($.size({ title : 'css' }))
     .pipe($.connect.reload());
+
 });
 
 // add livereload on the given port

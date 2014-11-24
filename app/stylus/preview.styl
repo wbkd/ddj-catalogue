@@ -8,8 +8,6 @@
 ***********/
 
 .content-wrapper
-	-moz-transition:transform .2s
-	-webkit-transition:transform .2s
 	transition:transform .2s
 
 .preview-list
@@ -22,8 +20,6 @@
 		cursor: pointer
 		padding: .2em .5em
 		user-select: none
-		-webkit-user-select: none
-		-moz-user-select: none
 		margin-right: 1em
 		&.active
 			background: $lightgrey
@@ -63,7 +59,7 @@
 				display:inline-block
 				margin-left:.15em
 				padding:.25em .5em
-				userselect(none)
+				user-select:none
 
 				&:hover
 				&.active
@@ -143,9 +139,7 @@
 		.preview-expanded
 			display:none
 			margin:1em 0
-		
 			
-	
 	&.is-expanded
 		height:auto
 		position:absolute
