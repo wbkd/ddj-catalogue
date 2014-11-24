@@ -5,6 +5,7 @@ var SelectedFilters = React.createClass({
 	
 	getFilters: function() {
 		var filters = [];
+
 		for(var key in this.props.filters) {
   			if (this.props.filters.hasOwnProperty(key)) {
     			filters.push({
@@ -14,9 +15,10 @@ var SelectedFilters = React.createClass({
     			});
   			}
 		}
-		return filters.map(function(filter, i) {
-      		return <Filter key={filter + i} text={filter.text} category={filter.category} checked={filter.checked}/>
-    	});
+		
+    return filters.map(function(filter, i) {
+      return <Filter key={filter + i} text={filter.text} category={filter.category} checked={filter.checked}/>
+    });
 	},
 
 	render: function() {
@@ -24,7 +26,9 @@ var SelectedFilters = React.createClass({
 		var filters = this.getFilters();
 
 		return (
-			<ul>{filters}</ul>
+			<ul>
+        {filters}
+      </ul>
 		);
 	}
 });

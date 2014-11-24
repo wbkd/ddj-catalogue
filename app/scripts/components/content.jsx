@@ -105,24 +105,19 @@ var Content = React.createClass({
       return el.id;
     }),
     isSharedFavoriteList = this.state.sharedFavorites.length > 0,
-    sharedFavoriteList = isSharedFavoriteList ? <FavoritesList isShared={true} favorites={this.state.sharedFavorites} favoritesListActive={true} /> : '';
+    sharedFavoriteList = isSharedFavoriteList ? <FavoritesList isShared={true} favorites={this.state.sharedFavorites} isActive={true} /> : '';
     favorites = isSharedFavoriteList ? this.state.sharedFavorites : this.state.favorites
 
     return (
       <div>
         <FilterMenu filterMenuActive={this.state.filterMenuActive}/>
         <div style={divStyle} className="content-wrapper">
-  			  <FavoritesList isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} favoritesListActive={this.state.favoritesListActive} />
+  			  <FavoritesList isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} isActive={this.state.favoritesListActive} />
           {sharedFavoriteList} 
           <NewsletterArea isActive={this.state.newsletterAreaActive} isSuccess={this.state.newsletterSuccess} errorMessage={this.state.newsletterError} />    
           <SubmitArea isActive={this.state.submitAreaActive} isSuccess={this.state.submitAreaSuccess} errorMessage={this.state.submitAreaError} />
-         
-          <InfoBox infoActive={this.state.infoActive} />
-          
-
-          <PreviewList favoriteIds={favoriteIds}/>
-
-          
+          <InfoBox isActive={this.state.infoActive} />
+          <PreviewList favoriteIds={favoriteIds} />
   		  </div>
       </div>
     	);

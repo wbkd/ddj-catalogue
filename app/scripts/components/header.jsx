@@ -1,6 +1,7 @@
 var React = require('react');
-var FilterActions = require('../actions/filterActions');
 var config = require('../config')
+
+var FilterActions = require('../actions/filterActions');
 var MenuActions = require('../actions/menuActions');
 
 var Header = React.createClass({
@@ -17,7 +18,6 @@ var Header = React.createClass({
             <span className="nav-item" onClick={MenuActions.toggleSubmitArea}><i className="icon_upload"></i>Einreichen</span>
             <span className="nav-item" onClick={MenuActions.toggleNewsletterArea}><i className="icon_mail"></i>Newsletter</span>
             <span className="nav-item" onClick={MenuActions.toggleInfo}><i className="icon_info_alt"></i></span>
-             
           </nav>
         </div>
     	</header>

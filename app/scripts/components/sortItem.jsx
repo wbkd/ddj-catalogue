@@ -13,7 +13,7 @@ var SortItem = React.createClass({
 
     return (
       <li data-type= {this.props.type} className={itemClasses} onClick={this.props.onClick}>
-                {this.props.title} 
+        {this.props.title} 
         <span className="sorter-arrows">
           <i className={sortArrowClass}></i>
         </span>

@@ -6,7 +6,7 @@ var MenuActions = require('../actions/menuActions');
 var FavoritesList = React.createClass({
 
     propTypes : {
-      favoritesListActive : React.PropTypes.bool,
+      isActive : React.PropTypes.bool,
       favorites : React.PropTypes.array,
       favoritesUrl : React.PropTypes.string,
       isSharedFavoriteList : React.PropTypes.bool,
@@ -15,7 +15,7 @@ var FavoritesList = React.createClass({
 
     getDefaultProps: function(){
       return {
-        favoritesListActive : false,
+        isActive : false,
         favorites : [],
         favoritesUrl : '',
         isSharedFavoriteList : false,
@@ -33,7 +33,7 @@ var FavoritesList = React.createClass({
 
     render: function() {
 
-      if(!this.props.favoritesListActive){
+      if(!this.props.isActive){
         return false;
       }
 

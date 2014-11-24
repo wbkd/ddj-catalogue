@@ -4,9 +4,9 @@ var Filter = require('./filter.jsx');
 var FilterGroup = React.createClass({
 
   getInitialState: function() {
-        return { 
-          searchString: ''
-        }
+    return { 
+      searchString: ''
+    }
   },
 
   handleChange: function(e) {
@@ -17,12 +17,10 @@ var FilterGroup = React.createClass({
     var data = this.props.data;
     var searchString = this.state.searchString;
 
-
     var filters = data.filters.map(function(filter,i) {
       var checked = this.props.selected === filter;
       return <Filter key={filter + i + Math.random()} text={filter} category={data.dbId} checked={checked}/>
     }.bind(this));
-
 
     //filter results: http://jsfiddle.net/martinaglv/3N6D3/light/
     if(searchString.length > 0) {

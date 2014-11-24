@@ -3,18 +3,18 @@ var React = require('react');
 var LoadingSpinner = React.createClass({
 
   propTypes : {
-    isLoading : React.PropTypes.bool
+    isActive : React.PropTypes.bool
   },
 
   getDefaultProps: function(){
     return {
-      isLoading : false
+      isActive : false
     };
   },
 
   render: function() {
 
-    if(!this.props.isLoading){
+    if(!this.props.isActive){
       return false;
     }
 

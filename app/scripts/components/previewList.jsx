@@ -100,7 +100,6 @@ var PreviewList = React.createClass({
         
         this.lazyIndex++;
         this.loadPreviews();
-        console.log('load more previews');
       }
     }
      
@@ -129,7 +128,7 @@ var PreviewList = React.createClass({
         <div className="preview-list-content row">
           {previews}
         </div>
-        <LoadingSpinner isLoading={this.state.isLoading} />
+        <LoadingSpinner isActive={this.state.isLoading} />
       </div>
     );
   }

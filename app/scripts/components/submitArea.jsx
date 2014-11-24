@@ -6,14 +6,14 @@ var MenuActions = require('../actions/menuActions');
 var SubmitArea = React.createClass({
 
   propTypes : {
-    submitAreaActive: React.PropTypes.bool,
+    isActive: React.PropTypes.bool,
     errorMessage: React.PropTypes.string,
     isSuccess: React.PropTypes.bool
   },
 
   getDefaultProps: function(){
     return {
-      submitAreaActive: false,
+      isActive: false,
       errorMessage: '',
       isSuccess : false
     };
@@ -38,33 +38,33 @@ var SubmitArea = React.createClass({
 
   render: function() {
 
-      if(!this.props.isActive){
-        return false;
-      }
-
-      var ErrorMessage = this.props.errorMessage ? <div className="form-message error">{this.props.errorMessage}</div> : '';
-      var SuccessMessage = this.props.isSuccess ? <div className="form-message success">Das Projekt wurde eingereicht.</div> : '';
-
-      return (
-            <div className="info">
-              <div className="centered">
-                <div className="btn-close"><i onClick={this.hideSubmitArea} className="icon_close"></i></div>
-                <h1>Projekt einreichen</h1>
-                
-                <form onSubmit={this.submitForm}>
-                  <label>Projekt URL</label>
-                  {ErrorMessage}
-                  {SuccessMessage}
-                  <input ref="projectUrl" type="text" placeholder="http://projekt-url.de"/>
-                  <label >Anmerkungen (optional)</label>
-                  <textarea ref="projectDescription" placeholder="Anmerkung"></textarea>
-                  <button type="submit" className="btn btn-light">Abschicken</button>
-                </form>
-              </div>
-            </div>
-      );
-
+    if(!this.props.isActive){
+      return false;
     }
+
+    var ErrorMessage = this.props.errorMessage ? <div className="form-message error">{this.props.errorMessage}</div> : '';
+    var SuccessMessage = this.props.isSuccess ? <div className="form-message success">Das Projekt wurde eingereicht.</div> : '';
+
+    return (
+      <div className="info">
+        <div className="centered">
+          <div className="btn-close"><i onClick={this.hideSubmitArea} className="icon_close"></i></div>
+          <h1>Projekt einreichen</h1>
+          
+          <form onSubmit={this.submitForm}>
+            <label>Projekt URL</label>
+            {ErrorMessage}
+            {SuccessMessage}
+            <input ref="projectUrl" type="text" placeholder="http://projekt-url.de"/>
+            <label >Anmerkungen (optional)</label>
+            <textarea ref="projectDescription" placeholder="Anmerkung"></textarea>
+            <button type="submit" className="btn btn-light">Abschicken</button>
+          </form>
+        </div>
+      </div>
+    );
+
+  }
 
 });
 

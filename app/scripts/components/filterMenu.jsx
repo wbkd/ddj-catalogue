@@ -7,7 +7,6 @@ var FilterActions = require('../actions/filterActions');
 // stores
 var FilterStore = require('../stores/filterStore.js');
 
-
 var FilterMenu = React.createClass({
 
   propTypes : {
