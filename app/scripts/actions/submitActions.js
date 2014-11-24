@@ -5,14 +5,24 @@ var submitActions = Reflux.createActions([
   'submitProject',
   'submitProjectSuccess',
   'submitProjectError',
+  'resetSubmitArea',
 
-  'resetSubmitArea'
+  'submitEmail',
+  'submitEmailSuccess',
+  'submitEmailError',
+  'resetNewsletterArea'
 ]);
 
 submitActions.submitProject.preEmit = function(data){
   SubmitApi
-    .submit(data)
+    .submit('project', data)
     .then(submitActions.submitProjectSuccess,submitActions.submitProjectError);
+};
+
+submitActions.submitEmail.preEmit = function(data){
+  SubmitApi
+    .submit('email', data)
+    .then(submitActions.submitEmailSuccess,submitActions.submitEmailError);
 };
 
 module.exports = submitActions;

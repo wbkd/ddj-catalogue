@@ -7,14 +7,13 @@ var PreviewList = require('./previewList.jsx');
 var FilterMenu = require('./filterMenu.jsx');
 var FavoritesList = require('./favoritesList.jsx');
 var SubmitArea = require('./submitArea.jsx');
-
+var NewsletterArea = require('./newsletterArea.jsx');
 
 // stores
 var MenuStore = require('../stores/menuStore.js');
 var FilterStore = require('../stores/filterStore.js');
 var FavoritesStore = require('../stores/favoritesStore.js');
 var SubmitStore = require('../stores/submitStore.js');
-
 
 // actions
 var FavoritesActions = require('../actions/favoritesActions.js');
@@ -36,7 +35,11 @@ var Content = React.createClass({
       favorites : [],
       favoritesUrl : '',
       favoritesListActive : false,
-      sharedFavorites : []
+      sharedFavorites : [],
+
+      newsletterAreaActive : false,
+      newsletterSuccess : false,
+      newsletterError : ''
   	}
   },
 
@@ -109,14 +112,17 @@ var Content = React.createClass({
       <div>
         <FilterMenu filterMenuActive={this.state.filterMenuActive}/>
         <div style={divStyle} className="content-wrapper">
-  			  <InfoBox infoActive={this.state.infoActive} />
-            
-          <SubmitArea errorMessage={this.state.submitAreaError} isSuccess={this.state.submitAreaSuccess} submitAreaActive={this.state.submitAreaActive}/>
-
-          <FavoritesList isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} favoritesListActive={this.state.favoritesListActive} />
-  			  {sharedFavoriteList}
+  			  <FavoritesList isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} favoritesListActive={this.state.favoritesListActive} />
+          {sharedFavoriteList} 
+          <NewsletterArea isActive={this.state.newsletterAreaActive} isSuccess={this.state.newsletterSuccess} errorMessage={this.state.newsletterError} />    
+          <SubmitArea isActive={this.state.submitAreaActive} isSuccess={this.state.submitAreaSuccess} errorMessage={this.state.submitAreaError} />
+         
+          <InfoBox infoActive={this.state.infoActive} />
+          
 
           <PreviewList favoriteIds={favoriteIds}/>
+
+          
   		  </div>
       </div>
     	);

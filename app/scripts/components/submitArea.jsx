@@ -7,7 +7,8 @@ var SubmitArea = React.createClass({
 
   propTypes : {
     submitAreaActive: React.PropTypes.bool,
-    errorMessage: React.PropTypes.string
+    errorMessage: React.PropTypes.string,
+    isSuccess: React.PropTypes.bool
   },
 
   getDefaultProps: function(){
@@ -31,13 +32,13 @@ var SubmitArea = React.createClass({
   },
   
   hideSubmitArea: function(){
-    MenuActions.toggleSubmitArea();
+    MenuActions.hideAllAreas();
     SubmitActions.resetSubmitArea();
   },
 
   render: function() {
 
-      if(!this.props.submitAreaActive){
+      if(!this.props.isActive){
         return false;
       }
 
@@ -51,12 +52,12 @@ var SubmitArea = React.createClass({
                 <h1>Projekt einreichen</h1>
                 
                 <form onSubmit={this.submitForm}>
-                  <label for="projektUrl">Projekt URL</label>
+                  <label>Projekt URL</label>
                   {ErrorMessage}
                   {SuccessMessage}
-                  <input ref="projectUrl" name="projektUrl" type="text" placeholder="http://projekt-url.de"/>
-                  <label for="projectDescription">Anmerkungen (optional)</label>
-                  <textarea ref="projectDescription" name="projectDescription" placeholder="Anmerkung"></textarea>
+                  <input ref="projectUrl" type="text" placeholder="http://projekt-url.de"/>
+                  <label >Anmerkungen (optional)</label>
+                  <textarea ref="projectDescription" placeholder="Anmerkung"></textarea>
                   <button type="submit" className="btn btn-light">Abschicken</button>
                 </form>
               </div>

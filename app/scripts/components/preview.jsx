@@ -51,7 +51,7 @@ var Preview = React.createClass({
             
             <div className="btn-group">
               <div onClick={this.starPreview} className="btn btn-star"><i className="icon_star"></i></div>
-              <div onClick={this.togglePreview} className="btn btn-toggle"><i className="arrow_carrot-2down"></i></div>
+              <div onClick={this.togglePreview} className="btn btn-toggle"><i className="icon_info_alt"></i></div>
             </div>
 
             <div className='preview-content'>

@@ -24,7 +24,7 @@ var FavoritesList = React.createClass({
     },
 
     hideList: function() {
-      MenuActions.hideFavoritesList();
+      MenuActions.hideAllAreas();
     },
 
     hideSharedList: function(){
