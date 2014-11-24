@@ -6,6 +6,7 @@ var utils = require('../utils');
 var Preview = require('./preview.jsx');
 var Sorter = require('./sorter.jsx');
 var SelectedFilters = require('./selectedFilters.jsx');
+var LoadingSpinner = require('./loadingSpinner.jsx');
 
 // actions
 var FilterActions = require('../actions/filterActions');
@@ -23,7 +24,8 @@ var PreviewList = React.createClass({
       expandedId : null,
       sortType : config.sortType,
       isSortOrderDesc : config.isSortOrderDesc,
-      selectedFilters : {}
+      selectedFilters : {},
+      isLoading: true
     };
   },
 
@@ -48,8 +50,6 @@ var PreviewList = React.createClass({
       newPreviews = newPreviews.concat(newState.previews);
       newState.previews = newPreviews;
     }
-
-
 
     this.setState(newState);
   },
@@ -129,6 +129,7 @@ var PreviewList = React.createClass({
         <div className="preview-list-content row">
           {previews}
         </div>
+        <LoadingSpinner isLoading={this.state.isLoading} />
       </div>
     );
   }

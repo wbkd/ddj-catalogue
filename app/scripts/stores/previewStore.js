@@ -9,7 +9,7 @@ var PreviewStore = Reflux.createStore({
 
 		this.previews = [];
 		this.detail = {};
-		this.loading = false;
+		this.isLoading = false;
 		this.error = null;
 		this.expandedId = null;
 
@@ -56,31 +56,31 @@ var PreviewStore = Reflux.createStore({
 	********************/
 
 	onLoadPreviews : function(sorting){
-		this.loading = true;
+		this.isLoading = true;
 		this.trigger({
-			loading : this.loading
+			isLoading : this.isLoading
 		});
 	},
 
 	onLoadPreviewsSuccess : function(data){
 
-		this.loading = false;
+		this.isLoading = false;
 		this.error = null;
 		this.previews = data;
 
 		this.trigger({
-			loading : this.loading,
+			isLoading : this.isLoading,
 			error : this.error,
 			previews : this.previews
 		});
 	},
 
 	onLoadPreviewsError: function(data){
-		this.loading = false;
+		this.isLoading = false;
 		this.error = data.error;
 
 		this.trigger({
-			loading : this.loading,
+			isLoading : this.isLoading,
 			error : this.error
 		});
 	},
@@ -92,20 +92,20 @@ var PreviewStore = Reflux.createStore({
 	********************/
 
 	onLoadPreviewById : function(){
-		this.loading = true;
+		this.isLoading = true;
 		this.trigger({
-			loading : this.loading
+			isLoading : this.isLoading
 		});
 	},
 
 	onLoadPreviewByIdSuccess : function(data){
 
-		this.loading = false;
+		this.isLoading = false;
 		this.error = null;
 		this.detail = data[0];
 
 		this.trigger({
-			loading : this.loading,
+			isLoading : this.isLoading,
 			error : this.error,
 			detail : this.detail
 		});
