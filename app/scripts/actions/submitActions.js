@@ -9,9 +9,9 @@ var submitActions = Reflux.createActions([
   'resetSubmitArea'
 ]);
 
-submitActions.submitProject.preEmit = function(projectUrl){
+submitActions.submitProject.preEmit = function(data){
   SubmitApi
-    .submit(projectUrl)
+    .submit(data)
     .then(submitActions.submitProjectSuccess,submitActions.submitProjectError);
 };
 

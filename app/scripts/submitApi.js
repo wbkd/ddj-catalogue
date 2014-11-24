@@ -4,14 +4,12 @@ var config = require('./config');
 var SubmitApi = {
 
   //initial load
-  submit : function(projectUrl){
+  submit : function(data){
     return reqwest({ 
       url : config.submitUrl, 
       type : 'json', 
       method: 'post',
-      data : {
-        url : projectUrl
-      },
+      data : data,
       crossOrigin: true
     });
   }

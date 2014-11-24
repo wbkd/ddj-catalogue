@@ -20,13 +20,14 @@ var SubmitArea = React.createClass({
     
   submitForm: function(evt){
     evt.preventDefault();
-    var projectUrl = this.refs.inputProjectUrl.getDOMNode().value;
+    var projectUrl = this.refs.projectUrl.getDOMNode().value,
+      projectDescription = this.refs.projectDescription.getDOMNode().value;
 
     if(!projectUrl){
       return SubmitActions.submitProjectError('Bitte geben Sie eine gültige URL an.');
     }
 
-    SubmitActions.submitProject(projectUrl);
+    SubmitActions.submitProject({url : projectUrl, description: projectDescription});
   },
   
   hideSubmitArea: function(){
@@ -50,10 +51,12 @@ var SubmitArea = React.createClass({
                 <h1>Projekt einreichen</h1>
                 
                 <form onSubmit={this.submitForm}>
-                  <label>Projekt URL:</label>
+                  <label for="projektUrl">Projekt URL</label>
                   {ErrorMessage}
                   {SuccessMessage}
-                  <input ref="inputProjectUrl" type="text" placeholder="http://projekt-url.de"/>
+                  <input ref="projectUrl" name="projektUrl" type="text" placeholder="http://projekt-url.de"/>
+                  <label for="projectDescription">Anmerkungen (optional)</label>
+                  <textarea ref="projectDescription" name="projectDescription" placeholder="Anmerkung"></textarea>
                   <button type="submit" className="btn btn-light">Abschicken</button>
                 </form>
               </div>
