@@ -22,7 +22,8 @@ var PreviewList = React.createClass({
       previews : [],
       expandedId : null,
       sortType : config.sortType,
-      isSortOrderDesc : config.isSortOrderDesc
+      isSortOrderDesc : config.isSortOrderDesc,
+      selectedFilters : {}
     };
   },
 
@@ -31,10 +32,24 @@ var PreviewList = React.createClass({
     
     var newPreviews = this.state.previews;
 
-    if(!utils.isUndefined(newState.previews)){
+    // we need to clear the preview list
+    // we use this when we sort or filter 
+    if(!utils.isUndefined(newState.reset)){
+      newState.previews = [];
+      this.resetLazyParams();
+      this.setState(newState, function(){
+        this.loadPreviews();
+      }.bind(this));
+
+      return false;
+      
+    }
+    else if(!utils.isUndefined(newState.previews)){
       newPreviews = newPreviews.concat(newState.previews);
       newState.previews = newPreviews;
     }
+
+
 
     this.setState(newState);
   },
@@ -43,15 +58,12 @@ var PreviewList = React.createClass({
 
     this.unsubscribePreviewStore = PreviewStore.listen(this.onStatusChange);
     this.unsubscribeFilterStore = FilterStore.listen(this.onStatusChange);
-    // used to only track scroll down
-    this.lastScrollTop = 0;
-    // index for lazyloading requests
-    this.lazyIndex = 0;
+    this.resetLazyParams();
 
     //TODO:  How to use react onScroll Event in this case?
     window.addEventListener('scroll', this.handleScroll, false);
 
-    PreviewActions.load(this.lazyIndex);
+    this.loadPreviews();
   },
 
   componentWillUnmount: function(){
@@ -60,8 +72,19 @@ var PreviewList = React.createClass({
     window.removeEventListener('scroll', this.handleScroll, false);
   },
 
+  resetLazyParams: function(){
+    // used to only track scroll down
+    this.lastScrollTop = 0;
+    // index for lazyloading requests
+    this.lazyIndex = 0;
+  },
+
   toggleFilterMenu: function(){
     FilterActions.toggleFilterMenu();
+  },
+
+  loadPreviews: function(){
+    PreviewActions.load({sortType : this.state.sortType, isSortOrderDesc: this.state.isSortOrderDesc, lazyIndex : this.lazyIndex, filters : this.state.selectedFilters});
   },
 
   handleScroll: function(){
@@ -75,7 +98,8 @@ var PreviewList = React.createClass({
       // user reaches end of screen
       if(scrollTop + windowHeight >= documentHeight){
         
-        PreviewActions.load(++this.lazyIndex);
+        this.lazyIndex++;
+        this.loadPreviews();
         console.log('load more previews');
       }
     }

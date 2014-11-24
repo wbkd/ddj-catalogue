@@ -1,56 +1,33 @@
 var reqwest = require('reqwest');
 var config = require('./config');
+var utils = require('./utils');
 
 var PreviewApi = {
 
 	//initial load
-	load : function(lazyIndex){
+	load : function(options){
+
+		var SortOrder = options.isSortOrderDesc ? -1 : 1,
+			sortObj = {};
+
+		sortObj[options.sortType] = SortOrder; 
 
 		return reqwest({ 
 			url : config.apiUrl, 
 			data: {
-				filters: {},
-				items : config.itemCount,
-				offset : lazyIndex
+				filters: utils.isEmptyObject(options.filters) ? null : options.filters,
+				items : config.itemCount || 50,
+				offset : options.lazyIndex || 0,
+				sortby : sortObj
 			},
 			type : 'json', 
-			method: 'post',
+			method: 'POST',
 			crossOrigin: true
 		});
-	},
-
-	filter: function(params) {
-		return reqwest({ 
-			url : config.apiUrl, 
-			type : 'json', 
-			method: 'post',
-			data: {
-				filters: params,
-			},
-			crossOrigin: true
-		});		
 	},
 
 	loadById : function(id){
 		return reqwest({ url : config.apiUrl + '/' + id, type : 'json', crossOrigin: true });
-	},
-
-	sortBy : function(sortType,isSortOrderDesc){
-
-		var SortOrder = isSortOrderDesc ? -1 : 1,
-			sortObj = {};
-
-		sortObj[sortType] = SortOrder; 
-
-		return reqwest({ 
-			url : config.apiUrl,
-			data : {
-				sortby : sortObj
-			},
-			type : 'json', 
-			method: 'post',
-			crossOrigin: true 
-		});
 	},
 
 	loadPreviewsById: function(previewIds){

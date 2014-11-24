@@ -39,9 +39,10 @@ var FilterStore = Reflux.createStore({
 
 	filterSelect: function(filter) {
 		this.selectedFilters[filter.category] = filter.text;
-		this.updateFilter(this.selectedFilters);
 
 		this.trigger({
+			reset : true,
+			loading: true,
 			selectedFilters : this.selectedFilters
 		});
 		
@@ -49,21 +50,12 @@ var FilterStore = Reflux.createStore({
 
 	filterUnselect: function(filter) {
 		delete this.selectedFilters[filter.category];
-		this.updateFilter(this.selectedFilters);
 
 		this.trigger({
+			reset : true,
+			loading: true,
 			selectedFilters : this.selectedFilters
 		});
-	},
-
-	updateFilter: function(filter) {
-		var isEmpty = utils.isEmptyObject(filter);
-		if(isEmpty) {
-			previewActions.load();
-		}
-		else {
-			previewActions.filter(filter);
-		}
 	},
 
 	//has to be removed, data should be formatted by backend
