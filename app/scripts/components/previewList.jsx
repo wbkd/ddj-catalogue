@@ -120,7 +120,7 @@ var PreviewList = React.createClass({
     return (
       <div className="preview-list row centered">
         <div className="clearfix preview-list-header">
-          <div className="clearfix left preview-list-left">
+          <div className="clearfix preview-list-left">
             <div onClick={this.toggleFilterMenu} className="btn btn-filter btn"><i className="icon_menu"></i> Liste filtern</div>
             <div className="light count">{this.state.count} Projekte gefunden</div>
           </div>

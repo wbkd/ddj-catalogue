@@ -4,11 +4,9 @@ header
 	background: $indigo
 	box-shadow:0 2px 3px rgba(0,0,0,.25)
 	color: $white
-	position: fixed
+	position: relative
 	width: 100%
-	z-index: 10
 	top: 0
-	height:40px
 		
 	.header-content
 		padding: .5em 1em
@@ -17,28 +15,26 @@ header
 		margin-right: .5em
 
 	.header-title
-		float:left
 		font-weight: bold
+		width:100%
 		
 		a
 			color:$white
 		
+nav
+	user-select:none
+
 	.nav-item
 		color: $white
 		cursor: pointer
 		font-size:14px
 		text-transform:uppercase
-		
-		i 
-			margin-right:.5em
+		width:100%
+		display:block
+		margin-top:.5em
 
 		&:hover
 			color: $lightgrey
-	
-	
-nav 
-	float:right
-	user-select:none
-	
-	> *
-		margin-left:1em
+			
+		i 
+			margin-right:.4em
