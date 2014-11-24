@@ -13,11 +13,10 @@ var Header = React.createClass({
         	  <a href="/">{config.appName}</a>
           </div>
           <nav className="clearfix">
-            <i onClick={MenuActions.toggleInfo} className="icon_info_alt nav-item"></i>
-            <i onClick={MenuActions.toggleFavoritesList} className="icon_star nav-item"></i>
-            <i onClick={MenuActions.toggleSubmitArea} className="icon_mail nav-item"></i>  
-            <a href="http://www.twitter.com/ddj-katalog" className="nav-item"><i className="social_twitter"></i></a>
-            <a href="#/rss" className="nav-item"><i className="social_rss"></i></a>
+            <span className="nav-item" onClick={MenuActions.toggleFavoritesList}><i className="icon_star"></i>Favoriten</span>
+            <span className="nav-item" onClick={MenuActions.toggleSubmitArea}><i className="icon_mail"></i>Einreichen</span>
+            <span className="nav-item" onClick={MenuActions.toggleInfo}><i className="icon_info_alt"></i></span>
+             
           </nav>
         </div>
     	</header>

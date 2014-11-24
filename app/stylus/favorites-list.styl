@@ -6,7 +6,7 @@
     list-style:none
   
   .favorite-item
-    border-bottom:1px solid #eee
+    border-bottom:1px solid $lightgrey
     position: relative
   
     .btn-close
@@ -15,7 +15,7 @@
       bottom:0
       padding:.5em 1em
       color:white
-      background:#e74c3c
+      background:$red
       font-size:14px
       height:auto
       top: auto
@@ -31,7 +31,7 @@
       display:block
     
       &:hover
-        background:#f7f7f7
+        background:$paper
 
     
   .favorite-item-img
@@ -39,11 +39,9 @@
       height: 45px
       margin-right:1em
       float:left
-      background-position: center center;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      background-size: cover;
-      border:1px solid #eee
+      background-position: center center
+      background-size: cover
+      border:1px solid $lightgrey
   
   .favorite-content
     float:left
@@ -55,7 +53,8 @@
     color:$grey
       
   .favorites-url
-    color:#777
+    color:$grey
+    
     label
       display:block
       margin:.5em 0
@@ -63,6 +62,7 @@
   &.is-shared-list
     .favorites-url
       display:none
+      
     .favorite-item
       .btn-close
         display:none
