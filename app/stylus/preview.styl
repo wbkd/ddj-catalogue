@@ -11,35 +11,51 @@
 
 .preview-list
 	padding-top:2em
+	
 	.selected-filters ul
 		list-style: none
 		padding: 1em
+		
 	li.filter
 		float: left
 		cursor: pointer
 		padding: .2em .5em
 		user-select: none
 		margin-right: 1em
+		
 		&.active
 			background: $lightgrey
 			box-shadow: 0 2px 3px rgba(0,0,0,.25)
 			z-index:999
+			
 		&:hover.active
 			background: $lightgrey
 			box-shadow: 0 2px 3px rgba(0,0,0,.25)
+			
 		i
 			display: none
 			float: right
 			margin-top: .2em
+			
 		&:hover
 			background: $lightgrey
 			box-shadow: 0 2px 2px rgba(0,0,0,.15)
+			
 		&.active i.icon_check
 			display: block
+			
 		&.active:hover i.icon_close
 			display: block
+			
 		&.active:hover i.icon_check
 			display: none
+
+.preview-list-left > div
+	float:left
+	margin-right:1em
+	
+.count
+	line-height: 1.9em
 
 .preview-list-header
 	padding:1em

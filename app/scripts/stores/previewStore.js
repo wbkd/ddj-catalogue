@@ -12,6 +12,7 @@ var PreviewStore = Reflux.createStore({
 		this.isLoading = false;
 		this.error = null;
 		this.expandedId = null;
+		this.count = 0;
 
 		this.listenTo(previewActions.toggleExpandedPreview,this.toggleExpandedPreview);
 		this.listenTo(previewActions.shrinkPreviews,this.shrinkPreviews);
@@ -66,12 +67,14 @@ var PreviewStore = Reflux.createStore({
 
 		this.isLoading = false;
 		this.error = null;
-		this.previews = data;
-
+		this.previews = data.previews;
+		this.count = data.count;
+		
 		this.trigger({
 			isLoading : this.isLoading,
 			error : this.error,
-			previews : this.previews
+			previews : this.previews,
+			count : this.count
 		});
 	},
 

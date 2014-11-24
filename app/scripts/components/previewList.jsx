@@ -25,7 +25,8 @@ var PreviewList = React.createClass({
       sortType : config.sortType,
       isSortOrderDesc : config.isSortOrderDesc,
       selectedFilters : {},
-      isLoading: true
+      isLoading: true,
+      count : 0
     };
   },
 
@@ -119,7 +120,10 @@ var PreviewList = React.createClass({
     return (
       <div className="preview-list row centered">
         <div className="clearfix preview-list-header">
-          <div onClick={this.toggleFilterMenu} className="btn btn-filter btn"><i className="icon_menu"></i> Liste filtern</div>
+          <div className="clearfix left preview-list-left">
+            <div onClick={this.toggleFilterMenu} className="btn btn-filter btn"><i className="icon_menu"></i> Liste filtern</div>
+            <div className="light count">{this.state.count} Projekte gefunden</div>
+          </div>
           <Sorter isSortOrderDesc={this.state.isSortOrderDesc} sortType={this.state.sortType} />
         </div>
         <div className="selected-filters clearfix">
