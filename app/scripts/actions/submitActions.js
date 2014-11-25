@@ -1,5 +1,5 @@
 var Reflux = require('reflux');
-var SubmitApi = require('../submitApi');
+var SubmitApi = require('../apis/submitApi');
 
 var submitActions = Reflux.createActions([
   'submitProject',

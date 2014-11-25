@@ -1,6 +1,6 @@
 var Reflux = require('reflux');
 
-var PreviewApi = require('../previewApi');
+var PreviewApi = require('../apis/previewApi');
 
 var previewActions = Reflux.createActions([
   'load',

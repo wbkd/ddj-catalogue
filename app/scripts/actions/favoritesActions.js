@@ -1,5 +1,5 @@
 var Reflux = require('reflux');
-var PreviewApi = require('../previewApi');
+var PreviewApi = require('../apis/previewApi');
 
 var favoritesActions = Reflux.createActions([
   'starPreview',
