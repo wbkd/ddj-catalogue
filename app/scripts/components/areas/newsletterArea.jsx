@@ -45,9 +45,14 @@ var NewsletterArea = React.createClass({
     var SuccessMessage = this.props.isSuccess ? <div className="form-message success">Ihre E-Mail wurde eingetragen.</div> : '';
 
     return (
-          <div className="info">
+          <div className="area">
             <div className="centered">
-              <div className="btn-close"><i onClick={this.hideNewsletterArea} className="icon_close"></i></div>
+              <div className="clearfix">
+                <div className="btn btn-close" onClick={this.hideNewsletterArea}>
+                  <i className="icon_close"></i>
+                  Fenster schließen
+                </div>
+              </div>
               <h1>Newsletter</h1>
               <p>Tragen Sie sich bei unserem Newsletter ein, um aktuelle Mitteilungen von DACOSTO und webkid zu bekommen.</p>
               <form onSubmit={this.submitForm}>

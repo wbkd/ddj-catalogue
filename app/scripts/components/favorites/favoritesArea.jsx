@@ -51,18 +51,25 @@ var FavoritesArea = React.createClass({
 
       var styles = cx({
         'favorites-list' : true,
-        'info' : true,
+        'area' : true,
         'is-shared-list' : this.props.isShared
       });
 
       return (
             <div className={styles}>
                 <div className="centered">
-                  <div className="btn-close"><i onClick={this.props.isShared ? this.hideSharedList : this.hideList} className="icon_close"></i></div>
-                  <div className="clearfix favorites-list-header">
-                    <h1>{this.props.isShared ? 'Geteilte Favoriten ' : 'Meine Favoriten'}</h1>
-                    {hasFavorites ? <div className="btn btn-clear" onClick={this.resetList}><i className="icon_close"></i> Liste leeren</div> : ''}
+                  
+                  <div className="clearfix">
+                    <div className="btn btn-close" onClick={this.props.isShared ? this.hideSharedList : this.hideList}>
+                      <i className="icon_close"></i>
+                      Fenster schließen
+                    </div>
+                    {hasFavorites ? <div className="btn btn-clear" onClick={this.resetList}><i className="icon_trash_alt"></i> Liste leeren</div> : ''}
+  
                   </div>
+
+                  <h1>{this.props.isShared ? 'Geteilte Favoriten ' : 'Meine Favoriten'}</h1>
+
                   <ul>
                     {hasFavorites ? favorites : this.props.noFavoritesAddedMessage }
                   </ul>

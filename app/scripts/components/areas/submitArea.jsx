@@ -46,9 +46,16 @@ var SubmitArea = React.createClass({
     var SuccessMessage = this.props.isSuccess ? <div className="form-message success">Das Projekt wurde eingereicht.</div> : '';
 
     return (
-      <div className="info">
+      <div className="area">
         <div className="centered">
-          <div className="btn-close"><i onClick={this.hideSubmitArea} className="icon_close"></i></div>
+          
+          <div className="clearfix">
+            <div className="btn btn-close" onClick={this.hideSubmitArea} >
+              <i className="icon_close"></i>
+              Fenster schließen
+            </div>
+          </div>
+
           <h1>Projekt einreichen</h1>
           
           <form onSubmit={this.submitForm}>

@@ -22,11 +22,18 @@ var InfoArea = React.createClass({
     }
 
     return (
-      <div className="info">
+      <div className="area">
         <div className="centered">
-        	<div className="btn-close"><i onClick={MenuActions.hideAllAreas} className="icon_close"></i></div>
+          <div className="clearfix">
+            <div className="btn btn-close" onClick={MenuActions.hideAllAreas}>
+              <i className="icon_close"></i>
+              Fenster schließen
+            </div>
+          </div>
+
         	<h1>Über dieses Projekt</h1>
-        	<p>Lorem Ipsum Lorem Ipsum</p>
+        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, modi, adipisci. Ab ducimus, nemo eligendi eaque, eum magni adipisci consectetur labore laborum commodi hic nulla. Dolore aspernatur laborum, sapiente commodi.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, modi, adipisci. Ab ducimus, nemo eligendi eaque, eum magni adipisci consectetur labore laborum commodi hic nulla. Dolore aspernatur laborum, sapiente commodi.</p>
         </div>
       </div>
     );
