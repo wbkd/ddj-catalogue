@@ -19,7 +19,7 @@ var Sorter = React.createClass({
       <div className="sorter">
         <span>Sortieren: </span>
         <ul>
-          <SortItem onClick={this.sortBy.bind(this,'publisher')} type="publisher" title="Herausgeber" sortType={this.props.sortType} isSortOrderDesc={this.props.isSortOrderDesc}/>
+          <SortItem onClick={this.sortBy.bind(this,'social.sum')} type="social.sum" title="Social" sortType={this.props.sortType} isSortOrderDesc={this.props.isSortOrderDesc}/>
           <SortItem onClick={this.sortBy.bind(this,'date')} type="date" title="Datum" sortType={this.props.sortType} isSortOrderDesc={this.props.isSortOrderDesc}/>
         </ul>
       </div>

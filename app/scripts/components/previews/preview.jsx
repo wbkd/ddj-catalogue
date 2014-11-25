@@ -53,12 +53,18 @@ var Preview = React.createClass({
               <div onClick={this.togglePreview} className="btn btn-toggle"><i className="icon_info_alt"></i></div>
             </div>
 
-            <div className='preview-content'>
-          		<div className='preview-title'>{ preview.title }</div>
-          		<div className='preview-publisher'>{ preview.publisher }, {date}</div>
-              <div className='preview-expanded'>
-                <div className='preview-description'>{ preview.description }</div>
-                <div className='preview-byline'>Von { preview.byline.toString() }</div>
+            <div className="preview-content">
+          		<div className="preview-title">{ preview.title }</div>
+          		<div className="preview-publisher">{ preview.publisher }, {date}</div>
+              <div className="preview-expanded">
+                <div className="preview-description">{ preview.description }</div>
+                { preview.byline ? <div className="preview-byline">Von { preview.byline.toString() }</div> : '' }
+                <div className="preview-social">
+                
+                  <i className="social_facebook"></i> { preview.social.facebook }
+
+                  <i className="social_twitter"></i> { preview.social.twitter }  
+                </div>
               </div>
             </div>
         	</div>
