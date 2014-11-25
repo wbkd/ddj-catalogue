@@ -3,8 +3,13 @@ var cx = React.addons.classSet;
 
 var config = require('../../config');
 var utils = require('../../utils');
+
+var SocialItems = require('./socialItems.jsx');
+
 var PreviewActions = require('../../actions/previewActions')
 var FavoritesActions = require('../../actions/favoritesActions')
+
+
 
 var Preview = React.createClass({
 
@@ -56,16 +61,16 @@ var Preview = React.createClass({
             <div className="preview-content">
           		<div className="preview-title">{ preview.title }</div>
           		<div className="preview-publisher">{ preview.publisher }, {date}</div>
-              <div className="preview-expanded">
+                
+              { this.props.sortType === 'social.sum' && !this.props.isExpanded ?  <SocialItems socialData={preview.social}/> : ''}
+
+              {this.props.isExpanded ? <div className="preview-expanded">
                 <div className="preview-description">{ preview.description }</div>
                 { preview.byline ? <div className="preview-byline">Von { preview.byline.toString() }</div> : '' }
-                <div className="preview-social">
-                
-                  <i className="social_facebook"></i> { preview.social.facebook }
+                <SocialItems socialData={preview.social}/>
+              </div> : ''}
 
-                  <i className="social_twitter"></i> { preview.social.twitter }  
-                </div>
-              </div>
+
             </div>
         	</div>
       </div>

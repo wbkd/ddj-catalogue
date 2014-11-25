@@ -119,7 +119,7 @@ var PreviewList = React.createClass({
     var previews = this.state.previews.map(function(preview,i) {
       var isExpanded = this.state.expandedId ? this.state.expandedId === preview._id : false,
         isStared = this.props.favoriteIds.indexOf(preview._id) !== -1;
-      return (<Preview data={preview} isStared={isStared} isExpanded={isExpanded} key={preview._id} />);
+      return (<Preview data={preview} isStared={isStared} isExpanded={isExpanded} sortType={this.state.sortType} key={preview._id} />);
     }.bind(this));
 
     return (
