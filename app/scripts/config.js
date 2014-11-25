@@ -12,5 +12,5 @@ module.exports = {
   isSortOrderDesc : true,
 
   // labels
-  appName: 'Datenprojekte'
+  appName: 'Datenkatalog'
 };

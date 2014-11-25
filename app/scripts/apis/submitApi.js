@@ -1,5 +1,5 @@
 var reqwest = require('reqwest');
-var config = require('./config');
+var config = require('../config');
 
 var SubmitApi = {
 

@@ -10,6 +10,7 @@ var Header = React.createClass({
     return (
     	<header>
         <div className="clearfix header-content centered">
+          <img className="header-logo" src="images/datenkatalog-logo.png"/>
           <div className="header-title">
         	  <a href="/">{config.appName}</a>
           </div>
