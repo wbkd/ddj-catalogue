@@ -1,5 +1,5 @@
 # DDJ Catalogue Frontend
-
+Frontend of https://github.com/wbkd/ddj-catalogue-backend
 
 ### Installation
 
