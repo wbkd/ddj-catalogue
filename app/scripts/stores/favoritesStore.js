@@ -23,6 +23,18 @@ var FavoritesStore = Reflux.createStore({
     this.listenTo(favoritesActions.loadSharedFavorites,this.loadSharedFavorites);
     this.listenTo(favoritesActions.loadSharedFavoritesSuccess,this.loadSharedFavoritesSuccess);
     this.listenTo(favoritesActions.loadSharedFavoritesError,this.loadSharedFavoritesError);
+
+    this.listenTo(favoritesActions.resetFavorites,this.resetFavorites)
+  },
+
+  resetFavorites: function(){
+    this.favorites = [];
+    store.set('favorites', this.favorites);
+    
+    this.trigger({ 
+     favorites : this.favorites
+    });
+
   },
 
   toggleStar: function(preview){

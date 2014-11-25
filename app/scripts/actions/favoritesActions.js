@@ -6,7 +6,8 @@ var favoritesActions = Reflux.createActions([
   'loadFavorites',
   'loadSharedFavorites',
   'loadSharedFavoritesSuccess',
-  'loadSharedFavoritesError'
+  'loadSharedFavoritesError',
+  'resetFavorites'
 ]);
 
 favoritesActions.loadSharedFavorites.preEmit = function(previewIds){

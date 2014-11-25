@@ -1,6 +1,9 @@
 var React = require('react/addons');
 var cx = React.addons.classSet;
+
 var Favorite = require('./favorite.jsx');
+
+var FavoritesActions = require('../actions/favoritesActions');
 var MenuActions = require('../actions/menuActions');
 
 var FavoritesList = React.createClass({
@@ -19,7 +22,7 @@ var FavoritesList = React.createClass({
         favorites : [],
         favoritesUrl : '',
         isSharedFavoriteList : false,
-        noFavoritesAddedMessage : 'Es Wurden bisher keine Favoriten hinzugefügt.'
+        noFavoritesAddedMessage : 'Es wurden bisher keine Favoriten hinzugefügt.'
       };
     },
 
@@ -29,6 +32,10 @@ var FavoritesList = React.createClass({
 
     hideSharedList: function(){
       MenuActions.hideSharedList();
+    },
+
+    resetList: function(){
+      FavoritesActions.resetFavorites();
     },
 
     render: function() {
@@ -53,6 +60,7 @@ var FavoritesList = React.createClass({
                 <div className="centered">
                   <div className="btn-close"><i onClick={this.props.isShared ? this.hideSharedList : this.hideList} className="icon_close"></i></div>
                   <h1>{this.props.isShared ? 'Geteilte Favoriten ' : 'Meine Favoriten'}</h1>
+                  {hasFavorites ? <div className="btn btn-clear" onClick={this.resetList}>Gesamte Liste löschen</div> : ''}
                   <ul>
                     {hasFavorites ? favorites : this.props.noFavoritesAddedMessage }
                   </ul>
