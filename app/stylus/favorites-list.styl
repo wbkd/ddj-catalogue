@@ -2,8 +2,23 @@
 
 .favorites-list
   
+  .favorites-list-header
+    margin-top:1.5em
+    
+  h1
+    float:left
+    margin:0 0 .5em 0
+
   .btn-clear
     margin-bottom:.5em
+    border:1px solid $red
+    color:$red
+    background:white
+    float:right
+    
+    &:hover
+      background:$red
+      color:white
 
   ul
     list-style:none
@@ -17,8 +32,9 @@
       right:0
       bottom:0
       padding:.5em 1em
-      color:white
-      background:$red
+      color:$red
+      border:1px solid $lightgrey
+      border-bottom:none
       font-size:14px
       height:auto
       top: auto
@@ -27,6 +43,8 @@
       
       &:hover
         box-shadow:0 1px 2px rgba(0,0,0,.2)
+        background:$red
+        color:white
 
     a
       padding:1em 0

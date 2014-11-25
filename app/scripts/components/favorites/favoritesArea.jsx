@@ -6,7 +6,7 @@ var Favorite = require('./favorite.jsx');
 var FavoritesActions = require('../../actions/favoritesActions');
 var MenuActions = require('../../actions/menuActions');
 
-var FavoritesList = React.createClass({
+var FavoritesArea = React.createClass({
 
     propTypes : {
       isActive : React.PropTypes.bool,
@@ -59,8 +59,10 @@ var FavoritesList = React.createClass({
             <div className={styles}>
                 <div className="centered">
                   <div className="btn-close"><i onClick={this.props.isShared ? this.hideSharedList : this.hideList} className="icon_close"></i></div>
-                  <h1>{this.props.isShared ? 'Geteilte Favoriten ' : 'Meine Favoriten'}</h1>
-                  {hasFavorites ? <div className="btn btn-clear" onClick={this.resetList}>Gesamte Liste löschen</div> : ''}
+                  <div className="clearfix favorites-list-header">
+                    <h1>{this.props.isShared ? 'Geteilte Favoriten ' : 'Meine Favoriten'}</h1>
+                    {hasFavorites ? <div className="btn btn-clear" onClick={this.resetList}><i className="icon_close"></i> Liste leeren</div> : ''}
+                  </div>
                   <ul>
                     {hasFavorites ? favorites : this.props.noFavoritesAddedMessage }
                   </ul>
@@ -75,4 +77,4 @@ var FavoritesList = React.createClass({
     }
 });
 
-module.exports = FavoritesList;
+module.exports = FavoritesArea;

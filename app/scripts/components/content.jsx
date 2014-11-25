@@ -2,10 +2,10 @@ var React = require('react');
 var utils = require('../utils');
 
 // components
-var InfoBox = require('./areas/infobox.jsx');
+var InfoArea = require('./areas/infoArea.jsx');
 var PreviewList = require('./previews/previewList.jsx');
 var FilterMenu = require('./filter/filterMenu.jsx');
-var FavoritesList = require('./favorites/favoritesList.jsx');
+var FavoritesArea = require('./favorites/favoritesArea.jsx');
 var SubmitArea = require('./areas/submitArea.jsx');
 var NewsletterArea = require('./areas/newsletterArea.jsx');
 
@@ -105,18 +105,18 @@ var Content = React.createClass({
       return el.id;
     }),
     isSharedFavoriteList = this.state.sharedFavorites.length > 0,
-    sharedFavoriteList = isSharedFavoriteList ? <FavoritesList isShared={true} favorites={this.state.sharedFavorites} isActive={true} /> : '';
+    sharedFavoriteList = isSharedFavoriteList ? <FavoritesArea isShared={true} favorites={this.state.sharedFavorites} isActive={true} /> : '';
     favorites = isSharedFavoriteList ? this.state.sharedFavorites : this.state.favorites
 
     return (
       <div>
         <FilterMenu filterMenuActive={this.state.filterMenuActive}/>
         <div style={divStyle} className="content-wrapper">
-  			  <FavoritesList isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} isActive={this.state.favoritesListActive} />
+  			  <FavoritesArea isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} isActive={this.state.favoritesListActive} />
           {sharedFavoriteList} 
           <NewsletterArea isActive={this.state.newsletterAreaActive} isSuccess={this.state.newsletterSuccess} errorMessage={this.state.newsletterError} />    
           <SubmitArea isActive={this.state.submitAreaActive} isSuccess={this.state.submitAreaSuccess} errorMessage={this.state.submitAreaError} />
-          <InfoBox isActive={this.state.infoActive} />
+          <InfoArea isActive={this.state.infoActive} />
           <PreviewList favoriteIds={favoriteIds} />
   		  </div>
       </div>

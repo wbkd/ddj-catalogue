@@ -55,7 +55,7 @@ var NewsletterArea = React.createClass({
                 {ErrorMessage}
                 {SuccessMessage}
                 <input ref="email" type="text" placeholder="e@mail.de"/>
-                <button type="submit" className="btn btn-light">Abschicken</button>
+                <button type="submit" className="btn btn-success">Abschicken</button>
               </form>
             </div>
           </div>

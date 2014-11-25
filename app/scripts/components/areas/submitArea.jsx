@@ -58,7 +58,7 @@ var SubmitArea = React.createClass({
             <input ref="projectUrl" type="text" placeholder="http://projekt-url.de"/>
             <label >Anmerkungen (optional)</label>
             <textarea ref="projectDescription" placeholder="Anmerkung"></textarea>
-            <button type="submit" className="btn btn-light">Abschicken</button>
+            <button type="submit" className="btn btn-success">Abschicken</button>
           </form>
         </div>
       </div>
