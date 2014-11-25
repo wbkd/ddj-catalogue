@@ -3,9 +3,9 @@ var cx = React.addons.classSet;
 // components
 var FilterGroup = require('./filterGroup.jsx');
 // actions
-var FilterActions = require('../actions/filterActions');
+var FilterActions = require('../../actions/filterActions');
 // stores
-var FilterStore = require('../stores/filterStore.js');
+var FilterStore = require('../../stores/filterStore.js');
 
 var FilterMenu = React.createClass({
 

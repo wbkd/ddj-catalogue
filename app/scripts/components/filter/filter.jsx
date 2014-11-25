@@ -1,7 +1,7 @@
 var React = require('react/addons');
 var cx = React.addons.classSet;
 
-var FilterActions = require('../actions/filterActions.js');
+var FilterActions = require('../../actions/filterActions.js');
 
 var Filter = React.createClass({
 

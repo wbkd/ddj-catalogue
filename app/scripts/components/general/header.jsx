@@ -1,8 +1,8 @@
 var React = require('react');
-var config = require('../config')
+var config = require('../../config')
 
-var FilterActions = require('../actions/filterActions');
-var MenuActions = require('../actions/menuActions');
+var FilterActions = require('../../actions/filterActions');
+var MenuActions = require('../../actions/menuActions');
 
 var Header = React.createClass({
 

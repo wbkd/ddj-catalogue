@@ -3,7 +3,7 @@ var cx = React.addons.classSet;
 
 var SortItem = require('./sortItem.jsx')
 
-var PreviewActions = require('../actions/previewActions');
+var PreviewActions = require('../../actions/previewActions');
 
 var Sorter = React.createClass({
 

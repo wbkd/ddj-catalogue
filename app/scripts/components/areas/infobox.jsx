@@ -1,7 +1,7 @@
 var React = require('react');
 
-var MenuActions = require('../actions/menuActions.js');
-var MenuStore = require('../stores/menuStore');
+var MenuActions = require('../../actions/menuActions.js');
+var MenuStore = require('../../stores/menuStore');
 
 var Info = React.createClass({
 

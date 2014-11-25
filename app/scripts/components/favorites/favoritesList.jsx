@@ -3,8 +3,8 @@ var cx = React.addons.classSet;
 
 var Favorite = require('./favorite.jsx');
 
-var FavoritesActions = require('../actions/favoritesActions');
-var MenuActions = require('../actions/menuActions');
+var FavoritesActions = require('../../actions/favoritesActions');
+var MenuActions = require('../../actions/menuActions');
 
 var FavoritesList = React.createClass({
 

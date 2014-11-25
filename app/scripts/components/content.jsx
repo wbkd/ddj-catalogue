@@ -2,12 +2,12 @@ var React = require('react');
 var utils = require('../utils');
 
 // components
-var InfoBox = require('./infobox.jsx');
-var PreviewList = require('./previewList.jsx');
-var FilterMenu = require('./filterMenu.jsx');
-var FavoritesList = require('./favoritesList.jsx');
-var SubmitArea = require('./submitArea.jsx');
-var NewsletterArea = require('./newsletterArea.jsx');
+var InfoBox = require('./areas/infobox.jsx');
+var PreviewList = require('./previews/previewList.jsx');
+var FilterMenu = require('./filter/filterMenu.jsx');
+var FavoritesList = require('./favorites/favoritesList.jsx');
+var SubmitArea = require('./areas/submitArea.jsx');
+var NewsletterArea = require('./areas/newsletterArea.jsx');
 
 // stores
 var MenuStore = require('../stores/menuStore.js');

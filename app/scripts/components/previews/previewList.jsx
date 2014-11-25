@@ -1,20 +1,20 @@
 var React = require('react');
-var config = require('../config');
-var utils = require('../utils');
+var config = require('../../config');
+var utils = require('../../utils');
 
 // components
 var Preview = require('./preview.jsx');
-var Sorter = require('./sorter.jsx');
-var SelectedFilters = require('./selectedFilters.jsx');
-var LoadingSpinner = require('./loadingSpinner.jsx');
+var Sorter = require('../sorter/sorter.jsx');
+var SelectedFilters = require('../filter/selectedFilters.jsx');
+var LoadingSpinner = require('../general/loadingSpinner.jsx');
 
 // actions
-var FilterActions = require('../actions/filterActions');
-var PreviewActions = require('../actions/previewActions');
+var FilterActions = require('../../actions/filterActions');
+var PreviewActions = require('../../actions/previewActions');
 
 // stores
-var PreviewStore = require('../stores/previewStore');
-var FilterStore = require('../stores/filterStore');
+var PreviewStore = require('../../stores/previewStore');
+var FilterStore = require('../../stores/filterStore');
 
 var PreviewList = React.createClass({
 

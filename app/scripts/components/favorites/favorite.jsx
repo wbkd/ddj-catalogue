@@ -1,6 +1,6 @@
 var React = require('react');
 
-var FavoritesActions = require('../actions/favoritesActions')
+var FavoritesActions = require('../../actions/favoritesActions')
 
 var Favorite = React.createClass({
 

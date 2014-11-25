@@ -1,11 +1,10 @@
-var React = require('react');
+var React = require('react/addons');
 var cx = React.addons.classSet;
 
-var config = require('../config');
-var utils = require('../utils');
-var PreviewActions = require('../actions/previewActions')
-var FavoritesActions = require('../actions/favoritesActions')
-
+var config = require('../../config');
+var utils = require('../../utils');
+var PreviewActions = require('../../actions/previewActions')
+var FavoritesActions = require('../../actions/favoritesActions')
 
 var Preview = React.createClass({
 

@@ -1,7 +1,7 @@
 var React = require('react');
 
-var SubmitActions = require('../actions/submitActions');
-var MenuActions = require('../actions/menuActions');
+var SubmitActions = require('../../actions/submitActions');
+var MenuActions = require('../../actions/menuActions');
 
 var SubmitArea = React.createClass({
 
