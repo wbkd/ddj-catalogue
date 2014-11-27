@@ -18,6 +18,12 @@ $ npm start
 
 visit `http://localhost:9999`
 
+### Tests
+
+```shell
+$ gulp test
+```
+
 
 #### Used Technologies
 * UI Components: [React](http://facebook.github.io/react/)
@@ -28,3 +34,4 @@ visit `http://localhost:9999`
 * Module Loader: [Webpack](https://github.com/webpack/webpack)
 * Build System: [Gulp](http://gulpjs.com/)
 * CSS Preprocessor: [Stylus](https://github.com/LearnBoost/stylus)
+* Testing: [Jest](https://facebook.github.io/jest/)
