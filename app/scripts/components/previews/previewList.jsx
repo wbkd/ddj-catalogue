@@ -122,8 +122,12 @@ var PreviewList = React.createClass({
       return (<Preview data={preview} isStared={isStared} isExpanded={isExpanded} sortType={this.state.sortType} key={preview._id} />);
     }.bind(this));
 
+    var minHeight = {
+      minHeight: window.innerHeight
+    }
+
     return (
-      <div className="preview-list row centered">
+      <div style={minHeight} className="preview-list row centered">
         <div className="clearfix preview-list-header">
           <div className="clearfix preview-list-left">
             <div onClick={this.toggleFilterMenu} className="btn btn-filter btn"><i className="icon_menu"></i> Liste filtern</div>

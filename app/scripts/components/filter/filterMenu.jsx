@@ -44,7 +44,6 @@ var FilterMenu = React.createClass({
   },
 
   render: function() {
-
     var filters = this.state.uiData.map(function(d,i) {
       var selected = this.state.selectedFilters[d.dbId];
       return <FilterGroup key={'fg_' + i} data={d} selected={selected} />

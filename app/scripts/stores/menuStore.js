@@ -77,13 +77,16 @@ var MenuStore = Reflux.createStore({
   },
 
   toggleArea: function(name){
+
+    //make area visible (tbd: animate scroll)
+    document.body.scrollTop = 0;
+    
     if(this[name]){
       this.setAllAreasHidden();
     }else{
       this.setAllAreasHidden();
       this[name] = true;  
     }
-
     this.triggerAreaToggle();
   },
 

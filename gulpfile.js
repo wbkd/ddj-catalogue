@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
+var jest = require('gulp-jest');
 // set variable via $ gulp --type production
 var environment = $.util.env.type || 'development';
 var isProduction = environment === 'production';
@@ -112,4 +113,22 @@ gulp.task('default', ['build', 'serve', 'watch']);
 // waits until clean is finished then builds the project
 gulp.task('build', ['clean'], function(){
   gulp.start(['images','data', 'cssAssets', 'fonts', 'html','scripts','styles']);
+});
+
+gulp.task('test', function () {
+    return gulp.src('app').pipe(jest({
+        scriptPreprocessor: 'utils/preprocessor.js',
+        unmockedModulePathPatterns: [
+            "node_modules/react"
+        ],
+        testDirectoryName: "__tests__",
+        testPathIgnorePatterns: [
+            "node_modules"
+        ],
+        moduleFileExtensions: [
+            "js",
+            "json",
+            "react"
+        ]
+    }));
 });

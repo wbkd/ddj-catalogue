@@ -24,8 +24,7 @@ var store = require('store');
 var Content = React.createClass({
 
   getInitialState: function() {
-  	return {
-  		shiftPx: 0,
+    return {
       filterMenuActive : false,
       infoActive: typeof store.get('ddj-infobox') === 'undefined',
       submitAreaActive : false,
@@ -67,7 +66,6 @@ var Content = React.createClass({
 
   onStatusChange: function(state){
     this.setState(state);
-    this.shiftContent();
   },
 
   getMenuOffset: function() {
@@ -77,31 +75,29 @@ var Content = React.createClass({
         win = window.innerWidth,
         result = 0;
 
-    if(win <= container) {
-      result = menu;
+    if(this.state.filterMenuActive) {
+      if(win <= container) {
+        result = menu;
+      }
+      else {
+        var offset = (win - container) / 2;
+        result = offset > menu ? 0 : menu - offset;
+      }
     }
     else {
-      var offset = (win - container) / 2;
-      result = offset > menu ? 0 : menu - offset;
+      result = 0;
     }
-
     return result;
   },
 
-  shiftContent: function() {
-
-    if(!this.state.filterMenuActive) {
-      this.setState({shiftPx: 0});
-      return false;
-    }
-
-    this.setState({shiftPx: this.getMenuOffset()});
-  },
-
   render: function() {
+
+    var shiftPx = this.getMenuOffset();
+
   	var divStyle = {
-      transform: 'translateX(' + this.state.shiftPx + 'px)'
-    },favoriteIds = this.state.favorites.map(function(el){
+      transform: 'translateX(' + shiftPx + 'px)'
+    },
+    favoriteIds = this.state.favorites.map(function(el){
       return el.id;
     }),
     isSharedFavoriteList = this.state.sharedFavorites.length > 0,

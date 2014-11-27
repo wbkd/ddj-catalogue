@@ -12,6 +12,8 @@ var menuActions = Reflux.createActions([
   'hideAllAreas'
 ]);
 
+console.log(menuActions);
+
 menuActions.toggleInfo.preEmit = function(){
   FilterActions.hideFilterMenu();
 }
