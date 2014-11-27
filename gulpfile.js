@@ -94,6 +94,12 @@ gulp.task('fonts', function(cb) {
     .pipe(gulp.dest(dist + 'fonts'));
 });
 
+// copy css assets folder
+gulp.task('favicon', function(cb) {
+  return gulp.src(app + '*.{ico,png}')
+    .pipe(gulp.dest(dist));
+});
+
 // watch styl, html and js file changes
 gulp.task('watch', function() {
   gulp.watch(app + 'stylus/*.styl', ['styles']);
@@ -112,7 +118,7 @@ gulp.task('default', ['build', 'serve', 'watch']);
 
 // waits until clean is finished then builds the project
 gulp.task('build', ['clean'], function(){
-  gulp.start(['images','data', 'cssAssets', 'fonts', 'html','scripts','styles']);
+  gulp.start(['images','data', 'cssAssets', 'fonts', 'html','scripts','styles', 'favicon']);
 });
 
 gulp.task('test', function () {
