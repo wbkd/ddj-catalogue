@@ -5,6 +5,7 @@ var config = require('../../config');
 var utils = require('../../utils');
 
 var SocialItems = require('./socialItems.jsx');
+var BylineLink = require('./bylineLink.jsx');
 
 var PreviewActions = require('../../actions/previewActions')
 var FavoritesActions = require('../../actions/favoritesActions')
@@ -31,6 +32,14 @@ var Preview = React.createClass({
 
   starPreview: function(){
     FavoritesActions.starPreview(this.props.data);
+  },
+
+  getBylineLinks: function(byline) {
+    var links = [];
+    byline.forEach(function(name, i) {
+      links.push(<BylineLink key={"bl_" + i} text={name} addComma={i < byline.length - 1}/>);
+    });
+    return links;
   },
 
   render: function() {
@@ -66,7 +75,7 @@ var Preview = React.createClass({
 
               {this.props.isExpanded ? <div className="preview-expanded">
                 <div className="preview-description">{ preview.description }</div>
-                { preview.byline ? <div className="preview-byline">Von { preview.byline.toString() }</div> : '' }
+                { preview.byline.length ? <div className="preview-byline">Von: { this.getBylineLinks(preview.byline) }</div> : '' }
                 <SocialItems socialData={preview.social}/>
               </div> : ''}
 

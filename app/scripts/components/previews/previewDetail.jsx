@@ -25,6 +25,11 @@ var PreviewDetail = React.createClass({
         this.unsubscribe();
       },
 
+      getBylineLinks: function(byline) {
+        console.log(byline);
+        return 'Test';
+      },
+
       render: function() {
 
       	var preview = this.state.detail,
@@ -48,7 +53,7 @@ var PreviewDetail = React.createClass({
 		        		</div>
 
 		        		<div className="preview-detail-byline">
-		        			<i>Von {preview.byline ? preview.byline.toString() : 'Keine Angaben'}</i>
+		        			<i>Von {preview.byline ? this.getBylineLinks(preview.byline) : 'Keine Angaben'}</i>
 		        		</div>
 
 		        		<a className="btn btn-dark" href={ preview.url } target="_blank">zur Anwendung</a>

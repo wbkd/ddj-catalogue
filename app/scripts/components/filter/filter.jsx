@@ -12,6 +12,7 @@ var Filter = React.createClass({
     }
  
     FilterActions.filterSelect(this.props); 
+    console.log(this.props);
   },
 
   render: function() {
