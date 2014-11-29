@@ -33,6 +33,18 @@
       <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
+      <!-- @if NODE_ENV='production' -->
+      <script>
+        window.isProduction = true;
+      </script>
+      <!-- @endif -->
+
+      <!-- @if NODE_ENV='development' -->
+      <script>
+        window.isProduction = false;
+      </script>
+      <!-- @endif -->
+
       <script src="js/main.js"></script>
   </body>
 </html>

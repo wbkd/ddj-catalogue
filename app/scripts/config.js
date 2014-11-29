@@ -1,7 +1,13 @@
+var isProductionn = window.isProduction || 'http:localhost:1337';
+
+var origin = function(path){
+  return isProduction ?  location.origin + '/' + path : 'http://localhost:1337/' + path;
+};
+
 module.exports = {
-	apiUrl: 'http://localhost:1337/api/v1/projects',
-  submitUrl : 'http://localhost:1337/submit',
-	imageUrl : 'http://localhost:1337/images/',
+	apiUrl: origin('api/v1/projects'),
+  submitUrl : origin('submit'),
+	imageUrl : origin('images/'),
 	defaultImage : 'http://placehold.it/100x100',
 	
   // lazyloading 
