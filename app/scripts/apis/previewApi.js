@@ -43,7 +43,7 @@ var PreviewApi = {
 	},
 
 	loadFilters: function(){
-		return reqwest({ url: 'http://localhost:1337/ui-data', dataType: 'json', crossOrigin: true  });
+		return reqwest({ url: config.baseUrl('ui-data'), dataType: 'json', crossOrigin: true  });
 	}
 
 }

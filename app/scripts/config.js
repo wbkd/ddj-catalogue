@@ -1,11 +1,11 @@
-var origin = function(path){
+var baseUrl = function(path){
   return window.isProduction ? location.origin + '/' + path : 'http://localhost:1337/' + path;
 };
 
 module.exports = {
-	apiUrl: origin('api/v1/projects'),
-  submitUrl : origin('submit'),
-	imageUrl : origin('images/'),
+	apiUrl: baseUrl('api/v1/projects'),
+  submitUrl : baseUrl('submit'),
+	imageUrl : baseUrl('images/'),
 	defaultImage : 'http://placehold.it/100x100',
 	
   // lazyloading 
@@ -16,5 +16,6 @@ module.exports = {
   isSortOrderDesc : true,
 
   // labels
-  appName: 'Datenkatalog'
+  appName: 'Datenkatalog',
+  baseUrl : baseUrl
 };
