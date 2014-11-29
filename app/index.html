@@ -31,19 +31,12 @@
       <!--end favicons -->
       
       <link rel="stylesheet" href="css/main.css">
+      <script>
+        // we set a global variable here
+        //window.isProduction = '<!-- @echo IS_PRODUCTION -->' || false;
+      </script>
   </head>
   <body>
-      <!-- @if NODE_ENV='production' -->
-      <script>
-        window.isProduction = true;
-      </script>
-      <!-- @endif -->
-
-      <!-- @if NODE_ENV='development' -->
-      <script>
-        window.isProduction = false;
-      </script>
-      <!-- @endif -->
 
       <script src="js/main.js"></script>
   </body>

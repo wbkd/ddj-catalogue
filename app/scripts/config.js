@@ -1,7 +1,7 @@
-var isProductionn = window.isProduction || 'http:localhost:1337';
+var utils = require('./utils');
 
 var origin = function(path){
-  return isProduction ?  location.origin + '/' + path : 'http://localhost:1337/' + path;
+  return utils.isProduction ? location.origin + '/' + path : 'http://localhost:1337/' + path;
 };
 
 module.exports = {
