@@ -17,8 +17,7 @@ var isOldBrowser = !(('querySelector' in document) && ('localStorage' in window)
   // smartphone detection (android,iphone,blackberry,windows phone)
   isSmartphone = /android.*mobile|mobile.*android|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
   // device depending click event
-  clickEvent = isMobile ? 'touchstart' : 'click',
-  isProduction = '/* @echo IS_PRODUCTION */' || false;
+  clickEvent = isMobile ? 'touchstart' : 'click';
 
 
 ///////////////////////

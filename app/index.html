@@ -32,8 +32,12 @@
       
       <link rel="stylesheet" href="css/main.css">
       <script>
-        // we set a global variable here
-        //window.isProduction = '<!-- @echo IS_PRODUCTION -->' || false;
+        // processed by gulp-preprocess
+        window.isProduction = false;
+
+        <!-- @if IS_PRODUCTION -->
+          window.isProduction = true;
+        <!-- @endif -->
       </script>
   </head>
   <body>

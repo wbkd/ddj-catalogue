@@ -27,19 +27,18 @@ var autoprefixerBrowsers = [
 gulp.task('scripts', function() {
   return gulp.src(webpackConfig.entry)
     .pipe($.webpack(webpackConfig))
-    .pipe($.preprocess({context : { IS_PRODUCTION : isProduction }})) 
     .pipe(isProduction ? $.uglifyjs() : $.util.noop())
-    .pipe($.size({ title : 'js' }))
-
     .pipe(gulp.dest(dist + 'js/'))
+    .pipe($.size({ title : 'js' }))
     .pipe($.connect.reload());
 });
 
 // copy html from app to dist
 gulp.task('html', function() {
   return gulp.src(app + 'index.html')
-    .pipe($.size({ title : 'html' }))
+    .pipe($.preprocess({context : { IS_PRODUCTION : isProduction }})) 
     .pipe(gulp.dest(dist))
+    .pipe($.size({ title : 'html' }))
     .pipe($.connect.reload());
 });
 

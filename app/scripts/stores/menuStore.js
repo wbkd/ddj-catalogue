@@ -33,7 +33,7 @@ var MenuStore = Reflux.createStore({
     this.toggleArea('infoActive');
 	},
 
-	hideInfo: function() {
+	hideInfoArea: function() {
 		this.infoActive = false;
 		store.set('ddj-infobox', 1);
 		this.trigger({infoActive: this.infoActive});

@@ -1,9 +1,9 @@
-var utils = require('./utils');
 
 var origin = function(path){
-  return utils.isProduction ? location.origin + '/' + path : 'http://localhost:1337/' + path;
-};
 
+  return window.isProduction ? location.origin + '/' + path : 'http://localhost:1337/' + path;
+};
+console.log(window.isProduction ,origin('api/v1/projects'))
 module.exports = {
 	apiUrl: origin('api/v1/projects'),
   submitUrl : origin('submit'),
