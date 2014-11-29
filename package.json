@@ -23,7 +23,8 @@
     "gulp-uglifyjs": "^0.4.3",
     "gulp-util": "^3.0.1",
     "gulp-watch": "^1.0.7",
-    "gulp-webpack": "^0.4.1"
+    "gulp-webpack": "^0.4.1",
+    "rsyncwrapper": "^0.4.1"
   },
   "dependencies": {
     "director": "^1.2.3",
@@ -34,5 +35,10 @@
     "reqwest": "^1.1.5",
     "store": "^1.3.16",
     "react-tools": "^0.12.1"
+  },
+  "devConfig": {
+    "rsync" : {
+      "dest" : "webkid@95.85.57.157:/home/webkid/projects/ddjcat-frontend"
+    }
   }
 }

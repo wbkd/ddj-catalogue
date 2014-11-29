@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var path = require('path');
 var $ = require('gulp-load-plugins')();
 var del = require('del');
 var jest = require('gulp-jest');
@@ -6,6 +7,7 @@ var jest = require('gulp-jest');
 var environment = $.util.env.type || 'development';
 var isProduction = environment === 'production';
 var webpackConfig = require('./webpack.config.js')[environment];
+var config = require(path.resolve(__dirname, 'package')).devConfig;
 
 var port = $.util.env.port || 9999;
 var app = 'app/';
@@ -113,6 +115,22 @@ gulp.task('watch', function() {
 gulp.task('clean', function(cb) {
   del([dist], cb);
 });
+
+gulp.task('deploy', function() {
+    var rsync = require('rsyncwrapper').rsync;
+
+    return rsync({
+        src: path.resolve(__dirname, 'dist/*'),
+        dest: config.rsync.dest,
+        ssh: true,
+        recursive: true,
+    }, function(error, stdout, stderr, cmd) {
+        if(error){
+         console.log(error.message); 
+        }
+    });
+});
+
 
 // by default build project and then watch files in order to trigger livereload
 gulp.task('default', ['build', 'serve', 'watch']);
