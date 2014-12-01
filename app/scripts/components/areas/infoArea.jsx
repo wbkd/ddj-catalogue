@@ -32,8 +32,8 @@ var InfoArea = React.createClass({
           </div>
 
         	<h1>Über dieses Projekt</h1>
-        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, modi, adipisci. Ab ducimus, nemo eligendi eaque, eum magni adipisci consectetur labore laborum commodi hic nulla. Dolore aspernatur laborum, sapiente commodi.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, modi, adipisci. Ab ducimus, nemo eligendi eaque, eum magni adipisci consectetur labore laborum commodi hic nulla. Dolore aspernatur laborum, sapiente commodi.</p>
+        	<p>Dieser Katalog ist eine Zusammenstellung von datenjournalistischen Projekten aus dem deutschsprachigen Raum. Der Katalog wurde im Winter 2014 von <a href="http://www.webkid.io">webkid</a> und <a href="http://www.dacosto.de">DACOSTO</a> ins Leben gerufen. Er umfasst Datenprojekte von diversen Medienhäusern - verzeichnet aber auch unabhängig entstandene Projekte, wie bspw. im Rahmen von Code for Germany. Diese Sammlung erhebt keinen Anspruch auf Vollständigkeit. Sie wird von uns weitergepflegt werden</p>
+          <p>Ihr könnt eure eigenen Datengeschichten einreichen. Bei Hinweisen und Ergänzungen zu unserem DDJ-Katalog bitte melden. Ansonsten wünschen wir viel Spaß beim stöbern.</p>
         </div>
       </div>
     );
