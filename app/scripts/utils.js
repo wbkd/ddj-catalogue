@@ -20,7 +20,6 @@ var isOldBrowser = !(('querySelector' in document) && ('localStorage' in window)
   clickEvent = isMobile ? 'touchstart' : 'click';
 
 
-
 ///////////////////////
 /// helper functions //
 ///////////////////////

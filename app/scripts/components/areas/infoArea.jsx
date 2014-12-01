@@ -14,6 +14,10 @@ var InfoArea = React.createClass({
       isActive : false
     };
   },
+
+  hideInfo: function(){ 
+    MenuActions.hideInfo();
+  },
   
   render: function() {
 
@@ -25,7 +29,7 @@ var InfoArea = React.createClass({
       <div className="area">
         <div className="centered">
           <div className="clearfix">
-            <div className="btn btn-close" onClick={MenuActions.hideAllAreas}>
+            <div className="btn btn-close" onClick={this.hideInfo}>
               <i className="icon_close"></i>
               Fenster schließen
             </div>

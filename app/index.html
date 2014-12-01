@@ -2,6 +2,7 @@
 <html lang="de">
   <head>
       <meta charset="utf-8">
+      <meta name="robots" content="noindex,nofollow">
       <meta name="description" content="DDJ Katalog">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>DDJ Katalog</title>
@@ -31,8 +32,17 @@
       <!--end favicons -->
       
       <link rel="stylesheet" href="css/main.css">
+      <script>
+        // processed by gulp-preprocess
+        window.isProduction = false;
+
+        <!-- @if IS_PRODUCTION -->
+          window.isProduction = true;
+        <!-- @endif -->
+      </script>
   </head>
   <body>
+
       <script src="js/main.js"></script>
   </body>
 </html>

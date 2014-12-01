@@ -18,6 +18,14 @@ $ npm start
 
 visit `http://localhost:9999`
 
+
+### Deploy
+```
+$ gulp build --type production
+$ gulp deploy
+
+```
+
 ### Tests
 
 ```shell
