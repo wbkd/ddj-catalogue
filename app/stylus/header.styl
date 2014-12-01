@@ -27,6 +27,75 @@ header
 		
 		a
 			color:$white
+	.sub-menu
+		width: 100%
+		background: $black
+		
+		.btn-filter
+			border: none
+			background: none
+			color: #FFF
+			float: left
+			padding: 0
+			box-shadow: none
+			i
+				font-weight: bold
+				font-size: 20px
+				line-height:10px
+				float: left
+				display: block
+				margin-top: 7px
+				margin-right: 5px
+			div.description
+				float: left
+		.selected-filters
+			float: left
+			list-style: none
+			margin-left: 1em
+			li.filter
+				color: $white
+				box-shadow: none
+				background: none
+				border: 1px solid
+				border-color: $white
+				border-radius: .5em
+				font-size: .8em
+				padding: .1em .5em
+				i.icon_check
+					display: none
+				i.icon_close
+					display: inline
+.sorter
+	float: right
+	position: relative
+	color: white
+	font-size: .8em
+	ul
+		display:inline-block
+		list-style:none
+		
+		li 
+			cursor: pointer
+			display:inline-block
+			margin-left:.5em
+			user-select:none
+			padding: .1em .4em
+			transition: border-color .5s
+			border: 1px solid transparent
+
+			&:hover, &.active
+				border-color: $lightgrey
+		
+		.sorter-arrows
+			display:none
+
+		.sort-item.active
+
+			.sorter-arrows
+				display:inline-block
+			
+			i
+				display:block
 		
 nav
 	user-select:none
@@ -45,3 +114,11 @@ nav
 			
 		i 
 			margin-right:.4em
+	.favorites-count
+		background: white
+		padding: 0 .4em
+		border-radius: 50%
+		margin-left: .5em
+		color: $headerbg
+		font-weight: bold
+		font-size: .8em

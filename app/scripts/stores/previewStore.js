@@ -64,7 +64,7 @@ var PreviewStore = Reflux.createStore({
 	},
 
 	onLoadPreviewsSuccess : function(data){
-
+		console.log(data);
 		this.isLoading = false;
 		this.error = null;
 		this.previews = data.previews;

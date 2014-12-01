@@ -5,14 +5,7 @@
 	preview list
 
 ***********/
-
-.content-wrapper
-	transition:transform .2s
-
-.preview-list
-	padding-top:2em
-	
-	.selected-filters ul
+.selected-filters ul
 		list-style: none
 		padding: 1em
 		
@@ -50,55 +43,18 @@
 		&.active:hover i.icon_check
 			display: none
 
+.content-wrapper
+	transition:transform .2s
+
+.preview-list
+	padding-top:2em
 	
 .count
 	display:none
 
 .preview-list-header
-	padding:1em
-	
 	.btn-filter
-		margin-bottom:1em
-
-	.sorter
-		float: right
-		position: relative
-		color:#777
-
-		ul
-			display:inline-block
-			list-style:none
-			
-			li 
-				cursor: pointer
-				display:inline-block
-				margin-left:.15em
-				padding:.25em .5em
-				user-select:none
-
-				&:hover
-					background: $lightgrey
-					box-shadow:0 1px 2px rgba(0,0,0,.2)
-					
-				&.active
-					background: $lightgrey
-					box-shadow: 0 1px 2px rgba(0,0,0,0.2)
-					
-					&:hover
-						background: $lightgrey
-						box-shadow:0 2px 3px rgba(0,0,0,.3)
-			
-			.sorter-arrows
-				display:none
-
-			.sort-item.active
-
-				.sorter-arrows
-					display:inline-block
-				
-				i
-					display:block
-				
+		margin-bottom:1em			
 	
 .preview
 	height:270px

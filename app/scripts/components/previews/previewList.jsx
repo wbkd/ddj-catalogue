@@ -19,14 +19,13 @@ var FilterStore = require('../../stores/filterStore');
 var PreviewList = React.createClass({
 
   getInitialState: function(a){
+    console.log(this.props);
     return {
       previews : [],
       expandedId : null,
-      sortType : config.sortType,
-      isSortOrderDesc : config.isSortOrderDesc,
-      selectedFilters : {},
       isLoading: true,
-      count : 0
+      count : 0,
+      selectedFilters: this.props.activeFilters || {}
     };
   },
 
@@ -51,7 +50,6 @@ var PreviewList = React.createClass({
       newPreviews = newPreviews.concat(newState.previews);
       newState.previews = newPreviews;
     }
-
     this.setState(newState);
   },
 
@@ -78,10 +76,6 @@ var PreviewList = React.createClass({
     this.lastScrollTop = 0;
     // index for lazyloading requests
     this.lazyIndex = 0;
-  },
-
-  toggleFilterMenu: function(){
-    FilterActions.toggleFilterMenu();
   },
 
   loadPreviews: function(){
@@ -115,7 +109,6 @@ var PreviewList = React.createClass({
   },
 
   render: function() {
-
     var previews = this.state.previews.map(function(preview,i) {
       var isExpanded = this.state.expandedId ? this.state.expandedId === preview._id : false,
         isStared = this.props.favoriteIds.indexOf(preview._id) !== -1;
@@ -130,13 +123,8 @@ var PreviewList = React.createClass({
       <div style={minHeight} className="preview-list row centered">
         <div className="clearfix preview-list-header">
           <div className="clearfix preview-list-left">
-            <div onClick={this.toggleFilterMenu} className="btn btn-filter btn"><i className="icon_menu"></i> Liste filtern</div>
             <div className="light count">{this.state.count} Projekte gefunden</div>
           </div>
-          <Sorter isSortOrderDesc={this.state.isSortOrderDesc} sortType={this.state.sortType} />
-        </div>
-        <div className="selected-filters clearfix">
-         <SelectedFilters filters={this.state.selectedFilters} />
         </div>
         <div className="preview-list-content row">
           {previews}

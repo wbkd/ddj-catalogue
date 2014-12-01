@@ -26,9 +26,9 @@ var SelectedFilters = React.createClass({
 		var filters = this.getFilters();
 
 		return (
-			<ul>
-        {filters}
-      </ul>
+			<ul className="selected-filters">
+        		{filters}
+      		</ul>
 		);
 	}
 });

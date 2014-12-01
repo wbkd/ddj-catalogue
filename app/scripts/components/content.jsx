@@ -54,7 +54,8 @@ var Content = React.createClass({
       var favoriteIdArray = this.props.sharedFavoriteIds.split('-');
       FavoritesActions.loadSharedFavorites(favoriteIdArray);
     }
-    
+
+    this.state.contentOffsetTop = document.getElementsByTagName('header')[0].clientHeight;
   },
 
   componentWillUnmount: function(){
@@ -106,14 +107,14 @@ var Content = React.createClass({
 
     return (
       <div>
-        <FilterMenu filterMenuActive={this.state.filterMenuActive}/>
+        <FilterMenu offsetTop={this.state.contentOffsetTop} filterMenuActive={this.state.filterMenuActive}/>
         <div style={divStyle} className="content-wrapper">
   			  <FavoritesArea isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} isActive={this.state.favoritesListActive} />
           {sharedFavoriteList} 
           <NewsletterArea isActive={this.state.newsletterAreaActive} isSuccess={this.state.newsletterSuccess} errorMessage={this.state.newsletterError} />    
           <SubmitArea isActive={this.state.submitAreaActive} isSuccess={this.state.submitAreaSuccess} errorMessage={this.state.submitAreaError} />
           <InfoArea isActive={this.state.infoActive} />
-          <PreviewList favoriteIds={favoriteIds} />
+          <PreviewList activeFilters={this.props.activeFilters} favoriteIds={favoriteIds} />
   		  </div>
       </div>
     	);

@@ -115,6 +115,10 @@ function log(){
   console.log(args);  
 }
 
+function urlParamsToObj(params) {
+    return JSON.parse('{"' + decodeURI(params).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+}
+
 module.exports = {
 
   isMobile: isMobile,
@@ -128,6 +132,7 @@ module.exports = {
   addHelperClasses: addHelperClasses,
   log : log,
   isEmptyObject: isEmptyObject,
-  formatDate: formatDate
+  formatDate: formatDate,
+  urlParamsToObj: urlParamsToObj
 
 };

@@ -13,16 +13,11 @@ var FilterMenu = React.createClass({
     filterMenuActive : React.PropTypes.bool
   },
 
-  getDefaultProps: function(){
-    return {
-      filterMenuActive : false
-    };
-  },
-
   getInitialState: function() {
     return {
-      selectedFilters: {},
-      uiData: []
+      selectedFilters: this.props.activeFilters || {},
+      uiData: [],
+      filterMenuActive : false
     }
   },
 
@@ -51,11 +46,15 @@ var FilterMenu = React.createClass({
 
     var classes = cx({
       'filter-menu': true,
-      'active': this.props.filterMenuActive
+      'active': this.state.filterMenuActive
     });
-    
+
+    var style = {
+      paddingTop: this.props.offsetTop
+    }
+
     return (
-    	<div className={classes}>
+    	<div style={style} className={classes}>
         <div className="force-scrollbar">
       		<div className="btn-close"><i onClick={this.closeMenu} className="icon_close"></i></div>
           <div className="filter-list">
