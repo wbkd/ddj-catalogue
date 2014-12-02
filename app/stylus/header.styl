@@ -27,17 +27,19 @@ header
 		
 		a
 			color:$white
+			
 	.sub-menu
 		width: 100%
-		background: $black
+		background: $subheaderbg
 		
 		.btn-filter
 			border: none
 			background: none
-			color: #FFF
+			color: $darkgrey
 			float: left
 			padding: 0
 			box-shadow: none
+			
 			i
 				font-weight: bold
 				font-size: 20px
@@ -46,30 +48,38 @@ header
 				display: block
 				margin-top: 7px
 				margin-right: 5px
+				
 			div.description
 				float: left
+				
 		.selected-filters
 			float: left
 			list-style: none
 			margin-left: 1em
+			
 			li.filter
-				color: $white
+				color: $darkgrey
 				box-shadow: none
 				background: none
 				border: 1px solid
-				border-color: $white
+				border-color: none
 				border-radius: .3em
 				font-size: .8em
 				padding: .1em .5em
+				
 				i.icon_check
 					display: none
+					
 				i.icon_close
 					display: inline
+					
+
 .sorter
 	float: right
 	position: relative
-	color: white
+	color: $darkgrey
 	font-size: .8em
+	
 	ul
 		display:inline-block
 		list-style:none
@@ -80,12 +90,11 @@ header
 			margin-left:.5em
 			user-select:none
 			padding: .1em .4em
-			transition: border-color .5s
-			border: 1px solid transparent
-			border-radius: .3em
+			color: $darkgrey
+			transition: color .4s
 
 			&:hover, &.active
-				border-color: $lightgrey
+				color: $black
 		
 		.sorter-arrows
 			display:none
