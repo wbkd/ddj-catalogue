@@ -44,10 +44,7 @@ var FilterStore = Reflux.createStore({
 			reset : true,
 			loading: true,
 			selectedFilters : this.selectedFilters
-		});
-
-		this.setUrl(this.selectedFilters);
-		
+		});		
 	},
 
 	filterUnselect: function(filter) {
@@ -59,19 +56,6 @@ var FilterStore = Reflux.createStore({
 			selectedFilters : this.selectedFilters
 		});
 
-		this.setUrl(this.selectedFilters);
-	},
-
-	setUrl: function(data) {
-		if(utils.isEmptyObject(data)) {
-			window.location.hash = '/projekte';
-		}
-		else {
-			urlParams = Object.keys(data).map(function(k) {
-    			return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-			}).join('&');
-			window.location.hash = '/projekte/filter/' + urlParams;
-		}
 	},
 
 	//has to be removed, data should be formatted by backend

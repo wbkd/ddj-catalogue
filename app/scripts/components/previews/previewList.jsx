@@ -15,17 +15,21 @@ var PreviewActions = require('../../actions/previewActions');
 // stores
 var PreviewStore = require('../../stores/previewStore');
 var FilterStore = require('../../stores/filterStore');
+var RouteParamStore = require('../../stores/routeParamStore');
 
 var PreviewList = React.createClass({
 
   getInitialState: function(a){
-    console.log(this.props);
+    var routeParams = RouteParamStore.getRouteParams();
+    console.log(routeParams);
     return {
       previews : [],
       expandedId : null,
       isLoading: true,
       count : 0,
-      selectedFilters: this.props.activeFilters || {}
+      selectedFilters: routeParams.filters || {},
+      sortType : routeParams.sortType || config.sortType,
+      isSortOrderDesc : (utils.isUndefined(routeParams.isSortOrderDesc)) ? config.isSortOrderDesc : routeParams.isSortOrderDesc,    
     };
   },
 

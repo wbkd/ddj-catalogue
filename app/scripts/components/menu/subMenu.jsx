@@ -10,7 +10,7 @@ var SubMenu = React.createClass({
     return (
     	<div className="sub-menu">
         <div className="header-content centered clearfix">
-          <div onClick={FilterActions.toggleFilterMenu} className="btn btn-filter btn"><i className="icon_menu"></i> <div className="description">Menü</div></div>
+          <div onClick={FilterActions.toggleFilterMenu} className="btn btn-filter btn"><i className="icon_menu"></i> <div className="description">Filter</div></div>
           <SelectedFilters filters={this.props.filters} />
           <Sorter isSortOrderDesc={this.props.isSortOrderDesc} sortType={this.props.sortType} />
         </div>

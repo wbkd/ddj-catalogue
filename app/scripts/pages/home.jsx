@@ -8,8 +8,8 @@ var Home = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<Header activeFilters={this.props.activeFilters} />
-				<Content activeFilters={this.props.activeFilters} sharedFavoriteIds={this.props.sharedFavoriteIds} />
+				<Header />
+				<Content sharedFavoriteIds={this.props.sharedFavoriteIds} />
 				<Footer />
 			</div>
 		);

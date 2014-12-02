@@ -2,23 +2,26 @@ var React = require('react');
 var Home = require('./pages/home.jsx');
 var ErrorPage = require('./pages/404.jsx');
 var Utils = require('./utils');
+var RouteParamStore = require('./stores/routeParamStore');
 
 module.exports.routes = {
-  '/projekte' : function(){
+  '/projekte/?\/([^\/]*)/?' : function(params){
+  	console.log(params);
+  	//RouteParamStore.setRouteParams(params);
+  	RouteParamStore.setRouteParams({
+  		sortby: 'social.sum',
+  		visualform: 'Chart',
+  		order: 'asv'
+  	});
+
+
     React.render(<Home />, document.body);
+  },
+  '/projekte': function() {
+  	React.render(<Home />, document.body);
   },
   '/favoriten/:ids' : function(ids){
     React.render(<Home sharedFavoriteIds={ids} />, document.body);
-  },
-  '/projekte/filter?\/([^\/]*)/?': function(params) {
-  	try {
-  		var paramObj = Utils.urlParamsToObj(params);
-  	}
-  	catch(err) {
-  		React.render(<Home />, document.body);
-  		return true;
-  	}
-  	React.render(<Home activeFilters={paramObj} />, document.body);
   }
 }
 

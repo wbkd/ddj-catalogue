@@ -17,6 +17,7 @@ var SubmitStore = require('../stores/submitStore.js');
 
 // actions
 var FavoritesActions = require('../actions/favoritesActions.js');
+var FilterActions = require('../actions/filterActions.js');
 
 // third party
 var store = require('store');
@@ -25,17 +26,24 @@ var Content = React.createClass({
 
   getInitialState: function() {
     return {
+      //filter menu
       filterMenuActive : false,
+      uiData: [],
+      selectedFilters: {},
+
+      //submit area
       infoActive: typeof store.get('ddj-infobox') === 'undefined',
       submitAreaActive : false,
       submitAreaError : '',
       submitAreaSuccess : false,
 
+      //favs
       favorites : [],
       favoritesUrl : '',
       favoritesListActive : false,
       sharedFavorites : [],
 
+      //newsletter area
       newsletterAreaActive : false,
       newsletterSuccess : false,
       newsletterError : ''
@@ -49,6 +57,7 @@ var Content = React.createClass({
     this.unsubscribeSubmitStore = SubmitStore.listen(this.onStatusChange);
 
     FavoritesActions.loadFavorites();
+    FilterActions.loadFilters();
 
     if(!utils.isUndefined(this.props.sharedFavoriteIds)){
       var favoriteIdArray = this.props.sharedFavoriteIds.split('-');
@@ -107,14 +116,14 @@ var Content = React.createClass({
 
     return (
       <div>
-        <FilterMenu offsetTop={this.state.contentOffsetTop} filterMenuActive={this.state.filterMenuActive}/>
+        <FilterMenu offsetTop={this.state.contentOffsetTop} filterMenuActive={this.state.filterMenuActive} selectedFilters={this.state.selectedFilters} uiData={this.state.uiData} />
         <div style={divStyle} className="content-wrapper">
   			  <FavoritesArea isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} isActive={this.state.favoritesListActive} />
           {sharedFavoriteList} 
           <NewsletterArea isActive={this.state.newsletterAreaActive} isSuccess={this.state.newsletterSuccess} errorMessage={this.state.newsletterError} />    
           <SubmitArea isActive={this.state.submitAreaActive} isSuccess={this.state.submitAreaSuccess} errorMessage={this.state.submitAreaError} />
           <InfoArea isActive={this.state.infoActive} />
-          <PreviewList activeFilters={this.props.activeFilters} favoriteIds={favoriteIds} />
+          <PreviewList favoriteIds={favoriteIds} />
   		  </div>
       </div>
     	);
