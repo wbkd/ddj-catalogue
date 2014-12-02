@@ -60,12 +60,14 @@ header
 			li.filter
 				color: $darkgrey
 				box-shadow: none
-				background: none
-				border: 1px solid
-				border-color: none
-				border-radius: .3em
+				background: $subheaderbtnbg
+				border-radius: 2px
 				font-size: .8em
 				padding: .1em .5em
+				transition: color .4s
+				
+				&:hover
+					color:$black
 				
 				i.icon_check
 					display: none
@@ -92,8 +94,8 @@ header
 			padding: .1em .4em
 			color: $darkgrey
 			transition: color .4s
-			border-radius: 3px
-			background:#dedede
+			border-radius: 2px
+			background:$subheaderbtnbg
 
 			&:hover, &.active
 				color: $black
@@ -126,6 +128,7 @@ nav
 			
 		i 
 			margin-right:.4em
+			
 	.favorites-count
 		background: white
 		border-radius: 50%
