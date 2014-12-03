@@ -6,9 +6,6 @@ var FilterGroup = require('./filterGroup.jsx');
 var FilterMenu = React.createClass({
 
   render: function() {
-
-    console.log(this.props);
-
     var filters = this.props.uiData.map(function(d,i) {
       var selected = this.props.selectedFilters[d.dbId];
       return <FilterGroup key={'fg_' + i} data={d} selected={selected} />

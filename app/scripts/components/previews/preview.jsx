@@ -60,6 +60,7 @@ var Preview = React.createClass({
     return (
       <div className="column">
         	<div className={classes}>
+            <div onClick={this.togglePreview} className="close-btn"><i className="icon_close"></i></div>
         		<a className='preview-image'style={imageStyle} href={preview.url} target="_blank"></a>
             
             <div className="btn-group">

@@ -49,6 +49,18 @@
 .preview-list
 	padding-top:2em
 	
+.highlight-overlay
+	position: absolute
+	height: 100%
+	width: 100%
+	background: rgba(0,0,0,.7)
+	z-index: 5
+	display: none
+	top: 0
+	left: 0
+	&.active
+		display: block
+	
 .count
 	display:none
 
@@ -63,6 +75,15 @@
 	display:block
 	color:$black		
 	margin-top:1em
+	z-index: 1
+	
+	.close-btn
+		display: none
+		position: absolute
+		top: .3em
+		right: .3em
+		z-index: 20
+		cursor: pointer
 	
 	.btn-group
 		position:absolute
@@ -122,7 +143,7 @@
 			margin-top:1em
 			color:$grey
 			position:absolute
-			bottom:0
+			bottom: 0
 			
 			.social_twitter
 				color:#55acee
@@ -135,12 +156,24 @@
 		height:270px
 		position:relative
 		background:white
-		z-index:3
+		z-index:10
 		
 		.preview-image
 			height:0
 			border: none
 			box-shadow: 0 3px 2px rgba(0,0,0,0)
+			
+		.preview-content
+			background: white
+			border: none
+			position: relative
+			padding-bottom: 2em
+			
+		.preview-social
+			bottom: .5em
+			
+		.close-btn
+			display: block
 		
 	&.is-expanded .preview-expanded
 		background:rgba(255,255,255,.9)

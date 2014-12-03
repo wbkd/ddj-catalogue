@@ -7,6 +7,7 @@ var Preview = require('./preview.jsx');
 var Sorter = require('../sorter/sorter.jsx');
 var SelectedFilters = require('../filter/selectedFilters.jsx');
 var LoadingSpinner = require('../general/loadingSpinner.jsx');
+var HighlightOverlay = require('../general/highlightOverlay.jsx');
 
 // actions
 var FilterActions = require('../../actions/filterActions');
@@ -21,7 +22,6 @@ var PreviewList = React.createClass({
 
   getInitialState: function(a){
     var routeParams = RouteParamStore.getRouteParams();
-    console.log(routeParams);
     return {
       previews : [],
       expandedId : null,
@@ -34,6 +34,7 @@ var PreviewList = React.createClass({
   },
 
   onStatusChange: function(newState){
+
     newState.expandedId = this.state.expandedId === newState.expandedId ? null : newState.expandedId;
     
     var newPreviews = this.state.previews;
@@ -123,8 +124,11 @@ var PreviewList = React.createClass({
       minHeight: window.innerHeight
     }
 
+    var showOverlay = this.state.expandedId != null;
+
     return (
       <div style={minHeight} className="preview-list row centered">
+        <HighlightOverlay isActive={showOverlay} />
         <div className="clearfix preview-list-header">
           <div className="clearfix preview-list-left">
             <div className="light count">{this.state.count} Projekte gefunden</div>

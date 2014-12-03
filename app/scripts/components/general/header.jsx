@@ -14,7 +14,6 @@ var Header = React.createClass({
 
   getInitialState: function(a){
     var routeParams = RouteParamStore.getRouteParams();
-    console.log(routeParams.isSortOrderDesc);
     return {
       selectedFilters : routeParams.filters || {},
       headerSpacing: 100,
