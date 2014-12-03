@@ -55,7 +55,7 @@ var Header = React.createClass({
         <div className="clearfix header-content centered">
           <img className="header-logo" src="images/datenkatalog-logo.png"/>
           <div className="header-title">
-        	  <a href="/">{config.appName}</a>
+        	  <a href="#/projekte">{config.appName}</a>
           </div>
           <Navigation favoritesCount={this.state.favoritesCount} />
         </div>
