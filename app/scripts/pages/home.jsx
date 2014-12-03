@@ -8,7 +8,7 @@ var Home = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<Header />
+				<Header hasSubmenu={true}/>
 				<Content sharedFavoriteIds={this.props.sharedFavoriteIds} />
 				<Footer />
 			</div>

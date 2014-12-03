@@ -7,7 +7,7 @@ var ErrorPage = React.createClass({
   render: function() {
     return (
       <div>
-        <Header />
+        <Header hasSubmenu={false}/>
         <div className="subpage">
           <div className="subpage-content">
 

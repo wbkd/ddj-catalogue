@@ -47,25 +47,24 @@ var Header = React.createClass({
 
     var headerSpacing = {
       height: this.state.headerSpacing
-    }
+    };
 
     return (
     	<div>
-      <header>
-        <div className="clearfix header-content centered">
-          <img className="header-logo" src="images/datenkatalog-logo.png"/>
-          <div className="header-title">
-        	  <a href="#/projekte">{config.appName}</a>
+        <header>
+          <div className="clearfix header-content centered">
+            <img className="header-logo" src="images/datenkatalog-logo.png"/>
+            <div className="header-title">
+          	  <a href="#/projekte">{config.appName}</a>
+            </div>
+            <Navigation favoritesCount={this.state.favoritesCount} />
           </div>
-          <Navigation favoritesCount={this.state.favoritesCount} />
-        </div>
-        <SubMenu filters={this.state.selectedFilters} isSortOrderDesc={this.state.isSortOrderDesc} sortType={this.state.sortType} />
-    	</header>
-      <div id="header-spacing" className="header-spacing" style={headerSpacing}></div>
+          { this.props.hasSubmenu ? <SubMenu filters={this.state.selectedFilters} isSortOrderDesc={this.state.isSortOrderDesc} sortType={this.state.sortType} /> : '' }
+      	</header>
+        <div id="header-spacing" className="header-spacing" style={headerSpacing}></div>
       </div>
     );
   }
 });
 
 module.exports = Header;
-

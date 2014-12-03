@@ -8,7 +8,7 @@ var FAQs = React.createClass({
   render: function() {
     return (
       <div>
-        <Header />
+        <Header hasSubmenu={false}/>
         <FAQList/>
         <Footer />
       </div>
