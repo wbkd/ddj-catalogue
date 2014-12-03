@@ -5,7 +5,7 @@
     "@moklick <mo@webkid.io",
     "@chrtze <chris@webkid.io"
   ],
-  "description": "Lightweight starting point for a web app.",
+  "description": "Frontend for a Data-Journalism-Projects Catalogue.",
   "main": "index.html",
   "license": "MIT",
   "ignore": [
@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "elegant-icons": "*"
+    "elegant-icons": "*",
+    "velocity": "~1.1.0"
   }
 }

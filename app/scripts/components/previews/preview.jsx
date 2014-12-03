@@ -10,6 +10,8 @@ var BylineLink = require('./bylineLink.jsx');
 var PreviewActions = require('../../actions/previewActions')
 var FavoritesActions = require('../../actions/favoritesActions')
 
+var Velocity = require('../../../bower_components/velocity/velocity');
+
 
 
 var Preview = React.createClass({
@@ -28,6 +30,9 @@ var Preview = React.createClass({
 
   togglePreview: function(){
     PreviewActions.toggleExpandedPreview(this.props.data._id);
+    if(!this.props.isExpanded) {
+      Velocity(this.getDOMNode(), "scroll", { duration: 500, offset: -100 })
+    }
   },
 
   starPreview: function(){
@@ -65,7 +70,7 @@ var Preview = React.createClass({
             
             <div className="btn-group">
               <div onClick={this.starPreview} className="btn btn-star"><i className="icon_star"></i></div>
-              <div onClick={this.togglePreview} className="btn btn-toggle"><i className="icon_info_alt"></i></div>
+              <div onClick={this.togglePreview} className="btn btn-toggle"><i className="arrow_carrot-down"></i></div>
             </div>
 
             <div className="preview-content">
