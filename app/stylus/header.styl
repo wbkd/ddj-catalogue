@@ -27,17 +27,19 @@ header
 		
 		a
 			color:$white
+			
 	.sub-menu
 		width: 100%
-		background: $black
+		background: $subheaderbg
 		
 		.btn-filter
 			border: none
 			background: none
-			color: #FFF
+			color: $darkgrey
 			float: left
 			padding: 0
 			box-shadow: none
+			
 			i
 				font-weight: bold
 				font-size: 20px
@@ -46,30 +48,40 @@ header
 				display: block
 				margin-top: 7px
 				margin-right: 5px
+				
 			div.description
 				float: left
+				
 		.selected-filters
 			float: left
 			list-style: none
 			margin-left: 1em
+			
 			li.filter
-				color: $white
+				color: $darkgrey
 				box-shadow: none
-				background: none
-				border: 1px solid
-				border-color: $white
-				border-radius: .3em
+				background: $subheaderbtnbg
+				border-radius: 2px
 				font-size: .8em
 				padding: .1em .5em
+				transition: color .4s
+				
+				&:hover
+					color:$black
+				
 				i.icon_check
 					display: none
+					
 				i.icon_close
 					display: inline
+					
+
 .sorter
 	float: right
 	position: relative
-	color: white
+	color: $darkgrey
 	font-size: .8em
+	
 	ul
 		display:inline-block
 		list-style:none
@@ -80,12 +92,13 @@ header
 			margin-left:.5em
 			user-select:none
 			padding: .1em .4em
-			transition: border-color .5s
-			border: 1px solid transparent
-			border-radius: .3em
+			color: $darkgrey
+			transition: color .4s
+			border-radius: 2px
+			background:$subheaderbtnbg
 
 			&:hover, &.active
-				border-color: $lightgrey
+				color: $black
 		
 		.sorter-arrows
 			display:none
@@ -115,6 +128,7 @@ nav
 			
 		i 
 			margin-right:.4em
+			
 	.favorites-count
 		background: white
 		border-radius: 50%
