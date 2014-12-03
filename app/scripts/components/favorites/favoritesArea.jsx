@@ -62,7 +62,7 @@ var FavoritesArea = React.createClass({
                   <div className="clearfix">
                     <div className="btn btn-close" onClick={this.props.isShared ? this.hideSharedList : this.hideList}>
                       <i className="icon_close"></i>
-                      Fenster schließen
+                      schließen
                     </div>
                     {hasFavorites ? <div className="btn btn-clear" onClick={this.resetList}><i className="icon_trash_alt"></i> Liste leeren</div> : ''}
   

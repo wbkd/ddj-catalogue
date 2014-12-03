@@ -50,7 +50,7 @@ var NewsletterArea = React.createClass({
               <div className="clearfix">
                 <div className="btn btn-close" onClick={this.hideNewsletterArea}>
                   <i className="icon_close"></i>
-                  Fenster schließen
+                  schließen
                 </div>
               </div>
               <h1>Newsletter</h1>

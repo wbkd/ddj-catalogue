@@ -52,7 +52,7 @@ var SubmitArea = React.createClass({
           <div className="clearfix">
             <div className="btn btn-close" onClick={this.hideSubmitArea} >
               <i className="icon_close"></i>
-              Fenster schließen
+              schließen
             </div>
           </div>
 

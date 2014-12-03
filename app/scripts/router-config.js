@@ -1,7 +1,8 @@
 var React = require('react');
 var Home = require('./pages/home.jsx');
+var Faqs = require('./pages/faqs.jsx');
 var ErrorPage = require('./pages/404.jsx');
-var Utils = require('./utils');
+
 var RouteParamStore = require('./stores/routeParamStore');
 
 module.exports.routes = {
@@ -13,12 +14,13 @@ module.exports.routes = {
   		visualform: 'Chart',
   		order: 'asv'
   	});
-
-
     React.render(<Home />, document.body);
   },
   '/projekte': function() {
   	React.render(<Home />, document.body);
+  },
+  '/faqs' : function(){
+    React.render(<Faqs />, document.body);
   },
   '/favoriten/:ids' : function(ids){
     React.render(<Home sharedFavoriteIds={ids} />, document.body);
