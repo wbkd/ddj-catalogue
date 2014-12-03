@@ -31,14 +31,15 @@
     "imports-loader": "~0.6.3",
     "jsx-loader": "^0.12.1",
     "react": "^0.12.0",
+    "react-tools": "^0.12.1",
     "reflux": "^0.1.15",
     "reqwest": "^1.1.5",
-    "store": "^1.3.16",
-    "react-tools": "^0.12.1"
+    "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll",
+    "store": "^1.3.16"
   },
   "devConfig": {
-    "rsync" : {
-      "dest" : "webkid@95.85.57.157:/home/webkid/projects/ddjcat-frontend"
+    "rsync": {
+      "dest": "webkid@95.85.57.157:/home/webkid/projects/ddjcat-frontend"
     }
   }
 }

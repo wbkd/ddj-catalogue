@@ -17,7 +17,6 @@
     "tests"
   ],
   "dependencies": {
-    "elegant-icons": "*",
-    "velocity": "~1.1.0"
+    "elegant-icons": "*"  
   }
 }

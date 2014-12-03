@@ -10,9 +10,7 @@ var BylineLink = require('./bylineLink.jsx');
 var PreviewActions = require('../../actions/previewActions')
 var FavoritesActions = require('../../actions/favoritesActions')
 
-var Velocity = require('../../../bower_components/velocity/velocity');
-
-
+var smoothScroll = require('smooth-scroll');
 
 var Preview = React.createClass({
 
@@ -30,9 +28,12 @@ var Preview = React.createClass({
 
   togglePreview: function(){
     PreviewActions.toggleExpandedPreview(this.props.data._id);
-    if(!this.props.isExpanded) {
-      Velocity(this.getDOMNode(), "scroll", { duration: 500, offset: -100 })
-    }
+    
+    smoothScroll.animateScroll(
+      null, 
+      '#' + this.getDOMNode().id,
+      {offset : 75, updateURL : false}
+    );
   },
 
   starPreview: function(){
@@ -62,15 +63,16 @@ var Preview = React.createClass({
       'is-stared':this.props.isStared
     });
 
+
     return (
-      <div className="column">
+      <div className="column" id={preview._id}>
         	<div className={classes}>
             <div onClick={this.togglePreview} className="close-btn"><i className="icon_close"></i></div>
         		<a className='preview-image'style={imageStyle} href={preview.url} target="_blank"></a>
             
             <div className="btn-group">
               <div onClick={this.starPreview} className="btn btn-star"><i className="icon_star"></i></div>
-              <div onClick={this.togglePreview} className="btn btn-toggle"><i className="arrow_carrot-down"></i></div>
+              <div onClick={this.togglePreview} className="btn btn-toggle"><i className="icon_plus"></i></div>
             </div>
 
             <div className="preview-content">
