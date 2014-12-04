@@ -69,7 +69,7 @@ var Preview = React.createClass({
             
             <div className="btn-group">
               <div onClick={this.starPreview} className="btn btn-star"><i className="icon_star"></i></div>
-              <a href={preview.url} className="btn" target="_blank" title={ 'Zur Anwendung ' + preview.title }><i className="icon_link"></i></a>
+              <a href={preview.url} className="btn" target="_blank" title={ 'Zur Anwendung "' + preview.title + '"' }><i className="icon_link"></i></a>
             </div>
 
             <div className="preview-content">
