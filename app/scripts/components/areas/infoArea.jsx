@@ -33,7 +33,7 @@ var InfoArea = React.createClass({
               <i className="icon_close"></i>schließen
             </div>
           </div>
-
+            
           <div className="area-text">
         	  <h1>Datenkatalog</h1>
         	  <p>Dieser Katalog ist eine Zusammenstellung von datenjournalistischen Projekten aus dem deutschsprachigen Raum. Der Katalog wurde im Winter 2014 von <a href="http://www.webkid.io">webkid</a> und <a href="http://www.dacosto.de">DACOSTO</a> ins Leben gerufen. Er umfasst Datenprojekte von diversen Medienhäusern - verzeichnet aber auch unabhängig entstandene Projekte, wie bspw. im Rahmen von Code for Germany. Diese Sammlung erhebt keinen Anspruch auf Vollständigkeit. Sie wird von uns weitergepflegt werden</p>

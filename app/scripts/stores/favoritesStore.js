@@ -51,6 +51,7 @@ var FavoritesStore = Reflux.createStore({
 
     // is not in the list -> push preview
     if(favoritesPreviewIndex === -1){
+      this.animateStar();
       this.favorites.push(this.getFavoritesData(preview));
     }else{
     // is already in the list -> remove preview
@@ -72,9 +73,15 @@ var FavoritesStore = Reflux.createStore({
     });
   },
 
-  loadSharedFavorites: function(){
+  animateStar: function(){
+    var starElement = document.getElementById('favorites-star');
 
+    Velocity(starElement,{ color: '#F7CA18', textShadowBlur: '4px' }, { duration: 400, easing: 'ease-in-out' })
+      .then(function(){
+        Velocity(starElement,{ color: '#555', textShadowBlur: '0'}, { duration: 300, easing: 'ease-in-out'  })
+      });
   },
+
   loadSharedFavoritesSuccess: function(previews){
 
     var sharedFavorites = previews.map(function(el){

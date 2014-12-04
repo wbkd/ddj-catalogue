@@ -53,7 +53,7 @@
 	position: absolute
 	height: 100%
 	width: 100%
-	background: rgba(0,0,0,.6)
+	background: rgba(0,0,0,.3)
 	z-index: 5
 	display: none
 	top: 0
@@ -132,8 +132,10 @@
 		.preview-byline
 			color: $grey
 			margin-top:1em
+			
 			.byline-link
 				cursor: pointer
+				
 				&:hover
 					color: $darkgrey
 					text-decoration: underline
@@ -160,17 +162,17 @@
 		position:relative
 		background:white
 		z-index:10
+		box-shadow: 0 2px 2px rgba(0,0,0,.4)
 		
 		.preview-image
-			height:0
-			border: none
-			box-shadow: 0 3px 2px rgba(0,0,0,0)
+			border:none
 			
 		.preview-content
 			background: white
 			border: none
 			position: relative
 			padding-bottom: 2em
+			box-shadow: 0 2px 2px rgba(0,0,0,.4)
 			
 		.preview-social
 			bottom: .5em

@@ -57,9 +57,9 @@ var Header = React.createClass({
             <div className="header-title">
           	  <a href="#/projekte">{config.appName}</a>
             </div>
-            <Navigation favoritesCount={this.state.favoritesCount} />
+            <Navigation/>
           </div>
-          { this.props.hasSubmenu ? <SubMenu filters={this.state.selectedFilters} isSortOrderDesc={this.state.isSortOrderDesc} sortType={this.state.sortType} /> : '' }
+          { this.props.hasSubmenu ? <SubMenu filters={this.state.selectedFilters} favoritesCount={this.state.favoritesCount} isSortOrderDesc={this.state.isSortOrderDesc} sortType={this.state.sortType} /> : '' }
       	</header>
         <div id="header-spacing" className="header-spacing" style={headerSpacing}></div>
       </div>

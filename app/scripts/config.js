@@ -16,6 +16,6 @@ module.exports = {
   isSortOrderDesc : true,
 
   // labels
-  appName: 'Datenkatalog',
+  appName: 'DDJ Katalog',
   baseUrl : baseUrl
 };

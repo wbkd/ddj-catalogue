@@ -30,7 +30,7 @@ var Preview = React.createClass({
     PreviewActions.toggleExpandedPreview(this.props.data._id);
     
     if(!this.props.isExpanded) {
-      Velocity(this.getDOMNode(), 'scroll', { duration: 500, offset: -100 })
+      Velocity(this.getDOMNode(), 'scroll', { duration: 500, offset: -100 });
     }
   },
 
@@ -55,12 +55,11 @@ var Preview = React.createClass({
       date = utils.formatDate(preview.date);
 
     var classes = cx({
-      'preview' : true,
-      'clearfix' : true,
+      preview : true,
+      clearfix : true,
       'is-expanded': this.props.isExpanded,
       'is-stared':this.props.isStared
     });
-
 
     return (
       <div className="column">
@@ -84,7 +83,6 @@ var Preview = React.createClass({
                 { preview.byline.length ? <div className="preview-byline">Von: { this.getBylineLinks(preview.byline) }</div> : '' }
                 <SocialItems socialData={preview.social}/>
               </div> : ''}
-
 
             </div>
         	</div>

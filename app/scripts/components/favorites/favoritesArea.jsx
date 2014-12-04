@@ -22,7 +22,7 @@ var FavoritesArea = React.createClass({
         favorites : [],
         favoritesUrl : '',
         isSharedFavoriteList : false,
-        noFavoritesAddedMessage : 'Es wurden bisher keine Favoriten hinzugefügt.'
+        noFavoritesAddedMessage : 'Es wurden bisher keine Favoriten hinzugefügt. Klicken Sie auf einen Stern bei einem Projekt, um dieses bei der Favoritenliste hinzuzufügen.'
       };
     },
 
