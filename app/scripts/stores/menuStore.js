@@ -8,6 +8,7 @@ var MenuStore = Reflux.createStore({
 		this.infoActive = false;
 		this.favoritesListActive = false;
     this.submitAreaActive = false;
+    this.faqAreaActive = false;
     this.newsletterAreaActive = false;
 
     this.listenTo(MenuActions.hideAllAreas, this.hideAllAreas);
@@ -27,6 +28,9 @@ var MenuStore = Reflux.createStore({
 
     // newsletter area
     this.listenTo(MenuActions.toggleNewsletterArea, this.toggleNewsletterArea);
+
+    // faqArea
+    this.listenTo(MenuActions.toggleFaqArea, this.toggleFaqArea)
 	},
 
 	toggleInfoArea: function() {
@@ -45,6 +49,10 @@ var MenuStore = Reflux.createStore({
 
   toggleNewsletterArea: function(){
     this.toggleArea('newsletterAreaActive');
+  },
+
+  toggleFaqArea: function(){
+    this.toggleArea('faqAreaActive');
   },
 
   toggleFavoritesList: function(){
@@ -95,7 +103,8 @@ var MenuStore = Reflux.createStore({
       favoritesListActive : this.favoritesListActive,
       infoActive: this.infoActive,
       submitAreaActive : this.submitAreaActive,
-      newsletterAreaActive : this.newsletterAreaActive
+      newsletterAreaActive : this.newsletterAreaActive,
+      faqAreaActive : this.faqAreaActive
     }); 
   },
 
@@ -104,6 +113,7 @@ var MenuStore = Reflux.createStore({
     this.favoritesListActive = false;
     this.submitAreaActive = false;
     this.newsletterAreaActive = false;
+    this.faqAreaActive = false;
     this.hideSharedList();
   }
 

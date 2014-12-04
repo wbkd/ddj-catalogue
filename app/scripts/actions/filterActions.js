@@ -1,5 +1,5 @@
 var Reflux = require('reflux');
-var PreviewApi = require('../apis/previewApi');
+var StaticApi = require('../apis/staticApi');
 var PreviewActions = require('./previewActions');
 
 var filterActions = Reflux.createActions([
@@ -15,7 +15,7 @@ var filterActions = Reflux.createActions([
 ]);
 
 filterActions.loadFilters.preEmit = function(){
-  PreviewApi
+  StaticApi
     .loadFilters()
     .then(filterActions.loadFiltersSuccess,filterActions.loadFiltersError);
 };

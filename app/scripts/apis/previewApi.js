@@ -40,12 +40,8 @@ var PreviewApi = {
 			method: 'post',
 			crossOrigin: true 
 		});
-	},
-
-	loadFilters: function(){
-		return reqwest({ url: config.baseUrl('ui-data'), dataType: 'json', crossOrigin: true  });
 	}
-
+	
 }
 
 module.exports = PreviewApi;

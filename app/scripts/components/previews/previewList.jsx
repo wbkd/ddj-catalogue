@@ -25,6 +25,7 @@ var PreviewList = React.createClass({
     return {
       previews : [],
       expandedId : null,
+      showOverlay : false,
       isLoading: true,
       count : 0,
       selectedFilters: routeParams.filters || {},
@@ -109,8 +110,6 @@ var PreviewList = React.createClass({
     }
      
     this.lastScrollTop = scrollTop;
-
-
   },
 
   render: function() {
@@ -124,7 +123,7 @@ var PreviewList = React.createClass({
       minHeight: window.innerHeight
     }
 
-    var showOverlay = this.state.expandedId != null;
+    var showOverlay = this.state.expandedId != null || this.props.showOverlay;
 
     return (
       <div style={minHeight} className="preview-list row centered">

@@ -6,13 +6,10 @@ var FilterActions = require('../../actions/filterActions.js');
 var Filter = React.createClass({
 
   filterSelect: function() {
-   
     if(this.props.checked) {
       return FilterActions.filterUnselect(this.props);
     }
- 
     FilterActions.filterSelect(this.props); 
-    console.log(this.props);
   },
 
   render: function() {

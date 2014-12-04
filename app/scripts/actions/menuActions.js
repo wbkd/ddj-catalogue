@@ -9,7 +9,8 @@ var menuActions = Reflux.createActions([
   'hideSharedList',
   'toggleSubmitArea',
   'toggleNewsletterArea',
-  'hideAllAreas'
+  'hideAllAreas',
+  'toggleFaqArea'
 ]);
 
 menuActions.toggleInfo.preEmit = function(){

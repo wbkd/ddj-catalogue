@@ -8,12 +8,14 @@ var FilterMenu = require('./filter/filterMenu.jsx');
 var FavoritesArea = require('./favorites/favoritesArea.jsx');
 var SubmitArea = require('./areas/submitArea.jsx');
 var NewsletterArea = require('./areas/newsletterArea.jsx');
+var FaqArea = require('./faqs/faqArea.jsx');
 
 // stores
 var MenuStore = require('../stores/menuStore.js');
 var FilterStore = require('../stores/filterStore.js');
 var FavoritesStore = require('../stores/favoritesStore.js');
 var SubmitStore = require('../stores/submitStore.js');
+var FaqStore = require('../stores/faqStore.js');
 
 // actions
 var FavoritesActions = require('../actions/favoritesActions.js');
@@ -26,27 +28,31 @@ var Content = React.createClass({
 
   getInitialState: function() {
     return {
-      //filter menu
+      // filter menu
       filterMenuActive : false,
       uiData: [],
       selectedFilters: {},
 
-      //submit area
+      // submit area
       infoActive: typeof store.get('ddj-infobox') === 'undefined',
       submitAreaActive : false,
       submitAreaError : '',
       submitAreaSuccess : false,
 
-      //favs
+      // favs
       favorites : [],
       favoritesUrl : '',
       favoritesListActive : false,
       sharedFavorites : [],
 
-      //newsletter area
+      // newsletter area
       newsletterAreaActive : false,
       newsletterSuccess : false,
-      newsletterError : ''
+      newsletterError : '',
+
+      // faq area
+      faqAreaActive : false,
+      faqData : []
   	}
   },
 
@@ -55,6 +61,7 @@ var Content = React.createClass({
     this.unsubscribeFilterStore = FilterStore.listen(this.onStatusChange);
     this.unsubscribeMFavoritesStore = FavoritesStore.listen(this.onStatusChange);
     this.unsubscribeSubmitStore = SubmitStore.listen(this.onStatusChange);
+    this.unsubscribeFaqStore = FaqStore.listen(this.onStatusChange);
 
     FavoritesActions.loadFavorites();
     FilterActions.loadFilters();
@@ -72,58 +79,33 @@ var Content = React.createClass({
     this.unsubscribeFilterStore();
     this.unsubscribeMFavoritesStore();
     this.unsubscribeSubmitStore();
+    this.unsubscribeFaqStore();
   },
 
   onStatusChange: function(state){
     this.setState(state);
   },
 
-  getMenuOffset: function() {
-    // TODO: dont use hardcoded value here
-    var menu = 295,
-        container = 1280,
-        win = window.innerWidth,
-        result = 0;
-
-    if(this.state.filterMenuActive) {
-      if(win <= container) {
-        result = menu;
-      }
-      else {
-        var offset = (win - container) / 2;
-        result = offset > menu ? 0 : menu - offset;
-      }
-    }
-    else {
-      result = 0;
-    }
-    return result;
-  },
-
   render: function() {
-
-    var shiftPx = this.getMenuOffset();
-
-  	var divStyle = {
-      transform: 'translateX(' + shiftPx + 'px)'
-    },
-    favoriteIds = this.state.favorites.map(function(el){
+    var favoriteIds = this.state.favorites.map(function(el){
       return el.id;
     }),
     isSharedFavoriteList = this.state.sharedFavorites.length > 0,
-    sharedFavoriteList = isSharedFavoriteList ? <FavoritesArea isShared={true} favorites={this.state.sharedFavorites} isActive={true} /> : '';
+    sharedFavoriteList = isSharedFavoriteList ? <FavoritesArea isShared={true} favorites={this.state.sharedFavorites} isActive={true} /> : '',
     favorites = isSharedFavoriteList ? this.state.sharedFavorites : this.state.favorites
 
     return (
       <div>
         <FilterMenu offsetTop={this.state.contentOffsetTop} filterMenuActive={this.state.filterMenuActive} selectedFilters={this.state.selectedFilters} uiData={this.state.uiData} />
-        <div style={divStyle} className="content-wrapper">
+        <div className="content-wrapper">
   			  <FavoritesArea isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} isActive={this.state.favoritesListActive} />
           {sharedFavoriteList} 
           <NewsletterArea isActive={this.state.newsletterAreaActive} isSuccess={this.state.newsletterSuccess} errorMessage={this.state.newsletterError} />    
           <SubmitArea isActive={this.state.submitAreaActive} isSuccess={this.state.submitAreaSuccess} errorMessage={this.state.submitAreaError} />
           <InfoArea isActive={this.state.infoActive} />
-          <PreviewList favoriteIds={favoriteIds} />
+          <FaqArea isActive={this.state.faqAreaActive} faqData={this.state.faqData}/>
+
+          <PreviewList showOverlay={this.state.filterMenuActive} favoriteIds={favoriteIds} />
   		  </div>
       </div>
     	);

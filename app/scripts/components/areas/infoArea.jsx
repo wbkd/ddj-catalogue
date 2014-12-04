@@ -28,6 +28,7 @@ var InfoArea = React.createClass({
     return (
       <div className="area">
         <div className="centered">
+        
           <div className="clearfix">
             <div className="btn btn-close" onClick={this.hideInfo}>
               <i className="icon_close"></i>schließen

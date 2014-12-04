@@ -2,10 +2,15 @@ var React = require('react');
 var cx = React.addons.classSet;
 
 var PreviewActions = require('../../actions/previewActions');
+var FilterActions = require('../../actions/filterActions');
 
 var HighlightOverlay = React.createClass({
-	
-	
+  
+  handleClick: function(){
+    PreviewActions.shrinkPreviews();
+    FilterActions.hideFilterMenu();
+  },
+
 	render: function() {
 
 		var classes = cx({
@@ -13,7 +18,7 @@ var HighlightOverlay = React.createClass({
 			'active': this.props.isActive
 		});
 
-		return <div onClick={PreviewActions.shrinkPreviews} className={classes}></div>
+		return <div onClick={this.handleClick} className={classes}></div>
 	}
 
 });

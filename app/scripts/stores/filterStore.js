@@ -77,7 +77,7 @@ var FilterStore = Reflux.createStore({
 				name: 'Kategorie',
 				dbId: 'category',
 				filters: data.category,
-				isFilterable: true
+				isFilterable: false	
 			}
 		]
 		return res;

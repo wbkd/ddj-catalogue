@@ -50,7 +50,7 @@
 	padding-top:2em
 	
 .highlight-overlay
-	position: absolute
+	position: fixed
 	height: 100%
 	width: 100%
 	background: rgba(0,0,0,.3)
@@ -58,6 +58,7 @@
 	display: none
 	top: 0
 	left: 0
+	
 	&.active
 		display: block
 	
@@ -161,7 +162,7 @@
 		height:270px
 		position:relative
 		background:white
-		z-index:10
+		z-index:6
 		box-shadow: 0 2px 2px rgba(0,0,0,.4)
 		
 		.preview-image

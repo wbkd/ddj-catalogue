@@ -1,6 +1,5 @@
 var React = require('react');
 var Home = require('./pages/home.jsx');
-var Faqs = require('./pages/faqs.jsx');
 var ErrorPage = require('./pages/404.jsx');
 
 var RouteParamStore = require('./stores/routeParamStore');
@@ -19,9 +18,9 @@ module.exports.routes = {
   '/projekte': function() {
   	React.render(<Home />, document.body);
   },
-  '/faqs' : function(){
+  /*'/faqs' : function(){
     React.render(<Faqs />, document.body);
-  },
+  },*/
   '/favoriten/:ids' : function(ids){
     React.render(<Home sharedFavoriteIds={ids} />, document.body);
   }
