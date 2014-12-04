@@ -65,11 +65,11 @@ var Preview = React.createClass({
       <div className="column">
         	<div className={classes}>
             <div onClick={this.togglePreview} className="close-btn"><i className="icon_close"></i></div>
-        		<a className='preview-image'style={imageStyle} href={preview.url} target="_blank"></a>
+        		<span onClick={this.togglePreview} className='preview-image'style={imageStyle} href={preview.url} target="_blank"></span>
             
             <div className="btn-group">
               <div onClick={this.starPreview} className="btn btn-star"><i className="icon_star"></i></div>
-              <div onClick={this.togglePreview} className="btn btn-toggle"><i className="icon_plus"></i></div>
+              <a href={preview.url} className="btn" target="_blank" title={ 'Zur Anwendung ' + preview.title }><i className="icon_link"></i></a>
             </div>
 
             <div className="preview-content">
@@ -80,8 +80,11 @@ var Preview = React.createClass({
 
               {this.props.isExpanded ? <div className="preview-expanded">
                 <div className="preview-description">{ preview.description }</div>
-                { preview.byline.length ? <div className="preview-byline">Von: { this.getBylineLinks(preview.byline) }</div> : '' }
+                { preview.byline.length ? <div className="preview-byline"><strong>Autoren:</strong> { this.getBylineLinks(preview.byline) }</div> : '' }
                 <SocialItems socialData={preview.social}/>
+                <div className="preview-visualform"><strong>Visuelle Form:</strong> { preview.visualform.toString() }</div>
+                <div className="preview-category"><strong>Kategorie:</strong> { preview.category.toString() }</div>
+                
               </div> : ''}
 
             </div>

@@ -84,20 +84,34 @@
 	.close-btn
 		display: none
 		position: absolute
-		top: .3em
-		right: .3em
+		top: .2em
+		right: .2em
 		z-index: 20
 		cursor: pointer
-	
+		box-shadow: 0 1px 1px rgba(0,0,0,.15)
+		background: $lightgrey
+		border-radius:100%
+		width: 30px
+		height: 30px
+		text-align:center
+		font-size:18px
+		line-height:32px
+		opacity:.9
+		
+		&:hover
+			box-shadow: 0 1px 2px rgba(0,0,0,.25)
+			opacity:1
+
 	.btn-group
 		position:absolute
-		right:0
+		right:.2em
 		width:30px
+		z-index:2
 		
 	.btn
 		opacity:.5
 		transition: opacity .2s
-		box-shadow: 0 1px 1px rgba(0,0,0,.05)
+		box-shadow: 0 1px 1px rgba(0,0,0,0)
 		padding:.5em .75em
 		border-radius:100%
 		font-size:12px
@@ -126,13 +140,9 @@
 		width:100%
 		padding: .6em 45px .6em .5em
 		font-size: .8em
-		
+
 		.preview-publisher
 			color:$grey
-		
-		.preview-byline
-			color: $grey
-			margin-top:1em
 			
 			.byline-link
 				cursor: pointer
@@ -140,6 +150,9 @@
 				&:hover
 					color: $darkgrey
 					text-decoration: underline
+		
+		.preview-description
+			margin-bottom:1em
 
 		.preview-expanded
 			display:none
