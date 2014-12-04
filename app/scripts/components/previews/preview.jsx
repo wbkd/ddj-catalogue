@@ -10,7 +10,7 @@ var BylineLink = require('./bylineLink.jsx');
 var PreviewActions = require('../../actions/previewActions')
 var FavoritesActions = require('../../actions/favoritesActions')
 
-var smoothScroll = require('smooth-scroll');
+var Velocity = require('velocity-animate')
 
 var Preview = React.createClass({
 
@@ -29,11 +29,9 @@ var Preview = React.createClass({
   togglePreview: function(){
     PreviewActions.toggleExpandedPreview(this.props.data._id);
     
-    smoothScroll.animateScroll(
-      null, 
-      '#' + this.getDOMNode().id,
-      {offset : 75, updateURL : false}
-    );
+    if(!this.props.isExpanded) {
+      Velocity(this.getDOMNode(), 'scroll', { duration: 500, offset: -100 })
+    }
   },
 
   starPreview: function(){
@@ -65,7 +63,7 @@ var Preview = React.createClass({
 
 
     return (
-      <div className="column" id={preview._id}>
+      <div className="column">
         	<div className={classes}>
             <div onClick={this.togglePreview} className="close-btn"><i className="icon_close"></i></div>
         		<a className='preview-image'style={imageStyle} href={preview.url} target="_blank"></a>
