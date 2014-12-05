@@ -10,11 +10,11 @@ var store = require('store');
 var FavoritesStore = Reflux.createStore({
 
   init : function(){
-    this.favorites = store.get('favorites');
+    this.favorites = this.storeGet('favorites');
 
     if(utils.isUndefined(this.favorites)){
       this.favorites = [];
-      store.set('favorites', this.favorites);
+      this.storeSet('favorites', this.favorites);
     }
 
     this.listenTo(favoritesActions.loadFavorites,this.loadFavorites);
@@ -27,9 +27,21 @@ var FavoritesStore = Reflux.createStore({
     this.listenTo(favoritesActions.resetFavorites,this.resetFavorites)
   },
 
+  storeSet:function(key,values){
+    if(store.enabled){
+      store.set(key,values);
+    }
+  },
+
+  storeGet:function(key){
+    if(store.enabled){
+      return store.get(key);
+    }
+  },
+
   resetFavorites: function(){
     this.favorites = [];
-    store.set('favorites', this.favorites);
+    this.storeSet('favorites', this.favorites);
     
     this.trigger({ 
      favorites : this.favorites
@@ -58,7 +70,7 @@ var FavoritesStore = Reflux.createStore({
       this.favorites.splice(favoritesPreviewIndex, 1);
     }
 
-    store.set('favorites', this.favorites);
+    this.storeSet('favorites', this.favorites);
 
     this.trigger({ 
       favorites : this.favorites,
