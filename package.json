@@ -27,6 +27,7 @@
     "rsyncwrapper": "^0.4.1"
   },
   "dependencies": {
+    "URIjs": "^1.14.1",
     "director": "^1.2.3",
     "imports-loader": "~0.6.3",
     "jsx-loader": "^0.12.1",

@@ -4,6 +4,7 @@ var filterActions = require('../actions/filterActions');
 var previewActions = require('../actions/previewActions');
 var config = require('../config');
 
+
 var FilterStore = Reflux.createStore({
 
 	init : function(){

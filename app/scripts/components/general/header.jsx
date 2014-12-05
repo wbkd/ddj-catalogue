@@ -5,7 +5,7 @@ var utils = require('../../utils');
 var FilterStore = require('../../stores/filterStore');
 var PreviewStore = require('../../stores/previewStore');
 var FavStore = require('../../stores/favoritesStore');
-var RouteParamStore = require('../../stores/routeParamStore');
+// var RouteParamStore = require('../../stores/routeParamStore');
 
 var SubMenu = require('../menu/subMenu.jsx');
 var Navigation = require('../menu/navigation.jsx');
@@ -13,12 +13,12 @@ var Navigation = require('../menu/navigation.jsx');
 var Header = React.createClass({
 
   getInitialState: function(a){
-    var routeParams = RouteParamStore.getRouteParams();
+    //var routeParams = RouteParamStore.getRouteParams();
     return {
-      selectedFilters : routeParams.filters || {},
+      selectedFilters : {},
       headerSpacing: 100,
-      sortType : routeParams.sortType || config.sortType,
-      isSortOrderDesc : (utils.isUndefined(routeParams.isSortOrderDesc)) ? config.isSortOrderDesc : routeParams.isSortOrderDesc,
+      sortType : config.sortType,
+      isSortOrderDesc : config.isSortOrderDesc,
       favoritesCount: 0
     };
   },

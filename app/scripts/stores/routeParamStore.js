@@ -1,13 +1,20 @@
 var Reflux = require('reflux');
+var URI = require('URIjs');
+
 var utils = require('../utils');
 var config = require('../config');
+
+var FilterActions = require('../../actions/filterActions');
 
 var RouteParamStore = Reflux.createStore({
 
 	init : function() {
-		this.filters = {};
+		this.filters = null;
 		this.sortType = config.sortType;
 		this.isSortOrderDesc = config.isSortOrderDesc;
+
+		this.listenTo(filterActions.filterSelect,this.filterSelect);
+		this.listenTo(filterActions.filterUnselect,this.filterUnselect);
 	},
 
 	getRouteParams: function() {
@@ -19,18 +26,19 @@ var RouteParamStore = Reflux.createStore({
 	},
 
 	setRouteParams: function(paramString) {
-		var params = paramString;
-		if(params.sortby) {
-			this.sortType = params.sortby;
-			delete params.sortby;
+		var parsedParams = URI.parseQuery(paramString);
+
+		if(parsedParams.sort) {
+			this.sortType = parsedParams.sort;
+			delete parsedParams.sort;
 		}
-		if(params.order) {
-			this.isSortOrderDesc = params.order === 'desc';
-			delete params.order;
+		if(parsedParams.order) {
+			this.isSortOrderDesc = parsedParams.order === 'desc';
+			delete parsedParams.order;
 		}
-		//set the params to use them in the views
-		this.filters = params;
-		console.log(this.isSortOrderDesc);
+
+		//set the parsedParams to use them in the views
+		this.filters = parsedParams;
 	},
 
 	updateRoute: function() {
