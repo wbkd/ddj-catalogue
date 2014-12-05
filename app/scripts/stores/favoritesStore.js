@@ -7,6 +7,7 @@ var menuActions = require('../actions/menuActions');
 
 var store = require('store');
 
+
 var FavoritesStore = Reflux.createStore({
 
   init : function(){

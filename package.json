@@ -33,6 +33,7 @@
     "imports-loader": "~0.6.3",
     "jsx-loader": "^0.12.1",
     "react": "^0.12.0",
+    "react-select": "^0.2.7",
     "react-tools": "^0.12.1",
     "reflux": "^0.1.15",
     "reqwest": "^1.1.5",

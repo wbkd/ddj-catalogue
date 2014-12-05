@@ -65,11 +65,11 @@ var Preview = React.createClass({
     return (
       <div className="column">
         	<div className={classes}>
-            <div onClick={this.togglePreview} onTouchStart={this.togglePreview} className="close-btn"><i className="icon_close"></i></div>
-        		<span onClick={this.togglePreview} onTouchStart={this.togglePreview} className='preview-image'style={imageStyle} href={preview.url} target="_blank"></span>
+            <div onClick={this.togglePreview} className="close-btn"><i className="icon_close"></i></div>
+        		<span onClick={this.togglePreview} className='preview-image'style={imageStyle} href={preview.url} target="_blank"></span>
             
             <div className="btn-group">
-              {store.enabled ? <div onClick={this.starPreview} onTouchStart={this.starPreview} className="btn btn-star"><i className="icon_star"></i></div> : ''}
+              {store.enabled ? <div onClick={this.starPreview} className="btn btn-star"><i className="icon_star"></i></div> : ''}
               <a href={preview.url} className="btn" target="_blank" title={ 'Zur Anwendung "' + preview.title + '"' }><i className="icon_link"></i></a>
             </div>
 

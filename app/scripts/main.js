@@ -6,3 +6,4 @@ new director
   .Router(routerConfig.routes)
   .configure(routerConfig.config)
   .init('/projekte');
+

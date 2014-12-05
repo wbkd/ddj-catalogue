@@ -72,6 +72,11 @@ var FilterStore = Reflux.createStore({
 				filters: data.byline,
 				isFilterable: true
 			},{
+				name: 'Publisher',
+				dbId: 'publisher',
+				filters: data.publisher,
+				isFilterable: false	
+			},{
 				name: 'Kategorie',
 				dbId: 'category',
 				filters: data.category,

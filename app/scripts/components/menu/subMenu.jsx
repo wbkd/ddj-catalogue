@@ -20,7 +20,7 @@ var SubMenu = React.createClass({
     return (
     	<div className="sub-menu">
         <div className="header-content centered clearfix">
-          <div onClick={FilterActions.toggleFilterMenu} onTouchStart={FilterActions.toggleFilterMenu} className="btn-filter btn"><i className="icon_menu"></i> <div className="description"><span className="label">Filter</span></div></div>
+          <div onClick={FilterActions.toggleFilterMenu} className="btn-filter btn"><i className="icon_menu"></i> <div className="description"><span className="label">Filter</span></div></div>
           <SelectedFilters filters={this.props.filters} />
           
           {store.enabled ? <div className="favorites-nav-item" onClick={this.toggleList}>
