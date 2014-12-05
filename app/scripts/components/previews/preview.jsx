@@ -30,7 +30,7 @@ var Preview = React.createClass({
     PreviewActions.toggleExpandedPreview(this.props.data._id);
     
     if(!this.props.isExpanded) {
-      Velocity(this.getDOMNode(), 'scroll', { duration: 500, offset: -100 });
+      Velocity(this.getDOMNode(), 'scroll', { duration: 400, offset: -50 });
     }
   },
 

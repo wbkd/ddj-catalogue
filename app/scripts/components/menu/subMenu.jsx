@@ -18,16 +18,16 @@ var SubMenu = React.createClass({
     return (
     	<div className="sub-menu">
         <div className="header-content centered clearfix">
-          <div onClick={FilterActions.toggleFilterMenu} className="btn btn-filter btn"><i className="icon_menu"></i> <div className="description">Filter</div></div>
+          <div onClick={FilterActions.toggleFilterMenu} className="btn-filter btn"><i className="icon_menu"></i> <div className="description"><span className="label">Filter</span></div></div>
           <SelectedFilters filters={this.props.filters} />
-
-          <Sorter isSortOrderDesc={this.props.isSortOrderDesc} sortType={this.props.sortType} />
-
           <div className="favorites-nav-item" onClick={this.toggleList}>
             <span className="nav-item">
-              <i className="icon_star_alt" id="favorites-star"></i>Favoriten</span>
+              <i className="icon_star_alt" id="favorites-star"></i><span className="label">Favoriten</span>
+            </span>
             {favoritesCounter}
-          </div>
+          </div>  
+
+          <Sorter isSortOrderDesc={this.props.isSortOrderDesc} sortType={this.props.sortType} />
         </div>
       </div>
     );

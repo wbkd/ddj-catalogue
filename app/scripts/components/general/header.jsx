@@ -53,9 +53,11 @@ var Header = React.createClass({
     	<div>
         <header>
           <div className="clearfix header-content centered">
-            <img className="header-logo" src="images/datenkatalog-logo.png"/>
-            <div className="header-title">
-          	  <a href="#/projekte">{config.appName}</a>
+            <div className="header-title-wrapper">
+              <img className="header-logo" src="images/datenkatalog-logo.png"/>
+              <div className="header-title">
+            	  <a href="#/projekte">{config.appName}</a>
+              </div>
             </div>
             <Navigation/>
           </div>
