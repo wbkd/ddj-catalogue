@@ -1,9 +1,3 @@
-/**
- * Here you implement your functions you want to use everywhere in your application.
- * See this functions as an example.
- */
-
-
 var debugMode = true;
 
 /////////////////////
@@ -26,7 +20,6 @@ var isOldBrowser = !(('querySelector' in document) && ('localStorage' in window)
 function isUndefined(obj) {
   return typeof obj === 'undefined';
 }
-
 
 function isEmptyObject(obj) {
     var hasOwnProperty = Object.prototype.hasOwnProperty;

@@ -34,7 +34,7 @@ var Content = React.createClass({
       selectedFilters: {},
 
       // submit area
-      infoActive: typeof store.get('ddj-infobox') === 'undefined',
+      infoActive: store.enabled ? typeof store.get('ddj-infobox') === 'undefined' : false,
       submitAreaActive : false,
       submitAreaError : '',
       submitAreaSuccess : false,

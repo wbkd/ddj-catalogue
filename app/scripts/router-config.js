@@ -2,6 +2,7 @@ var React = require('react');
 var Home = require('./pages/home.jsx');
 var ErrorPage = require('./pages/404.jsx');
 
+React.initializeTouchEvents(true);
 // var RouteParamStore = require('./stores/routeParamStore');
 
 module.exports.routes = {

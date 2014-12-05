@@ -18,7 +18,7 @@ var HighlightOverlay = React.createClass({
 			'active': this.props.isActive
 		});
 
-		return <div onClick={this.handleClick} className={classes}></div>
+		return <div onClick={this.handleClick} onTouchStart={this.handleClick} className={classes}></div>
 	}
 
 });

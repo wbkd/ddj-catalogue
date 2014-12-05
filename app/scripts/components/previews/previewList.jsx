@@ -31,7 +31,7 @@ var PreviewList = React.createClass({
       count : 0,
       selectedFilters: {},
       sortType : config.sortType,
-      isSortOrderDesc : config.isSortOrderDesc-   
+      isSortOrderDesc : config.isSortOrderDesc  
     };
   },
 

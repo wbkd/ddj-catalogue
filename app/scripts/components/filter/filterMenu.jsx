@@ -18,7 +18,7 @@ var FilterMenu = React.createClass({
 
     var style = {
       paddingTop: this.props.offsetTop
-    }
+    };
 
     return (
     	<div style={style} className={classes}>

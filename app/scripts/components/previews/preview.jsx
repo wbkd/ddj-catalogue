@@ -11,6 +11,7 @@ var PreviewActions = require('../../actions/previewActions')
 var FavoritesActions = require('../../actions/favoritesActions')
 
 var Velocity = require('velocity-animate')
+var store = require('store');
 
 var Preview = React.createClass({
 
@@ -68,7 +69,7 @@ var Preview = React.createClass({
         		<span onClick={this.togglePreview} className='preview-image'style={imageStyle} href={preview.url} target="_blank"></span>
             
             <div className="btn-group">
-              <div onClick={this.starPreview} className="btn btn-star"><i className="icon_star"></i></div>
+              {store.enabled ? <div onClick={this.starPreview} className="btn btn-star"><i className="icon_star"></i></div> : ''}
               <a href={preview.url} className="btn" target="_blank" title={ 'Zur Anwendung "' + preview.title + '"' }><i className="icon_link"></i></a>
             </div>
 
