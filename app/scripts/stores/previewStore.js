@@ -13,6 +13,7 @@ var PreviewStore = Reflux.createStore({
 		this.error = null;
 		this.expandedId = null;
 		this.count = 0;
+		this.uidata = {};
 
 		this.listenTo(previewActions.toggleExpandedPreview,this.toggleExpandedPreview);
 		this.listenTo(previewActions.shrinkPreviews,this.shrinkPreviews);
@@ -67,14 +68,17 @@ var PreviewStore = Reflux.createStore({
 		this.isLoading = false;
 		this.error = null;
 		this.previews = data.previews;
-		// api only returns count if offset is 0
-		this.count = data.count ? data.count : this.count;
 		
+		// api only returns count and uidata if offset is 0
+		this.count = data.count ? data.count : this.count;
+		this.uidata = data.uidata ? data.uidata : this.uidata;
+
 		this.trigger({
 			isLoading : this.isLoading,
 			error : this.error,
 			previews : this.previews,
-			count : this.count
+			count : this.count,
+			uidata : this.uidata
 		});
 	},
 

@@ -59,7 +59,7 @@ var Content = React.createClass({
   componentDidMount: function() {
   	this.unsubscribeMenuStore = MenuStore.listen(this.onStatusChange);
     this.unsubscribeFilterStore = FilterStore.listen(this.onStatusChange);
-    this.unsubscribeMFavoritesStore = FavoritesStore.listen(this.onStatusChange);
+    this.unsubscribeFavoritesStore = FavoritesStore.listen(this.onStatusChange);
     this.unsubscribeSubmitStore = SubmitStore.listen(this.onStatusChange);
     this.unsubscribeFaqStore = FaqStore.listen(this.onStatusChange);
 
@@ -77,7 +77,7 @@ var Content = React.createClass({
   componentWillUnmount: function(){
     this.unsubscribeMenuStore();
     this.unsubscribeFilterStore();
-    this.unsubscribeMFavoritesStore();
+    this.unsubscribeFavoritesStore();
     this.unsubscribeSubmitStore();
     this.unsubscribeFaqStore();
   },

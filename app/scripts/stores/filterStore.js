@@ -1,9 +1,11 @@
 var Reflux = require('reflux');
 var utils = require('../utils');
-var filterActions = require('../actions/filterActions');
-var previewActions = require('../actions/previewActions');
 var config = require('../config');
 
+var filterActions = require('../actions/filterActions');
+var previewActions = require('../actions/previewActions');
+
+var previewStore = require('./previewStore');
 
 var FilterStore = Reflux.createStore({
 
@@ -22,6 +24,14 @@ var FilterStore = Reflux.createStore({
 		this.listenTo(filterActions.loadFiltersSuccess,this.loadFiltersSuccess);
 		this.listenTo(filterActions.loadFiltersError,this.loadFiltersError);
 
+		this.listenTo(previewStore, this.updateUiData);
+
+	},
+
+	updateUiData: function(data){
+		if(!utils.isEmptyObject(data.uidata)){
+			this.loadFiltersSuccess(data.uidata);
+		}
 	},
 
 	toggleFilterMenu: function(){
