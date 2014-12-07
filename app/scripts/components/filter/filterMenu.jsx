@@ -7,9 +7,13 @@ var FilterSelect = require('./filterSelect.jsx');
 var FilterMenu = React.createClass({
 
   render: function() {
+
+    //var menuHeight = this.getDOMNode().clientHeight;
+
     var filters = this.props.uiData.map(function(d,i) {
       var selected = this.props.selectedFilters[d.dbId];
-      return d.isFilterable ? <FilterSelect key={'fg_' + i} category={d.dbId} data={d} selected={selected} placeholder={"Autor wählen..."}/> : <FilterGroup key={'fg_' + i} data={d} selected={selected} />;
+      var expanded = this.props.expandedGroups.indexOf(d.name) > -1;
+      return d.isFilterable ? <FilterSelect isExpanded={expanded} key={'fg_' + i} category={d.dbId} data={d} selected={selected} placeholder={"Autor wählen..."}/> : <FilterGroup isExpanded={expanded} key={'fg_' + i} data={d} selected={selected} />;
     }.bind(this));
 
     var classes = cx({
@@ -18,7 +22,7 @@ var FilterMenu = React.createClass({
     });
 
     var style = {
-      paddingTop: this.props.offsetTop
+      top: this.props.filterMenuActive ? this.props.offsetTop : -1000
     };
 
     return (

@@ -19,7 +19,8 @@ var Header = React.createClass({
       headerSpacing: 100,
       sortType : config.sortType,
       isSortOrderDesc : config.isSortOrderDesc,
-      favoritesCount: 0
+      favoritesCount: 0,
+      filterMenuActive: false
     };
   },
 
@@ -61,7 +62,7 @@ var Header = React.createClass({
             </div>
             <Navigation/>
           </div>
-          { this.props.hasSubmenu ? <SubMenu filters={this.state.selectedFilters} favoritesCount={this.state.favoritesCount} isSortOrderDesc={this.state.isSortOrderDesc} sortType={this.state.sortType} /> : '' }
+          { this.props.hasSubmenu ? <SubMenu filters={this.state.selectedFilters} favoritesCount={this.state.favoritesCount} isSortOrderDesc={this.state.isSortOrderDesc} sortType={this.state.sortType} filterMenuActive={this.state.filterMenuActive}/> : '' }
       	</header>
         <div id="header-spacing" className="header-spacing" style={headerSpacing}></div>
       </div>

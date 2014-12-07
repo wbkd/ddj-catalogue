@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 var config = require('../../config');
 var utils = require('../../utils');
 
@@ -16,10 +16,11 @@ var PreviewActions = require('../../actions/previewActions');
 // stores
 var PreviewStore = require('../../stores/previewStore');
 var FilterStore = require('../../stores/filterStore');
-//var RouteParamStore = require('../../stores/routeParamStore');
+
+var Reflux = require('reflux');
 
 var PreviewList = React.createClass({
-
+  mixins: [Reflux.ListenerMixin],
   getInitialState: function(a){
     //var routeParams = RouteParamStore.getRouteParams();
 
@@ -36,9 +37,6 @@ var PreviewList = React.createClass({
   },
 
   onStatusChange: function(newState){
-
-    newState.expandedId = this.state.expandedId === newState.expandedId ? null : newState.expandedId;
-    
     var newPreviews = this.state.previews;
 
     // we need to clear the preview list
@@ -51,7 +49,6 @@ var PreviewList = React.createClass({
       }.bind(this));
 
       return false;
-      
     }
     else if(!utils.isUndefined(newState.previews)){
       newPreviews = newPreviews.concat(newState.previews);
@@ -60,10 +57,9 @@ var PreviewList = React.createClass({
     this.setState(newState);
   },
 
-  componentDidMount: function() {
-
-    this.unsubscribePreviewStore = PreviewStore.listen(this.onStatusChange);
-    this.unsubscribeFilterStore = FilterStore.listen(this.onStatusChange);
+  componentDidMount: function() {  
+    this.listenTo(PreviewStore, this.onStatusChange);
+    this.listenTo(FilterStore, this.onStatusChange);
     this.resetLazyParams();
 
     //TODO:  How to use react onScroll Event in this case?
@@ -73,8 +69,7 @@ var PreviewList = React.createClass({
   },
 
   componentWillUnmount: function(){
-    this.unsubscribePreviewStore();
-    this.unsubscribeFilterStore();
+    
     window.removeEventListener('scroll', this.handleScroll, false);
   },
 
@@ -114,6 +109,7 @@ var PreviewList = React.createClass({
   },
 
   render: function() {
+    
     var previews = this.state.previews.map(function(preview,i) {
       var isExpanded = this.state.expandedId ? this.state.expandedId === preview._id : false,
         isStared = this.props.favoriteIds.indexOf(preview._id) !== -1;
@@ -141,6 +137,8 @@ var PreviewList = React.createClass({
       </div>
     );
   }
+
+
 });
 
 module.exports = PreviewList;

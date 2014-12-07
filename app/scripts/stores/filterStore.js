@@ -5,7 +5,6 @@ var config = require('../config');
 var filterActions = require('../actions/filterActions');
 var previewActions = require('../actions/previewActions');
 
-var previewStore = require('./previewStore');
 
 var FilterStore = Reflux.createStore({
 
@@ -13,9 +12,11 @@ var FilterStore = Reflux.createStore({
 		this.filterMenuActive = false;
 		this.selectedFilters = {};
 		this.uiData = [];
+    this.expandedGroupIds = [];
 
 		this.listenTo(filterActions.toggleFilterMenu,this.toggleFilterMenu);
 		this.listenTo(filterActions.hideFilterMenu,this.hideFilterMenu);
+    this.listenTo(filterActions.toggleExpand, this.toggleExpand);
 
 		this.listenTo(filterActions.filterSelect,this.filterSelect);
 		this.listenTo(filterActions.filterUnselect,this.filterUnselect);
@@ -24,14 +25,8 @@ var FilterStore = Reflux.createStore({
 		this.listenTo(filterActions.loadFiltersSuccess,this.loadFiltersSuccess);
 		this.listenTo(filterActions.loadFiltersError,this.loadFiltersError);
 
-		this.listenTo(previewStore, this.updateUiData);
+		//this.listenTo(previewStore, this.updateUiData);
 
-	},
-
-	updateUiData: function(data){
-		if(!utils.isEmptyObject(data.uidata)){
-			this.loadFiltersSuccess(data.uidata);
-		}
 	},
 
 	toggleFilterMenu: function(){
@@ -72,7 +67,7 @@ var FilterStore = Reflux.createStore({
 	//has to be removed, data should be formatted by backend
 	convertData: function(data) {
 		var res = [{
-				name: 'Visuelle Form',
+				name: 'Form der Visualisierung',
 				dbId: 'visualform',
 				filters: data.visualform,
 				isFilterable: false
@@ -82,7 +77,7 @@ var FilterStore = Reflux.createStore({
 				filters: data.byline,
 				isFilterable: true
 			},{
-				name: 'Publisher',
+				name: 'Medium',
 				dbId: 'publisher',
 				filters: data.publisher,
 				isFilterable: false	
@@ -96,9 +91,24 @@ var FilterStore = Reflux.createStore({
 		return res;
 	},
 
-	loadFilters: function(){
-			//this.trigger({});
-	},
+  loadFilters: function(data) {
+    //nothing
+  },
+
+  toggleExpand: function(groupId) {
+
+    var groupIndex = this.expandedGroupIds.indexOf(groupId);
+    //check if is already expanded:
+    if(groupIndex > -1) {
+      this.expandedGroupIds.splice(groupIndex, 1);
+    }
+    else {
+      this.expandedGroupIds.push(groupId);
+    }
+    this.trigger({
+      expandedGroupIds: this.expandedGroupIds
+    });
+  },
 
 	loadFiltersSuccess : function(data){
 			var data = this.convertData(data);

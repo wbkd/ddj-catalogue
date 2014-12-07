@@ -1,5 +1,6 @@
 var Reflux = require('reflux');
 var previewActions = require('../actions/previewActions');
+var FilterActions = require('../actions/filterActions');
 var utils = require('../utils');
 var config = require('../config');
 
@@ -13,7 +14,6 @@ var PreviewStore = Reflux.createStore({
 		this.error = null;
 		this.expandedId = null;
 		this.count = 0;
-		this.uidata = {};
 
 		this.listenTo(previewActions.toggleExpandedPreview,this.toggleExpandedPreview);
 		this.listenTo(previewActions.shrinkPreviews,this.shrinkPreviews);
@@ -33,7 +33,8 @@ var PreviewStore = Reflux.createStore({
 	},
 
 	toggleExpandedPreview : function(previewId){
-		this.expandedId = previewId;
+    this.expandedId = this.expandedId === previewId ? null : previewId;
+
 		this.trigger({
 			expandedId : this.expandedId 
 		});
@@ -68,17 +69,17 @@ var PreviewStore = Reflux.createStore({
 		this.isLoading = false;
 		this.error = null;
 		this.previews = data.previews;
+
+    console.log(data);
 		
 		// api only returns count and uidata if offset is 0
 		this.count = data.count ? data.count : this.count;
-		this.uidata = data.uidata ? data.uidata : this.uidata;
 
 		this.trigger({
 			isLoading : this.isLoading,
 			error : this.error,
 			previews : this.previews,
-			count : this.count,
-			uidata : this.uidata
+			count : this.count
 		});
 	},
 

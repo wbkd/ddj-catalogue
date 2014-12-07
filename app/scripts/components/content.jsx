@@ -32,6 +32,7 @@ var Content = React.createClass({
       filterMenuActive : false,
       uiData: [],
       selectedFilters: {},
+      expandedGroupIds: [],
 
       // submit area
       infoActive: store.enabled ? typeof store.get('ddj-infobox') === 'undefined' : false,
@@ -96,7 +97,7 @@ var Content = React.createClass({
 
     return (
       <div>
-        <FilterMenu offsetTop={this.state.contentOffsetTop} filterMenuActive={this.state.filterMenuActive} selectedFilters={this.state.selectedFilters} uiData={this.state.uiData} />
+        <FilterMenu expandedGroups={this.state.expandedGroupIds} offsetTop={this.state.contentOffsetTop} filterMenuActive={this.state.filterMenuActive} selectedFilters={this.state.selectedFilters} uiData={this.state.uiData} />
         <div className="content-wrapper">
   			  <FavoritesArea isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} isActive={this.state.favoritesListActive} />
           {sharedFavoriteList} 
@@ -105,7 +106,7 @@ var Content = React.createClass({
           <InfoArea isActive={this.state.infoActive} />
           <FaqArea isActive={this.state.faqAreaActive} faqData={this.state.faqData}/>
 
-          <PreviewList showOverlay={this.state.filterMenuActive} favoriteIds={favoriteIds} />
+          <PreviewList showOverlay={false} favoriteIds={favoriteIds} />
   		  </div>
       </div>
     	);

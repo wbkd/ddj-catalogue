@@ -17,6 +17,8 @@ var SubMenu = React.createClass({
 
     var favoritesCounter = this.props.favoritesCount > 0 ? <span className="favorites-count">{this.props.favoritesCount}</span> : '';
 
+    var filterMenuActive = this.props.filterMenuActive;
+    
     return (
     	<div className="sub-menu">
         <div className="header-content centered clearfix">

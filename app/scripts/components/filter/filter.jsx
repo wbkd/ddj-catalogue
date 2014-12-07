@@ -20,7 +20,7 @@ var Filter = React.createClass({
     });
     
     return (
-    	<li className={classes} onClick={this.filterSelect}>{this.props.text} <i className="icon_check"></i><i className="icon_close"></i></li>
+    	<li className={classes} onClick={this.filterSelect}>{this.props.text} <i className="icon_close"></i></li>
     );
   }
 });

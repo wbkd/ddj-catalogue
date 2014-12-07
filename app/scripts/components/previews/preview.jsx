@@ -9,6 +9,7 @@ var BylineLink = require('./bylineLink.jsx');
 
 var PreviewActions = require('../../actions/previewActions')
 var FavoritesActions = require('../../actions/favoritesActions')
+var FilterActions = require('../../actions/filterActions');
 
 var Velocity = require('velocity-animate')
 var store = require('store');
@@ -29,9 +30,10 @@ var Preview = React.createClass({
 
   togglePreview: function(){
     PreviewActions.toggleExpandedPreview(this.props.data._id);
-    
+
     if(!this.props.isExpanded) {
       Velocity(this.getDOMNode(), 'scroll', { duration: 400, offset: -50 });
+      FilterActions.hideFilterMenu();
     }
   },
 
