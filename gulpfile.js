@@ -13,8 +13,6 @@ var port = $.util.env.port || 9999;
 var app = 'app/';
 var dist = 'dist/';
 
-console.log(environment)
-
 // https://github.com/ai/autoprefixer
 var autoprefixerBrowsers = [                 
   'ie >= 9',
@@ -119,18 +117,11 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('deploy', function() {
-    var rsync = require('rsyncwrapper').rsync;
-
-    return rsync({
-        src: path.resolve(__dirname, 'dist/*'),
-        dest: config.rsync.dest,
-        ssh: true,
-        recursive: true,
-    }, function(error, stdout, stderr, cmd) {
-        if(error){
-         console.log(error.message); 
-        }
-    });
+    return gulp.src(dist + '**')
+      .pipe($.rsync({
+        hostname: config.rsync.host,
+        destination: config.rsync.dest
+      }));
 });
 
 
