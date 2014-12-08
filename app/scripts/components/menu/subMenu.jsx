@@ -33,6 +33,8 @@ var SubMenu = React.createClass({
           </div> : ''}
 
           <Sorter isSortOrderDesc={this.props.isSortOrderDesc} sortType={this.props.sortType} />
+
+          
         </div>
       </div>
     );
