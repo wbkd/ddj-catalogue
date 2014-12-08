@@ -2,7 +2,6 @@
 
 /*  TODO: use transform instead of left  */
 .force-scrollbar
-  overflow-y: auto
   padding: 0 1em 1em 1em
   height:100%
   
@@ -17,6 +16,7 @@
   transition:top .2s
   width: 15em
   z-index: 6
+  overflow: visible 
   &.active
     display: block
   
@@ -92,12 +92,18 @@
         transition: transform .5s
     .filter-content
       max-height: 0px
-      overflow: auto
+      overflow: hidden
       transition: max-height .5s
   .filter-group.expanded
     .filter-content
       display: block
       max-height: 300px
+      overflow: auto
+    .filter-content.select
+      overflow: visible
+      max-height: 50px
+      .Select-menu
+        position: absolute
     .filter-header
       i
         transform: rotate(180deg)

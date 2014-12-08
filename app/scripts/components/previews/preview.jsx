@@ -5,7 +5,7 @@ var config = require('../../config');
 var utils = require('../../utils');
 
 var SocialItems = require('./socialItems.jsx');
-var BylineLink = require('./bylineLink.jsx');
+var DetailFilter = require('./detailFilter.jsx');
 
 var PreviewActions = require('../../actions/previewActions')
 var FavoritesActions = require('../../actions/favoritesActions')
@@ -41,10 +41,10 @@ var Preview = React.createClass({
     FavoritesActions.starPreview(this.props.data);
   },
 
-  getBylineLinks: function(byline) {
+  getDetailFilter: function(descriptions, groupName) {
     var links = [];
-    byline.forEach(function(name, i) {
-      links.push(<BylineLink key={"bl_" + i} text={name} addComma={i < byline.length - 1}/>);
+    descriptions.forEach(function(name, i) {
+      links.push(<DetailFilter key={"bl_" + i} text={name} addComma={i < descriptions.length - 1} description={groupName} />);
     });
     return links;
   },
@@ -64,6 +64,7 @@ var Preview = React.createClass({
       'is-stared':this.props.isStared
     });
 
+
     return (
       <div className="column">
         	<div className={classes}>
@@ -77,16 +78,16 @@ var Preview = React.createClass({
 
             <div className="preview-content">
           		<div className="preview-title">{ preview.title }</div>
-          		<div className="preview-publisher">{ preview.publisher }, {date}</div>
+          		<div className="preview-publisher">{ this.getDetailFilter(preview.publisher, 'publisher') }, {date}</div>
                 
               { this.props.sortType === 'social.sum' && !this.props.isExpanded ?  <SocialItems socialData={preview.social}/> : ''}
 
               {this.props.isExpanded ? <div className="preview-expanded">
                 <div className="preview-description">{ preview.description }</div>
-                { preview.byline.length ? <div className="preview-byline"><strong>Autoren:</strong> { this.getBylineLinks(preview.byline) }</div> : '' }
+                { preview.byline.length ? <div className="preview-byline"><strong>Autoren:</strong> { this.getDetailFilter(preview.byline, 'byline') }</div> : '' }
                 <SocialItems socialData={preview.social}/>
-                <div className="preview-visualform"><strong>Visuelle Form:</strong> { preview.visualform.toString() }</div>
-                <div className="preview-category"><strong>Kategorie:</strong> { preview.category.toString() }</div>
+                <div className="preview-visualform"><strong>Visuelle Form:</strong> { this.getDetailFilter(preview.visualform, 'visualform') }</div>
+                <div className="preview-category"><strong>Kategorie:</strong> { this.getDetailFilter(preview.category, 'category') }</div>
                 
               </div> : ''}
 

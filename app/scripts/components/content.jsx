@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 var utils = require('../utils');
 
 // components
@@ -110,7 +110,7 @@ var Content = React.createClass({
   		  </div>
       </div>
     	);
-  	}
+  	},
 });
 
 module.exports = Content;

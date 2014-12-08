@@ -38,7 +38,7 @@ var FilterSelect = React.createClass({
     return (
       <div className={classes}>
         <div onClick={this.toggleExpand} className="filter-header">{data.name}<i className="arrow_carrot-down"></i></div>
-        <div className="filter-content">
+        <div className="filter-content select">
         { SelectElement }
         </div>
       </div>

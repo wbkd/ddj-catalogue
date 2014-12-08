@@ -69,8 +69,6 @@ var PreviewStore = Reflux.createStore({
 		this.isLoading = false;
 		this.error = null;
 		this.previews = data.previews;
-
-    console.log(data);
 		
 		// api only returns count and uidata if offset is 0
 		this.count = data.count ? data.count : this.count;

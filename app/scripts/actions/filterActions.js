@@ -22,6 +22,10 @@ filterActions.loadFilters.preEmit = function(){
     .then(filterActions.loadFiltersSuccess,filterActions.loadFiltersError);
 };
 
+filterActions.filterSelect.preEmit = function() {
+  PreviewActions.shrinkPreviews();
+};
+
 filterActions.toggleFilterMenu.preEmit = function(){
   PreviewActions.shrinkPreviews();
 }

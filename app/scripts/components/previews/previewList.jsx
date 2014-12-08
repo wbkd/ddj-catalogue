@@ -21,6 +21,7 @@ var Reflux = require('reflux');
 
 var PreviewList = React.createClass({
   mixins: [Reflux.ListenerMixin],
+  
   getInitialState: function(a){
     //var routeParams = RouteParamStore.getRouteParams();
 
@@ -30,9 +31,9 @@ var PreviewList = React.createClass({
       showOverlay : false,
       isLoading: true,
       count : 0,
+      isSortOrderDesc : config.isSortOrderDesc,
       selectedFilters: {},
-      sortType : config.sortType,
-      isSortOrderDesc : config.isSortOrderDesc  
+      sortType: config.sortType
     };
   },
 
@@ -107,6 +108,7 @@ var PreviewList = React.createClass({
      
     this.lastScrollTop = scrollTop;
   },
+
 
   render: function() {
     
