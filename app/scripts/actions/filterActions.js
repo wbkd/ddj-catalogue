@@ -22,6 +22,11 @@ filterActions.loadFilters.preEmit = function(){
     .then(filterActions.loadFiltersSuccess,filterActions.loadFiltersError);
 };
 
+filterActions.filterSelect.preEmit = function() {
+  window.scrollTo(0,0);
+  PreviewActions.shrinkPreviews();
+};
+
 filterActions.toggleFilterMenu.preEmit = function(){
   PreviewActions.shrinkPreviews();
 }

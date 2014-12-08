@@ -5,6 +5,9 @@
 	preview list
 
 ***********/
+.preview-list-content
+  overflow: visible
+
 .selected-filters ul
 		list-style: none
 		padding: 1em
@@ -145,13 +148,6 @@
 
 		.preview-publisher
 			color:$grey
-			
-			.byline-link
-				cursor: pointer
-				
-				&:hover
-					color: $darkgrey
-					text-decoration: underline
 		
 		.preview-description
 			margin-bottom:1em
@@ -195,10 +191,13 @@
 			
 		.close-btn
 			display: block
+   
+      
 		
 	&.is-expanded .preview-expanded
 		background:rgba(255,255,255,.9)
 		display:block
+ 
 		
 	&.is-stared
 		.btn-star
@@ -220,3 +219,12 @@
 	
 .preview-detail-byline
 	margin-bottom:2em
+ 
+.is-expanded .detail-filter
+  cursor: pointer
+  background: $subheaderbg
+  border-radius: 3px
+  padding: .1em .4em
+  &:hover
+    color: $darkgrey   
+ 

@@ -21,6 +21,7 @@ var Reflux = require('reflux');
 
 var PreviewList = React.createClass({
   mixins: [Reflux.ListenerMixin],
+  
   getInitialState: function(a){
     //var routeParams = RouteParamStore.getRouteParams();
 
@@ -30,9 +31,9 @@ var PreviewList = React.createClass({
       showOverlay : false,
       isLoading: true,
       count : 0,
+      isSortOrderDesc : config.isSortOrderDesc,
       selectedFilters: {},
-      sortType : config.sortType,
-      isSortOrderDesc : config.isSortOrderDesc  
+      sortType: config.sortType
     };
   },
 
@@ -108,6 +109,7 @@ var PreviewList = React.createClass({
     this.lastScrollTop = scrollTop;
   },
 
+
   render: function() {
     
     var previews = this.state.previews.map(function(preview,i) {
@@ -123,7 +125,7 @@ var PreviewList = React.createClass({
     var showOverlay = this.state.expandedId != null || this.props.showOverlay;
 
     return (
-      <div style={minHeight} className="preview-list row centered">
+      <div style={minHeight} className="preview-list clearfix centered">
         <HighlightOverlay isActive={showOverlay} />
         <div className="clearfix preview-list-header">
           <div className="clearfix preview-list-left">
