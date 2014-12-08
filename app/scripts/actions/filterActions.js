@@ -23,6 +23,7 @@ filterActions.loadFilters.preEmit = function(){
 };
 
 filterActions.filterSelect.preEmit = function() {
+  window.scrollTo(0,0);
   PreviewActions.shrinkPreviews();
 };
 

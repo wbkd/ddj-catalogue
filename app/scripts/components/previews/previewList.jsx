@@ -125,7 +125,7 @@ var PreviewList = React.createClass({
     var showOverlay = this.state.expandedId != null || this.props.showOverlay;
 
     return (
-      <div style={minHeight} className="preview-list row centered">
+      <div style={minHeight} className="preview-list clearfix centered">
         <HighlightOverlay isActive={showOverlay} />
         <div className="clearfix preview-list-header">
           <div className="clearfix preview-list-left">
