@@ -9,6 +9,7 @@ var FavoritesArea = require('./favorites/favoritesArea.jsx');
 var SubmitArea = require('./areas/submitArea.jsx');
 var NewsletterArea = require('./areas/newsletterArea.jsx');
 var FaqArea = require('./faqs/faqArea.jsx');
+var SocialBar = require('./menu/socialBar.jsx');
 
 // stores
 var MenuStore = require('../stores/menuStore.js');
@@ -98,6 +99,7 @@ var Content = React.createClass({
     return (
       <div>
         <FilterMenu expandedGroups={this.state.expandedGroupIds} offsetTop={this.state.contentOffsetTop} filterMenuActive={this.state.filterMenuActive} selectedFilters={this.state.selectedFilters} uiData={this.state.uiData} />
+        <SocialBar/>
         <div className="content-wrapper">
   			  <FavoritesArea isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} isActive={this.state.favoritesListActive} />
           {sharedFavoriteList} 
