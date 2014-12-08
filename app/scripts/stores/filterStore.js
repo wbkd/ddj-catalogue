@@ -67,7 +67,7 @@ var FilterStore = Reflux.createStore({
 	//has to be removed, data should be formatted by backend
 	convertData: function(data) {
 		var res = [{
-				name: 'Form der Visualisierung',
+				name: 'Visualisierung',
 				dbId: 'visualform',
 				filters: data.visualform,
 				isFilterable: false
