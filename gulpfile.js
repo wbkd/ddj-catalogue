@@ -119,6 +119,10 @@ gulp.task('clean', function(cb) {
 gulp.task('deploy', function() {
     return gulp.src(dist + '**')
       .pipe($.rsync({
+        root: 'dist',
+        recursive: true,
+        compress: true,
+        progress: true,
         hostname: config.rsync.host,
         destination: config.rsync.dest
       }));
