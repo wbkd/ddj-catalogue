@@ -21,7 +21,7 @@ visit `http://localhost:9999`
 
 ### Deploy
 ```
-$ gulp build --type production
+$ NODE_ENV=production gulp build
 $ gulp deploy
 
 ```

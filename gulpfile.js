@@ -4,7 +4,7 @@ var $ = require('gulp-load-plugins')();
 var del = require('del');
 var jest = require('gulp-jest');
 // set variable via $ gulp --type production
-var environment = $.util.env.type || 'development';
+var environment = process.env.NODE_ENV || 'development';
 var isProduction = environment === 'production';
 var webpackConfig = require('./webpack.config.js')[environment];
 var config = require(path.resolve(__dirname, 'package')).devConfig;
@@ -12,6 +12,8 @@ var config = require(path.resolve(__dirname, 'package')).devConfig;
 var port = $.util.env.port || 9999;
 var app = 'app/';
 var dist = 'dist/';
+
+console.log(environment)
 
 // https://github.com/ai/autoprefixer
 var autoprefixerBrowsers = [                 
