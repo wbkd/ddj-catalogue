@@ -37,7 +37,6 @@
     "react-tools": "^0.12.1",
     "reflux": "^0.1.15",
     "reqwest": "^1.1.5",
-    "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll",
     "store": "^1.3.16",
     "velocity-animate": "^1.1.0"
   },
