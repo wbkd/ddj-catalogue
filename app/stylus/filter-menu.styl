@@ -18,7 +18,7 @@
   z-index: 6
   overflow: visible
   .close-menu-btn
-    margin-top: 1em;
+    margin: 1em 0 .7em 0;
     background: #eee;
     padding: .2em;
     border-radius: 3px;
@@ -28,6 +28,8 @@
     font-size: .8em
     &:hover
       color: darken($grey, 10)
+    i
+      margin-right: .3em
   &.active
     display: block
   
@@ -55,7 +57,6 @@
       color:$red
     
   .filter-list
-    margin-top: 1em
     
     .tag-list
       list-style: none
