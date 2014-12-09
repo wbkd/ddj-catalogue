@@ -131,7 +131,7 @@ var FavoritesStore = Reflux.createStore({
       url : preview.url,
       publisher: preview.publisher,
       date: utils.formatDate(preview.date),
-      src : preview.imageurl || config.defaultImage
+      src : preview.serverImageurl ? config.imageUrl + preview.serverImageurl : config.defaultImage
     }
   }
 

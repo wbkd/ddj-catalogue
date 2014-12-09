@@ -44,8 +44,10 @@ var Preview = React.createClass({
     }
   },
 
-  starPreview: function(){
+  starPreview: function(evt){
     FavoritesActions.starPreview(this.props.data);
+    evt.preventDefault();
+    evt.stopPropagation();
   },
 
   getDetailFilter: function(descriptions, groupName, isExpanded) {
