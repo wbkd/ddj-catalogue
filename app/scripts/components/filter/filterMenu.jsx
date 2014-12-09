@@ -8,9 +8,12 @@ var FilterActions = require('../../actions/filterActions.js');
 
 var FilterMenu = React.createClass({
 
-  render: function() {
 
-    //var menuHeight = this.getDOMNode().clientHeight;
+  render: function() {
+    var menuHeight = 1000;
+    if(this.isMounted()) {
+      menuHeight = this.getDOMNode().clientHeight;
+    }
 
     var filters = this.props.uiData.map(function(d,i) {
       var selected = this.props.selectedFilters[d.dbId];
@@ -20,11 +23,14 @@ var FilterMenu = React.createClass({
 
     var classes = cx({
       'filter-menu': true,
-      'active': this.props.filterMenuActive
+      'active': this.props.filterMenuActive,
+      'scroll': menuHeight > window.innerHeight
     });
 
+    console.log(this.props.filterMenuActive, menuHeight);
+
     var style = {
-      top: this.props.filterMenuActive ? this.props.offsetTop : -1000
+      top: this.props.filterMenuActive ? this.props.offsetTop : -menuHeight
     };
 
     return (

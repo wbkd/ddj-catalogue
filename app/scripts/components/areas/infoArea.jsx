@@ -40,6 +40,8 @@ var InfoArea = React.createClass({
         	  <p>Dieser Katalog ist eine Zusammenstellung von datenjournalistischen Projekten aus dem deutschsprachigen Raum. Der Katalog wurde im Winter 2014 von <a href="http://www.webkid.io">webkid</a> und <a href="http://www.dacosto.de">DACOSTO</a> ins Leben gerufen. Er umfasst Datenprojekte von diversen Medienhäusern - verzeichnet aber auch unabhängig entstandene Projekte, wie bspw. im Rahmen von Code for Germany. Diese Sammlung erhebt keinen Anspruch auf Vollständigkeit. Sie wird von uns weitergepflegt werden</p>
             <p>Ihr könnt eure eigenen Datengeschichten einreichen. Bei Hinweisen und Ergänzungen zu unserem DDJ-Katalog bitte melden. Ansonsten wünschen wir viel Spaß beim stöbern.</p>
             <p>Inspiration: <a href="http://collection.marijerooze.nl/">Graphics Collection</a> von Marije Rooze.</p>
+            <p className="github-link"><a href="https://github.com/wbkd/ddj-catalogue">Projekt auf GitHub</a></p>
+            <p className="last-update">Stand: 09.12.2014</p>
           </div>
         </div>
       </div>
