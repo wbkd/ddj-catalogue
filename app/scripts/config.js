@@ -17,5 +17,10 @@ module.exports = {
 
   // labels
   appName: 'DDJ Katalog',
-  baseUrl : baseUrl
+  baseUrl : baseUrl,
+
+  //sharing
+  sharingText: 'Der Datenjournalismus Katalog: 200 Werke aus dem deutschsprachigen Raum!',
+  sharingUrl: 'http://katalog.datenjournalismus.net',
+  hashtags: 'ddj' //comma seperated
 };
