@@ -67,7 +67,7 @@ var MenuStore = Reflux.createStore({
   hideSharedList: function(){
 
     // TODO: don't do this!
-    location.hash = '#/projekte';
+    location.hash = '/';
     this.trigger({ 
      sharedFavorites : []
     });

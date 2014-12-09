@@ -1,143 +1,144 @@
 @import 'colors'
 
 .label
-	display:none
+  display:none
 
 .header-spacing
-	display:none
-	
+  display:none 
+
 header
-	background: $headerbg
-	box-shadow:0 2px 3px rgba(0,0,0,.15)
-	color: $white
-	position: relative
-	width: 100%
-	top: 0
-	z-index:8
+  background: $headerbg
+  box-shadow:0 2px 3px rgba(0,0,0,.15)
+  color: $white
+  position: relative
+  width: 100%
+  top: 0
+  z-index:8
 
-	.icon_question
-		width:10px
-		display:inline-block
-		
-	.header-content
-		padding: .5em 1em
-		
-	.menu-toggle
-		margin-right: .5em
-	
-	.header-logo
-		float: left
-		width: 23px
-		margin-top: 3px
-		margin-right: 0.5em
+  .icon_question
+    width:10px
+    display:inline-block
+    
+  .header-content
+    padding: .5em 1em
+    
+  .menu-toggle
+    margin-right: .5em
+  
+  .header-logo
+    float: left
+    width: 23px
+    margin-top: 3px
+    margin-right: 0.5em
 
-	.header-title-wrapper
-		float:left
+  .header-title-wrapper
+    float:left
 
-	.header-title
-		font-weight: bold
-		float:left
-		
-		a
-			color:$white
-			
-	.sub-menu
-		width: 100%
-		background: $subheaderbg
-		
-		.btn-filter
-			border: none
-			background: none
-			color: $darkgrey
-			float: left
-			padding: 0
-			box-shadow: none
-			
-			i
-				font-size: 20px
-				line-height:10px
-				float: left
-				display: inline-block
-				margin-top: 7px
-				margin-right: 5px
-				
-			div.description
-				float: left
-				
-		.selected-filters
-			float: left
-			list-style: none
-			margin-left: 1em
-			
-			li.filter
-				color: $darkgrey
-				box-shadow: none
-				background: $subheaderbtnbg
-				border-radius: 2px
-				font-size: .8em
-				padding: .1em .5em
-				transition: color .4s
-				
-				&:hover
-					color:$black
-				
-				i.icon_check
-					display: none
-					
-				i.icon_close
-					display: inline
-					
+  .header-title
+    font-weight: bold
+    float:left
+    
+    a
+      color:$white
+      
+  .sub-menu
+    width: 100%
+    background: $subheaderbg
+    
+    .btn-filter
+      border: none
+      background: none
+      color: $darkgrey
+      float: left
+      padding: 0
+      box-shadow: none
+      
+      i
+        font-size: 20px
+        line-height:10px
+        float: left
+        display: inline-block
+        margin-top: 7px
+        margin-right: 5px
+        
+      div.description
+        float: left
+        
+    .selected-filters
+      float: left
+      list-style: none
+      margin-left: 1em
+      
+      li.filter
+        color: $darkgrey
+        box-shadow: none
+        background: $subheaderbtnbg
+        border-radius: 2px
+        font-size: .8em
+        padding: .1em .5em
+        transition: color .4s
+        
+        &:hover
+          color:$black
+        
+        i.icon_check
+          display: none
+          
+        i.icon_close
+          display: inline
+          
 
 .sorter
-	float: right
-	position: relative
-	color: $darkgrey
-	font-size: .8em
-	
-	ul
-		display:inline-block
-		list-style:none
-		
-		li 
-			cursor: pointer
-			display:inline-block
-			margin-left:.5em
-			user-select:none
-			padding: .1em .4em
-			color: $darkgrey
-			transition: color .4s
-			border-radius: 2px
-			background:$subheaderbtnbg
+  float: right
+  position: relative
+  color: $darkgrey
+  font-size: .8em
+  
+  ul
+    display:inline-block
+    list-style:none
+    
+    li 
+      cursor: pointer
+      display:inline-block
+      margin-left:.5em
+      user-select:none
+      padding: .1em .4em
+      color: $darkgrey
+      transition: color .4s
+      border-radius: 2px
+      background:$subheaderbtnbg
 
-			&:hover, &.active
-				color: $black
-		
-		.sorter-arrows
-			display:none
+      &:hover, &.active
+        color: $black
+    
+    .sorter-arrows
+      display:none
 
-		.sort-item.active
+    .sort-item.active
 
-			.sorter-arrows
-				display:inline-block
-			
-			i
-				display:block
-		
+      .sorter-arrows
+        display:inline-block
+      
+      i
+        display:block
+    
 nav
-	user-select:none
-	float:right
-	      
-	.nav-item,
-	a.nav-item
-		color: $white
-		cursor: pointer
-		font-size:14px
-		text-transform:uppercase
-		width:100%
-		margin: 0 0 0 1em
-
-		&:hover
-			color: $lightgrey
-			
-		i 
-			margin-right:.4em
+  user-select:none
+  float:right     
+  .nav-item,
+  a.nav-item
+    color: $white
+    cursor: pointer
+    font-size:14px
+    text-transform:uppercase
+    width:100%
+    margin: 0 0 0 1em
+    &:hover
+      color: $lightgrey
+      
+    i
+      margin-right:.4em
+.favorites-nav-item
+  float: right
+  font-size: .8em
