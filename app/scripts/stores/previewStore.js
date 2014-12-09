@@ -58,7 +58,7 @@ var PreviewStore = Reflux.createStore({
 
 	********************/
 
-	onLoadPreviews : function(sorting){
+	onLoadPreviews : function(){
 		this.isLoading = true;
 		this.trigger({
 			isLoading : this.isLoading

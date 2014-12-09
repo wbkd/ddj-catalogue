@@ -48,7 +48,7 @@ var FilterStore = Reflux.createStore({
 
 		this.trigger({
 			reset : true,
-			loading: true,
+			isLoading: true,
 			selectedFilters : this.selectedFilters
 		});		
 	},
@@ -58,7 +58,7 @@ var FilterStore = Reflux.createStore({
 
 		this.trigger({
 			reset : true,
-			loading: true,
+			isLoading: true,
 			selectedFilters : this.selectedFilters
 		});
 

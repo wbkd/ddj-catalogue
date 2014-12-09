@@ -8,6 +8,7 @@ var Sorter = require('../sorter/sorter.jsx');
 var SelectedFilters = require('../filter/selectedFilters.jsx');
 var LoadingSpinner = require('../general/loadingSpinner.jsx');
 var HighlightOverlay = require('../general/highlightOverlay.jsx');
+var MessageBox = require('../general/messageBox.jsx');
 
 // actions
 var FilterActions = require('../../actions/filterActions');
@@ -31,15 +32,14 @@ var PreviewList = React.createClass({
       showOverlay : false,
       isLoading: true,
       count : 0,
+      selectedFilters : {},
       isSortOrderDesc : config.isSortOrderDesc,
-      selectedFilters: {},
       sortType: config.sortType
     };
   },
 
   onStatusChange: function(newState){
     var newPreviews = this.state.previews;
-
     // we need to clear the preview list
     // we use this when we sort or filter 
     if(!utils.isUndefined(newState.reset)){
@@ -87,6 +87,7 @@ var PreviewList = React.createClass({
     if(previewCount !== 0 && previewCount === this.state.count){
       return false;
     }
+    
     PreviewActions.load({sortType : this.state.sortType, isSortOrderDesc: this.state.isSortOrderDesc, lazyIndex : this.lazyIndex, filters : this.state.selectedFilters});
   },
 
@@ -111,7 +112,7 @@ var PreviewList = React.createClass({
 
 
   render: function() {
-    
+      
     var previews = this.state.previews.map(function(preview,i) {
       var isExpanded = this.state.expandedId ? this.state.expandedId === preview._id : false,
         isStared = this.props.favoriteIds.indexOf(preview._id) !== -1;
@@ -135,6 +136,7 @@ var PreviewList = React.createClass({
         <div className="preview-list-content row clearfix">
           {previews}
         </div>
+        <MessageBox isActive={this.state.previews.length === 0  && !this.state.isLoading} />
         <LoadingSpinner isActive={this.state.isLoading} />
       </div>
     );
