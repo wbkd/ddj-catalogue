@@ -6,7 +6,7 @@ module.exports = {
 	apiUrl: baseUrl('api/v1/projects'),
   submitUrl : baseUrl('submit'),
 	imageUrl : baseUrl('images/'),
-	defaultImage : 'http://placehold.it/100x100',
+	defaultImage : 'http://apps.moritzklack.com/katalog/notfound.png',
 	
   // lazyloading 
   itemCount : 50, // number of preview items you want to recieve when doing an api call
