@@ -57,7 +57,7 @@ var Header = React.createClass({
             <div className="header-title-wrapper">
               <img className="header-logo" src="images/datenkatalog-logo.png"/>
               <div className="header-title">
-            	  <a href="#/projekte">{config.appName}</a>
+            	  <a href="/">{config.appName}</a>
               </div>
             </div>
             <Navigation/>
