@@ -4,6 +4,8 @@ var cx = React.addons.classSet;
 var FilterGroup = require('./filterGroup.jsx');
 var FilterSelect = require('./filterSelect.jsx');
 
+var FilterActions = require('../../actions/filterActions.js');
+
 var FilterMenu = React.createClass({
 
   render: function() {
@@ -28,6 +30,7 @@ var FilterMenu = React.createClass({
     return (
     	<div style={style} className={classes}>
         <div className="force-scrollbar">
+          <div onClick={FilterActions.hideFilterMenu} className="close-menu-btn"><i className="arrow_carrot_up_alt"></i> Menü schließen</div>
           <div className="filter-list">
             {filters}
           </div>
