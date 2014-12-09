@@ -12,7 +12,7 @@ module.exports.routes = {
     React.render(<Home />, document.body);
   },*/
 
-  '/projekte': function() {
+  '/': function() {
   	React.render(<Home />, document.body);
   },
   '/favoriten/:ids' : function(ids){
