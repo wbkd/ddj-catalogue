@@ -16,7 +16,18 @@
   transition:top .2s
   width: 15em
   z-index: 6
-  overflow: visible 
+  overflow: visible
+  .close-menu-btn
+    margin-top: 1em;
+    background: #eee;
+    padding: .2em;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer
+    color: $grey
+    font-size: .8em
+    &:hover
+      color: darken($grey, 10)
   &.active
     display: block
   
