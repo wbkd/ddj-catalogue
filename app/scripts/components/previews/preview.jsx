@@ -97,7 +97,7 @@ var Preview = React.createClass({
                 
                 <div className="preview-visualform"><strong>Visuelle Form:</strong> { this.getDetailFilter(preview.visualform, 'visualform',this.props.isExpanded) }</div>
                 <div className="preview-category"><strong>Kategorie:</strong> { this.getDetailFilter(preview.category, 'category',this.props.isExpanded) }</div>
-                
+                {preview.organisation.length > 0 ? <div className="preview-organization"><strong>Produktion:</strong> { this.getDetailFilter(preview.organisation, 'publisher',this.props.isExpanded) }</div> : ''}
               </div> : ''}
 
             </div>
