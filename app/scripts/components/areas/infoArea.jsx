@@ -41,6 +41,7 @@ var InfoArea = React.createClass({
             <p>Ihr könnt eure eigenen Datengeschichten einreichen. Bei Hinweisen und Ergänzungen zu unserem DDJ-Katalog bitte melden. Ansonsten wünschen wir viel Spaß beim stöbern.</p>
             <p>Inspiration: <a href="http://collection.marijerooze.nl/">Graphics Collection</a> von Marije Rooze.</p>
             <p className="github-link"><a href="https://github.com/wbkd/ddj-catalogue">Projekt auf GitHub</a></p>
+            <p className="mail-link">Kontakt: <a href="mailto:katalog@datenjournalismus.net">katalog-at-datenjournalismus.net</a></p>
             <p className="last-update">Stand: 09.12.2014</p>
           </div>
         </div>

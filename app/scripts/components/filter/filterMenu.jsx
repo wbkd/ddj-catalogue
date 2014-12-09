@@ -27,8 +27,6 @@ var FilterMenu = React.createClass({
       'scroll': menuHeight > window.innerHeight
     });
 
-    console.log(this.props.filterMenuActive, menuHeight);
-
     var style = {
       top: this.props.filterMenuActive ? this.props.offsetTop : -menuHeight
     };

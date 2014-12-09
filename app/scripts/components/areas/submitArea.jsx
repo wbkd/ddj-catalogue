@@ -63,7 +63,7 @@ var SubmitArea = React.createClass({
             {ErrorMessage}
             {SuccessMessage}
             <input ref="projectUrl" type="text" placeholder="http://projekt-url.de"/>
-            <label >Anmerkungen (optional)</label>
+            <label >Anmerkungen, Kontaktdaten (optional)</label>
             <textarea ref="projectDescription" placeholder="Anmerkung"></textarea>
             <button type="submit" className="btn btn-success">Abschicken</button>
           </form>

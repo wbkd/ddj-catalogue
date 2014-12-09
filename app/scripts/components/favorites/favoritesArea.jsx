@@ -75,7 +75,7 @@ var FavoritesArea = React.createClass({
                   </ul>
                   <div className="favorites-url" hidden={!hasFavorites || this.props.isShared}>
                     <label>Favoritenliste teilen</label>
-                    <input value={this.props.favoritesUrl} readOnly/>
+                    <textarea readOnly>{this.props.favoritesUrl}</textarea>
                   </div>
                 </div>
             </div>

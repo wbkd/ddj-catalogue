@@ -54,9 +54,9 @@ var NewsletterArea = React.createClass({
                 </div>
               </div>
               <h1>Newsletter</h1>
-              <p>Trag dich bei unserem Newsletter ein, um ein mal im Monat aktuelle Mitteilungen von DACOSTO und webkid zu bekommen.</p>
+              <p>Trag dich in unseren Newsletter ein, um ein mal im Monat über neue Projekte informiert zu werden.</p>
               <form onSubmit={this.submitForm}>
-                <label>E-Mail</label>
+                <label>Deine E-Mail</label>
                 {ErrorMessage}
                 {SuccessMessage}
                 <input ref="email" type="text" placeholder="e@mail.de"/>
