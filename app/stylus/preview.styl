@@ -79,9 +79,30 @@
 	color:$black		
 	margin-top:1em
 	z-index: 1
+	cursor:pointer
+	
+	&:hover .preview-image
+		box-shadow: 0 2px 2px rgba(0,0,0,.2)
 	
 	.preview-title
 		font-weight:bold
+	
+	.preview-social
+		color: $darkgrey
+		position: absolute
+		top: .85em
+		left: .85em
+		font-size: 12px
+		padding: 0.4em 0.75em
+		border-radius: 2px
+		background: rgba(255,255,255,0.95)
+		
+		.social_twidda
+			color:#55acee
+			margin-left:1em
+		
+		.social_fazebook
+			color: #3b5998
 
 	.close-btn
 		display: none
@@ -109,7 +130,7 @@
 		right:.4em
 		width:30px
 		z-index:2
-		
+
 	.btn
 		opacity:.5
 		transition: opacity .2s
@@ -127,19 +148,18 @@
 			background: $lightgrey
 			opacity:1
 			box-shadow: 0 1px 1px rgba(0,0,0,.15)
+		
+	.preview-link
+		border:1px solid $mediumgrey
 	
 	.preview-image
 		background-position:center center
 		background-size: cover
 		height: 180px
 		display:block
-		cursor:pointer
-		border:1px solid $lightgrey
-		transition: box-shadow .1s, height .2s;
+		border:none
+		transition: box-shadow .1s
 		box-shadow: 0 3px 2px rgba(0,0,0,0)
-		
-		&:hover
-			box-shadow: 0 3px 2px rgba(0,0,0,.2)
 		
 	.preview-content
 		width:100%
@@ -155,19 +175,6 @@
 		.preview-expanded
 			display:none
 			margin:1em 0
-		
-		.preview-social
-			margin-top:1em
-			color:$grey
-			position:absolute
-			bottom: 0
-			
-			.social_twidda
-				color:#55acee
-				margin-left:1em
-			
-			.social_fazebook
-				color: #3b5998
 			
 	&.is-expanded
 		height:270px
@@ -175,6 +182,7 @@
 		background:white
 		z-index:6
 		box-shadow: 0 2px 2px rgba(0,0,0,.4)
+		cursor:default
 		
 		.preview-image
 			border:none
@@ -186,14 +194,9 @@
 			padding-bottom: 2em
 			box-shadow: 0 2px 2px rgba(0,0,0,.4)
 			
-		.preview-social
-			bottom: .5em
-			
 		.close-btn
 			display: block
-   
-      
-		
+   	
 	&.is-expanded .preview-expanded
 		background:rgba(255,255,255,.9)
 		display:block
