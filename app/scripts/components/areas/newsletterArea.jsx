@@ -24,7 +24,7 @@ var NewsletterArea = React.createClass({
     var email = this.refs.email.getDOMNode().value;
 
     if(!email){
-      return SubmitActions.submitEmailError('Bitte geben Sie eine gültige E-Mail an.');
+      return SubmitActions.submitEmailError('Bitte gib eine gültige E-Mail Adresse an.');
     }
 
     SubmitActions.submitEmail({email : email});
@@ -54,7 +54,7 @@ var NewsletterArea = React.createClass({
                 </div>
               </div>
               <h1>Newsletter</h1>
-              <p>Tragen Sie sich bei unserem Newsletter ein, um aktuelle Mitteilungen von DACOSTO und webkid zu bekommen.</p>
+              <p>Trag dich bei unserem Newsletter ein, um ein mal im Monat aktuelle Mitteilungen von DACOSTO und webkid zu bekommen.</p>
               <form onSubmit={this.submitForm}>
                 <label>E-Mail</label>
                 {ErrorMessage}
