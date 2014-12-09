@@ -39,9 +39,7 @@ var Preview = React.createClass({
   },
 
   togglePreviewCard: function(evt){
-    if(this.props.isExpanded){
-      evt.preventDefault();
-    }else{
+    if(!this.props.isExpanded){
       this.togglePreview();
     }
   },
