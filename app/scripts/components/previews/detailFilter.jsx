@@ -3,8 +3,7 @@ var FilterActions = require('../../actions/filterActions.js');
 
 var DetailFilter = React.createClass({
 
-
-  filterSelect: function() {
+  filterSelect: function(evt) {
 
     var filter = {
       text: this.props.text,
@@ -14,7 +13,14 @@ var DetailFilter = React.createClass({
   },
 
   render: function() {
-    return <span><span className="detail-filter" onClick={this.filterSelect}>{this.props.text}</span><span>{this.props.addComma ? ', ' : ' '}</span></span>
+
+    //TODO: cleanup
+    var Filter = this.props.isActive ? <span><span className="detail-filter" onClick={this.filterSelect}>{this.props.text}</span><span>{this.props.addComma ? ', ' : ' '}</span></span> : 
+    <span><span className="detail-filter">{this.props.text}</span><span>{this.props.addComma ? ', ' : ' '}</span></span>
+
+    return (
+      Filter
+    );
   }
 });
 

@@ -29,6 +29,7 @@ var Preview = React.createClass({
   },
 
   togglePreview: function(){
+
     PreviewActions.toggleExpandedPreview(this.props.data._id);
 
     if(!this.props.isExpanded) {
@@ -37,14 +38,22 @@ var Preview = React.createClass({
     }
   },
 
+  togglePreviewCard: function(evt){
+    if(this.props.isExpanded){
+      evt.preventDefault();
+    }else{
+      this.togglePreview();
+    }
+  },
+
   starPreview: function(){
     FavoritesActions.starPreview(this.props.data);
   },
 
-  getDetailFilter: function(descriptions, groupName) {
+  getDetailFilter: function(descriptions, groupName, isExpanded) {
     var links = [];
     descriptions.forEach(function(name, i) {
-      links.push(<DetailFilter key={"bl_" + i} text={name} addComma={i < descriptions.length - 1} description={groupName} />);
+      links.push(<DetailFilter key={"bl_" + i} text={name} addComma={i < descriptions.length - 1} description={groupName} isActive={isExpanded}/>);
     });
     return links;
   },
@@ -67,27 +76,27 @@ var Preview = React.createClass({
 
     return (
       <div className="column">
-        	<div className={classes}>
+        	<div className={classes} onClick={this.togglePreviewCard}>
             <div onClick={this.togglePreview} className="close-btn"><i className="icon_close"></i></div>
-        		<span onClick={this.togglePreview} className='preview-image'style={imageStyle} href={preview.url} target="_blank"></span>
+        		<span className='preview-image'style={imageStyle} href={preview.url} target="_blank"></span>
             
             <div className="btn-group">
               {store.enabled ? <div onClick={this.starPreview} className="btn btn-star"><i className="icon_star"></i></div> : ''}
-              <a href={preview.url} className="btn" target="_blank" title={ 'Zur Anwendung "' + preview.title + '"' }><i className="icon_link"></i></a>
+              <a href={preview.url} className="btn preview-link" target="_blank" title={ 'Zur Anwendung "' + preview.title + '"' }><i className="icon_link"></i></a>
             </div>
+
+            { (this.props.sortType === 'social.sum' && !this.props.isExpanded) || this.props.isExpanded ?  <SocialItems socialData={preview.social}/> : ''}
 
             <div className="preview-content">
           		<div className="preview-title">{ preview.title }</div>
-          		<div className="preview-publisher">{ this.getDetailFilter(preview.publisher, 'publisher') }, {date}</div>
-                
-              { this.props.sortType === 'social.sum' && !this.props.isExpanded ?  <SocialItems socialData={preview.social}/> : ''}
+          		<div className="preview-publisher">{ this.getDetailFilter(preview.publisher, 'publisher',this.props.isExpanded) }, {date}</div>     
 
               {this.props.isExpanded ? <div className="preview-expanded">
                 <div className="preview-description">{ preview.description }</div>
-                { preview.byline.length ? <div className="preview-byline"><strong>Autoren:</strong> { this.getDetailFilter(preview.byline, 'byline') }</div> : '' }
-                <SocialItems socialData={preview.social}/>
-                <div className="preview-visualform"><strong>Visuelle Form:</strong> { this.getDetailFilter(preview.visualform, 'visualform') }</div>
-                <div className="preview-category"><strong>Kategorie:</strong> { this.getDetailFilter(preview.category, 'category') }</div>
+                { preview.byline.length ? <div className="preview-byline"><strong>Autoren:</strong> { this.getDetailFilter(preview.byline, 'byline',this.props.isExpanded) }</div> : '' }
+                
+                <div className="preview-visualform"><strong>Visuelle Form:</strong> { this.getDetailFilter(preview.visualform, 'visualform',this.props.isExpanded) }</div>
+                <div className="preview-category"><strong>Kategorie:</strong> { this.getDetailFilter(preview.category, 'category',this.props.isExpanded) }</div>
                 
               </div> : ''}
 
