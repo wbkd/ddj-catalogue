@@ -132,7 +132,7 @@ var PreviewList = React.createClass({
             <div className="light count">{this.state.count} Projekte gefunden</div>
           </div>
         </div>
-        <div className="preview-list-content row">
+        <div className="preview-list-content row clearfix">
           {previews}
         </div>
         <LoadingSpinner isActive={this.state.isLoading} />
