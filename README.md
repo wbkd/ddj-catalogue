@@ -1,4 +1,4 @@
-# DDJ Catalogue Frontend
+# [DDJ Catalogue Frontend](http://katalog.datenjournalismus.net)
 Frontend of https://github.com/wbkd/ddj-catalogue-backend
 
 ### Installation
