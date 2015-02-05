@@ -69,7 +69,7 @@ var Content = React.createClass({
     FilterActions.loadFilters();
 
     if(!utils.isUndefined(this.props.sharedFavoriteIds)){
-      var favoriteIdArray = this.props.sharedFavoriteIds.split('_');
+      var favoriteIdArray = this.props.sharedFavoriteIds.split('__');
       FavoritesActions.loadSharedFavorites(favoriteIdArray);
     }
 

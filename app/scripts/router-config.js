@@ -1,5 +1,6 @@
 var React = require('react');
 var Home = require('./pages/home.jsx');
+var Embed = require('./pages/embed.jsx');
 var ErrorPage = require('./pages/404.jsx');
 
 React.initializeTouchEvents(true);
@@ -17,6 +18,9 @@ module.exports.routes = {
   },
   '/favoriten/:ids' : function(ids){
     React.render(<Home sharedFavoriteIds={ids} />, document.body);
+  },
+  'embed/:ids': function(ids){
+    React.render(<Embed ids={ids}/>, document.body);
   }
 };
 

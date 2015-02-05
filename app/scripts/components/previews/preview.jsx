@@ -85,7 +85,7 @@ var Preview = React.createClass({
               <a href={preview.url} className="btn preview-link" target="_blank" title={ 'Zur Anwendung "' + preview.title + '"' }><i className="icon_link"></i></a>
             </div>
 
-            { (this.props.sortType === 'social.sum' && !this.props.isExpanded) || this.props.isExpanded ?  <SocialItems socialData={preview.social}/> : ''}
+            { (this.props.sortType === "social.sum" && !this.props.isExpanded) || this.props.isExpanded ?  <SocialItems socialData={preview.social}/> : ''}
 
             <div className="preview-content">
           		<div className="preview-title">{ preview.title }</div>

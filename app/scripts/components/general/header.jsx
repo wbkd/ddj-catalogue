@@ -60,7 +60,7 @@ var Header = React.createClass({
             	  <a href="/">{config.appName}</a>
               </div>
             </div>
-            <Navigation/>
+            { this.props.isEmbedMode ? '' : <Navigation/> }
           </div>
           { this.props.hasSubmenu ? <SubMenu filters={this.state.selectedFilters} favoritesCount={this.state.favoritesCount} isSortOrderDesc={this.state.isSortOrderDesc} sortType={this.state.sortType} filterMenuActive={this.state.filterMenuActive}/> : '' }
       	</header>

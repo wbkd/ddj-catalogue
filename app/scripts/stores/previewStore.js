@@ -25,7 +25,7 @@ var PreviewStore = Reflux.createStore({
 
 		// sortby events
 		this.listenTo(previewActions.sortBy,this.sortBy);
-
+      
 		// We dont use these at the moment
 		// preview detail events
 		this.listenTo(previewActions.loadById,this.onLoadPreviewById);
@@ -33,11 +33,11 @@ var PreviewStore = Reflux.createStore({
 	},
 
 	toggleExpandedPreview : function(previewId){
-    this.expandedId = this.expandedId === previewId ? null : previewId;
+      this.expandedId = this.expandedId === previewId ? null : previewId;
 
-		this.trigger({
-			expandedId : this.expandedId 
-		});
+      this.trigger({
+		expandedId : this.expandedId 
+      });
 	},
 
 	shrinkPreviews: function(){

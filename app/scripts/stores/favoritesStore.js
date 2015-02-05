@@ -119,7 +119,7 @@ var FavoritesStore = Reflux.createStore({
   createFavoritesUrl : function(){
     var favoritesUrl = this.favorites.map(function(el,i){
       return el.id;
-    }).join('_');
+    }).join('__');
 
     return location.origin + '/#/favoriten/' + favoritesUrl;
   },
