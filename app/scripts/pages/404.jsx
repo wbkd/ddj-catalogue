@@ -11,8 +11,8 @@ var ErrorPage = React.createClass({
         <div className="subpage">
           <div className="subpage-content">
 
-          <h1>404</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero rerum assumenda minima necessitatibus cupiditate, nostrum, aut dolore tempora animi aliquid sit, a quasi itaque quibusdam exercitationem enim? Quisquam, nobis fuga! </p>
+          <h1>404!</h1>
+          <p>Die Seite ist nicht verfügbar.</p>
         
           </div>
         </div>

@@ -3,70 +3,58 @@ var React = require('react');
 var SubmitActions = require('../../actions/submitActions');
 var MenuActions = require('../../actions/menuActions');
 
+var i18n = require('../../i18n/de').newsletterArea;
+var AreaBase = require('./areaBase.jsx');
+
 var NewsletterArea = React.createClass({
 
   propTypes : {
-    isActive: React.PropTypes.bool,
     errorMessage: React.PropTypes.string,
     isSuccess: React.PropTypes.bool
   },
 
-  getDefaultProps: function(){
+  getDefaultProps() {
     return {
-      isActive: false,
       errorMessage: '',
       isSuccess : false
     };
   },
     
-  submitForm: function(evt){
+  submitForm(evt) {
     evt.preventDefault();
     var email = this.refs.email.getDOMNode().value;
 
     if(!email){
-      return SubmitActions.submitEmailError('Bitte gib eine gültige E-Mail Adresse an.');
+      return SubmitActions.submitEmailError(i18n.errorMessage);
     }
 
-    SubmitActions.submitEmail({email : email});
+    SubmitActions.submitEmail({ email : email });
   },
   
-  hideNewsletterArea: function(){
+  hideNewsletterArea() {
     MenuActions.hideAllAreas();
     SubmitActions.resetNewsletterArea();
   },
 
-  render: function() {
+  render() {
 
-    if(!this.props.isActive){
-      return false;
-    }
-
-    var ErrorMessage = this.props.errorMessage ? <div className="form-message error">{this.props.errorMessage}</div> : '';
-    var SuccessMessage = this.props.isSuccess ? <div className="form-message success">Ihre E-Mail wurde eingetragen.</div> : '';
+    var ErrorMessage = this.props.errorMessage ? <div className="form-message error">{ this.props.errorMessage }</div> : '',
+      SuccessMessage = this.props.isSuccess ? <div className="form-message success">{ i18n.successMessage }</div> : '';
 
     return (
-          <div className="area">
-            <div className="centered">
-              <div className="clearfix">
-                <div className="btn btn-close" onClick={this.hideNewsletterArea}>
-                  <i className="icon_close"></i>
-                  schließen
-                </div>
-              </div>
-              <h1>Newsletter</h1>
-              <p>Trag dich in unseren Newsletter ein, um ein mal im Monat über neue Projekte informiert zu werden.</p>
-              <form onSubmit={this.submitForm}>
-                <label>Deine E-Mail</label>
-                {ErrorMessage}
-                {SuccessMessage}
-                <input ref="email" type="text" placeholder="e@mail.de"/>
-                <button type="submit" className="btn btn-success">Abschicken</button>
-              </form>
-            </div>
-          </div>
+      <AreaBase isActive={ this.props.isActive } hideFunction={ this.hideNewsletterArea }>
+        <h1>{ i18n.title }</h1>
+        <p>{ i18n.text }</p>
+        <form onSubmit={ this.submitForm }>
+          <label>{ i18n.emailLabel }</label>
+          {ErrorMessage}
+          {SuccessMessage}
+          <input ref="email" type="text" placeholder="e@mail.de"/>
+          <button type="submit" className="btn btn-success">{ i18n.send }</button>
+        </form>
+      </AreaBase>
     );
-
-    }
+  }
 
 });
 

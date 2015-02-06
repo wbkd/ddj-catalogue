@@ -16,5 +16,4 @@ favoritesActions.loadSharedFavorites.preEmit = function(previewIds){
     .then(favoritesActions.loadSharedFavoritesSuccess,favoritesActions.loadSharedFavoritesError);
 };
 
-
 module.exports = favoritesActions;

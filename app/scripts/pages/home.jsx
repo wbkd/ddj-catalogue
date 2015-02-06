@@ -5,15 +5,15 @@ var Content = require('../components/content.jsx');
 
 var Home = React.createClass({
 
-	render: function() {
-		return (
-			<div>
-				<Header hasSubmenu={true}/>
-				<Content sharedFavoriteIds={this.props.sharedFavoriteIds} />
-				<Footer />
-			</div>
-		);
-	}
+  render: function() {
+    return (
+      <div>
+		<Header hasSubmenu={true}/>
+		<Content sharedFavoriteIds={this.props.sharedFavoriteIds} />
+		<Footer />
+      </div>
+    );
+  }
 });
 
 module.exports = Home;
