@@ -12,7 +12,7 @@ var Navigation = require('../menu/navigation.jsx');
 
 var Header = React.createClass({
 
-  getInitialState: function(a){
+  getInitialState(a) {
     //var routeParams = RouteParamStore.getRouteParams();
     return {
       selectedFilters : {},
@@ -24,31 +24,32 @@ var Header = React.createClass({
     };
   },
 
-  onStatusChange: function(newState){
+  onStatusChange(newState) {
     if(newState.favorites) {
       newState.favoritesCount = newState.favorites.length;
     }
     this.setState(newState);
   },
 
-  componentDidMount: function() {
+  componentDidMount() {
     this.unsubscribeFilterStore = FilterStore.listen(this.onStatusChange);
     this.unsubscribePreviewStore = PreviewStore.listen(this.onStatusChange);
     this.unsubscribeFavStore = FavStore.listen(this.onStatusChange);
     this.state.headerSpacing = document.getElementsByTagName('header')[0].clientHeight;
   },
 
-  componentWillUnmount: function(){
+  componentWillUnmount() {
     this.unsubscribeFilterStore();
     this.unsubscribePreviewStore();
     this.unsubscribeFavStore();
   },
 
-  render: function() {
+  render() {
 
     var headerSpacing = {
       height: this.state.headerSpacing
-    };
+    },
+      subMenu = this.props.hasSubmenu ? <SubMenu filters={ this.state.selectedFilters } { ...this.state }/> : '';
 
     return (
     	<div>
@@ -57,14 +58,14 @@ var Header = React.createClass({
             <div className="header-title-wrapper">
               <img className="header-logo" src="images/datenkatalog-logo.png"/>
               <div className="header-title">
-            	  <a href="/">{config.appName}</a>
+            	  <a href="/">{ config.appName }</a>
               </div>
             </div>
             { this.props.isEmbedMode ? '' : <Navigation/> }
           </div>
-          { this.props.hasSubmenu ? <SubMenu filters={this.state.selectedFilters} favoritesCount={this.state.favoritesCount} isSortOrderDesc={this.state.isSortOrderDesc} sortType={this.state.sortType} filterMenuActive={this.state.filterMenuActive}/> : '' }
+          { subMenu }
       	</header>
-        <div id="header-spacing" className="header-spacing" style={headerSpacing}></div>
+        <div id="header-spacing" className="header-spacing" style={ headerSpacing }></div>
       </div>
     );
   }

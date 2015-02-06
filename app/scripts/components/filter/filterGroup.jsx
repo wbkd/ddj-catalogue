@@ -8,28 +8,27 @@ var FilterActions = require('../../actions/filterActions.js');
 var cx = React.addons.classSet;
 
 var FilterGroup = React.createClass({
-  toggleExpand: function() {
+  toggleExpand() {
     FilterActions.toggleExpand(this.props.data.name);
   },
 
-  render: function() {
-    var data = this.props.data;
-
-    var filters = data.filters.map(function(filter,i) {
-      var checked = this.props.selected === filter;
-      return <Filter key={filter + i + Math.random()} text={filter} category={data.dbId} checked={checked}/>
-    }.bind(this));
-
-    var classes = cx({
-      'expanded': this.props.isExpanded,
-      'filter-group': true
-    });
+  render() {
+    var data = this.props.data,
+      filters = data.filters.map((filter,i) => <Filter key={ filter + i + Math.random() } text={ filter } category={ data.dbId } checked={ this.props.selected === filter }/>),
+      classes = cx({
+        'expanded': this.props.isExpanded,
+        'filter-group': true
+      });
 
     return (
-    	<div className={classes}>
-        <div onClick={this.toggleExpand} className="filter-header">{data.name}<i className="arrow_carrot-down"></i></div>
+      <div className={ classes }>
+        <div onClick={ this.toggleExpand } className="filter-header">
+          { data.name }<i className="arrow_carrot-down"></i>
+        </div>
         <div className="filter-content">
-        <ul className="tag-list">{filters}</ul>
+          <ul className="tag-list">
+            {filters}
+          </ul>
         </div>
       </div>
     )

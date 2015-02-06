@@ -27,7 +27,13 @@ module.exports = {
     title : 'FAQ Liste',
     text : 'Hier beantworten wir Fragen zum Datenkatalog.'
     
+  },
+  
+  footer: {
+    text : 'Ein Projekt von <a href="http://dacosto.com">DACOSTO</a> und <a href="http://webkid.io">webkid</a>',
+  },
+  
+  embed : {
+    footer : 'Weitere Projekte finden Sie im <a href="http://katalog.datenjournalismus.net/">DDJ-Katalog</a>.'
   }
-
-
 }

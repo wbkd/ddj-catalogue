@@ -4,10 +4,10 @@ var Footer = require('../components/general/footer.jsx');
 
 var ErrorPage = React.createClass({
 
-  render: function() {
+  render() {
     return (
       <div>
-        <Header hasSubmenu={false}/>
+        <Header hasSubmenu={ false }/>
         <div className="subpage">
           <div className="subpage-content">
 

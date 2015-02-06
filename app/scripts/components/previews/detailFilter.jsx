@@ -1,10 +1,9 @@
-var React = require('react/addons');
+var React = require('react');
 var FilterActions = require('../../actions/filterActions.js');
 
 var DetailFilter = React.createClass({
 
-  filterSelect: function(evt) {
-
+  filterSelect(evt) {
     var filter = {
       text: this.props.text,
       category: this.props.description
@@ -12,11 +11,12 @@ var DetailFilter = React.createClass({
     FilterActions.filterSelect(filter); 
   },
 
-  render: function() {
+  render() {
 
     //TODO: cleanup
-    var Filter = this.props.isActive ? <span><span className="detail-filter" onClick={this.filterSelect}>{this.props.text}</span><span>{this.props.addComma ? ', ' : ' '}</span></span> : 
-    <span><span className="detail-filter">{this.props.text}</span><span>{this.props.addComma ? ', ' : ' '}</span></span>
+    var Filter = this.props.isActive ? 
+        <span><span className="detail-filter" onClick={ this.filterSelect }>{ this.props.text }</span><span>{ this.props.addComma ? ', ' : ' '}</span></span> : 
+        <span><span className="detail-filter">{ this.props.text }</span><span>{ this.props.addComma ? ', ' : ' ' }</span></span>
 
     return (
       Filter

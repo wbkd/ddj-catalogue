@@ -3,7 +3,7 @@ var cx = React.addons.classSet;
 
 var SortItem = React.createClass({
 
-  render: function() {
+  render() {
 
     var sortArrowClass = this.props.isSortOrderDesc ? 'arrow_triangle-down' : 'arrow_triangle-up',
       itemClasses = cx({
@@ -12,10 +12,10 @@ var SortItem = React.createClass({
       });
 
     return (
-      <li data-type= {this.props.type} className={itemClasses} onClick={this.props.onClick}>
-        {this.props.title} 
+      <li data-type={ this.props.type } className={ itemClasses } onClick={ this.props.onClick }>
+        { this.props.title } 
         <span className="sorter-arrows">
-          <i className={sortArrowClass}></i>
+          <i className={ sortArrowClass }></i>
         </span>
       </li>
     );

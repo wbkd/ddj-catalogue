@@ -9,32 +9,33 @@ var store = require('store');
 
 var SubMenu = React.createClass({
 
-  toggleList: function(){
+  toggleList() {
     MenuActions.toggleFavoritesList();
   },
 
-  render: function() {
+  render() {
 
-    var favoritesCounter = this.props.favoritesCount > 0 ? <span className="favorites-count">{this.props.favoritesCount}</span> : '';
-
-    var filterMenuActive = this.props.filterMenuActive;
+    var favoritesCounter = this.props.favoritesCount > 0 ? <span className="favorites-count">{this.props.favoritesCount}</span> : '',
+      filterMenuActive = this.props.filterMenuActive;
     
     return (
-    	<div className="sub-menu">
+      <div className="sub-menu">
         <div className="header-content centered clearfix">
-          <div onClick={FilterActions.toggleFilterMenu} className="btn-filter btn"><i className="icon_menu"></i> <div className="description"><span className="label">Filter</span></div></div>
-          <SelectedFilters filters={this.props.filters} />
+          <div onClick={ FilterActions.toggleFilterMenu } className="btn-filter btn">
+            <i className="icon_menu"></i> <div className="description"><span className="label">Filter</span></div>
+          </div>
+      
+          <SelectedFilters filters={ this.props.filters } />
           
-          {store.enabled ? <div className="favorites-nav-item" onClick={this.toggleList}>
+          {store.enabled ? <div className="favorites-nav-item" onClick={ this.toggleList }>
             <span className="nav-item">
               <i className="icon_star_alt" id="favorites-star"></i><span className="label">Favoriten</span>
             </span>
-            {favoritesCounter}
+            { favoritesCounter }
           </div> : ''}
 
-          <Sorter isSortOrderDesc={this.props.isSortOrderDesc} sortType={this.props.sortType} />
+          <Sorter { ...this.props } />
 
-          
         </div>
       </div>
     );

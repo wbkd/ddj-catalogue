@@ -23,7 +23,7 @@ var Reflux = require('reflux');
 var PreviewList = React.createClass({
   mixins: [Reflux.ListenerMixin],
   
-  getInitialState: function(a){
+  getInitialState() {
     //var routeParams = RouteParamStore.getRouteParams();
 
     return {
@@ -38,7 +38,7 @@ var PreviewList = React.createClass({
     };
   },
 
-  onStatusChange: function(newState){
+  onStatusChange(newState) {
     var newPreviews = this.state.previews;
     // we need to clear the preview list
     // we use this when we sort or filter 
@@ -55,10 +55,11 @@ var PreviewList = React.createClass({
       newPreviews = newPreviews.concat(newState.previews);
       newState.previews = newPreviews;
     }
+    
     this.setState(newState);
   },
 
-  componentDidMount: function() {  
+  componentDidMount() {  
     this.listenTo(PreviewStore, this.onStatusChange);
     this.listenTo(FilterStore, this.onStatusChange);
     this.resetLazyParams();
@@ -69,19 +70,18 @@ var PreviewList = React.createClass({
     this.loadPreviews();
   },
 
-  componentWillUnmount: function(){
-    
+  componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll, false);
   },
 
-  resetLazyParams: function(){
+  resetLazyParams() {
     // used to only track scroll down
     this.lastScrollTop = 0;
     // index for lazyloading requests
     this.lazyIndex = 0;
   },
 
-  loadPreviews: function(){
+  loadPreviews() {
     // don't try to load more previews if everything is loaded
     var previewCount =  this.state.previews.length
     if(previewCount !== 0 && previewCount === this.state.count){
@@ -91,7 +91,7 @@ var PreviewList = React.createClass({
     PreviewActions.load({sortType : this.state.sortType, isSortOrderDesc: this.state.isSortOrderDesc, lazyIndex : this.lazyIndex, filters : this.state.selectedFilters});
   },
 
-  handleScroll: function(){
+  handleScroll() {
 
     var documentHeight = document.body.scrollHeight,
       windowHeight = window.innerHeight,
@@ -110,38 +110,34 @@ var PreviewList = React.createClass({
     this.lastScrollTop = scrollTop;
   },
 
-
-  render: function() {
+  render() {
       
-    var previews = this.state.previews.map(function(preview,i) {
-      var isExpanded = this.state.expandedId ? this.state.expandedId === preview._id : false,
-        isStared = this.props.favoriteIds.indexOf(preview._id) !== -1;
-      return (<Preview data={preview} isStared={isStared} isExpanded={isExpanded} sortType={this.state.sortType} key={preview._id} />);
-    }.bind(this));
-
-    var minHeight = {
-      minHeight: window.innerHeight
-    }
-
-    var showOverlay = this.state.expandedId != null || this.props.showOverlay;
+    var previews = this.state.previews.map((preview, i) => {
+      var isStared = this.props.favoriteIds.indexOf(preview._id) !== -1,
+          isExpanded = this.state.expandedId === preview._id;
+      return (<Preview { ...preview } isStared={ isStared } isExpanded={ isExpanded } sortType={ this.state.sortType } key={ preview._id } />);
+    }),
+      minHeight = {
+        minHeight: window.innerHeight
+      },
+      showOverlay = this.state.expandedId != null || this.props.showOverlay;
 
     return (
-      <div style={minHeight} className="preview-list clearfix centered">
-        <HighlightOverlay isActive={showOverlay} />
+      <div style={ minHeight } className="preview-list clearfix centered">
+        <HighlightOverlay isActive={ showOverlay } />
         <div className="clearfix preview-list-header">
           <div className="clearfix preview-list-left">
-            <div className="light count">{this.state.count} Projekte gefunden</div>
+            <div className="light count">{ this.state.count } Projekte gefunden</div>
           </div>
         </div>
         <div className="preview-list-content row clearfix">
-          {previews}
+          { previews }
         </div>
-        <MessageBox isActive={this.state.previews.length === 0  && !this.state.isLoading} />
-        <LoadingSpinner isActive={this.state.isLoading} />
+        <MessageBox isActive={ this.state.previews.length === 0  && !this.state.isLoading } />
+        <LoadingSpinner isActive={ this.state.isLoading } />
       </div>
     );
   }
-
 
 });
 

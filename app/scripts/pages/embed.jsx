@@ -6,6 +6,8 @@ var EmbedList = require('../components/embed/embedList.jsx');
 var PreviewActions = require('../actions/previewActions');
 var EmbedStore = require('../stores/embedStore');
 
+var i18n = require('../i18n/de').embed;
+
 var Embed = React.createClass({
 
   getInitialState() {
@@ -17,7 +19,6 @@ var Embed = React.createClass({
   },
 
   onStatusChange(state) {
-    console.log(state)
     this.setState(state);
   },
 
@@ -43,9 +44,7 @@ var Embed = React.createClass({
       <div>
         <Header hasSubmenu = { false } isEmbedMode={ true } />
         <EmbedList { ...this.state } />
-        <footer className="centered embed-footer">
-    		Weitere Projekte finden Sie im <a href="http://katalog.datenjournalismus.net/">DDJ-Katalog</a>.
-    	</footer>
+        <footer className="centered embed-footer" dangerouslySetInnerHTML={{ __html : i18n.footer }}></footer>
       </div>
     );
   }

@@ -1,12 +1,11 @@
 var React = require('react');
+var i18n = require('../../i18n/de').footer;
 
 var Footer = React.createClass({
 
-  render: function() {
+  render() {
     return (
-    	<footer className="centered">
-    		Ein Projekt von <a href="http://dacosto.com">DACOSTO</a> und <a href="http://webkid.io">webkid</a>
-    	</footer>
+    	<footer className="centered" dangerouslySetInnerHTML={{ __html : i18n.text }}></footer>
     );
   }
 });

@@ -6,20 +6,20 @@ var FilterActions = require('../../actions/filterActions');
 
 var HighlightOverlay = React.createClass({
   
-  handleClick: function(){
+  handleClick(){
     PreviewActions.shrinkPreviews();
     FilterActions.hideFilterMenu();
   },
 
-	render: function() {
+  render() {
 
-		var classes = cx({
-			'highlight-overlay': true,
-			'active': this.props.isActive
-		});
+    var classes = cx({
+      'highlight-overlay': true,
+      'active': this.props.isActive
+    });
 
-		return <div onClick={this.handleClick} className={classes}></div>
-	}
+    return (<div onClick={ this.handleClick } className={ classes }></div>);
+  }
 
 });
 

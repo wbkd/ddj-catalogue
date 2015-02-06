@@ -6,13 +6,13 @@ var MessageBox = React.createClass({
     isActive : React.PropTypes.bool
   },
 
-  getDefaultProps: function(){
+  getDefaultProps() {
     return {
       isActive : false
     };
   },
 
-  render: function() {
+  render() {
 
     if(!this.props.isActive){
       return false;

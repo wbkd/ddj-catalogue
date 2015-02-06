@@ -4,7 +4,7 @@ var config = require('../../config');
 
 var SocialBar = React.createClass({
 
-  getDefaultProps: function() {
+  getDefaultProps() {
     return {
       sharingText: config.sharingText || '',
       sharingUrl: config.sharingUrl || '',
@@ -12,27 +12,24 @@ var SocialBar = React.createClass({
     }
   },
 
-  shareFb: function() {
-    var props = this.props;
-    var url = 'https://www.facebook.com/sharer/sharer.php?u=' + props.sharingUrl;
-    window.open(url);
+  getFbHref() {
+    return 'https://www.facebook.com/sharer/sharer.php?u=' + this.props.sharingUrl;
   },
 
-  shareTw: function() {
-    var props = this.props;
-    var url = 'https://twitter.com/intent/tweet?text=' +  props.sharingText + '&url=' + props.sharingUrl + '&hashtags=' + props.hashtags + ',';
-    window.open(url);
+  getTwitterHref() {
+    return 'https://twitter.com/intent/tweet?text=' +  this.props.sharingText + '&url=' + this.props.sharingUrl + '&hashtags=' + this.props.hashtags + ',';
   },
 
-  render: function() {
+  render() {
+    
     return (
       <div className="social-bar">
-        <div onClick={this.shareFb} className="share-fb">
+        <a href={ this.getFbHref() } className="share-fb" target="_blank">
           <i className="social_fazebook"></i>
-        </div>
-        <div onClick={this.shareTw} className="share-tw">
+        </a>
+        <a href={ this.getTwitterHref() } className="share-tw" target="_blank">
           <i className="social_twidda"></i>
-        </div>
+        </a>
       </div>
     );
   }

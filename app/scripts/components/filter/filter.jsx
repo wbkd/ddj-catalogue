@@ -5,14 +5,14 @@ var FilterActions = require('../../actions/filterActions.js');
 
 var Filter = React.createClass({
 
-  filterSelect: function() {
+  filterSelect() {
     if(this.props.checked) {
       return FilterActions.filterUnselect(this.props);
     }
     FilterActions.filterSelect(this.props); 
   },
 
-  render: function() {
+  render() {
 
     var classes = cx({
       'filter': true,
@@ -20,7 +20,7 @@ var Filter = React.createClass({
     });
     
     return (
-    	<li className={classes} onClick={this.filterSelect}>{this.props.text} <i className="icon_close"></i></li>
+    	<li className={ classes } onClick={ this.filterSelect }>{ this.props.text } <i className="icon_close"></i></li>
     );
   }
 });

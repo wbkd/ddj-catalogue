@@ -27,7 +27,7 @@ var store = require('store');
 
 var Content = React.createClass({
 
-  getInitialState: function() {
+  getInitialState() {
     return {
       // filter menu
       filterMenuActive : false,
@@ -58,7 +58,7 @@ var Content = React.createClass({
   	}
   },
 
-  componentDidMount: function() {
+  componentDidMount() {
   	this.unsubscribeMenuStore = MenuStore.listen(this.onStatusChange);
     this.unsubscribeFilterStore = FilterStore.listen(this.onStatusChange);
     this.unsubscribeFavoritesStore = FavoritesStore.listen(this.onStatusChange);
@@ -76,7 +76,7 @@ var Content = React.createClass({
     this.state.contentOffsetTop = document.getElementsByTagName('header')[0].clientHeight;
   },
 
-  componentWillUnmount: function(){
+  componentWillUnmount(){
     this.unsubscribeMenuStore();
     this.unsubscribeFilterStore();
     this.unsubscribeFavoritesStore();
@@ -84,36 +84,33 @@ var Content = React.createClass({
     this.unsubscribeFaqStore();
   },
 
-  onStatusChange: function(state){
+  onStatusChange(state) {
     this.setState(state);
   },
 
-  render: function() {
-    var favoriteIds = this.state.favorites.map(function(el){
-      return el.id;
-    }),
-    isSharedFavoriteList = this.state.sharedFavorites.length > 0,
-    sharedFavoriteList = isSharedFavoriteList ? <FavoritesArea isShared={true} favorites={this.state.sharedFavorites} isActive={true} /> : '',
-    favorites = isSharedFavoriteList ? this.state.sharedFavorites : this.state.favorites
+  render() {
+    var favoriteIds = this.state.favorites.map(el => el.id),
+      isSharedFavoriteList = this.state.sharedFavorites.length > 0,
+      sharedFavoriteList = isSharedFavoriteList ? <FavoritesArea isShared={ true } favorites={ this.state.sharedFavorites } isActive={ true } /> : '',
+      favorites = isSharedFavoriteList ? this.state.sharedFavorites : this.state.favorites;
 
     return (
       <div>
-        <FilterMenu expandedGroups={this.state.expandedGroupIds} offsetTop={this.state.contentOffsetTop} filterMenuActive={this.state.filterMenuActive} selectedFilters={this.state.selectedFilters} uiData={this.state.uiData} />
+        <FilterMenu { ...this.state } />
         <SocialBar/>
         <div className="content-wrapper">
-  			  <FavoritesArea isShared={false} favoritesUrl={this.state.favoritesUrl} favorites={this.state.favorites} isActive={this.state.favoritesListActive} />
-          {sharedFavoriteList} 
-          <NewsletterArea isActive={this.state.newsletterAreaActive} isSuccess={this.state.newsletterSuccess} errorMessage={this.state.newsletterError} />    
-          <SubmitArea isActive={this.state.submitAreaActive} isSuccess={this.state.submitAreaSuccess} errorMessage={this.state.submitAreaError} />
-          <InfoArea isActive={this.state.infoActive} />
-          <FaqArea isActive={this.state.faqAreaActive} faqData={this.state.faqData}/>
+          <FavoritesArea isShared={ false } favoritesUrl={ this.state.favoritesUrl } favorites={ this.state.favorites } isActive={ this.state.favoritesListActive } />
+          { sharedFavoriteList } 
+          <NewsletterArea isActive={ this.state.newsletterAreaActive } isSuccess={ this.state.newsletterSuccess } errorMessage={ this.state.newsletterError } />    
+          <SubmitArea isActive={ this.state.submitAreaActive } isSuccess={ this.state.submitAreaSuccess } errorMessage={ this.state.submitAreaError } />
+          <InfoArea isActive={ this.state.infoActive } />
+          <FaqArea isActive={ this.state.faqAreaActive } faqData={ this.state.faqData }/>
 
-          <PreviewList showOverlay={false} favoriteIds={favoriteIds} />
-  		  </div>
+          <PreviewList showOverlay={ false } favoriteIds={ favoriteIds } />
+  		</div>
       </div>
-    	);
-  	},
+    );
+  }
 });
 
 module.exports = Content;
-
