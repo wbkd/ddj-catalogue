@@ -34,14 +34,13 @@ var Embed = React.createClass({
       this.props.ids = [this.props.ids];
     }
     
-    console.log('load', this.props.ids);
     PreviewActions.loadByIdList(this.props.ids);
   },
 
   render() {
     
     return ( 
-      < div >
+      <div>
         <Header hasSubmenu = { false } isEmbedMode={ true } />
         <EmbedList { ...this.state } />
         <footer className="centered embed-footer">

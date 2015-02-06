@@ -4,16 +4,14 @@ var EmbedItem = require('./embedItem.jsx');
 
 var EmbedList = React.createClass({
 
-  render: function() {
+  render() {
     
-    var embedItems = this.props.previews.map(function(data){
-      return (<EmbedItem {...data} key={ 'embeditem_' + data._id} />);
-    }.bind(this));
+    var embedItems = this.props.previews.map( data => <EmbedItem {...data} key={ 'embeditem_' + data._id } />);
           
     return (
       <div className="embed-list centered">
         <div className="row">{ embedItems }</div>
-        <LoadingSpinner isActive={this.props.isLoading} />
+        <LoadingSpinner isActive={ this.props.isLoading } />
       </div>
     );
   }
