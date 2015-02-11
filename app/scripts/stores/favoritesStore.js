@@ -75,7 +75,8 @@ var FavoritesStore = Reflux.createStore({
 
     this.trigger({ 
       favorites : this.favorites,
-      favoritesUrl : this.createFavoritesUrl()
+      favoritesUrl : this.createFavoritesUrl(),
+      embedUrl: this.createEmbedUrl()
     });
   },
 
@@ -126,11 +127,11 @@ var FavoritesStore = Reflux.createStore({
   },
 
   createEmbedUrl : function(){
-    var favoritesUrl = this.favorites.map(function(el,i){
+    var embedUrl = this.favorites.map(function(el,i){
       return el.id;
     }).join('__');
 
-    return location.origin + '/#/embed/' + favoritesUrl;
+    return location.origin + '/#/embed/' + embedUrl;
   },
 
   getFavoritesData: function(preview){
