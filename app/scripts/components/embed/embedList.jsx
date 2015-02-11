@@ -10,7 +10,7 @@ var EmbedList = React.createClass({
           
     return (
       <div className="embed-list centered">
-        <div className="row">{ embedItems }</div>
+        <div className="embed-row">{ embedItems }</div>
         <LoadingSpinner isActive={ this.props.isLoading } />
       </div>
     );

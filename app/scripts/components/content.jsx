@@ -46,6 +46,7 @@ var Content = React.createClass({
       favoritesUrl : '',
       favoritesListActive : false,
       sharedFavorites : [],
+      embedUrl: '',
 
       // newsletter area
       newsletterAreaActive : false,
@@ -99,7 +100,7 @@ var Content = React.createClass({
         <FilterMenu { ...this.state } />
         <SocialBar/>
         <div className="content-wrapper">
-          <FavoritesArea isShared={ false } favoritesUrl={ this.state.favoritesUrl } favorites={ this.state.favorites } isActive={ this.state.favoritesListActive } />
+          <FavoritesArea isShared={ false } favoritesUrl={ this.state.favoritesUrl } embedUrl={ this.state.embedUrl } favorites={ this.state.favorites } isActive={ this.state.favoritesListActive } />
           { sharedFavoriteList } 
           <NewsletterArea isActive={ this.state.newsletterAreaActive } isSuccess={ this.state.newsletterSuccess } errorMessage={ this.state.newsletterError } />    
           <SubmitArea isActive={ this.state.submitAreaActive } isSuccess={ this.state.submitAreaSuccess } errorMessage={ this.state.submitAreaError } />

@@ -60,10 +60,20 @@
 	z-index: 5
 	display: none
 	top: 0
-	left: 0
+	left: 0 
 	
 	&.active
 		display: block
+
+.app-link
+  position: absolute
+  bottom: .5em
+  right: .5em
+  a, a:visited
+    color: $black
+    transition: color .5s
+    &:hover
+      color: lighten($black, 20)
 	
 .count
 	display:none
@@ -81,6 +91,8 @@
 	z-index: 1
 	cursor:pointer
 	
+
+
 	&:hover .preview-image
 		box-shadow: 0 2px 2px rgba(0,0,0,.2)
 	

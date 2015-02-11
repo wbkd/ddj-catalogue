@@ -1,5 +1,11 @@
+@import 'colors'
+@import 'embed-grid'
+
+.embed-wrapper
+  padding-bottom: 30px
 .embed-item
   cursor:default
+  overflow: visible
 
   .embed-content
     padding: .6em
@@ -16,6 +22,37 @@
     display:block
     width:100%
     text-align:right
+  @media screen and (max-width: 60em)
+    &.preview
+      height: 180px
+    .preview-image
+      height: 100px
+  @media screen and (max-width: 25em)
+    &.preview
+      height: 150px
 
 .embed-footer
   font-size:13px
+  height: 30px
+  width: 100%
+  background: $headerbg
+  position: fixed
+  bottom: 0
+  z-index: 100
+  color: $white
+  line-height: 30px
+  padding: 0 1em
+  box-sizing: border-box
+  font-weight: bold
+  text-align: right
+  box-shadow: 0 -4px 7px rgba(0,0,0,0.30)
+  .footer-logo
+    height: 20px
+    float: right
+    margin-left: .5em
+    margin-top: 5px
+  a, a:visited
+    color: $white
+    &:hover
+      color: darken($white, 10)
+    

@@ -38,6 +38,15 @@ var FavoritesArea = React.createClass({
       FavoritesActions.resetFavorites();
     },
 
+    selectText(e) {
+      e.target.select()
+    },
+
+    getEmbedCode() {
+      var url = this.props.embedUrl;
+      return '<iframe style="border:1px solid #007FA4" width="560" height="600" src="' + url + '"></iframe>';
+    },
+
     render() {
 
       if(!this.props.isActive){
@@ -72,7 +81,11 @@ var FavoritesArea = React.createClass({
               </ul>
               <div className="favorites-url" hidden={ !hasFavorites || this.props.isShared }>
                 <label>Favoritenliste teilen</label>
-                <textarea readOnly value={ this.props.favoritesUrl }></textarea>
+                <textarea onClick={ this.selectText } readOnly value={ this.props.favoritesUrl }></textarea>
+              </div>
+              <div className="embed-code" hidden={ !hasFavorites || this.props.isShared }>
+                <label>Favoritenliste einbetten</label>
+                <textarea onClick={ this.selectText } readOnly value={ this.getEmbedCode() }></textarea>
               </div>
             </div>
         </div>

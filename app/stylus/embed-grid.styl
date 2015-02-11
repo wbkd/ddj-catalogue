@@ -1,0 +1,20 @@
+.embed-row > .embed-column
+  padding: 1em
+  position: relative
+
+@media screen and (min-width: 25em)
+  .embed-row
+    overflow: hidden
+  
+  .embed-row > .embed-column
+    float: left
+    width: 50%
+    
+  .embed-row > .embed-column:nth-child(odd)
+    clear: left
+
+@media screen and (min-width: 45em)
+  .embed-row > .embed-column
+    width: 25%
+  .embed-row > .embed-column:nth-child(odd)
+    clear: none

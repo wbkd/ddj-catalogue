@@ -2,6 +2,7 @@ var React = require('react');
 var Header = require('../components/general/header.jsx');
 var Footer = require('../components/general/footer.jsx');
 var EmbedList = require('../components/embed/embedList.jsx');
+var EmbedFooter = require('../components/embed/embedFooter.jsx');
 
 var PreviewActions = require('../actions/previewActions');
 var EmbedStore = require('../stores/embedStore');
@@ -36,15 +37,19 @@ var Embed = React.createClass({
     }
     
     PreviewActions.loadByIdList(this.props.ids);
+    document.getElementsByTagName('html')[0].style.overflow = 'auto';
+  },
+
+  componentDidMount() {
+    this.getDOMNode().style.minHeight = window.innerHeight + 'px';
   },
 
   render() {
     
     return ( 
-      <div>
-        <Header hasSubmenu = { false } isEmbedMode={ true } />
+      <div className="embed-wrapper">
         <EmbedList { ...this.state } />
-        <footer className="centered embed-footer" dangerouslySetInnerHTML={{ __html : i18n.footer }}></footer>
+        <EmbedFooter />
       </div>
     );
   }

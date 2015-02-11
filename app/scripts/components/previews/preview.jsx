@@ -119,6 +119,8 @@ var Preview = React.createClass({
                 <strong>Kategorie:</strong> { this.getDetailFilter(preview.category, 'category',this.props.isExpanded) }
               </div>
               { this.getOrganisation(preview) }
+
+              <div className="app-link"><a href={ preview.url }>» zur Anwendung</a></div>
             </div>
 
           </div>
