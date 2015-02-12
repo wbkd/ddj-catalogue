@@ -12,7 +12,6 @@ var i18n = require('../i18n/de').embed;
 var Embed = React.createClass({
 
   getInitialState() {
-    //var routeParams = RouteParamStore.getRouteParams();
     return {
       previews: [],
       isLoading: true

@@ -43,8 +43,8 @@ var FavoritesArea = React.createClass({
     },
 
     getEmbedCode() {
-      var url = this.props.embedUrl;
-      return '<iframe style="border:1px solid #007FA4" width="560" height="600" src="' + url + '"></iframe>';
+      var embedUrl = this.props.favoritesUrl.replace('favoriten', 'embed');
+      return '<iframe style="border:1px solid #007FA4" width="560" height="600" src="' + embedUrl + '"></iframe>';
     },
 
     render() {

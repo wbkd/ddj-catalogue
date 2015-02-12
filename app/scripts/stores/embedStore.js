@@ -22,6 +22,7 @@ var EmbedStore = Reflux.createStore({
   
   onLoadPreviewByIdSuccess(data) {
     this.previews = data;
+    this.isLoading = false;
     
     this.trigger({
       isLoading : this.isLoading,
