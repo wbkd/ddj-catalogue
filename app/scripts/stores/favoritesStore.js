@@ -10,7 +10,7 @@ var store = require('store');
 
 var FavoritesStore = Reflux.createStore({
 
-  init : function(){
+  init() {
     this.favorites = this.storeGet('favorites');
 
     if(utils.isUndefined(this.favorites)){
@@ -21,26 +21,26 @@ var FavoritesStore = Reflux.createStore({
     this.listenTo(favoritesActions.loadFavorites,this.loadFavorites);
     this.listenTo(favoritesActions.starPreview,this.toggleStar);
 
-    this.listenTo(favoritesActions.loadSharedFavorites,this.loadSharedFavorites);
+    // this.listenTo(favoritesActions.loadSharedFavorites,this.loadSharedFavorites);     
     this.listenTo(favoritesActions.loadSharedFavoritesSuccess,this.loadSharedFavoritesSuccess);
     this.listenTo(favoritesActions.loadSharedFavoritesError,this.loadSharedFavoritesError);
 
     this.listenTo(favoritesActions.resetFavorites,this.resetFavorites)
   },
 
-  storeSet:function(key,values){
+  storeSet(key,values) {
     if(store.enabled){
       store.set(key,values);
     }
   },
 
-  storeGet:function(key){
+  storeGet(key) {
     if(store.enabled){
       return store.get(key);
     }
   },
 
-  resetFavorites: function(){
+  resetFavorites() {
     this.favorites = [];
     this.storeSet('favorites', this.favorites);
     
@@ -50,13 +50,13 @@ var FavoritesStore = Reflux.createStore({
 
   },
 
-  toggleStar: function(preview){
+  toggleStar(preview) {
 
     var newPreviewId = preview._id,
       favoritesPreviewIndex = -1;
 
     // check if preview is already in the list  
-    this.favorites.forEach(function(el,storeIndex){
+    this.favorites.forEach((el, storeIndex) => {
       if(newPreviewId === el.id){
         favoritesPreviewIndex = storeIndex;
       }
@@ -80,7 +80,7 @@ var FavoritesStore = Reflux.createStore({
     });
   },
 
-  loadFavorites: function(){
+  loadFavorites() {
     this.trigger({ 
       favorites : this.favorites,
       favoritesUrl : this.createFavoritesUrl(),
@@ -88,7 +88,7 @@ var FavoritesStore = Reflux.createStore({
     });
   },
 
-  animateStar: function(){
+  animateStar() {
     var starElement = document.getElementById('favorites-star');
 
     Velocity(starElement,{ color: '#F7CA18', textShadowBlur: '4px' }, { duration: 400, easing: 'ease-in-out' })
@@ -97,12 +97,10 @@ var FavoritesStore = Reflux.createStore({
       });
   },
 
-  loadSharedFavoritesSuccess: function(previews){
+  loadSharedFavoritesSuccess(previews) {
 
-    var sharedFavorites = previews.map(function(el){
-      return this.getFavoritesData(el);
-    }.bind(this));
-
+    var sharedFavorites = previews.map(el => this.getFavoritesData(el));
+    
     this.trigger({ 
      sharedFavorites : sharedFavorites
     });
@@ -118,23 +116,20 @@ var FavoritesStore = Reflux.createStore({
 
   ******************/
 
-  createFavoritesUrl : function(){
-    var favoritesUrl = this.favorites.map(function(el,i){
-      return el.id;
-    }).join('__');
+  createFavoritesUrl() {
+    var favoritesUrl = this.favorites.map(el => el.id);
 
-    return location.origin + '/#/favoriten/' + favoritesUrl;
+    return location.origin + '/#/favoriten/' + favoritesUrl.join('__');
   },
 
-  createEmbedUrl : function(){
-    var embedUrl = this.favorites.map(function(el,i){
-      return el.id;
-    }).join('__');
+  createEmbedUrl() {
+    
+    var embedUrl = this.favorites.map(el => el.id);
 
-    return location.origin + '/#/embed/' + embedUrl;
+    return location.origin + '/#/embed/' + embedUrl.join('__');
   },
 
-  getFavoritesData: function(preview){
+  getFavoritesData(preview) {
     return {
       id : preview._id,
       title : preview.title,
@@ -146,6 +141,5 @@ var FavoritesStore = Reflux.createStore({
   }
 
 });
-
 
 module.exports = FavoritesStore;

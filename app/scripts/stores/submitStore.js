@@ -4,7 +4,7 @@ var submitActions = require('../actions/submitActions');
 
 var SubmitStore = Reflux.createStore({
 
-  init : function(){
+  init() {
     this.submitSuccess = false;
     this.submitError = '';
 
@@ -28,7 +28,7 @@ var SubmitStore = Reflux.createStore({
 
   ***************/
 
-  submitProjectSuccess : function(data){
+  submitProjectSuccess(data) {
 
     if(data.error){
       return this.submitProjectError(data.error);
@@ -44,7 +44,7 @@ var SubmitStore = Reflux.createStore({
   },
 
   // the passed error message is displayed in the submit area
-  submitProjectError : function(errorMessage){
+  submitProjectError(errorMessage) {
     this.submitError = errorMessage;
     this.submitSuccess = false;
 
@@ -54,7 +54,7 @@ var SubmitStore = Reflux.createStore({
     });
   },
 
-  resetSubmitArea: function(){
+  resetSubmitArea() {
     this.submitError = '';
     this.submitSuccess = false;
 
@@ -71,7 +71,7 @@ var SubmitStore = Reflux.createStore({
 
   ***************/
 
-  submitEmailSuccess : function(data){
+  submitEmailSuccess(data) {
 
     if(data.error){
       return this.submitEmailError(data.error);
@@ -86,7 +86,7 @@ var SubmitStore = Reflux.createStore({
     });
   },
 
-  submitEmailError : function(errorMessage){
+  submitEmailError(errorMessage) {
     this.newsletterError = errorMessage;
     this.newsletterSuccess = false;
 
@@ -96,7 +96,7 @@ var SubmitStore = Reflux.createStore({
     });
   },
 
-  resetNewsletterArea: function(){
+  resetNewsletterArea() {
     this.newsletterError = '';
     this.newsletterSuccess = false;
 

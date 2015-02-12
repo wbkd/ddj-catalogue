@@ -3,7 +3,7 @@ var previewActions = require('../actions/previewActions');
 
 var EmbedStore = Reflux.createStore({
 
-  init: function () {
+  init() {
       
     this.isLoading = true;
     this.previews = [];
@@ -13,16 +13,14 @@ var EmbedStore = Reflux.createStore({
     this.listenTo(previewActions.errorLoadByIdList, this.onLoadPreviewByIdError);
   },
   
-  
-  onloadByIdList: function(){
+  onloadByIdList() {
     this.isLoading = true;
     this.trigger({
       isLoading : this.isLoading
     });
   },
   
-  onLoadPreviewByIdSuccess: function(data){
-    this.isLoading = false;
+  onLoadPreviewByIdSuccess(data) {
     this.previews = data;
     
     this.trigger({
@@ -31,7 +29,7 @@ var EmbedStore = Reflux.createStore({
     });  
   },
   
-  onLoadPreviewByIdError: function(){
+  onLoadPreviewByIdError() {
     this.isLoading = false;
     this.trigger({
       isLoading : this.isLoading
