@@ -1,43 +1,24 @@
 /* 
-  we need this store to use the Router mixins 
-  https://github.com/rackt/react-router/issues/470
-  
+
+https://github.com/rackt/react-router/blob/master/docs/guides/flux.md#accessing-route-and-params-from-action-creators
+
 */
 
 var Reflux = require('reflux');
 var routerActions = require('../actions/routerActions');
+var router = require('../router');
 
 var merge = require('merge');
-//var routerState = null;
-
-var router = require('../router');
 
 var RouterStore = Reflux.createStore({
   
   init() {
-    this.query = {};
     this.routerState = {};
-    this.listenTo(routerActions.updateQueryParam, this.updateQueryParam);
-  },
-
-  updateQueryParam(operation, params) {
-    
-    console.log(operation);
-    console.log(this.routerState)
-    
-    if(typeof this.routerState === 'undefined'){
-      return false;
-    }
-    
-    if(operation === 'add'){
-      this.addQueryparam(params);
-    }else if(operation === 'remove'){
-      this.removeQueryParam(params);
-    }
-    
+    this.listenTo(routerActions.addQueryParam, this.addQueryParam);
+    this.listenTo(routerActions.removeQueryParam, this.removeQueryParam);
   },
   
-  addQueryparam(params) {
+  addQueryParam(params) {
     var newQuery = {};
     newQuery[params.category] = params.text; 
     
@@ -52,12 +33,10 @@ var RouterStore = Reflux.createStore({
 
     router.transitionTo('/', null, currentQuery);
   }
-
 });
 
 RouterStore.setRouterState = function(routerState){
   RouterStore.routerState = routerState;
-  console.log(routerState)
 }
 
 module.exports = RouterStore;

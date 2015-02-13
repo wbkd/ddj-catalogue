@@ -3,13 +3,12 @@ var Header = require('../components/general/header.jsx');
 var Footer = require('../components/general/footer.jsx');
 var Content = require('../components/content.jsx');
 
-var Router = require('react-router');
+var { State } = require('react-router');
 
 var Home = React.createClass({
-  mixins: [Router.State],
+  mixins: [State],
   
   render() {
-      
     return (
       <div>
 		<Header hasSubmenu={ true }/>

@@ -31,11 +31,11 @@ filterActions.filterSelect.preEmit = function(params) {
   window.scrollTo(0,0);
   PreviewActions.shrinkPreviews();
   
-  routerActions.updateQueryParam('add', params);
+  routerActions.addQueryParam(params);
 };
 
 filterActions.filterUnselect.preEmit = function(params) {
-  routerActions.updateQueryParam('remove', params);
+  routerActions.removeQueryParam(params);
 };
 
 filterActions.toggleFilterMenu.preEmit = function(){
