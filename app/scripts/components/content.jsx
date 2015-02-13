@@ -18,14 +18,18 @@ var FavoritesStore = require('../stores/favoritesStore.js');
 var SubmitStore = require('../stores/submitStore.js');
 var FaqStore = require('../stores/faqStore.js');
 
+var RouterStore = require('../stores/routerStore.js');
+
 // actions
 var FavoritesActions = require('../actions/favoritesActions.js');
 var FilterActions = require('../actions/filterActions.js');
 
 // third party
 var store = require('store');
+var Router = require('react-router');
 
 var Content = React.createClass({
+  mixins: [Router.State],
 
   getInitialState() {
     return {
@@ -90,6 +94,7 @@ var Content = React.createClass({
   },
 
   render() {
+      
     var favoriteIds = this.state.favorites.map(el => el.id),
       isSharedFavoriteList = this.state.sharedFavorites.length > 0,
       sharedFavoriteList = isSharedFavoriteList ? <FavoritesArea isShared={ true } favorites={ this.state.sharedFavorites } isActive={ true } /> : '',

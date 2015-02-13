@@ -7,10 +7,13 @@ var EmbedFooter = require('../components/embed/embedFooter.jsx');
 var PreviewActions = require('../actions/previewActions');
 var EmbedStore = require('../stores/embedStore');
 
+var Router = require('react-router');
+
 var i18n = require('../i18n/de').embed;
 
 var Embed = React.createClass({
-
+  mixins: [Router.State],
+  
   getInitialState() {
     return {
       previews: [],
@@ -23,19 +26,22 @@ var Embed = React.createClass({
   },
 
   componentWillMount() {
-    if(!this.props.ids){
+    
+    var ids = this.getParams().ids;
+    
+    if(!ids){
       return false;
     }
     
     this.unsubscribe = EmbedStore.listen(this.onStatusChange);
-      
-    if(this.props.ids.indexOf('__') !== -1){
-      this.props.ids = this.props.ids.split('__');
+    
+    if(ids.indexOf('__') !== -1){
+      ids = ids.split('__');
     }else{
-      this.props.ids = [this.props.ids];
+      ids = [ids];
     }
     
-    PreviewActions.loadByIdList(this.props.ids);
+    PreviewActions.loadByIdList(ids);
     document.getElementsByTagName('html')[0].style.overflow = 'auto';
   },
 

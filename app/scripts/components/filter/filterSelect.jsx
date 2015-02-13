@@ -9,6 +9,7 @@ var cx = React.addons.classSet;
 var FilterSelect = React.createClass({
 
   handleChange(selectedValue,selectedObject) {
+      
     if(selectedValue.length === 0) {
       return FilterActions.filterUnselect({ category : this.props.category });
     }

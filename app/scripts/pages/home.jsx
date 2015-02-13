@@ -3,13 +3,17 @@ var Header = require('../components/general/header.jsx');
 var Footer = require('../components/general/footer.jsx');
 var Content = require('../components/content.jsx');
 
-var Home = React.createClass({
+var Router = require('react-router');
 
-  render: function() {
+var Home = React.createClass({
+  mixins: [Router.State],
+  
+  render() {
+      
     return (
       <div>
-		<Header hasSubmenu={true}/>
-		<Content sharedFavoriteIds={this.props.sharedFavoriteIds} />
+		<Header hasSubmenu={ true }/>
+		<Content sharedFavoriteIds={ this.getParams().sharedFavoriteIds } />
 		<Footer />
       </div>
     );

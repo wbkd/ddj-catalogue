@@ -4,8 +4,8 @@ var cx = React.addons.classSet;
 var FilterActions = require('../../actions/filterActions.js');
 
 var Filter = React.createClass({
-
-  filterSelect() {
+  
+  filterSelect() {    
     if(this.props.checked) {
       return FilterActions.filterUnselect(this.props);
     }
@@ -18,9 +18,11 @@ var Filter = React.createClass({
       'filter': true,
       'active': this.props.checked
     });
-    
+        
     return (
-    	<li className={ classes } onClick={ this.filterSelect }>{ this.props.text } <i className="icon_close"></i></li>
+      <li className={ classes } onClick={ this.filterSelect }>
+        { this.props.text } <i className="icon_close"></i>
+      </li>
     );
   }
 });
