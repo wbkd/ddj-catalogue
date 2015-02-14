@@ -5,10 +5,12 @@ var config = require('../config');
 var filterActions = require('../actions/filterActions');
 var previewActions = require('../actions/previewActions');
 
+var routerActions = require('../actions/routerActions');
 
 var FilterStore = Reflux.createStore({
 
   init() {
+      
     this.filterMenuActive = false;
     this.selectedFilters = {};
     this.uiData = [];
@@ -26,6 +28,16 @@ var FilterStore = Reflux.createStore({
     this.listenTo(filterActions.loadFiltersError, this.loadFiltersError);
 
     //this.listenTo(previewStore, this.updateUiData);
+    this.listenTo(routerActions.setInitialQuery, this.updateSelectedFilters);
+  },
+  
+  updateSelectedFilters(query){
+    this.selectedFilters = query;
+    
+    this.trigger({
+      isLoading: true,
+      selectedFilters: this.selectedFilters
+    });
   },
 
   toggleFilterMenu() {
@@ -43,8 +55,9 @@ var FilterStore = Reflux.createStore({
   },
 
   filterSelect(filter) {
+    
     this.selectedFilters[filter.category] = filter.text;
-
+    
     this.trigger({
       reset: true,
       isLoading: true,
@@ -52,9 +65,10 @@ var FilterStore = Reflux.createStore({
     });
   },
 
-  filterUnselect(filter) {
+  filterUnselect(filter) {    
+    
     delete this.selectedFilters[filter.category];
-
+    
     this.trigger({
       reset: true,
       isLoading: true,
@@ -118,7 +132,7 @@ var FilterStore = Reflux.createStore({
   },
 
   loadFiltersError(error) {
-    this.trigger({});
+    
   }
 
 });

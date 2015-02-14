@@ -18,27 +18,28 @@ var PreviewActions = require('../../actions/previewActions');
 var PreviewStore = require('../../stores/previewStore');
 var FilterStore = require('../../stores/filterStore');
 
-var Reflux = require('reflux');
+var { ListenerMixin } = require('reflux');
+var { State } = require('react-router');
 
 var PreviewList = React.createClass({
-  mixins: [Reflux.ListenerMixin],
+  mixins: [ListenerMixin, State],
   
   getInitialState() {
-    //var routeParams = RouteParamStore.getRouteParams();
-
     return {
       previews : [],
       expandedId : null,
       showOverlay : false,
       isLoading: true,
+      selectedFilters: this.getQuery(),
       count : 0,
-      selectedFilters : {},
       isSortOrderDesc : config.isSortOrderDesc,
       sortType: config.sortType
     };
   },
 
+  
   onStatusChange(newState) {
+
     var newPreviews = this.state.previews;
     // we need to clear the preview list
     // we use this when we sort or filter 
@@ -66,7 +67,6 @@ var PreviewList = React.createClass({
 
     //TODO:  How to use react onScroll Event in this case?
     window.addEventListener('scroll', this.handleScroll, false);
-
     this.loadPreviews();
   },
 
@@ -87,7 +87,7 @@ var PreviewList = React.createClass({
     if(previewCount !== 0 && previewCount === this.state.count){
       return false;
     }
-    
+
     PreviewActions.load({sortType : this.state.sortType, isSortOrderDesc: this.state.isSortOrderDesc, lazyIndex : this.lazyIndex, filters : this.state.selectedFilters});
   },
 

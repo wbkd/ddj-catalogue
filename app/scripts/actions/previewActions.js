@@ -22,7 +22,7 @@ var previewActions = Reflux.createActions([
   'errorLoadByIdList'
 ]);
 
-previewActions.load.preEmit = function(options){
+previewActions.load.preEmit = function(options){  
 	PreviewApi
 		.load(options)
 		.then(previewActions.success,previewActions.error);

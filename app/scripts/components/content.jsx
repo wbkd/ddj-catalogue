@@ -12,31 +12,30 @@ var FaqArea = require('./faqs/faqArea.jsx');
 var SocialBar = require('./menu/socialBar.jsx');
 
 // stores
-var MenuStore = require('../stores/menuStore.js');
-var FilterStore = require('../stores/filterStore.js');
-var FavoritesStore = require('../stores/favoritesStore.js');
-var SubmitStore = require('../stores/submitStore.js');
-var FaqStore = require('../stores/faqStore.js');
-
-var RouterStore = require('../stores/routerStore.js');
+var MenuStore = require('../stores/menuStore');
+var FilterStore = require('../stores/filterStore');
+var FavoritesStore = require('../stores/favoritesStore');
+var SubmitStore = require('../stores/submitStore');
+var FaqStore = require('../stores/faqStore');
 
 // actions
-var FavoritesActions = require('../actions/favoritesActions.js');
-var FilterActions = require('../actions/filterActions.js');
+var FavoritesActions = require('../actions/favoritesActions');
+var FilterActions = require('../actions/filterActions');
 
 // third party
 var store = require('store');
-var Router = require('react-router');
+var { State } = require('react-router');
 
 var Content = React.createClass({
-  mixins: [Router.State],
-
-  getInitialState() {
+  
+  mixins : [State],
+  
+  getInitialState() {      
     return {
       // filter menu
       filterMenuActive : false,
       uiData: [],
-      selectedFilters: {},
+      selectedFilters: this.getQuery(),
       expandedGroupIds: [],
 
       // submit area
@@ -69,7 +68,7 @@ var Content = React.createClass({
     this.unsubscribeFavoritesStore = FavoritesStore.listen(this.onStatusChange);
     this.unsubscribeSubmitStore = SubmitStore.listen(this.onStatusChange);
     this.unsubscribeFaqStore = FaqStore.listen(this.onStatusChange);
-
+    
     FavoritesActions.loadFavorites();
     FilterActions.loadFilters();
 
@@ -77,7 +76,7 @@ var Content = React.createClass({
       var favoriteIdArray = this.props.sharedFavoriteIds.split('__');
       FavoritesActions.loadSharedFavorites(favoriteIdArray);
     }
-
+    
     this.state.contentOffsetTop = document.getElementsByTagName('header')[0].clientHeight;
   },
 
@@ -112,7 +111,7 @@ var Content = React.createClass({
           <InfoArea isActive={ this.state.infoActive } />
           <FaqArea isActive={ this.state.faqAreaActive } faqData={ this.state.faqData }/>
 
-          <PreviewList showOverlay={ false } favoriteIds={ favoriteIds } />
+          <PreviewList selectedFilters={ this.state.selectedFilters } showOverlay={ false } favoriteIds={ favoriteIds } />
   		</div>
       </div>
     );

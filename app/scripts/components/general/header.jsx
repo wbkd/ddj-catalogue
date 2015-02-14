@@ -5,17 +5,17 @@ var utils = require('../../utils');
 var FilterStore = require('../../stores/filterStore');
 var PreviewStore = require('../../stores/previewStore');
 var FavStore = require('../../stores/favoritesStore');
-// var RouteParamStore = require('../../stores/routeParamStore');
 
 var SubMenu = require('../menu/subMenu.jsx');
 var Navigation = require('../menu/navigation.jsx');
+var { State } = require('react-router');
 
 var Header = React.createClass({
-
-  getInitialState(a) {
-    //var routeParams = RouteParamStore.getRouteParams();
+  mixins: [State],
+  
+  getInitialState() {
     return {
-      selectedFilters : {},
+      selectedFilters : this.getQuery(),
       headerSpacing: 100,
       sortType : config.sortType,
       isSortOrderDesc : config.isSortOrderDesc,
@@ -49,7 +49,7 @@ var Header = React.createClass({
     var headerSpacing = {
       height: this.state.headerSpacing
     },
-      subMenu = this.props.hasSubmenu ? <SubMenu filters={ this.state.selectedFilters } { ...this.state }/> : '';
+      subMenu = this.props.hasSubmenu ? <SubMenu { ...this.state }/> : '';
 
     return (
     	<div>

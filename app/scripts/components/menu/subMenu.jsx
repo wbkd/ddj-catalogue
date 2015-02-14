@@ -15,7 +15,7 @@ var SubMenu = React.createClass({
 
   render() {
 
-    var favoritesCounter = this.props.favoritesCount > 0 ? <span className="favorites-count">{this.props.favoritesCount}</span> : '',
+    var favoritesCounter = this.props.favoritesCount > 0 ? <span className="favorites-count">{ this.props.favoritesCount }</span> : '',
       filterMenuActive = this.props.filterMenuActive;
     
     return (
@@ -25,7 +25,7 @@ var SubMenu = React.createClass({
             <i className="icon_menu"></i> <div className="description"><span className="label">Filter</span></div>
           </div>
       
-          <SelectedFilters filters={ this.props.filters } />
+          <SelectedFilters filters={ this.props.selectedFilters } />
           
           {store.enabled ? <div className="favorites-nav-item" onClick={ this.toggleList }>
             <span className="nav-item">
