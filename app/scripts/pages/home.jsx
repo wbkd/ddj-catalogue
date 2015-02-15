@@ -11,9 +11,9 @@ var Home = React.createClass({
   render() {
     return (
       <div>
-		<Header hasSubmenu={ true }/>
-		<Content sharedFavoriteIds={ this.getParams().sharedFavoriteIds } />
-		<Footer />
+    		<Header hasSubmenu={ true } />
+    		<Content />
+    		<Footer />
       </div>
     );
   }

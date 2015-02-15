@@ -31,5 +31,5 @@ var Router = require('react-router');
 
 router = Router.create({
   routes: routes,
-  location: Router.HistoryLocation
+  // location: Router.HistoryLocation
 });

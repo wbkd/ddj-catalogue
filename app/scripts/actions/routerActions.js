@@ -3,8 +3,9 @@ var Reflux = require('reflux');
 var routerActions = Reflux.createActions([
   'addQueryParam',
   'removeQueryParam',
-  'setInitialQuery',
-  'changeRoute'
+  'changeRoute',
+  'clearQuery',
+  'setToBase'
 ]);
 
 module.exports = routerActions;

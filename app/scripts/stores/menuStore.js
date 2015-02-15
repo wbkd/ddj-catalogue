@@ -1,6 +1,7 @@
 var Reflux = require('reflux');
 var MenuActions = require('../actions/menuActions');
 var router =require('../router');
+var routerActions = require('../actions/routerActions');
 
 var store = require('store');
 
@@ -71,7 +72,9 @@ var MenuStore = Reflux.createStore({
   },
 
   hideSharedList() {
-    router.transitionTo('/');
+    
+    // router.replaceWith('/');
+    routerActions.setToBase();
     this.trigger({
       sharedFavorites: []
     });

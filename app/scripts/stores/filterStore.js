@@ -2,11 +2,11 @@ var Reflux = require('reflux');
 var utils = require('../utils');
 var config = require('../config');
 
+var menuActions = require('../actions/menuActions');
 var filterActions = require('../actions/filterActions');
 var previewActions = require('../actions/previewActions');
 
 var routerActions = require('../actions/routerActions');
-
 var routerStore = require('../stores/routerStore');
 
 var FilterStore = Reflux.createStore({
@@ -30,7 +30,6 @@ var FilterStore = Reflux.createStore({
     this.listenTo(filterActions.loadFiltersError, this.loadFiltersError);
 
     this.listenTo(routerStore, this.updateByRouterState);
-    this.listenTo(routerActions.setInitialQuery, this.updateSelectedFilters);
   },
   
   updateByRouterState(routerState) {
@@ -43,16 +42,8 @@ var FilterStore = Reflux.createStore({
     });
   },
 
-  updateSelectedFilters(query) {
-    this.selectedFilters = query;
-    
-    this.trigger({
-      isLoading: true,
-      selectedFilters: this.selectedFilters
-    });
-  },
-
   toggleFilterMenu() {
+    
     this.filterMenuActive = !this.filterMenuActive;
     this.trigger({
       filterMenuActive: this.filterMenuActive

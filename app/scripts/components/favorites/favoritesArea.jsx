@@ -70,7 +70,7 @@ var FavoritesArea = React.createClass({
                   <i className="icon_close"></i>
                   schließen
                 </div>
-                { hasFavorites ? <div className="btn btn-clear" onClick={ this.resetList }><i className="icon_trash_alt"></i> Liste leeren</div> : '' }
+                { (hasFavorites && !this.props.isShared) ? <div className="btn btn-clear" onClick={ this.resetList }><i className="icon_trash_alt"></i> Liste leeren</div> : '' }
 
               </div>
 
