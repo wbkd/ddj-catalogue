@@ -67,7 +67,6 @@ var PreviewList = React.createClass({
 
     //TODO:  How to use react onScroll Event in this case?
     window.addEventListener('scroll', this.handleScroll, false);
-    this.loadPreviews();
   },
 
   componentWillUnmount() {

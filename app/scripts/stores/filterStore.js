@@ -7,6 +7,8 @@ var previewActions = require('../actions/previewActions');
 
 var routerActions = require('../actions/routerActions');
 
+var routerStore = require('../stores/routerStore');
+
 var FilterStore = Reflux.createStore({
 
   init() {
@@ -27,11 +29,21 @@ var FilterStore = Reflux.createStore({
     this.listenTo(filterActions.loadFiltersSuccess, this.loadFiltersSuccess);
     this.listenTo(filterActions.loadFiltersError, this.loadFiltersError);
 
-    //this.listenTo(previewStore, this.updateUiData);
+    this.listenTo(routerStore, this.updateByRouterState);
     this.listenTo(routerActions.setInitialQuery, this.updateSelectedFilters);
   },
   
-  updateSelectedFilters(query){
+  updateByRouterState(routerState) {
+    this.selectedFilters = routerState.query;
+
+    this.trigger({
+      reset : true,
+      isLoading: true,
+      selectedFilters: routerState.query
+    });
+  },
+
+  updateSelectedFilters(query) {
     this.selectedFilters = query;
     
     this.trigger({
@@ -56,24 +68,24 @@ var FilterStore = Reflux.createStore({
 
   filterSelect(filter) {
     
-    this.selectedFilters[filter.category] = filter.text;
+    //this.selectedFilters[filter.category] = filter.text;
     
-    this.trigger({
+    /*this.trigger({
       reset: true,
       isLoading: true,
       selectedFilters: this.selectedFilters
-    });
+    });*/
   },
 
   filterUnselect(filter) {    
     
-    delete this.selectedFilters[filter.category];
+    //delete this.selectedFilters[filter.category];
     
-    this.trigger({
+    /*this.trigger({
       reset: true,
       isLoading: true,
       selectedFilters: this.selectedFilters
-    });
+    });*/
 
   },
 

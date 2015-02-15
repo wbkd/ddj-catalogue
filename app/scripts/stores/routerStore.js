@@ -18,6 +18,15 @@ var RouterStore = Reflux.createStore({
     this.routerState = {};
     this.listenTo(routerActions.addQueryParam, this.addQueryParam);
     this.listenTo(routerActions.removeQueryParam, this.removeQueryParam);
+    this.listenTo(routerActions.changeRoute, this.changeRoute);
+  },
+
+  changeRoute(params) {
+    this.routerState = params;
+
+    this.trigger({
+      query : this.routerState.query
+    });
   },
   
   addQueryParam(params) {
@@ -30,9 +39,9 @@ var RouterStore = Reflux.createStore({
     
     this.routerState.query = query;
     
-    this.trigger({
+    /*this.trigger({
       query : this.routerState.query
-    });
+    });*/
   },
   
   removeQueryParam(params) {
@@ -43,9 +52,9 @@ var RouterStore = Reflux.createStore({
     
     this.routerState.query = query;
     
-    this.trigger({
+    /*this.trigger({
       query : this.routerState.query
-    });
+    });*/
   }
 });
 

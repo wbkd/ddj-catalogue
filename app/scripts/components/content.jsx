@@ -93,7 +93,7 @@ var Content = React.createClass({
   },
 
   render() {
-      
+  
     var favoriteIds = this.state.favorites.map(el => el.id),
       isSharedFavoriteList = this.state.sharedFavorites.length > 0,
       sharedFavoriteList = isSharedFavoriteList ? <FavoritesArea isShared={ true } favorites={ this.state.sharedFavorites } isActive={ true } /> : '',

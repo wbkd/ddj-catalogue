@@ -4,9 +4,6 @@
 var router;
 
 module.exports = {
-  getCurrentPath() {
-    return router.getQuery();
-  },
 
   makePath(to, params, query) {
     return router.makePath(to, params, query);
@@ -33,5 +30,6 @@ var routes = require('./routes');
 var Router = require('react-router');
 
 router = Router.create({
-  routes: routes
+  routes: routes,
+  location: Router.HistoryLocation
 });
